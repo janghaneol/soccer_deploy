@@ -1,6 +1,6 @@
-<!DOCTYPE >
-< lang="en">
 
+
+<!DOCTYPE >
 <head>
   <title>Soccer &mdash; Website by Colorlib</title>
   <meta charset="utf-8">
