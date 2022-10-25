@@ -1,5 +1,9 @@
 package com.soccer.deploy.dto;
 
-public class User {
 
+@Entity
+public class User {
+	
+	
+	private Long id;
 }
