@@ -1,5 +1,4 @@
 <!DOCTYPE >
-< lang="en">
 
 <head>
   <title>Soccer &mdash; Website by Colorlib</title>
