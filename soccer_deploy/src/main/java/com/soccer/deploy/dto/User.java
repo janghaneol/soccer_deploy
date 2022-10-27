@@ -2,9 +2,9 @@ package com.soccer.deploy.dto;
 
 import javax.persistence.Entity;
 
-@Entity
+//@Entity
 public class User {
 	
 	
-	private Long id;
+//	private Long id;
 }
