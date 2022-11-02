@@ -47,5 +47,10 @@ public class MyController {
 		
 		return "blog";
 	}
+	@RequestMapping("/mainPage")
+	public String mainPage() {
+		
+		return "mainPage";
+	}
 
 }
