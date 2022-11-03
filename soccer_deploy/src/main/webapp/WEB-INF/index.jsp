@@ -60,8 +60,8 @@
                 <li class="active"><a href="index" class="nav-link">Home</a></li>
                 <li><a href="matches" class="nav-link">Matches</a></li>
                 <li><a href="players" class="nav-link">Players</a></li>
-                <li><a href="blog" class="nav-link">Blog</a></li>
-                <li><a href="contact" class="nav-link">Contact</a></li>
+                <li><a href="mainPage" class="nav-link">MainPage</a></li>
+                <li><a href="xLogin" class="nav-link">Login</a></li>
               </ul>
             </nav>
 
