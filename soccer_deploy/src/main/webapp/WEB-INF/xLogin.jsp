@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Insertere</title>
 
 <link
 	href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
