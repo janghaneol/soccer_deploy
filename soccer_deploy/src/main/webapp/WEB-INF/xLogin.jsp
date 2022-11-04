@@ -32,9 +32,10 @@
 #zero {
 	position: relative;
 	width: 1700px;
-	height: 700px;
+	height: 750px;
 	padding: 4%;
 	padding-left: 16%;
+	padding-top : 8%;
 }
 
 #deploy {
@@ -57,7 +58,6 @@
 	border-radius: 30px;
 	border-style: solid;
 	border-color: rgb(224, 224, 224);
-	padding: 2%;
 	padding-left: 5%;
 }
 

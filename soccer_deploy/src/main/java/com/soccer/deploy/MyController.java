@@ -57,7 +57,7 @@ public class MyController {
 		
 		return "xLogin";
 	}
-	@RequestMapping("/xMain")
+	@RequestMapping("/xmain")
 	public String xMain() {
 		
 		return "xMain";
