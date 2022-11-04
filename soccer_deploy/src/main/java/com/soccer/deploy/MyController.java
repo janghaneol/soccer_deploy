@@ -1,6 +1,7 @@
 package com.soccer.deploy;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -63,5 +64,9 @@ public class MyController {
 		return "xMain";
 	}
 	
+	@RequestMapping("/signup")
+	public String signUp() {
+		return "signup";
+	}
 
 }
