@@ -40,8 +40,8 @@
     height:50%;
 }
 #deploy_one{
-    width:25%;
-    height:100%;
+    width: 80%;
+    height : 100%;
     margin :2%;
     
     border-radius : 30px;
@@ -51,22 +51,11 @@
     padding :1%;
 }
 #deploy_two{
-    width:55%;
+    width: 20%;
     height:100%;
     margin :2%;
     
     border-radius : 30px;
-    border-style : solid;
-    border-color : rgb(224,224,224);
-    
-    padding :1%;
-}
-#deploy_three{
-    width:20%;
-    height:100%;
-	margin :2%;
-	
-	border-radius : 30px;
     border-style : solid;
     border-color : rgb(224,224,224);
     
@@ -152,9 +141,8 @@
 <div class="container">
 	
 	<div id="deploy">
-    <div id="deploy_one"> <jsp:include page="chat_front.jsp"/> </div>
-    <div id="deploy_two">공지글, 경기일정글</div>
-    <div id="deploy_three">로그인</div>
+    <div id="deploy_one">공지글 </div>
+    <div id="deploy_two">경기 일정글</div>
 	</div>
 	
 </div>
