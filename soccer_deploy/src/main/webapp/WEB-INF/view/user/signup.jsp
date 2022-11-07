@@ -150,13 +150,14 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="exampleSelect1" class="form-label mt-4">성별</label> <select
-							class="form-select" id="exampleSelect1" style="width: 160px;">
+						<label for="exampleSelect1" class="form-label mt-4">성별</label> 
+						<select	class="form-select" id="exampleSelect1" style="width: 160px;">
 							<option>남자</option>
 							<option>여자</option>
 						</select>
 					</div>
-
+					
+					
 					<div class="d-grid gap-2">
 						<button class="btn btn-primary btn-lg" type="button">가입하기</button>
 					</div>

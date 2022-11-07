@@ -127,12 +127,12 @@
 										<form action="#">
 											<div class="form-group">
 												<input type="text" class="form-control" placeholder="EMAIL">
-												<br>
 											</div>
+											
 											<div class="form-group">
-												<input type="password" class="form-control"
-													placeholder="PASSWORD"> <br>
+												<input type="password" class="form-control"	placeholder="PASSWORD">
 											</div>
+											
 											<div class="form-group">
 												<input type="submit" class="btn btn-primary py-3 px-3" value="Login" style="margin-right: 10px;">
 												<a href="signup"><input type="button" class="btn btn-primary py-3 px-3" value="Sign Up"></a>
