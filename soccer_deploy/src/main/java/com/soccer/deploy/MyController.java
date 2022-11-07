@@ -1,4 +1,4 @@
-package soccer.deploy;
+package com.soccer.deploy;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,71 +7,66 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class MyController {
 	
-	@RequestMapping("/")
-	public String index() {
-		
-		return "index";
-	}
-	
 	@RequestMapping("/main")
 	public String main() {
 		
-		return "view/main";
+		return "main";
 	}
 	
 	@RequestMapping("/contact")
 	public String contact() {
 		
-		return "view/contact";
+		return "contact";
 	}
 	
-
+	@RequestMapping("/index")
+	public String index() {
+		
+		return "index";
+	}
 	
 	@RequestMapping("/matches")
 	public String matches() {
 		
-		return "view/matches";
+		return "matches";
 	}
 	
 	@RequestMapping("/players")
 	public String players() {
 		
-		return "view/players";
+		return "players";
 	}
 	
 	@RequestMapping("/single")
 	public String single() {
 		
-		return "view/single";
+		return "single";
 	}
 	
 	@RequestMapping("/blog")
 	public String blog() {
 		
-		return "view/blog";
+		return "blog";
 	}
 	@RequestMapping("/mainPage")
 	public String mainPage() {
 		
-		return "view/mainPage";
+		return "mainPage";
 	}
-	@RequestMapping("/login")
+	@RequestMapping("/xLogin")
 	public String xLogin() {
 		
-		return "view/user/login";
+		return "xLogin";
 	}
 	@RequestMapping("/xMain")
 	public String xMain() {
 		
-		return "view/xMain";
+		return "xMain";
 	}
 	
 	@RequestMapping("/signup")
 	public String signUp() {
-		return "view/user/signup";
+		return "signup";
 	}
-	@GetMapping("/test")
-	public String lineUp() {
-		return "view/lineUp/lineUp";
-	}
+
 }

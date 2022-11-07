@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+	<div class="site-wrap">
 
     <div class="site-mobile-menu site-navbar-target">
       <div class="site-mobile-menu-header">
@@ -23,11 +24,11 @@
           <div class="ml-auto">
             <nav class="site-navigation position-relative text-right" role="navigation">
               <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="index" class="nav-link">Home</a></li>
                 <li><a href="matches" class="nav-link">Matches</a></li>
                 <li><a href="players" class="nav-link">Players</a></li>
                 <li><a href="mainPage" class="nav-link">MainPage</a></li>
-                <li><a href="login" class="nav-link">Login</a></li>
+                <li><a href="xLogin" class="nav-link">Login</a></li>
               </ul>
             </nav>
 
@@ -38,3 +39,4 @@
       </div>
 
     </header>
+</div>

@@ -27,15 +27,15 @@
 <link rel="stylesheet" href="css/style.css">
 
 </head>
-
 <style>
 #zero {
 	position: relative;
-	width: 1700px;
-	height: 750px;
-	padding: 4%;
-	padding-left: 16%;
-	padding-top : 8%;
+	width: 100%;
+	height: 100%;
+	padding: 10%;
+	padding-left: 10%;
+	padding-right: 10%;
+	padding-bottom: 10%;
 }
 
 #deploy {
@@ -45,115 +45,151 @@
 	height: 100%;
 }
 
-#deploy_one {
-	width: 10%;
-	height: 100%;
-	margin: 2%;
-	padding: 1%;
-}
-
 #deploy_two {
-	width: 80%;
+	width: 100%;
 	height: 100%;
 	border-radius: 30px;
 	border-style: solid;
 	border-color: rgb(224, 224, 224);
 	padding-left: 5%;
-}
-
-#deploy_three {
-	width: 10%;
-	height: 100%;
-	margin: 2%;
-	padding: 1%;
-}
-
-#image1 {
-	width: 450px;
-	height: 180px;
-	margin-left: 5%;
-	margin-right: 5%;
-	margin-top: 3.3%;
-	filter: invert() drop-shadow(5px 5px 5px #000);
-	float: right;
-	/* box-shadow: 5px 5px 5px #000; */
-}
-
-#deploy_two_In {
-	positon: relative;
-	display: flex;
-	flex-directory: column;
-	width: 100%;
-	height: 100%;
-}
-
-#deploy_two_In_one {
-	width: 60%;
-	height: 100%;
-}
-
-#deploy_two_In_two {
-	width: 40%;
-	height: 100%;
-	padding: 6.7%;
+	padding-right: 5%;
+	padding-bottom: 5%;
 }
 
 #to_center_footer {
 	text-align: center;
 }
-</style>
 
+.bir_yy, .bir_mm, .bir_dd {
+	width: 160px;
+	display: table-cell;
+}
+
+.bir_mm+.bir_dd, .bir_yy+.bir_mm {
+	padding-left: 10px;
+}
+
+.container.py-4 {
+	margin: 0 auto;
+	width: 503px;
+}
+
+.d-grid.gap-2 {
+	padding-top: 30px;
+}
+
+.bg {
+	height: 1053px;
+	padding-top: 55px;
+	padding-bottom: 75px;
+}
+
+.flex-fill.mx-xl-5.mb-2 {
+	margin: 0 auto;
+	width: 700px;
+	padding-right: 7rem;
+	padding-left: 7rem;
+}
+
+.container.py-4 {
+	margin: 0 auto;
+	width: 503px;
+}
+
+.d-grid.gap-2 {
+	padding-top: 30px;
+}
+</style>
 <body>
 
-<jsp:include page="/WEB-INF/view/include/header.jsp"></jsp:include>
+	<jsp:include page="view/include/header.jsp"></jsp:include>
 
-	<!-- 여기까지가 기본구성.  -->
-	<!-- 필요하면 지워도 되는데 책임은 못짐. -->
+	<section class="bg">
+		<div class="container py-4">
 
-	<div id="zero">
+						<form>
+							<div class="form-group">
+								<label for="exampleInputEmail1" class="form-label mt-4">이메일</label>
+								<input type="text" class="form-control" id="exampleInputEmail1"
+									aria-describedby="emailHelp">
+							</div>
+							<div class="form-group has-success">
+								<label class="form-label mt-4" for="inputValid">비밀번호</label> <input
+									type="password" class="form-control is-valid" id="inputValid">
+								<div class="valid-feedback"></div>
+							</div>
 
-		<div id="deploy">
-		<div id="deploy_one"></div>
-			<div id="deploy_two">
-
-				<div class="site-section">
-					<div class="container">
-						<div id="deploy_two_In">
-							<div id="deploy_two_In_one">
-								<h3 class="mb-3">Login</h3>
-								<br> <br>
-								<div class="row">
-									<div class="col-lg-7">
-										<form action="#">
-											<div class="form-group">
-												<input type="text" class="form-control" placeholder="EMAIL">
-											</div>
-											
-											<div class="form-group">
-												<input type="password" class="form-control"	placeholder="PASSWORD">
-											</div>
-											
-											<div class="form-group">
-												<input type="submit" class="btn btn-primary py-3 px-3" value="Login" style="margin-right: 10px;">
-												<a href="signup"><input type="button" class="btn btn-primary py-3 px-3" value="Sign Up"></a>
-											</div>
-											
-										</form>
-									</div>
+							<div class="form-group has-danger">
+								<label class="form-label mt-4" for="inputInvalid">비밀번호
+									재확인</label> <input type="password" class="form-control is-invalid"
+									id="inputInvalid">
+								<div class="invalid-feedback">비밀번호가 일치하지 않습니다</div>
+							</div>
+							<div class="form-group">
+								<label for="exampleInputEmail1" class="form-label mt-4">이름</label>
+								<input type="text" class="form-control" id="exampleInputEmail1"
+									aria-describedby="emailHelp">
+							</div>
+							<div class="bir_wrap">
+								<label class="form-label mt-4">생년월일</label>
+								<div class="bir_yy">
+									<span class="ps_box"> <input type="text"
+										class="form-control" id="yy" placeholder="년(4자)" maxlength="4">
+									</span>
+								</div>
+								<div class="bir_mm">
+									<span class="ps_box focus"> <select class="form-select"	id="mm" id="exampleSelect1">
+											<option>월</option>
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+											<option>5</option>
+											<option>6</option>
+											<option>7</option>
+											<option>8</option>
+											<option>9</option>
+											<option>10</option>
+											<option>11</option>
+											<option>12</option>
+									</select>
+									</span>
+								</div>
+								<div class="bir_dd">
+									<span class="ps_box"> <input type="text"
+										class="form-control" id="dd" placeholder="일" maxlength="2">
+									</span>
 								</div>
 							</div>
-
-							<div id="deploy_two_In_two">
-								<img src="title2.png" id="image1">
+							<div class="form-group">
+								<label for="exampleSelect1" class="form-label mt-4">성별</label> <select
+									class="form-select" id="exampleSelect1">
+									<option>남자</option>
+									<option>여자</option>
+									<option>거북</option>
+								</select>
 							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div id="deploy_three"></div>
-		</div>
 
-	</div>
+							<div class="d-grid gap-2">
+								<button class="btn btn-primary btn-lg" type="button">가입하기</button>
+							</div>
+
+						</form>
+
+
+					</div>
+
+	</section>
+
+
+
+
+
+
+
+
+
+
 
 
 	<footer class="footer-section">
