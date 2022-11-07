@@ -16,42 +16,42 @@ public class MyController {
 	@RequestMapping("/contact")
 	public String contact() {
 		
-		return "contact";
+		return "view/contact";
 	}
 	
 	@RequestMapping("/index")
 	public String index() {
 		
-		return "index";
+		return "view/index";
 	}
 	
 	@RequestMapping("/matches")
 	public String matches() {
 		
-		return "matches";
+		return "view/matches";
 	}
 	
 	@RequestMapping("/players")
 	public String players() {
 		
-		return "players";
+		return "view/players";
 	}
 	
 	@RequestMapping("/single")
 	public String single() {
 		
-		return "single";
+		return "view/single";
 	}
 	
 	@RequestMapping("/blog")
 	public String blog() {
 		
-		return "blog";
+		return "view/blog";
 	}
 	@RequestMapping("/mainPage")
 	public String mainPage() {
 		
-		return "mainPage";
+		return "view/mainPage";
 	}
 	@RequestMapping("/login")
 	public String xLogin() {
@@ -61,7 +61,7 @@ public class MyController {
 	@RequestMapping("/xMain")
 	public String xMain() {
 		
-		return "xMain";
+		return "view/xMain";
 	}
 	
 	@RequestMapping("/signup")
