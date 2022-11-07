@@ -1,4 +1,4 @@
-package soccer.deploy.User.dao;
+package soccer.deploy.user.dao;
 
 public class UserDAO {
 

@@ -130,8 +130,7 @@
 											</div>
 											
 											<div class="form-group">
-												<input type="password" class="form-control"
-													placeholder="PASSWORD">
+												<input type="password" class="form-control"	placeholder="PASSWORD">
 											</div>
 											
 											<div class="form-group">
