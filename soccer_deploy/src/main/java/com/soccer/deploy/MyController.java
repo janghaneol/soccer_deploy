@@ -53,10 +53,10 @@ public class MyController {
 		
 		return "mainPage";
 	}
-	@RequestMapping("/xLogin")
+	@RequestMapping("/login")
 	public String xLogin() {
 		
-		return "xLogin";
+		return "view/user/login";
 	}
 	@RequestMapping("/xMain")
 	public String xMain() {
@@ -66,7 +66,7 @@ public class MyController {
 	
 	@RequestMapping("/signup")
 	public String signUp() {
-		return "signup";
+		return "view/user/signup";
 	}
 
 }
