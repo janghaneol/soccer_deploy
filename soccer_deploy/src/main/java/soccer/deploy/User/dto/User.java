@@ -1,4 +1,4 @@
-package com.soccer.deploy.dto;
+package soccer.deploy.User.dto;
 
 import javax.persistence.Entity;
 

@@ -1,4 +1,4 @@
-package com.soccer.deploy;
+package soccer.deploy;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,10 +7,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class MyController {
 	
+	@RequestMapping("/")
+	public String index() {
+		
+		return "index";
+	}
+	
 	@RequestMapping("/main")
 	public String main() {
 		
-		return "main";
+		return "view/main";
 	}
 	
 	@RequestMapping("/contact")
@@ -19,11 +25,7 @@ public class MyController {
 		return "view/contact";
 	}
 	
-	@RequestMapping("/index")
-	public String index() {
-		
-		return "view/index";
-	}
+
 	
 	@RequestMapping("/matches")
 	public String matches() {
@@ -68,5 +70,8 @@ public class MyController {
 	public String signUp() {
 		return "view/user/signup";
 	}
-
+	@GetMapping("/test")
+	public String lineUp() {
+		return "view/lineUp/lineUp";
+	}
 }
