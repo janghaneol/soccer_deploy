@@ -158,7 +158,7 @@
 
 		<div id="two">
 			<div id="two_one">
-				<jsp:include page="chat_front.jsp" />
+				<jsp:include page="/WEB-INF/view/chat/chat_front.jsp" />
 			</div>
 			<div id="two_two">공지글, 경기일정글</div>
 			<div id="two_three">

@@ -102,83 +102,71 @@
 </style>
 <body>
 
-	<jsp:include page="view/include/header.jsp"></jsp:include>
+	<jsp:include page="/WEB-INF/view/include/header.jsp"></jsp:include>
 
 	<section class="bg">
 		<div class="container py-4">
-
-						<form>
+				<div id="deploy_two">
+					<form>
 							<div class="form-group">
-								<label for="exampleInputEmail1" class="form-label mt-4">이메일</label>
-								<input type="text" class="form-control" id="exampleInputEmail1"
-									aria-describedby="emailHelp">
+									<label for="exampleInputEmail1" class="form-label mt-4">이메일</label>
+									<input type="text" class="form-control" id="exampleInputEmail1"
+											aria-describedby="emailHelp">
 							</div>
 							<div class="form-group has-success">
-								<label class="form-label mt-4" for="inputValid">비밀번호</label> <input
-									type="password" class="form-control is-valid" id="inputValid">
-								<div class="valid-feedback"></div>
+									<label class="form-label mt-4" for="inputValid">비밀번호</label> <input
+											type="password" class="form-control is-valid" id="inputValid">
+									<div class="valid-feedback"></div>
 							</div>
 
 							<div class="form-group has-danger">
-								<label class="form-label mt-4" for="inputInvalid">비밀번호
-									재확인</label> <input type="password" class="form-control is-invalid"
-									id="inputInvalid">
-								<div class="invalid-feedback">비밀번호가 일치하지 않습니다</div>
-							</div>
-							<div class="form-group">
-								<label for="exampleInputEmail1" class="form-label mt-4">이름</label>
-								<input type="text" class="form-control" id="exampleInputEmail1"
-									aria-describedby="emailHelp">
-							</div>
-							<div class="bir_wrap">
-								<label class="form-label mt-4">생년월일</label>
-								<div class="bir_yy">
-									<span class="ps_box"> <input type="text"
-										class="form-control" id="yy" placeholder="년(4자)" maxlength="4">
-									</span>
-								</div>
-								<div class="bir_mm">
-									<span class="ps_box focus"> <select class="form-select"	id="mm" id="exampleSelect1">
-											<option>월</option>
-											<option>1</option>
-											<option>2</option>
-											<option>3</option>
-											<option>4</option>
-											<option>5</option>
-											<option>6</option>
-											<option>7</option>
-											<option>8</option>
-											<option>9</option>
-											<option>10</option>
-											<option>11</option>
-											<option>12</option>
-									</select>
-									</span>
-								</div>
-								<div class="bir_dd">
-									<span class="ps_box"> <input type="text"
-										class="form-control" id="dd" placeholder="일" maxlength="2">
-									</span>
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="exampleSelect1" class="form-label mt-4">성별</label> <select
-									class="form-select" id="exampleSelect1">
-									<option>남자</option>
-									<option>여자</option>
-									<option>거북</option>
-								</select>
-							</div>
+							<label class="form-label mt-4" for="inputInvalid">비밀번호 재확인</label>
+							<input type="password" class="form-control is-invalid"
+								id="inputInvalid">
+							<div class="invalid-feedback">비밀번호가 일치하지 않습니다</div>
+						</div>
 
-							<div class="d-grid gap-2">
+						<div class="form-group">
+							<label for="exampleInputEmail1" class="form-label mt-4">이름</label>
+							<input type="text" class="form-control" id="exampleInputEmail1"
+								aria-describedby="emailHelp">
+						</div>
+						<div class="bir_wrap">
+							<label class="form-label mt-4">생년월일</label>
+							<div class="bir_yy">
+								<span class="ps_box"> <input type="text"
+									class="form-control" id="yy" placeholder="년(4자)" maxlength="4">
+								</span>
+							</div>
+							<div class="bir_mm">
+								<span class="ps_box"> <input type="text"
+									class="form-control" id="mm" placeholder="월" maxlength="2">
+								</span>
+							</div>
+							<div class="bir_dd">
+								<span class="ps_box"> <input type="text"
+									class="form-control" id="dd" placeholder="일" maxlength="2">
+								</span>
+							</div>
+						</div>
+						<div class="form-group">
+						<label for="exampleSelect1" class="form-label mt-4">성별</label> 
+						<select	class="form-select" id="exampleSelect1" style="width: 160px;">
+								<option>남자</option>
+								<option>여자</option>
+							</select>
+						</div>
+						
+						
+						<div class="d-grid gap-2">
 								<button class="btn btn-primary btn-lg" type="button">가입하기</button>
-							</div>
-
-						</form>
-
-
-					</div>
-
+						</div>
+						
+				</form>
+				
+				
+				</div>
+			</div>
 	</section>
 
 

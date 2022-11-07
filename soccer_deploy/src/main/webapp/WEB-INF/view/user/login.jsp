@@ -105,13 +105,10 @@
 
 <body>
 
-<jsp:include page="view/include/header.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/view/include/header.jsp"></jsp:include>
 
 	<!-- 여기까지가 기본구성.  -->
 	<!-- 필요하면 지워도 되는데 책임은 못짐. -->
-
-
-
 
 	<div id="zero">
 
@@ -130,11 +127,10 @@
 										<form action="#">
 											<div class="form-group">
 												<input type="text" class="form-control" placeholder="EMAIL">
-												<br>
 											</div>
 											<div class="form-group">
-												<input type="password" class="form-control"
-													placeholder="PASSWORD"> <br>
+												<input type="password" class="form-control"		placeholder="PASSWORD">
+													
 											</div>
 											<div class="form-group">
 												<input type="submit" class="btn btn-primary py-3 px-3" value="Login" style="margin-right: 10px;">
