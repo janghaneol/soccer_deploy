@@ -1,0 +1,5 @@
+package soccer.deploy.lineUp.entity;
+
+public class LineUp {
+	
+}
