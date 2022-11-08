@@ -68,7 +68,7 @@ public class MyController {
 	
 	@RequestMapping("/signup")
 	public String signUp() {
-		return "view/user/signup";
+		return "signup";
 	}
 	@GetMapping("/test")
 	public String lineUp() {
