@@ -301,7 +301,7 @@
     				<br>
     			
     				<div class="form-group">
-        				<a href="xLogin"><button class="btn btn-primary py-3 px-5">Go To Login</button></a>
+        				<a href="login"><button class="btn btn-primary py-3 px-5">Go To Login</button></a>
     				</div>
     			
     			</div>
