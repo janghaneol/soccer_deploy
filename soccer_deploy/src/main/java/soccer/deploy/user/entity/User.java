@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -22,6 +23,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@Table(name = "users")
 public class User {
 	
 	@Id
@@ -45,13 +47,13 @@ public class User {
 	@Column(name="img_file_name")
 	private String imgFileName;
 	
-	@Column(nullable = false)
-	private Integer backnum;
+	@Column(name="backnum",nullable = false)
+	private Integer backNum;
 	
 	@Column(name="member_auth",nullable = false)
 	private String memberAuth;
-	@Column(nullable = false)
 	
+	@Column(nullable = false)
 	private String position;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date regdate;

@@ -5,5 +5,5 @@ import java.util.List;
 import soccer.deploy.entry.entity.Entry;
 
 public interface EntryService {
-	public List<Entry> findEntrys();
+	public List<Entry> findEntryRecentMatch(Long id);
 }

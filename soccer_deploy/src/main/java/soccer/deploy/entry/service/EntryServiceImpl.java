@@ -13,10 +13,11 @@ import soccer.deploy.entry.repository.JpaEntryRepository;
 @Transactional
 public class EntryServiceImpl implements EntryService {
 	@Autowired
-	private JpaEntryRepository entryRepository;
+	private JpaEntryRepository jpaentryRepository;
 
-	@Override
-	public List<Entry> findEntrys() {
-		return entryRepository.findAllByMatchId(2L);
+	@Override //최신 경기일정에 해당하는 선수들 가져오기
+	public List<Entry> findEntryRecentMatch(Long id) {
+		return jpaentryRepository.findAllByMatchId(2L);
+	
 	}
 }

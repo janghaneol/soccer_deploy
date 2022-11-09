@@ -15,10 +15,24 @@
     <fullyQualifiedTypeName name="lombok.NoArgsConstructor"/>
     <fullyQualifiedTypeName name="lombok.AllArgsConstructor"/>
     <fullyQualifiedTypeName name="lombok.Data"/>
-    <fullyQualifiedTypeName name="soccer.deploy.entry.entity.Entry"/>
     <fullyQualifiedTypeName name="soccer.deploy.lineUp.entity.LineUp"/>
-    <fullyQualifiedTypeName name="soccer.deploy.quarter.entity.Quarter"/>
-    <fullyQualifiedTypeName name="soccer.deploy.match.entity.Match"/>
     <fullyQualifiedTypeName name="javax.persistence.JoinColumn"/>
     <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="lombok.extern.slf4j.Slf4j"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+    <fullyQualifiedTypeName name="org.springframework.transaction.annotation.Transactional"/>
+    <fullyQualifiedTypeName name="soccer.deploy.entry.repository.JpaEntryRepository"/>
+    <fullyQualifiedTypeName name="javax.persistence.Table"/>
+    <fullyQualifiedTypeName name="soccer.deploy.entry.entity.Entry"/>
+    <fullyQualifiedTypeName name="soccer.deploy.entry.service.EntryService"/>
+    <fullyQualifiedTypeName name="soccer.deploy.quarter.repository.JpaQuarterRepository"/>
+    <fullyQualifiedTypeName name="org.junit.jupiter.api.Test"/>
+    <fullyQualifiedTypeName name="soccer.deploy.quarter.service.QuarterService"/>
+    <fullyQualifiedTypeName name="soccer.deploy.quarter.entity.Quarter"/>
+    <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.Query"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="soccer.deploy.match.repository.JpaMatchRepository"/>
+    <fullyQualifiedTypeName name="org.junit.jupiter.api.Disabled"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="soccer.deploy.match.entity.Match"/>
 </qualifiedTypeNameHistroy>
