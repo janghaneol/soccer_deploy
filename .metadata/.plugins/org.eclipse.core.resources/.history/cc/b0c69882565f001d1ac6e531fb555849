@@ -1,0 +1,22 @@
+package soccer.deploy.quarter.entity;
+
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+import soccer.deploy.match.entity.Match;
+
+public class Quarter {
+	@Id
+	@Column(name ="quarter_id")
+	private Long id;
+	
+	@Column(name ="quarter_time")
+	private Integer quarterTime;
+	
+	private Integer outcome;
+	
+	@ManyToOne
+	@Column(name ="match_id")
+	private Match match;
+}

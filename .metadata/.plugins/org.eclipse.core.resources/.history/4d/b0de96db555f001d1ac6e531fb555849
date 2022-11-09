@@ -1,0 +1,10 @@
+package soccer.deploy.quarter.entity;
+
+import soccer.deploy.match.entity.Match;
+
+public class Quarter {
+	private Long id;
+	private Integer quarterTime;
+	private Integer outcome;
+	private Match match;
+}

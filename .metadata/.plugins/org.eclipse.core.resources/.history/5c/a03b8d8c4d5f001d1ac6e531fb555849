@@ -1,0 +1,11 @@
+package soccer.deploy.entry.entity;
+
+import soccer.deploy.match.entity.Match;
+import soccer.deploy.user.entity.User;
+
+public class Emtry {
+	private Long id;
+	
+	private Match match;
+	private User user;
+}

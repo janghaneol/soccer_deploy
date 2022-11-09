@@ -1,0 +1,24 @@
+package soccer.deploy.match.entity;
+
+import java.util.Date;
+
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import soccer.deploy.user.entity.User;
+
+public class Match {
+	private Long id;
+	
+	@Temporal(TemporalType.DATE)
+	private Date matchDate;
+	private String opteam;
+	
+	@Temporal(TemporalType.DATE)
+	private Date matchRegdate;
+	private String matchImgType;
+	private String matchImgName;
+	private String matchPlace;
+	
+	private User user;
+}

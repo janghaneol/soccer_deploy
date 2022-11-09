@@ -1,0 +1,39 @@
+package soccer.deploy.match.entity;
+
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import soccer.deploy.user.entity.User;
+
+public class Match {
+	@Id
+	@Column(name ="match_id")
+	private Long id;
+	
+	@Column(name ="match_date")
+	@Temporal(TemporalType.DATE) //³â¿ùÀÏ 
+	private Date matchDate;
+	
+	private String opteam;
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name ="match_regdate")
+	private Date matchRegdate;
+	
+	@Column(name ="match_img_type")
+	private String matchImgType;
+	@Column(name ="match_img_name")
+	private String matchImgName;
+	@Column(name ="match_place")
+	private String matchPlace;
+	
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;
+}
