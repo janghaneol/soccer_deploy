@@ -10,18 +10,29 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.DynamicInsert;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Entity
+@Table(name = "users")
 @SequenceGenerator(name = "user_seq_gen", sequenceName = "user_seq", allocationSize = 1)
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
+@ToString
 @Data
+@DynamicInsert
 public class User {
 	
 	@Id
@@ -37,7 +48,7 @@ public class User {
 	private String name;
 	@Column(nullable = false)
 	private Integer age;
-	@Column(nullable = false)
+	@Column
 	private String address;
 	
 	@Column(name="img_cont_type")
@@ -45,13 +56,12 @@ public class User {
 	@Column(name="img_file_name")
 	private String imgFileName;
 	
-	@Column(nullable = false)
-	private Integer backnum;
+	@Column(name = "back_Num")
+	private Integer backNum;
 	
-	@Column(name="member_auth",nullable = false)
+	@Column(name="member_auth")
 	private String memberAuth;
-	@Column(nullable = false)
-	
+	@Column
 	private String position;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date regdate;
