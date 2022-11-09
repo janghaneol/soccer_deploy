@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="choungTest (1)" project="soccer_deploy" tests="3" started="3" failures="0" errors="0" ignored="2">
+  <testsuite name="soccer.deploy.choungTest" time="0.255" displayname="choungTest" uniqueid="[engine:junit-jupiter]/[class:soccer.deploy.choungTest]">
+    <testcase name="test1" classname="soccer.deploy.choungTest" time="0.0" ignored="true" displayname="test1()" uniqueid="[engine:junit-jupiter]/[class:soccer.deploy.choungTest]/[method:test1()]"/>
+    <testcase name="test2" classname="soccer.deploy.choungTest" time="0.0" ignored="true" displayname="test2()" uniqueid="[engine:junit-jupiter]/[class:soccer.deploy.choungTest]/[method:test2()]"/>
+    <testcase name="test3" classname="soccer.deploy.choungTest" time="0.255" displayname="test3()" uniqueid="[engine:junit-jupiter]/[class:soccer.deploy.choungTest]/[method:test3()]"/>
+  </testsuite>
+</testrun>
