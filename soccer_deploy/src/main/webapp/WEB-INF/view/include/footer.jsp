@@ -72,7 +72,4 @@
 
                 </div>
             </div>
-        </footer>
-
-
-    
+</footer>

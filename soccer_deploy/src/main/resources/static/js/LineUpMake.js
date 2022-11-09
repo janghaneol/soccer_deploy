@@ -230,4 +230,3 @@ document.querySelector(".close_pop").addEventListener("click", function (event) 
   let search = document.querySelector(".search");
   search.style.display = "none";
 })
-

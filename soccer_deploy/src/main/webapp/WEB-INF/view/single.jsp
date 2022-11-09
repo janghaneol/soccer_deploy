@@ -34,7 +34,7 @@
 <body>
 
   <div class="site-wrap">
-<jsp:include page="/WEB-INF/view/include/header.jsp"></jsp:include>
+  <jsp:include page="/WEB-INF/view/include/header.jsp"></jsp:include>
 
     <div class="hero overlay" style="background-image: url('images/bg_3.jpg');">
       <div class="container">
@@ -221,10 +221,10 @@
     </div>
 
 
-
+  
 	<jsp:include page="/WEB-INF/view/include/footer.jsp"></jsp:include>
-
-
+	
+	
   </div>
   <!-- .site-wrap -->
 

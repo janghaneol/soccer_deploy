@@ -9,10 +9,10 @@ public class MyController {
 	
 	@RequestMapping("/")
 	public String index() {
-		
+
 		return "index";
 	}
-	
+
 	@RequestMapping("/main")
 	public String main() {
 		
@@ -25,7 +25,7 @@ public class MyController {
 		return "view/contact";
 	}
 	
-
+	
 	
 	@RequestMapping("/matches")
 	public String matches() {
@@ -56,7 +56,7 @@ public class MyController {
 		return "view/mainPage";
 	}
 	@RequestMapping("/login")
-	public String xLogin() {
+	public String login() {
 		
 		return "view/user/login";
 	}
@@ -68,7 +68,7 @@ public class MyController {
 	
 	@RequestMapping("/signup")
 	public String signUp() {
-		return "view/user/signup";
+		return "signup";
 	}
 	@GetMapping("/test")
 	public String lineUp() {

@@ -1,0 +1,7 @@
+package soccer.deploy.entry.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface JpaEntryRepository extends JpaRepository<T, ID> {
+
+}

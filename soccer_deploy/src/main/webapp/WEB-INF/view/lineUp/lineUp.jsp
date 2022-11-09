@@ -47,7 +47,6 @@
                 downloadURI(myImage, `${date}_${setName}.png`);
             });
         }
-
         function downloadURI(uri, name) {
             let link = document.createElement("a")
             link.download = name;

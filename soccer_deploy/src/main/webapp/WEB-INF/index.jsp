@@ -292,10 +292,10 @@
         </div>
       </div>
     </div> <!-- .site-section -->
-
+    
     <jsp:include page="/WEB-INF/view/include/section.jsp"></jsp:include>
 
-		<jsp:include page="/WEB-INF/view/include/footer.jsp"></jsp:include>
+    <jsp:include page="/WEB-INF/view/include/footer.jsp"></jsp:include>
 
 
 
