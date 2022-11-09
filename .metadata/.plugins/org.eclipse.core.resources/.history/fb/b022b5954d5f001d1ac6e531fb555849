@@ -1,0 +1,16 @@
+package soccer.deploy.lineUp.entity;
+
+import soccer.deploy.entry.entity.Entry;
+import soccer.deploy.quarter.entity.Quarter;
+
+public class LineUp {
+	
+	private Long id;
+	
+	private  Entry entry;
+	private Quarter quarter;
+	
+	private int goal;
+	private int assist;
+	private int point;
+}	

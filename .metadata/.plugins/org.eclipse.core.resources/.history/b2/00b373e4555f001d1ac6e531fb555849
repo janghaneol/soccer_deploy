@@ -1,0 +1,21 @@
+package soccer.deploy.lineUp.entity;
+
+import javax.persistence.Column;
+import javax.persistence.Id;
+
+import soccer.deploy.entry.entity.Entry;
+import soccer.deploy.quarter.entity.Quarter;
+
+public class LineUp {
+	@Id
+	@Column(name ="lineup_id")
+	
+	private Long id;
+	
+	private Entry entry;
+	private Quarter quarter;
+	
+	private Integer goal;
+	private Integer assist;
+	private Integer point;
+}	

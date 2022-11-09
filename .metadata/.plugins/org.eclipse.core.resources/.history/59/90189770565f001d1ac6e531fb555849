@@ -1,0 +1,23 @@
+package soccer.deploy.entry.entity;
+
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import soccer.deploy.match.entity.Match;
+import soccer.deploy.user.entity.User;
+
+public class Entry {
+	@Id
+	@Column(name ="entry_id")
+	private Long id;
+	
+	@ManyToOne
+	@JoinColumn(name="match_id")
+	private Match match;
+	
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;
+}

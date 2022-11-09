@@ -1,0 +1,45 @@
+package soccer.deploy.user.entity;
+
+import java.sql.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@Entity
+@SequenceGenerator(name = "user_seq_gen", sequenceName = "user_seq", allocationSize = 1)
+public class User {
+	
+	@Id
+	@Column(name = "user_id")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq_gen")
+	private Long id;
+	
+	@Column(nullable = false)
+	private String passwd;
+	@Column(nullable = false)
+	private String email;
+	@Column(nullable = false)
+	private String name;
+	@Column(nullable = false)
+	private Integer age;
+	@Column(nullable = false)
+	private String address;
+	
+	private String imgContType;
+	private String imgFileName;
+	
+	@Column(nullable = false)
+	private Integer backnum;
+	@Column(nullable = false)
+	private String memberAuth;
+	@Column(nullable = false)
+	private String position;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date regdate;
+}
