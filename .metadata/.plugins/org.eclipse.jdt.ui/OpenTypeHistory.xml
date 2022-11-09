@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <typeInfoHistroy>
-    <typeInfo handle="=soccer_deploy/C:\/Users\/Administrator\/.gradle\/caches\/modules-2\/files-2.1\/org.springframework.data\/spring-data-jpa\/2.7.3\/e6f61621f80030ba56195cf6664aa8c1d902e082\/spring-data-jpa-2.7.3.jar=/gradle_used_by_scope=/main,test=/&lt;org.springframework.data.jpa.repository(JpaRepository.class[JpaRepository" modifiers="1537" timestamp="1665662649765"/>
-    <typeInfo handle="=soccer_deploy/src\/main\/java=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/&lt;soccer.deploy.entry.service{EntryService.java[EntryService" modifiers="513" timestamp="1667995443258"/>
-    <typeInfo handle="=soccer_deploy/C:\/Users\/Administrator\/.gradle\/caches\/modules-2\/files-2.1\/net.bytebuddy\/byte-buddy\/1.12.17\/66a8f90cd6f93073ad2d1cc00649b3872330f927\/byte-buddy-1.12.17.jar=/gradle_used_by_scope=/main,test=/&lt;net.bytebuddy.build(EntryPoint.class[EntryPoint" modifiers="1537" timestamp="1664367303890"/>
-    <typeInfo handle="=soccer_deploy/src\/main\/java=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/&lt;soccer.deploy.lineUp.service{LineUpService.java[LineUpService" modifiers="513" timestamp="1667989477566"/>
-    <typeInfo handle="=soccer_deploy/src\/main\/java=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/&lt;soccer.deploy.match.service{MatchService.java[MatchService" modifiers="513" timestamp="1667989477567"/>
-    <typeInfo handle="=soccer_deploy/src\/main\/java=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/&lt;soccer.deploy.quarter.service{QuarterService.java[QuarterService" modifiers="513" timestamp="1667995476863"/>
+    <typeInfo handle="=soccer_deploy/src\/main\/java=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/&lt;soccer.deploy.entry.service{EntryService.java[EntryService" modifiers="513" timestamp="1668000973905"/>
+    <typeInfo handle="=soccer_deploy/src\/main\/java=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/&lt;soccer.deploy.lineUp.service{LineUpService.java[LineUpService" modifiers="513" timestamp="1667999245187"/>
+    <typeInfo handle="=soccer_deploy/src\/main\/java=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/&lt;soccer.deploy.match.service{MatchService.java[MatchService" modifiers="513" timestamp="1667999245191"/>
+    <typeInfo handle="=soccer_deploy/src\/main\/java=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/&lt;soccer.deploy.quarter.service{QuarterService.java[QuarterService" modifiers="513" timestamp="1668000973910"/>
 </typeInfoHistroy>
