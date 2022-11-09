@@ -32,11 +32,6 @@ import lombok.ToString;
 @Setter
 @ToString
 @Data
-<<<<<<< HEAD
-@DynamicInsert
-=======
-@Table(name = "users")
->>>>>>> 5e8e0ee89f0163548983fa138acefc93c9c138f0
 public class User {
 	
 	@Id
@@ -60,21 +55,14 @@ public class User {
 	@Column(name="img_file_name")
 	private String imgFileName;
 	
-<<<<<<< HEAD
-	@Column(name = "back_Num")
-=======
 	@Column(name="backnum",nullable = false)
->>>>>>> 5e8e0ee89f0163548983fa138acefc93c9c138f0
 	private Integer backNum;
 	
 	@Column(name="member_auth")
 	private String memberAuth;
-<<<<<<< HEAD
-	@Column
-=======
-	
+
 	@Column(nullable = false)
->>>>>>> 5e8e0ee89f0163548983fa138acefc93c9c138f0
+
 	private String position;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date regdate;
