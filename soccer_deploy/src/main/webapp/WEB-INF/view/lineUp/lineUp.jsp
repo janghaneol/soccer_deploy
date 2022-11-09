@@ -41,7 +41,7 @@
             div = document.querySelector(".open");
             let setName = div.classList[1];
             console.log(setName);
-            let date = "2021-12-01";//���߿� ��¥ �Է�
+            let date = "2021-12-01";//경기날짜
             html2canvas(div).then(function (canvas) {
                 let myImage = canvas.toDataURL();
                 downloadURI(myImage, `${date}_${setName}.png`);
@@ -74,14 +74,13 @@
 						<button type="button" class="make_second">2set</button>
 						<button type="button" class="make_third">3set</button>
 						<button type="button" class="make_fourth">4set</button>
-						<button type="button" class="img_sava" onclick="PrintDiv();">�̹���
-							����</button>
+						<button type="button" class="img_sava" onclick="PrintDiv();">이미지저장</button>
 					</div>
 
 					<div class="lineUp" id="lineUp">
 
 						<div class="dragin first_set open" id="dragin" data-quarter="1">
-							<!-- quarter ���� ��� ���͹�ȣ -->
+							
 							<div class="form first empty st" id="player"></div>
 							<div class="form first empty cf" id="player"></div>
 							<div class="form first empty lm" id="player"></div>
@@ -153,9 +152,9 @@
 								<thead>
 									<tr>
 										<th>No.</th>
-										<th>�̸�</th>
-										<th>��ȣ������</th>
-										<th>������Ȳ</th>
+										<th>이름</th>
+										<th>선호포지션</th>
+										<th>참가현황</th>
 									</tr>
 								</thead>
 
