@@ -1,5 +1,5 @@
-package soccer.deploy.dao;
-
-public class UserDAO {
-
-}
+//package soccer.deploy.dao;
+//
+//public class UserDAO {
+//
+//}

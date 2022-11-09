@@ -1,5 +1,9 @@
 package soccer.deploy.entry.service;
 
-public interface EntryService {
+import java.util.List;
 
+import soccer.deploy.entry.entity.Entry;
+
+public interface EntryService {
+	public List<Entry> findEntryRecentMatch(Long id);
 }
