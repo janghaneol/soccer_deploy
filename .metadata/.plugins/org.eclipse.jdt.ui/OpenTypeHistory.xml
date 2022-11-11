@@ -1,7 +1,2 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<typeInfoHistroy>
-    <typeInfo handle="=soccer_deploy/src\/main\/java=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/&lt;soccer.deploy.entry.service{EntryService.java[EntryService" modifiers="513" timestamp="1668000973905"/>
-    <typeInfo handle="=soccer_deploy/src\/main\/java=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/&lt;soccer.deploy.lineUp.service{LineUpService.java[LineUpService" modifiers="513" timestamp="1667999245187"/>
-    <typeInfo handle="=soccer_deploy/src\/main\/java=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/&lt;soccer.deploy.match.service{MatchService.java[MatchService" modifiers="513" timestamp="1667999245191"/>
-    <typeInfo handle="=soccer_deploy/src\/main\/java=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/&lt;soccer.deploy.quarter.service{QuarterService.java[QuarterService" modifiers="513" timestamp="1668000973910"/>
-</typeInfoHistroy>
+<typeInfoHistroy/>

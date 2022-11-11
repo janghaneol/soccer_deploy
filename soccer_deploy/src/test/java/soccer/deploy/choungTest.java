@@ -8,8 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import soccer.deploy.entry.entity.Entry;
 import soccer.deploy.entry.service.EntryService;
-import soccer.deploy.match.entity.Match;
-import soccer.deploy.match.repository.JpaMatchRepository;
+import soccer.deploy.match.service.MatchService;
 import soccer.deploy.quarter.entity.Quarter;
 import soccer.deploy.quarter.service.QuarterService;
 
@@ -22,12 +21,12 @@ public class choungTest {
 	@Autowired
 	private QuarterService quarterService;
 	@Autowired 
-	private JpaMatchRepository m;
+	private MatchService matchService;
 	
 	@Test
 	@Disabled
 	void test1(){
-		for(Entry e :entryService.findEntryRecentMatch(2L)){
+		for(Entry e :entryService.findEntryRecentMatch(1L)){
 			
 			log.info("{}",e.getUser().getImgContType());
 		}
@@ -35,15 +34,20 @@ public class choungTest {
 	@Test
 	@Disabled
 	void test2() {
-		for(Quarter q : quarterService.findQuarterRecentMatch(2L) ) {
+		for(Quarter q : quarterService.findQuarterRecentMatch(1L) ) {
 			log.info("{}",q);
 		}
 	}
+	@Test
+	@Disabled
+	void test3() {
+		
+		log.info("{}",matchService.findRecentMatch());
+	}
 	
 	@Test
-	void test3() {
-		for(Match s : m.findAll()){
-			log.info("{}",s);
-		}
+	@Disabled
+	void test4() {
+		
 	}
 }
