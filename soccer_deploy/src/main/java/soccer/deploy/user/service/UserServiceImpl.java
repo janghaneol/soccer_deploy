@@ -1,5 +1,7 @@
 package soccer.deploy.user.service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,5 +27,9 @@ public class UserServiceImpl implements UserService {
 	public User Login(String email, String passwd) {
 		return userRepository.findByEmailAndPasswd(email, passwd);
 	}
+
+
+
+	
 
 }

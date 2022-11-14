@@ -1,0 +1,9 @@
+package soccer.deploy.quarter.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import soccer.deploy.quarter.entity.Quarter;
+
+public interface JpaQuarterRepository extends JpaRepository<Quarter, String> {
+
+}

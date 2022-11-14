@@ -85,6 +85,7 @@ public class MyController {
 	public String signUp() {
 		return "signup";
 	}
+
 	@GetMapping("/test")
 	public String lineUp() {
 		return "view/lineUp/lineUp";
@@ -110,5 +111,4 @@ public class MyController {
 		
 		return "notice";
 	}
-
 }
