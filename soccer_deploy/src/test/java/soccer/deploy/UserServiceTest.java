@@ -33,17 +33,17 @@ public class UserServiceTest {
 		user.setEmail("jhano9@naver.com");
 		user.setPasswd("123456");
 		user.setAge(30);
-		user.setName("�뼹");
-		user.setAddress("寃쎄린�룄 �쓽�젙遺��떆");
+		user.setName("장한얼");
+		user.setAddress("경기도 의정부");
 
 		Long userId = userService.register(user);
-		log.info("�벑濡앸맖 : {}", userId);
+		log.info("가입한 회원번호 : {}", userId);
 	}
 
 	@Test
 	public void login() { // User loginUser =
 		userService.login("jhano9@naver.com", "123456");
 		User loginUser = userRepository.findByEmailAndPasswd("jhano9@naver.com", "123456");
-		log.info("濡쒓렇�씤�릺�뿀�뒿�땲�떎 : �쉶�썝 {}", loginUser.getName());
+		log.info("로그인 한 회원 정보 {}", loginUser);
 	}
 }

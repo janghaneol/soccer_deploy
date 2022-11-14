@@ -8,7 +8,7 @@ import soccer.deploy.user.entity.User;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 	
-	/* email , passwd濡� 濡쒓렇�씤*/
+	/* email , passwd를 이용해 로그인*/
 	User findByEmailAndPasswd(String email, String passwd);
 
 
