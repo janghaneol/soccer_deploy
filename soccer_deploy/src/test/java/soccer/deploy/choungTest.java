@@ -40,11 +40,6 @@ public class choungTest {
 			log.info("{}",e);
 		}
 	}
-	@Test
-	@Disabled
-	void test2() {
-		log.info("{}",userService.searchEntryUsers(1L, "sa"));
-	}
 	
 	@Test
 	void test3() {

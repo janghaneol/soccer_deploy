@@ -28,11 +28,7 @@ public class UserServiceImpl implements UserService {
 		return userRepository.findByEmailAndPasswd(email, passwd);
 	}
 
-	@Override
-	public List<User> searchEntryUsers(Long id, String name) {
-		// TODO Auto-generated method stub
-		return userRepository.findEntryUser(id, name);
-	}
+
 
 	
 
