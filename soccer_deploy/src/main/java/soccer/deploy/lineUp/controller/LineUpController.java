@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -62,9 +65,8 @@ public class LineUpController {
 	// 페이지 이동시 자동으로 세션에 저장 하지만 그전에 물어보는 창 나오게 해서 취소시는 저장 x 확인시 저장
 	@PostMapping("/entry")
 	@ResponseBody
-	public void saveEntry(@RequestBody List<LineUpDto> list) throws IOException{
-		for(LineUpDto l : list) {
-			log.info("{}",l);
-		}	
+	public void saveEntry(@RequestBody List<LineUpDto> list, HttpSession session) throws IOException{
+		session.setAttribute("lineup", list);
+		log.info("sds{}",session.getAttribute("lineup"));
 	}
 }
