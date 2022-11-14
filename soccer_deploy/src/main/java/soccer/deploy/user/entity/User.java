@@ -23,6 +23,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+
+
 @Entity
 @Table(name = "users")
 @SequenceGenerator(name = "user_seq_gen", sequenceName = "user_seq", allocationSize = 1)
@@ -65,4 +67,5 @@ public class User {
 	private String position;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date regdate;
+	
 }
