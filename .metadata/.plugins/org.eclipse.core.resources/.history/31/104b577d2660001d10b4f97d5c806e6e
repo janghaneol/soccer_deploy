@@ -1,0 +1,14 @@
+package soccer.deploy.quarter.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import soccer.deploy.quarter.repository.JpaQuarterRepository;
+
+@Service
+@Transactional
+public class QuarterServiceImpl implements QuarterService {
+	@Autowired
+	private JpaQuarterRepository jpaQuarterRepository;
+}

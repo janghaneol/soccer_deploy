@@ -6,6 +6,8 @@
 		<item key="wholeword" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="console.log"/>
+			<item value="background-age"/>
 			<item value="@Colu"/>
 			<item value="`"/>
 		</list>

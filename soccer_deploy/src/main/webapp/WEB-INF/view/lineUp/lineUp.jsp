@@ -37,50 +37,64 @@
 <link rel="stylesheet" href="css/style.css">
 
 <script>
-        function PrintDiv() {
-            div = document.querySelector(".open");
-            let setName = div.classList[1];
-            console.log(setName);
-            let date = "2021-12-01";//경기날짜
-            html2canvas(div).then(function (canvas) {
-                let myImage = canvas.toDataURL();
-                downloadURI(myImage, `${date}_${setName}.png`);
-            });
-        }
-        function downloadURI(uri, name) {
-            let link = document.createElement("a")
-            link.download = name;
-            link.href = uri;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(llink);
-        }
-    </script>
+	
+	function PrintDiv() {
+		let date = new Date(document.querySelector("#date").value);
+		let fomat = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDay();
+		div = document.querySelector(".open");
+		let setName = div.classList[1];
+		console.log(setName);
+		
+		html2canvas(div).then(function(canvas) {
+			let myImage = canvas.toDataURL();
+			downloadURI(myImage, fomat+"_"+setName+".png");
+		});
+	}
+	function downloadURI(uri, name) {
+		let link = document.createElement("a")
+		link.download = name;
+		link.href = uri;
+		document.body.appendChild(link);
+		link.click();
+		document.body.removeChild(link);
+	}
+</script>
 
 </head>
 
 <body>
-
+	<input type="hidden" id="date" value="${entry[0].match.matchDate} ">
+	<input type="hidden" id="size" value="${quarter.size()}">
 	<div class="site-wrap">
-
+	
 		<jsp:include page="/WEB-INF/view/include/header.jsp"></jsp:include>
 
 		<div class="hero overlay"
 			style="background-image: url('images/bg_3.jpg');">
 			<div class="container">
 				<div class="row align-items-center line_up_row">
+					<div class="row align-items-center line_up_row">
+						<div class="pop">
+							<h4>변경사항을 저장하시겠습니까?</h4>
+							<div class="btn_pop">
+								<button type="button" class="Ysave">저장</button> <button type="button" class="Nsave">취소</button>
+							</div>
+						</div>
+	
 					<div class="chan_set">
 						<button type="button" class="make_first">1set</button>
-						<button type="button" class="make_second">2set</button>
-						<button type="button" class="make_third">3set</button>
-						<button type="button" class="make_fourth">4set</button>
+						<button type="button" class="make_second"
+							style="${quarter.size() > 1 ? '' : 'display:none;'}">2set</button>
+						<button type="button" class="make_third"
+							style="${quarter.size() > 2 ? '' : 'display:none;'}">3set</button>
+						<button type="button" class="make_fourth"
+							style="${quarter.size() > 3 ?  '' : 'display:none;'}">4set</button>
 						<button type="button" class="img_sava" onclick="PrintDiv();">이미지저장</button>
 					</div>
-
 					<div class="lineUp" id="lineUp">
 
-						<div class="dragin first_set open" id="dragin" data-quarter="1">
-							
+						<div class="dragin first_set open" id="dragin" data-quarter="${quarter[0].id}">
+
 							<div class="form first empty st" id="player"></div>
 							<div class="form first empty cf" id="player"></div>
 							<div class="form first empty lm" id="player"></div>
@@ -96,7 +110,7 @@
 
 						</div>
 
-						<div class="dragin second_set close" id="dragin" data-quarter="2">
+						<div class="dragin second_set close" id="dragin" data-quarter="${quarter.size() > 1 ? quarter[1].id : ''}">
 							<div class="form second empty st" id="player"></div>
 							<div class="form second empty cf" id="player"></div>
 							<div class="form second empty lm" id="player"></div>
@@ -110,7 +124,7 @@
 							<div class="form second empty gk" id="player"></div>
 						</div>
 
-						<div class="dragin third_set close" id="dragin" data-quarter="3">
+						<div class="dragin third_set close" id="dragin" data-quarter="${quarter.size() > 2 ? quarter[2].id : ''}">
 							<div class="form third empty st" id="player"></div>
 							<div class="form third empty cf" id="player"></div>
 							<div class="form third empty lm" id="player"></div>
@@ -124,7 +138,7 @@
 							<div class="form third empty gk" id="player"></div>
 						</div>
 
-						<div class="dragin fourth_set close" id="dragin" data-quarter="4">
+						<div class="dragin fourth_set close" id="dragin" data-quarter="${quarter.size() > 3 ? quarter[3].id	 : ''}">
 							<div class="form fourth empty st" id="player"></div>
 							<div class="form fourth empty cf" id="player"></div>
 							<div class="form fourth empty lm" id="player"></div>
@@ -145,42 +159,26 @@
 						<div class="col-lg-12">
 							<h1>Players</h1>
 							<div class="search-bar">
-								<input type="text">
-								<button type="button"></button>
+								<input type="text" class="searchval">
+								<button type="button" class="nameSearch"></button>
 							</div>
-							<table class="table custom-table list">
-								<thead>
-									<tr>
-										<th>No.</th>
-										<th>이름</th>
-										<th>선호포지션</th>
-										<th>참가현황</th>
-									</tr>
-								</thead>
+							<div class="scroll">
+								<table class="table custom-table list">
+									<thead>
+										<tr>
+											<th class="f_col">No.</th>
+											<th class="s_col">이름</th>
+											<th class="t_col">선호포지션</th>
+											<th class="ff_col">참가현황</th>
+										</tr>
+									</thead>
 
-								<tbody>
-									<tr class="board player_list" id="play" data-num="5"
-										data-name="jack" data-playId="1">
-										<td id="pl" class="back_num"><strong>9</strong></td>
-										<td id="pl" class="line_up_name">babo</td>
-										<td id="pl" class="posit">FW</td>
-										<td id="pl" class="quarter"><span class="quarter_one">1set</span><span
-											class="quarter_two">2set</span><span class="quarter_three">3set</span><span
-											class="quarter_four">4set</span></td>
-									</tr>
+									<tbody class="bodypart">
+									
+									</tbody>
 
-									<tr class="board player_list" id="play" data-num="10"
-										data-name="jack" data-playId="2">
-										<td id="pl" class="back_num"><strong>7</strong></td>
-										<td id="pl" class="line_up_name">ronaldo</td>
-										<td id="pl" class="posit">FW</td>
-										<td id="pl" class="quarter"><span class="quarter_one">1set</span><span
-											class="quarter_two">2set</span><span class="quarter_three">3set</span><span
-											class="quarter_four">4set</span></td>
-									</tr>
-								</tbody>
-
-							</table>
+								</table>
+							</div>
 						</div>
 					</div>
 				</div>

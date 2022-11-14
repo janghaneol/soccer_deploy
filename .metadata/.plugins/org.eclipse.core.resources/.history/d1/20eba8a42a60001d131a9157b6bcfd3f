@@ -1,0 +1,49 @@
+package soccer.deploy;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
+
+import lombok.extern.slf4j.Slf4j;
+import soccer.deploy.entry.entity.Entry;
+import soccer.deploy.entry.service.EntryService;
+import soccer.deploy.match.entity.Match;
+import soccer.deploy.match.repository.JpaMatchRepository;
+import soccer.deploy.quarter.entity.Quarter;
+import soccer.deploy.quarter.service.QuarterService;
+
+@SpringBootTest
+@Transactional
+@Slf4j
+public class choungTest {
+	@Autowired
+	private EntryService entryService;
+	@Autowired
+	private QuarterService quarterService;
+	@Autowired 
+	private JpaMatchRepository m;
+	
+	@Test
+	@Disabled
+	void test1(){
+		for(Entry e :entryService.findEntryRecentMatch(2L)){
+			
+			log.info("{}",e.getUser().getImgContType());
+		}
+	}
+	@Test
+	@Disabled
+	void test2() {
+		for(Quarter q : quarterService.findQuarterRecentMatch(2L) ) {
+			log.info("{}",q);
+		}
+	}
+	
+	@Test
+	void test3() {
+		for(Match q : m.findAll()){
+			log.info("{}",m);
+		}
+	}
+}
