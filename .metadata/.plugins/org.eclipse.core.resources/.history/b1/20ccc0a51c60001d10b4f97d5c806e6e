@@ -1,0 +1,22 @@
+package soccer.deploy.entry.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import soccer.deploy.entry.entity.Entry;
+import soccer.deploy.entry.repository.JpaEntryRepository;
+
+@Service
+@Transactional
+public class EntryServiceImpl implements EntryService {
+	@Autowired
+	private JpaEntryRepository entryRepository;
+
+	@Override
+	public List<Entry> findEntrys() {
+		return entryRepository.findAllByMatchId(2);
+	}
+}
