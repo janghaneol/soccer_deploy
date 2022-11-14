@@ -62,11 +62,9 @@ document.addEventListener("mousemove", function (event) {
 document.querySelector("#lineUp").addEventListener("click", function (event) {
   if (event.target && event.target.id == "player") {
     addPlayerPosition = event.target;
-    console.log(manager.array);
-
     if (chanX == originX && chanY == originY) {
-      if(addPlayerPosition.classList.contains("empty"))
-      document.querySelector(".search").style.display = "inline-block";
+      if (addPlayerPosition.classList.contains("empty"))
+        document.querySelector(".search").style.display = "inline-block";
       //클릭시 창 띄우기
     }
   } else if (event.target && event.target.classList.contains("cancle")) {
@@ -89,7 +87,7 @@ document.querySelector("#lineUp").addEventListener("click", function (event) {
 document.querySelector(".list").addEventListener("click", function (event) {
   if (event.target && event.target.id == "play") {
     playerList = event.target;
-    console.log(playerList);
+
     addPlayer(playerList);
     let search = document.querySelector(".search");
     search.style.display = "none";
@@ -97,7 +95,7 @@ document.querySelector(".list").addEventListener("click", function (event) {
   }
   if (event.target && event.target.id == "pl") {
     playerList = event.target.parentElement;
-    console.log(playerList);
+
     addPlayer(playerList);
     let search = document.querySelector(".search");
     search.style.display = "none";
@@ -135,9 +133,9 @@ function addPlayer(target) {
       button.appendChild(val);
       addPlayerPosition.dataset.num = target.dataset.num;
       addPlayerPosition.dataset.name = target.dataset.name;
-      addPlayerPosition.dataset.playId = target.dataset.playId;
+      addPlayerPosition.dataset.playId = target.dataset.playid;
       button.classList.add('cancle');
-
+      //let imgName = target.dataset.imgname; 나중에 이미지 파일 위치 나오면 수정해야함 20221112
       addPlayerPosition.style.backgroundImage = "url('../images/img_2.jpg')";
 
       addPlayerPosition.appendChild(div);
@@ -158,7 +156,7 @@ function addPlayer(target) {
           playerList.lastElementChild.children[3].classList.add("part");
           break;
       }
-      manager.add(new LineUpMember(target.dataset.num, target.dataset.name, 0, 0, 0, addPlayerPosition.parentElement.dataset.quarter, addPlayerPosition.dataset.playerId));
+      manager.add(new LineUpMember(target.dataset.num, target.dataset.name, 0, 0, 0, addPlayerPosition.parentElement.dataset.quarter, addPlayerPosition.dataset.playId));
     }
   }
 };
@@ -198,7 +196,6 @@ function removePlayer(target) {
 document.querySelector(".chan_set").addEventListener("click", function (event) {
   if (event.target && event.target.classList.contains("make_first")) {
     open(0);
-    console.log("test");
   } else if (event.target && event.target.classList.contains("make_second")) {
     open(1);
   }
@@ -212,6 +209,9 @@ document.querySelector(".chan_set").addEventListener("click", function (event) {
 
 function open(sequence) {
   let i = document.querySelectorAll(".dragin").length;
+
+  let search = document.querySelector(".search");
+  search.style.display = "none";
   for (let j = 0; j < i; j++) {
     if (j == sequence) {
       if (document.querySelectorAll(".dragin")[j].classList.contains("close")) {
@@ -229,4 +229,87 @@ function open(sequence) {
 document.querySelector(".close_pop").addEventListener("click", function (event) {
   let search = document.querySelector(".search");
   search.style.display = "none";
+})
+document.querySelector(".searchval").addEventListener("keyup", function (event) {
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    document.querySelector(".nameSearch").click();
+  }
+})
+document.querySelector(".nameSearch").addEventListener("click", function (event) {
+  let name = document.querySelector(".searchval").value;
+  // console.log(nameValue);
+  let option = {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(name)
+  }
+  fetch(`/lineup`, option)
+    .then(response => response.json())
+    .then(response => { printEntry(response) });
+})
+
+function printEntry(response) {
+  let list = "";
+  let firstVal = document.querySelector(".first_set").dataset.quarter;
+  let arr = ['one', 'two', 'three', 'four'];
+  let span = "";
+
+
+  for (let i = 0; i < response.length; i++) {
+    for (let j = 0; j < document.querySelector("#size").value; j++) {
+      let qu = document.querySelectorAll(".dragin")[j].dataset.quarter;
+      if (manager.checkPlayer(response[i].backNum, qu).length != 0) {
+        span += `<span class="quarter_${arr[j]} part">${j + 1}set</span>`;
+      }
+      else {
+        span += `<span class="quarter_${arr[j]}">${j + 1}set</span>`;
+      }
+    }
+    list += `<tr class="board player_list" id="play"
+    data-num="${response[i].backNum}"
+    data-name="${response[i].name}" data-playid="${response[i].id}" data-imgname="${response[i].imgFileName}">
+    <td id="pl" class="back_num"><strong>${response[i].backNum}</strong></td>
+    <td id="pl" class="line_up_name">${response[i].name}</td>
+    <td id="pl" class="posit">${response[i].position}</td>
+    <td id="pl" class="quarter">${span}</td>
+  </tr>`
+    span = "";
+  }
+  document.querySelector(".bodypart").innerHTML = list;
+}
+document.querySelector(".ml-auto").addEventListener("click", function (event) {
+  if (event.target && event.target.classList.contains("nav-link")) {
+    event.preventDefault();
+    console.log(event.target);
+    document.querySelector(".pop").style.display = "flex";
+    let movepage = document.createElement("a");
+    movepage.href = event.target.href;
+    document.querySelector("div.btn_pop").addEventListener("click", function (event) {
+      if (event.target && event.target.classList.contains("Ysave")) {
+        console.log("yes");
+        let option = {
+          method: 'POST',
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(manager.array)
+        }
+
+        fetch(`/lineup/entry`,option)
+        .then(response => response.json())
+        .then(response => {console.log(response);});
+
+      } else {
+        console.log("no");
+      }
+
+      document.body.appendChild(movepage);
+      // movepage.click();
+      document.body.removeChild(movepage);
+    })
+    document.querySelector("but")
+  }
 })

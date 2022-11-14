@@ -19,7 +19,7 @@ div.open {
 .form:hover .cancle {
     display: inline-block;
     position: relative;
-    left: 90px;
+    left: 115px;
     top: -25px;
     font-weight: bold;
 
@@ -129,7 +129,7 @@ td.quarter span{
 }
 div.search button.close_pop{
     position: relative;
-    left: 234px;
+    left: 215px;
     padding: 0px;
     border: 0px;
     background-color: rgba(255, 255, 255, 0);
@@ -151,4 +151,47 @@ div.search-bar button{
     background-size: 100%;
     border: 0px;
     background-color: rgba(255,255,255,0);
+}
+div.scroll{
+    overflow-y: scroll;
+    width: 417.859px;
+    height: 500px;
+}
+div.scroll::-webkit-scrollbar{
+    display: none;
+}
+
+table.list thead tr th{height: 51.19px;}
+table.list thead tr th.f_col{width: 51.5px !important;}
+table.list thead tr th.s_col{width:65px !important;}
+table.list thead tr th.t_col{width:103.99px !important;}
+table.list thead tr th.ff-col{width: 197.36px !important;}
+div.pop{
+    display: none;
+    background-color: white; 
+    z-index: 5;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: fixed;
+    top: 50px;
+    margin: 0 auto;
+    height: 100px;
+    border-radius: 5px;
+    padding: 10px;
+    border : 0px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+div.pop h4{
+    color: black;
+}
+button.Ysave,button.Nsave{
+    color: white;
+    border-radius: 5px;
+    margin: 0px 2px;
+    border : 0px;
+    background-color: rgba(34,40,49,1);
 }

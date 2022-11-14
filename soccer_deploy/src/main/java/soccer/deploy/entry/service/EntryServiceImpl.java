@@ -17,7 +17,7 @@ public class EntryServiceImpl implements EntryService {
 
 	@Override //최신 경기일정에 해당하는 선수들 가져오기
 	public List<Entry> findEntryRecentMatch(Long id) {
-		return jpaentryRepository.findAllByMatchId(2L);
-	
+		return jpaentryRepository.findAllByMatchId(id);
 	}
+	
 }

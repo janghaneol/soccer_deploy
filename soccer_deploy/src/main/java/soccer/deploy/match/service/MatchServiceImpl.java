@@ -17,10 +17,20 @@ public class MatchServiceImpl implements MatchService {
 	private JpaMatchRepository jpaMatchRepository; 
 	
 	@Override
-	public Long findRecentMatch() {
+	public Long findRecentMatchNum() {
 		
-		return  jpaMatchRepository.recentMatch();
+		return  jpaMatchRepository.recentMatchNum();
 
+	}
+
+	@Override
+	public Match findeRecentMatch(Long id) {
+		
+		Optional<Match> optional = jpaMatchRepository.recentMatch(id);
+		if(optional.isEmpty()) {
+			throw new RuntimeException(id+"에 해당하는 경기을 찾을 수 없습니다.");
+		}
+		return optional.get();
 	}
 
 }

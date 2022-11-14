@@ -10,9 +10,13 @@ LineUpManager.prototype.add = function (member) {
 
 LineUpManager.prototype.delplayer = function (backNum,quarter) {
   return this.array.filter(function (lineUpMember) {
-    console.log(lineUpMember.backNum );
-    console.log(backNum);
     return (lineUpMember.backNum !== backNum || lineUpMember.quarter !==quarter);
   })
 }
+
+LineUpManager.prototype.checkPlayer = function(backNum,quarter){
+  return this.array.filter(function (lineUpMember){
+    return (lineUpMember.backNum == backNum && lineUpMember.quarter == quarter) ;
+  })
+};
 export { LineUpManager };

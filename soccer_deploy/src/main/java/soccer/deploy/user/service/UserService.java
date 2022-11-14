@@ -1,10 +1,15 @@
 package soccer.deploy.user.service;
 
+import java.util.List;
+
 import soccer.deploy.user.entity.User;
 
 public interface UserService {
-	// 회원가입
+	// �쉶�썝媛��엯
 	public Long register(User user);
-	// 회원인증 (로그인)
+	// �쉶�썝�씤利� (濡쒓렇�씤)
 	public User Login(String email, String passwd);
+	
+	//정충효
+	public List<User> searchEntryUsers(Long id, String name);
 }
