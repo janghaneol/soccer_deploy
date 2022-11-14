@@ -1,14 +1,14 @@
-function LineUpMember(backNum, name, goal, assist, point, quarter, player_id) {
+function LineUpMember(backNum, name, goal, assist, point, quarter, playerId) {
   this.backNum = backNum;
   this.name = name;
   this.goal = goal;
   this.assist = assist;
   this.point = point;
   this.quarter = quarter;
-  this.player_id = player_id
+  this.playerId = playerId
 }
 LineUpMember.prototype.toString = function () {
-  return `${this.backNum},${this.name},${this.goal},${this.assist},${this.point},${this.quarter},${this.player_id}`
+  return `${this.backNum},${this.name},${this.goal},${this.assist},${this.point},${this.quarter},${this.playerId}`
 }
 
 export { LineUpMember }

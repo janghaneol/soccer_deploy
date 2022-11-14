@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import lombok.extern.slf4j.Slf4j;
 import soccer.deploy.entry.entity.Entry;
+import soccer.deploy.entry.repository.JpaEntryRepository;
 import soccer.deploy.entry.service.EntryService;
 import soccer.deploy.match.service.MatchService;
 import soccer.deploy.quarter.entity.Quarter;
@@ -28,6 +29,8 @@ public class choungTest {
 	private MatchService matchService;
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private JpaEntryRepository entryRepository;
 	
 	@Test
 	@Disabled
@@ -38,7 +41,13 @@ public class choungTest {
 		}
 	}
 	@Test
+	@Disabled
 	void test2() {
 		log.info("{}",userService.searchEntryUsers(1L, "sa"));
+	}
+	
+	@Test
+	void test3() {
+		log.info("{}",entryRepository.findSearchEntry(1L, "sa"));
 	}
 }

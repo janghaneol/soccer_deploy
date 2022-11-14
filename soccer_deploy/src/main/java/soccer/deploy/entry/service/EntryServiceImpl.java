@@ -19,5 +19,11 @@ public class EntryServiceImpl implements EntryService {
 	public List<Entry> findEntryRecentMatch(Long id) {
 		return jpaentryRepository.findAllByMatchId(id);
 	}
+
+	@Override
+	public List<Entry> SearchRecentEntry(Long id, String name) {
+		// TODO Auto-generated method stub
+		return jpaentryRepository.findSearchEntry(id, name);
+	}
 	
 }

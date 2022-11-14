@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import lombok.extern.slf4j.Slf4j;
 import soccer.deploy.entry.entity.Entry;
 import soccer.deploy.entry.service.EntryService;
+import soccer.deploy.lineUp.entity.LineUpDto;
 import soccer.deploy.match.service.MatchService;
 import soccer.deploy.quarter.entity.Quarter;
 import soccer.deploy.quarter.service.QuarterService;
@@ -50,22 +51,20 @@ public class LineUpController {
 	// 검색 비동기로 post로
 	@PostMapping
 	@ResponseBody
-	public List<User> search(@RequestBody String name) throws IOException{
+	public List<Entry> search(@RequestBody String name) throws IOException{
 		Long recentMatch = matchService.findRecentMatchNum();
 		name = name.replaceAll("\"", "");
 			
-		List<User> users = userService.searchEntryUsers(recentMatch, name);
-		log.info("{}",users);
-		return users;
-//		return null;
+		List<Entry> entrys = entryService.SearchRecentEntry(recentMatch, name);
+		log.info("{}",entrys);
+		return entrys;
 	}
 	// 페이지 이동시 자동으로 세션에 저장 하지만 그전에 물어보는 창 나오게 해서 취소시는 저장 x 확인시 저장
 	@PostMapping("/entry")
 	@ResponseBody
-	public String saveEntry(@RequestBody List<Object> list) throws IOException{
-		log.info("{}",list);
-		
-		return "yes";
-
+	public void saveEntry(@RequestBody List<LineUpDto> list) throws IOException{
+		for(LineUpDto l : list) {
+			log.info("{}",l);
+		}	
 	}
 }

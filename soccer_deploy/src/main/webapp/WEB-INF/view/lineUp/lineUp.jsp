@@ -174,19 +174,7 @@
 									</thead>
 
 									<tbody class="bodypart">
-										<c:forEach var="entryP" items="${entry}">
-											<tr class="board player_list" id="play"
-												data-num="${entryP.user.backNum }"
-												data-name="${entryP.user.name }" data-playid="${entryP.user.id }" data-imgname="${entryP.user.imgFileName }">
-												<td id="pl" class="back_num"><strong>${entryP.user.backNum }</strong></td>
-												<td id="pl" class="line_up_name">${entryP.user.name }</td>
-												<td id="pl" class="posit">${entryP.user.position }</td>
-												<td id="pl" class="quarter"><span class="quarter_one">1set</span><span
-													class="quarter_two">2set</span><span class="quarter_three">3set</span><span
-													class="quarter_four">4set</span></td>
-											</tr>
-										</c:forEach>
-
+									
 									</tbody>
 
 								</table>

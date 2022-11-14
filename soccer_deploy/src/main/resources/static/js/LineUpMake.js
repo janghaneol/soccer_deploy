@@ -65,6 +65,19 @@ document.querySelector("#lineUp").addEventListener("click", function (event) {
     if (chanX == originX && chanY == originY) {
       if (addPlayerPosition.classList.contains("empty"))
         document.querySelector(".search").style.display = "inline-block";
+        let option = {
+          method: 'POST',
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify("")
+        }
+        fetch(`/lineup`, option)
+          .then(response => response.json())
+          .then(response => { printEntry(response) });
+
+
+
       //클릭시 창 띄우기
     }
   } else if (event.target && event.target.classList.contains("cancle")) {
@@ -261,7 +274,7 @@ function printEntry(response) {
   for (let i = 0; i < response.length; i++) {
     for (let j = 0; j < document.querySelector("#size").value; j++) {
       let qu = document.querySelectorAll(".dragin")[j].dataset.quarter;
-      if (manager.checkPlayer(response[i].backNum, qu).length != 0) {
+      if (manager.checkPlayer(response[i].user.backNum, qu).length != 0) {
         span += `<span class="quarter_${arr[j]} part">${j + 1}set</span>`;
       }
       else {
@@ -269,11 +282,11 @@ function printEntry(response) {
       }
     }
     list += `<tr class="board player_list" id="play"
-    data-num="${response[i].backNum}"
-    data-name="${response[i].name}" data-playid="${response[i].id}" data-imgname="${response[i].imgFileName}">
-    <td id="pl" class="back_num"><strong>${response[i].backNum}</strong></td>
-    <td id="pl" class="line_up_name">${response[i].name}</td>
-    <td id="pl" class="posit">${response[i].position}</td>
+    data-num="${response[i].user.backNum}"
+    data-name="${response[i].user.name}" data-playid="${response[i].id}" data-imgname="${response[i].user.imgFileName}">
+    <td id="pl" class="back_num"><strong>${response[i].user.backNum}</strong></td>
+    <td id="pl" class="line_up_name">${response[i].user.name}</td>
+    <td id="pl" class="posit">${response[i].user.position}</td>
     <td id="pl" class="quarter">${span}</td>
   </tr>`
     span = "";
@@ -289,19 +302,18 @@ document.querySelector(".ml-auto").addEventListener("click", function (event) {
     movepage.href = event.target.href;
     document.querySelector("div.btn_pop").addEventListener("click", function (event) {
       if (event.target && event.target.classList.contains("Ysave")) {
-        console.log("yes");
+        let marray = manager.array;
+        console.log(marray);
         let option = {
           method: 'POST',
           headers: {
             "Content-Type": "application/json"
           },
-          body: JSON.stringify(manager.array)
+          body: JSON.stringify(marray)
         }
 
         fetch(`/lineup/entry`,option)
-        .then(response => response.json())
-        .then(response => {console.log(response);});
-
+        
       } else {
         console.log("no");
       }
@@ -310,6 +322,36 @@ document.querySelector(".ml-auto").addEventListener("click", function (event) {
       // movepage.click();
       document.body.removeChild(movepage);
     })
-    document.querySelector("but")
+  }
+})
+
+document.querySelector(".site-mobile-menu").addEventListener("click", function (event) {
+  if (event.target && event.target.classList.contains("nav-link")) {
+    event.preventDefault();
+    console.log(event.target);
+    document.querySelector(".pop").style.display = "flex";
+    let movepage = document.createElement("a");
+    movepage.href = event.target.href;
+    document.querySelector("div.btn_pop").addEventListener("click", function (event) {
+      if (event.target && event.target.classList.contains("Ysave")) {
+        let marray = manager.array;
+        console.log(marray);
+        let option = {
+          method: 'POST',
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(marray)
+        }
+
+        fetch(`/lineup/entry`,option);
+      } else {
+        console.log("no");
+      }
+
+      document.body.appendChild(movepage);
+      // movepage.click();
+      document.body.removeChild(movepage);
+    })
   }
 })
