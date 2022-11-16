@@ -319,7 +319,7 @@ document.querySelector(".ml-auto").addEventListener("click", function (event) {
       }
 
       document.body.appendChild(movepage);
-      // movepage.click();
+      movepage.click();
       document.body.removeChild(movepage);
     })
   }
@@ -350,7 +350,7 @@ document.querySelector(".site-mobile-menu").addEventListener("click", function (
       }
 
       document.body.appendChild(movepage);
-      // movepage.click();
+      movepage.click();
       document.body.removeChild(movepage);
     })
   }
