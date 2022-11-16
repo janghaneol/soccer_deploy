@@ -195,3 +195,8 @@ button.Ysave,button.Nsave{
     border : 0px;
     background-color: rgba(34,40,49,1);
 }
+div.sub{
+    position: absolute;
+    left: 590px;
+    color: white;
+}

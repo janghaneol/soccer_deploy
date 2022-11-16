@@ -34,7 +34,7 @@ public class Match {
 	private Long id;
 	
 	@Column(name ="match_date",nullable = false)
-	@Temporal(TemporalType.TIMESTAMP) // 년월일 시분초
+	@Temporal(TemporalType.DATE) // 년월일 시분초
 	private Date matchDate;
 	
 	@Column(nullable = false)
