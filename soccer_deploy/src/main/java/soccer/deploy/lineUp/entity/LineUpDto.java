@@ -17,6 +17,8 @@ public class LineUpDto {
 	String goal;
 	String assist;
 	String point;
+	//quarter pk 값 fk
 	String quarter;
+	//entry pk 값 fk
 	String playerId;
 }
