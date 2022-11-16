@@ -106,8 +106,7 @@
 							<div class="form first empty rcb" id="player"></div>
 							<div class="form first empty rb" id="player"></div>
 							<div class="form first empty gk" id="player"></div>
-
-
+							<div class="sub"><span>${entry[0].match.matchDate}/1set</span></div>
 						</div>
 
 						<div class="dragin second_set close" id="dragin" data-quarter="${quarter.size() > 1 ? quarter[1].id : ''}">
@@ -122,6 +121,7 @@
 							<div class="form second empty rcb" id="player"></div>
 							<div class="form second empty rb" id="player"></div>
 							<div class="form second empty gk" id="player"></div>
+							<div class="sub"><span>${entry[0].match.matchDate}/2set</span></div>
 						</div>
 
 						<div class="dragin third_set close" id="dragin" data-quarter="${quarter.size() > 2 ? quarter[2].id : ''}">
@@ -136,6 +136,7 @@
 							<div class="form third empty rcb" id="player"></div>
 							<div class="form third empty rb" id="player"></div>
 							<div class="form third empty gk" id="player"></div>
+							<div class="sub"><span>${entry[0].match.matchDate}/3set</span></div>
 						</div>
 
 						<div class="dragin fourth_set close" id="dragin" data-quarter="${quarter.size() > 3 ? quarter[3].id	 : ''}">
@@ -150,8 +151,9 @@
 							<div class="form fourth empty rcb" id="player"></div>
 							<div class="form fourth empty rb" id="player"></div>
 							<div class="form fourth empty gk" id="player"></div>
+							<div class="sub"><span>${entry[0].match.matchDate}/4set</span></div>
 						</div>
-
+						
 					</div>
 					<div class="search">
 						<button type="button" class="close_pop">X</button>
