@@ -10,6 +10,4 @@ public interface UserService {
 	// �쉶�썝�씤利� (濡쒓렇�씤)
 	public User Login(String email, String passwd);
 	
-	//정충효
-	public List<User> searchEntryUsers(Long id, String name);
-}
+
