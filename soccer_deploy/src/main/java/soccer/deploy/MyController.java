@@ -111,4 +111,14 @@ public class MyController {
 		
 		return "notice";
 	}
+	
+	@RequestMapping("/xnotice")
+	public String xnotice(Model model) {
+		
+		List<noticeDTO> select = NoticeService.select();
+		
+		model.addAttribute("select", select);
+		
+		return "xnotice";
+	}
 }
