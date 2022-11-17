@@ -187,10 +187,12 @@
 			</div>
 		</div>
 
-		<jsp:include page="/WEB-INF/view/include/section.jsp"></jsp:include>
+		
 
-		<jsp:include page="/WEB-INF/view/include/footer.jsp"></jsp:include>
+		
 	</div>
+	<jsp:include page="/WEB-INF/view/include/section.jsp"></jsp:include>
+	<jsp:include page="/WEB-INF/view/include/footer.jsp"></jsp:include>
 	<!-- .site-wrap -->
 
 	<script src="js/jquery-3.3.1.min.js"></script>

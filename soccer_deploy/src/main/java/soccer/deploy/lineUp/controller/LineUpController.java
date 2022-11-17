@@ -69,4 +69,19 @@ public class LineUpController {
 		session.setAttribute("lineup", list);
 		log.info("sds{}",session.getAttribute("lineup"));
 	}
+	//임ㅅ
+		@RequestMapping("/board")
+		public String boardList() {
+			return "view/board/boardList";
+		}
+		//임시
+		@RequestMapping("/view")
+		public String boardView() {
+			return "view/board/boardView";
+		}
+		//임시
+		@RequestMapping("/reg")
+		public String boardReg() {
+			return "view/board/boardReg";
+		}
 }
