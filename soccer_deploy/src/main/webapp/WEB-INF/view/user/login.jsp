@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form"   uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -124,20 +130,23 @@
 								<br> <br>
 								<div class="row">
 									<div class="col-lg-7">
-										<form action="#">
+									<!-- loginForm Start -->
+										<form:form modelAttribute="loginForm" class="form-signin" action="/login" method="post">
 											<div class="form-group">
-												<input type="text" class="form-control" placeholder="EMAIL">
+												<input type="text" class="form-control" placeholder="EMAIL" name="email" value="${loginForm.email}">
 											</div>
 											<div class="form-group">
-												<input type="password" class="form-control"		placeholder="PASSWORD">
-													
+												<input type="password" class="form-control"	placeholder="PASSWORD" name="passwd">
 											</div>
+												<input type="hidden" class="form-control" >
 											<div class="form-group">
-												<input type="submit" class="btn btn-primary py-3 px-3" value="Login" style="margin-right: 10px;">
+												<button class="btn btn-primary py-3 px-3" type="submit">Login</button>
+												<!-- <input type="submit" class="btn btn-primary py-3 px-3" value="Login" style="margin-right: 10px;"> -->
 												<a href="signup"><input type="button" class="btn btn-primary py-3 px-3" value="Sign Up"></a>
 											</div>
 											
-										</form>
+										</form:form>
+									<!-- loginForm End -->
 									</div>
 								</div>
 							</div>

@@ -1,6 +1,7 @@
 package soccer.deploy.user.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -10,6 +11,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	
 	/* email , passwd를 이용해 로그인*/
 	User findByEmailAndPasswd(String email, String passwd);
-
-
+	
+	
 }

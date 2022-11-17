@@ -35,15 +35,33 @@ public class UserServiceTest {
 		user.setAge(30);
 		user.setName("장한얼");
 		user.setAddress("경기도 의정부");
+		user.setBackNum(9);
 
 		Long userId = userService.register(user);
 		log.info("가입한 회원번호 : {}", userId);
 	}
 
 	@Test
-	public void login() { // User loginUser =
-		userService.login("jhano9@naver.com", "123456");
+	@Disabled
+	public void login() { 
 		User loginUser = userRepository.findByEmailAndPasswd("jhano9@naver.com", "123456");
 		log.info("로그인 한 회원 정보 {}", loginUser);
+	}
+	
+	@Test
+	@Disabled
+	public void userList() {
+		List<User> allUser = userRepository.findAll();
+		log.info("전체 회원 정보");
+		for (User user : allUser) {
+			log.info("{}",user);
+		}	
+	}
+	
+	@Test
+	public void findUser() {
+		Long userId = 4L;
+		Optional<User> optional = userService.findUser(userId);
+		log.info("검색한 회원 정보 : {}",optional.get());
 	}
 }
