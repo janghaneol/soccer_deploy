@@ -24,11 +24,17 @@ public class MyController {
 	private noticeService NoticeService;
 	
 	@RequestMapping("/")
-	public String index() {
-
+	public String index(Model model) {
+		
 		return "index";
 	}
-
+	@GetMapping("/")
+	public String cookie(Model model, @CookieValue(name = "loginUser", required = false) String loginUser) {
+		if(loginUser != null) {
+			model.addAttribute("loginUser", loginUser);
+		}
+		return "view/include/header";
+	}
 	@RequestMapping("/main")
 	public String main() {
 		
@@ -49,11 +55,6 @@ public class MyController {
 		return "view/matches";
 	}
 	
-	@RequestMapping("/players")
-	public String players() {
-		
-		return "view/players";
-	}
 	
 	@RequestMapping("/single")
 	public String single() {
@@ -77,9 +78,9 @@ public class MyController {
 		return "view/user/login";
 	}
 	@RequestMapping("/xMain")
-	public String xMain(@CookieValue(name = "loginUser", required = false) String loginUser, Model model) {
-		if(loginUser!=null) {
-			model.addAttribute("loginUser",loginUser);
+	public String xMain(Model model, @CookieValue(name = "loginUser", required = false) String loginUser) {
+		if(loginUser != null) {
+			model.addAttribute("loginUser", loginUser);
 		}
 		return "view/xMain";
 	}

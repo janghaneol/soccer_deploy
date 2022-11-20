@@ -33,15 +33,15 @@
 <link rel="stylesheet" href="/css/style.css">
 
 </head>
+
 <style>
 #zero {
 	position: relative;
-	width: 100%;
-	height: 100%;
-	padding: 10%;
-	padding-left: 10%;
-	padding-right: 10%;
-	padding-bottom: 10%;
+	width: 1700px;
+	height: 750px;
+	padding: 4%;
+	padding-left: 16%;
+	padding-top : 8%;
 }
 
 #deploy {
@@ -51,146 +51,150 @@
 	height: 100%;
 }
 
+#deploy_one {
+	width: 10%;
+	height: 100%;
+	margin: 2%;
+	padding: 1%;
+}
+
 #deploy_two {
-	width: 100%;
+	width: 80%;
 	height: 100%;
 	border-radius: 30px;
 	border-style: solid;
 	border-color: rgb(224, 224, 224);
 	padding-left: 5%;
-	padding-right: 5%;
-	padding-bottom: 5%;
+}
+
+#deploy_three {
+	width: 10%;
+	height: 100%;
+	margin: 2%;
+	padding: 1%;
+}
+
+#image1 {
+	width: 450px;
+	height: 180px;
+	margin-left: 5%;
+	margin-right: 5%;
+	margin-top: 3.3%;
+	filter: invert() drop-shadow(5px 5px 5px #000);
+	float: right;
+	/* box-shadow: 5px 5px 5px #000; */
+}
+
+#deploy_two_In {
+	positon: relative;
+	display: flex;
+	flex-directory: column;
+	width: 100%;
+	height: 100%;
+}
+
+#deploy_two_In_one {
+	width: 60%;
+	height: 100%;
+}
+
+#deploy_two_In_two {
+	width: 40%;
+	height: 100%;
+	padding: 6.7%;
 }
 
 #to_center_footer {
 	text-align: center;
 }
-
-.position, .backnum, .age {
-	width: 120px;
-	float:left;
+.field-error {
+  color: #ff0000;
 }
-
-
-
-.container.py-4 {
-	margin: 0 auto;
-	width: 503px;
+.thead{
+    text-align: center;
 }
-
-.d-grid.gap-2 {
-	padding-top: 30px;
+.th{
+    display: table-cell;
+    font-weight: bold;
+    text-align: left;
 }
-
-.bg {
-	height: 1053px;
-	padding-top: 55px;
-	padding-bottom: 75px;
-}
-
-.flex-fill.mx-xl-5.mb-2 {
-	margin: 0 auto;
-	width: 700px;
-	padding-right: 7rem;
-	padding-left: 7rem;
-}
-
-.container.py-4 {
-	margin: 0 auto;
-	width: 503px;
-}
-
-.d-grid.gap-2 {
-	padding-top: 30px;
-}
-
-
-.age, .backnum, .position {
-	width: 130px;
-	display: table-cell;
-}
-.backnum+.position, .age+.backnum {
-	padding-left: 10px;
-}
-
-
-
 </style>
+
 <body>
 
-	<jsp:include page="/WEB-INF/view/include/header.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/view/include/header.jsp"></jsp:include>
 
-	<section class="bg">
-		<div class="container py-4">
+	<!-- 여기까지가 기본구성.  -->
+	<!-- 필요하면 지워도 되는데 책임은 못짐. -->
+
+	<div id="zero">
+
+		<div id="deploy">
+		<div id="deploy_one"></div>
 			<div id="deploy_two">
-			<!-- registForm Start -->
-				<form:form modelAttribute="user" action="/user/regist" method="post" >
-				<fieldset>
-					<div class="form-group">
-						<label for="exampleInputEmail1" class="form-label mt-4">이메일</label>
-						<form:input type="text" class="form-control" value="${user.email}" 
-							aria-describedby="emailHelp" path="email" placeholder="이메일은 필수입력사항입니다."/>
-					</div>
-					
-					
-					<div class="form-group">
-						<label class="form-label mt-4" for="inputValid">비밀번호</label> 
-						<form:input	type="password" class="form-control" id="inputValid" placeholder="영어와 숫자를 포함한 6~12자" path="passwd"/>
-						<div class="valid-feedback"></div>
-					</div>	
-						
-					<div class="form-group">
-						<label class="form-label mt-4" for="inputInvalid">비밀번호 재확인</label>
-						<input type="password" class="form-control"	id="inputInvalid" placeholder="위의 칸과 같은 비밀번호를 입력해주세요."/>
-					</div>
 
-					<div class="form-group">
-						<label for="exampleInputEmail1" class="form-label mt-4">이름</label>
-						<form:input type="text" value="${user.name}" class="form-control" placeholder="이름은 필수입력사항입니다." path="name" />
-					</div>
+				<div class="site-section">
+					<div class="container">
+						<div id="deploy_two_In">
+							<div id="deploy_two_In_one">
+								<h3 class="mb-3">회원 정보</h3>
+								<table class="table table-sm">
+								
+								<thead class="thead-dark">
+										<tr>
+                                            <th scope="col" colspan="2" >
+                                                기본 정보
+                                            </th>
+                                        </tr>
+								</thead>
+                                    <tbody>
+                                        
+                                        <tr class="text-white">
+                                            <th scope="row"><strong>이메일</strong></th>
+                                            <td>${user.email}</td>
+                                        </tr>
 
-					<div class="form">
-						<div class="age">
-							<label class="form-label mt-4">나이</label>
-							<form:input type="text" class="form-control" placeholder="나이" maxlength="3" path="age"/>
+                                        <tr class="text-white">
+                                            <th scope="row">나이</th>
+                                            <td>${user.age}</td>
+                                        </tr>
+                                        
+										<tr class="text-white">
+                                            <th scope="row">이름</th>
+                                            <td>${user.name}</td>
+                                        </tr>
+                                        
+                                        <tr class="text-white">
+                                            <th scope="row">등번호</th>
+                                            <td>${user.backNum}</td>
+                                        </tr>
+                                        
+                                        <tr class="text-white">
+                                            <th scope="row">포지션</th>
+                                            <td>${user.position}</td>
+                                        </tr>
+                                        
+                                        <tr class="text-white">
+                                            <th scope="row">주소</th>
+                                            <td>${user.address}</td>
+                                        </tr>
+                                        
+                                        <tr class="text-white">
+                                            <th scope="row">가입일</th>
+                                            <td>${user.regdate}</td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
 						</div>
-						<div class="backnum">
-							<label class="form-label mt-4">등 번호</label>
-							<form:input type="text" class="form-control" placeholder="최대 3자리" maxlength="3" path="backNum"/>
-						</div>
-						
-						<div class="position">
-							<label class="form-label mt-4">포지션</label>
-							<form:select class="form-control" path="position">
-							<option>FW</option>
-							<option>MF</option>
-							<option>DF</option>
-							<option>GK</option>
-							</form:select>
-						</div>
 					</div>
-					 
-					<div class="form-group">
-						<label for="exampleInputEmail1" class="form-label mt-4">주소</label>
-						<form:input type="text" value="${user.address}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" path="address"/>
-					</div>
-
-					<div class="d-grid gap-2">
-						<button class="btn btn-primary btn-lg" type="submit">가입하기</button>
-					</div>
-				</fieldset>
-				</form:form>
-				<!-- registForm End -->
-
+				</div>
 			</div>
+			<div id="deploy_three"></div>
 		</div>
-	</section>
 
-
-
-
-
-
+	</div>
+</div>
 
 	<footer class="footer-section">
 		<div class="container">
@@ -271,6 +275,7 @@
 
 
 
+
 	<script src="js/jquery-3.3.1.min.js"></script>
 	<script src="js/jquery-migrate-3.0.1.min.js"></script>
 	<script src="js/jquery-ui.js"></script>
@@ -287,7 +292,6 @@
 	<script src="js/jquery.mb.YTPlayer.min.js"></script>
 	<script src="js/main.js"></script>
 
-	
 
 </body>
 </html>

@@ -12,20 +12,20 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
 	rel="stylesheet">
-<link rel="stylesheet" href="fonts/icomoon/style.css">
-<link rel="stylesheet" href="css/bootstrap/bootstrap.css">
-<link rel="stylesheet" href="css/jquery-ui.css">
-<link rel="stylesheet" href="css/owl.carousel.min.css">
-<link rel="stylesheet" href="css/owl.theme.default.min.css">
-<link rel="stylesheet" href="css/owl.theme.default.min.css">
+<link rel="stylesheet" href="/fonts/icomoon/style.css">
+<link rel="stylesheet" href="/css/bootstrap/bootstrap.css">
+<link rel="stylesheet" href="/css/jquery-ui.css">
+<link rel="stylesheet" href="/css/owl.carousel.min.css">
+<link rel="stylesheet" href="/css/owl.theme.default.min.css">
+<link rel="stylesheet" href="/css/owl.theme.default.min.css">
 
-<link rel="stylesheet" href="css/jquery.fancybox.min.css">
+<link rel="stylesheet" href="/css/jquery.fancybox.min.css">
 
-<link rel="stylesheet" href="css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="/css/bootstrap-datepicker.css">
 
-<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+<link rel="stylesheet" href="/fonts/flaticon/font/flaticon.css">
 
-<link rel="stylesheet" href="css/aos.css">
+<link rel="stylesheet" href="/css/aos.css">
 
 <link rel="stylesheet" href="css/style.css">
 
@@ -302,14 +302,14 @@
     			<c:choose>
     				<c:when test="${empty loginUser}">
     				<div class="form-group">
-        				<a href="/login"><button class="btn btn-primary py-3 px-5">Go To Login</button></a>
+        				<a href="/user/login"><button class="btn btn-primary py-3 px-5">Go To Login</button></a>
     				</div>
     				</c:when>
     				<c:otherwise>
     				<div class="form-group">
-        				<a href="#"><button class="btn btn-primary py-3 px-5">${loginUser}님</button></a>
+        				<a href=""><button class="btn btn-primary py-3 px-5">${loginUser}님</button></a>
         				<br>
-        				<a href="/logout"><button class="btn btn-primary py-3 px-5">Logout</button></a>
+        				<a href="/user/logout"><button class="btn btn-primary py-3 px-5">Logout</button></a>
     				</div>
     				</c:otherwise>
     			</c:choose>

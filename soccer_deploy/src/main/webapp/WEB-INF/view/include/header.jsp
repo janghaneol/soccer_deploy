@@ -19,7 +19,7 @@
 	<div class="container">
 		<div class="d-flex align-items-center">
 			<div class="site-logo">
-				<a href="index"> <img src="images/logo.png" alt="Logo">
+				<a href="index"> <img src="/images/logo.png" alt="Logo">
 				</a>
 			</div>
 			<div class="ml-auto">
@@ -29,10 +29,10 @@
 						class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
 						<li><a href="/xMain" class="nav-link">Home</a></li>
 						<li><a href="matches" class="nav-link">Matches</a></li>
-						<li><a href="players" class="nav-link">Players</a></li>
+						<li><a href="/user/list" class="nav-link">Players</a></li>
 						<li><a href="mainPage" class="nav-link">MainPage</a></li>
-					<c:if test="${loginId != null}">
-						<li><a href="#" class="nav-link">${loginId}님 반갑습니다!</a></li>
+					<c:if test="${loginUser != null}">
+						<li><a href="#" class="nav-link">${loginUser}님 반갑습니다!</a></li>
 					</c:if>
 					</ul>
 				</nav>

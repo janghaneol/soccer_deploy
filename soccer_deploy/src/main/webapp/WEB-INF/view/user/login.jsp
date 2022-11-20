@@ -15,22 +15,22 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
 	rel="stylesheet">
-<link rel="stylesheet" href="fonts/icomoon/style.css">
-<link rel="stylesheet" href="css/bootstrap/bootstrap.css">
-<link rel="stylesheet" href="css/jquery-ui.css">
-<link rel="stylesheet" href="css/owl.carousel.min.css">
-<link rel="stylesheet" href="css/owl.theme.default.min.css">
-<link rel="stylesheet" href="css/owl.theme.default.min.css">
+<link rel="stylesheet" href="/fonts/icomoon/style.css">
+<link rel="stylesheet" href="/css/bootstrap/bootstrap.css">
+<link rel="stylesheet" href="/css/jquery-ui.css">
+<link rel="stylesheet" href="/css/owl.carousel.min.css">
+<link rel="stylesheet" href="/css/owl.theme.default.min.css">
+<link rel="stylesheet" href="/css/owl.theme.default.min.css">
 
-<link rel="stylesheet" href="css/jquery.fancybox.min.css">
+<link rel="stylesheet" href="/css/jquery.fancybox.min.css">
 
-<link rel="stylesheet" href="css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="/css/bootstrap-datepicker.css">
 
-<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+<link rel="stylesheet" href="/fonts/flaticon/font/flaticon.css">
 
-<link rel="stylesheet" href="css/aos.css">
+<link rel="stylesheet" href="/css/aos.css">
 
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="/css/style.css">
 
 </head>
 
@@ -107,6 +107,9 @@
 #to_center_footer {
 	text-align: center;
 }
+.field-error {
+  color: #ff0000;
+}
 </style>
 
 <body>
@@ -131,18 +134,19 @@
 								<div class="row">
 									<div class="col-lg-7">
 									<!-- loginForm Start -->
-										<form:form modelAttribute="loginForm" class="form-signin" action="/login" method="post">
+										<form:form modelAttribute="loginForm" class="form-signin" action="/user/login" method="post">
 											<div class="form-group">
 												<input type="text" class="form-control" placeholder="EMAIL" name="email" value="${loginForm.email}">
 											</div>
 											<div class="form-group">
 												<input type="password" class="form-control"	placeholder="PASSWORD" name="passwd">
 											</div>
-												<input type="hidden" class="form-control" >
+												<form:errors path = "*" element = "div" cssClass="field-error"/>
+      											<input type="hidden" name="redirect" value="${param.redirect}">
 											<div class="form-group">
 												<button class="btn btn-primary py-3 px-3" type="submit">Login</button>
 												<!-- <input type="submit" class="btn btn-primary py-3 px-3" value="Login" style="margin-right: 10px;"> -->
-												<a href="signup"><input type="button" class="btn btn-primary py-3 px-3" value="Sign Up"></a>
+												<a href="/user/regist"><input type="button" class="btn btn-primary py-3 px-3" value="Sign Up"></a>
 											</div>
 											
 										</form:form>
@@ -152,7 +156,7 @@
 							</div>
 
 							<div id="deploy_two_In_two">
-								<img src="title2.png" id="image1">
+								<img src="/title2.png" id="image1">
 							</div>
 						</div>
 					</div>

@@ -6,6 +6,8 @@ import java.util.Optional;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
@@ -38,6 +40,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public Optional<User> findUser(Long userId) {
 		return userRepository.findById(userId);
+	}
+
+	@Override
+	public Page<User> searchUser(String name,Pageable pageable) {
+		return userRepository.findAllByNameContaining(name, pageable);
 	}
 
 }
