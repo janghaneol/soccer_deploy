@@ -31,8 +31,8 @@
 						<li><a href="matches" class="nav-link">Matches</a></li>
 						<li><a href="/user/list" class="nav-link">Players</a></li>
 						<li><a href="mainPage" class="nav-link">MainPage</a></li>
-					<c:if test="${loginUser != null}">
-						<li><a href="#" class="nav-link">${loginUser}님 반갑습니다!</a></li>
+					<c:if test="${cookie.loginUser != null}">
+						<li><a href="#" class="nav-link">${cookie.loginUser.getValue()}님 반갑습니다!</a></li>
 					</c:if>
 					</ul>
 				</nav>

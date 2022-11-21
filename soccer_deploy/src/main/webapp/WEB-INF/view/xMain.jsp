@@ -300,14 +300,14 @@
     			
     				<br>
     			<c:choose>
-    				<c:when test="${empty loginUser}">
+    				<c:when test="${cookie.loginUser == null}">
     				<div class="form-group">
         				<a href="/user/login"><button class="btn btn-primary py-3 px-5">Go To Login</button></a>
     				</div>
     				</c:when>
     				<c:otherwise>
     				<div class="form-group">
-        				<a href=""><button class="btn btn-primary py-3 px-5">${loginUser}님</button></a>
+        				<a href=""><button class="btn btn-primary py-3 px-5">${cookie.loginUser.getValue()}님</button></a>
         				<br>
         				<a href="/user/logout"><button class="btn btn-primary py-3 px-5">Logout</button></a>
     				</div>

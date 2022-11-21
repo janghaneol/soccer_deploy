@@ -57,9 +57,10 @@ public class UserController {
 			bindingResult.reject("loginFail", "ID와 비밀번호를 확인하여 주십시오");
 			return "/view/user/login";
 		}
-		
+	
 		Cookie loginCookie = new Cookie("loginUser", loginUser.getName());
 		loginCookie.setPath("/");
+		log.info("{}",loginCookie.getValue());
 		response.addCookie(loginCookie);
 		model.addAttribute("loginUser", loginCookie);
 		
