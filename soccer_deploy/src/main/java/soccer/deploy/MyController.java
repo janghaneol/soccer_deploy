@@ -91,7 +91,7 @@ public class MyController {
 		return "view/lineUp/lineUp";
 	}
 	
-//	Mybatis분들은 이거 보면서 하면 도움이 될거예요!
+//	Mybatis遺꾨뱾�� �씠嫄� 蹂대㈃�꽌 �븯硫� �룄���씠 �맆嫄곗삁�슂!
 	@RequestMapping("/users")
 	public String users(Model model) {
 		
