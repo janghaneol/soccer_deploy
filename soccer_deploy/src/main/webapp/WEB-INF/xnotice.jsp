@@ -43,13 +43,18 @@
 	position: relative;
 	display: flex;
 	width: 100%;
-	height:10%;
+	height:100%;
+	
+	padding-top:4%;
+	padding-bottom:4%;
+	
 }
 
 #deploy_one {
 	width: 15%;
 	height: 100%;
-
+	margin: 2%;
+	padding: 1%;
 }
 
 #deploy_two {
@@ -64,6 +69,8 @@
 #deploy_three {
 	width: 15%;
 	height: 100%;
+	margin: 2%;
+	padding: 1%;
 	
 }
 
@@ -131,7 +138,7 @@
 			
 		<div id="deploy_two">
 	
-		<table class="table custom-table" id="chart_move">
+		<table class="table custom-table" id="chart_move" style="margin-bottom:5%;">
 		<thead>
 			<tr>
 				<th>Num</th>
@@ -160,7 +167,21 @@
 		
 		
 			
-			
+	<div class="row justify-content-center">
+		<div class="col-lg-7 text-center">
+			<div class="custom-pagination">
+
+				<form action="<c:url value="/To_back_page_num"/>" method="get" enctype="multipart/form-data">
+				<c:forEach items="${To_back_page_num}" var="pages">
+				
+				<a href="/xnotice?pagenum=${pages.pagenum}"><<</a>
+				
+				</c:forEach>				
+				</form>
+
+			</div>
+		</div>
+	</div>	
 			
 			
 	         	
@@ -183,7 +204,21 @@
 	     
 	     
 	     
-	     
+	     <div class="row justify-content-center">
+	  	   <div class="col-lg-7 text-center">
+	  	   		<div class="custom-pagination">
+	  	 
+	  	   		<form action="<c:url value="/To_front_page_num"/>" method="get" enctype="multipart/form-data">
+	  	   		<c:forEach items="${To_back_page_num}" var="pages">
+	  	   		
+	  	   		<a href="/xnotice?pagenum=${pages.pagenum}">>></a>
+					   
+				</c:forEach>
+				</form>
+
+       	   </div>
+	  	   </div>
+	   </div>
 	       
 	    
 	     

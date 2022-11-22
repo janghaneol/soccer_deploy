@@ -158,10 +158,10 @@ public class MyController {
 	}
 	
 	@RequestMapping(value="/To_front_page_num", method=RequestMethod.GET)
-	public String To_front_page_num(Model model, @RequestParam("pagenum") int pagenum
+	public String To_front_page_num(Model model, @RequestParam(value="pagenum",required=false) int pagenum, HttpSession session
 					) throws Exception {
 		
-					PageDAO.To_front_page_num(pagenum);
+					PageDAO.To_front_page_num();
 					
 					List<noticeDTO> view_content = NoticeService.view_content(pagenum);								
 
@@ -170,9 +170,9 @@ public class MyController {
 					return "xnotice";
 	}
 	@RequestMapping(value="/To_back_page_num", method=RequestMethod.GET)
-	public String To_back_page_num( Model model, @RequestParam("pagenum") int pagenum) throws Exception {
+	public String To_back_page_num( Model model, @RequestParam(value="pagenum",required=false) int pagenum, HttpSession session) throws Exception {
 	
-					PageDAO.To_back_page_num(pagenum);
+		            PageDAO.To_back_page_num();
 					
 					List<noticeDTO> view_content = NoticeService.view_content(pagenum);								
 

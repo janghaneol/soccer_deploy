@@ -5,21 +5,22 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
 <mapper namespace="soccer.deploy.dao.pageDAO">
-	<select id="To_front_page_num" parameterType="int">
+	<select id="To_back_page_num">
 	<![CDATA[
-	UPDATE pages SET endnum = endnum+10, startnum = startnum+10, pagenum = #{value}+1
+	update clickpagenum set startclicknum = startclicknum-10, endclicknum = endclicknum -10 where startclicknum>0 AND endclicknum>0
  	]]>
 	</select>
 	
-	<select id="To_back_page_num" parameterType="int">
+	<select id="To_front_page_num">
 	<![CDATA[
-	UPDATE pages SET endnum = endnum-10, startnum = startnum-10, pagenum = #{value}-1 Where endnum > 0 and startnum > 0 and pagenum > 0
+	update clickpagenum set startclicknum = startclicknum+10, endclicknum = endclicknum +10 where startclicknum>0 AND endclicknum>0
  	]]>
 	</select>
 	
 	<select id="view_page_num" resultType="soccer.deploy.dto.pageDTO" parameterType="int">
 	<![CDATA[
-	SELECT distinct(p.pagenum) FROM notice n, pages p WHERE n.notice_index BETWEEN p.startnum AND p.endnum Order by p.pagenum
+	SELECT distinct(p.pagenum) FROM notice n, pages p, clickpagenum c WHERE p.pagenum Between c.startclicknum AND c.endclicknum
+	AND n.notice_index BETWEEN p.startnum AND p.endnum Order by p.pagenum
  	]]>
 	</select>
 </mapper>
