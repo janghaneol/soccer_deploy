@@ -65,16 +65,16 @@ document.querySelector("#lineUp").addEventListener("click", function (event) {
     if (chanX == originX && chanY == originY) {
       if (addPlayerPosition.classList.contains("empty"))
         document.querySelector(".search").style.display = "inline-block";
-        let option = {
-          method: 'POST',
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify("")
-        }
-        fetch(`/lineup`, option)
-          .then(response => response.json())
-          .then(response => { printEntry(response) });
+      let option = {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify("")
+      }
+      fetch(`/lineup`, option)
+        .then(response => response.json())
+        .then(response => { printEntry(response) });
 
 
 
@@ -312,8 +312,8 @@ document.querySelector(".ml-auto").addEventListener("click", function (event) {
           body: JSON.stringify(marray)
         }
 
-        fetch(`/lineup/entry`,option)
-        
+        fetch(`/lineup/entry`, option)
+
       } else {
         console.log("no");
       }
@@ -344,7 +344,7 @@ document.querySelector(".site-mobile-menu").addEventListener("click", function (
           body: JSON.stringify(marray)
         }
 
-        fetch(`/lineup/entry`,option);
+        fetch(`/lineup/entry`, option);
       } else {
         console.log("no");
       }
@@ -353,5 +353,69 @@ document.querySelector(".site-mobile-menu").addEventListener("click", function (
       movepage.click();
       document.body.removeChild(movepage);
     })
+  }
+})
+
+document.querySelector(".dropdown-menu").addEventListener("click", function (event) {
+  if (event.target && event.target.classList.contains("drop")) {
+    event.preventDefault();
+    console.log(event.target);
+    document.querySelector(".pop").style.display = "flex";
+    let movepage = document.createElement("a");
+    movepage.href = event.target.href;
+    document.querySelector("div.btn_pop").addEventListener("click", function (event) {
+      if (event.target && event.target.classList.contains("Ysave")) {
+        let marray = manager.array;
+        console.log(marray);
+        let option = {
+          method: 'POST',
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(marray)
+        }
+
+        fetch(`/lineup/entry`, option);
+      } else {
+        console.log("no");
+      }
+
+      document.body.appendChild(movepage);
+      movepage.click();
+      document.body.removeChild(movepage);
+    })
+
+  }
+})
+
+document.querySelector(".site-mobile-menu").addEventListener("click", function (event) {
+  if (event.target && event.target.classList.contains("drop")) {
+    event.preventDefault();
+    console.log(event.target);
+    document.querySelector(".pop").style.display = "flex";
+    let movepage = document.createElement("a");
+    movepage.href = event.target.href;
+    document.querySelector("div.btn_pop").addEventListener("click", function (event) {
+      if (event.target && event.target.classList.contains("Ysave")) {
+        let marray = manager.array;
+        console.log(marray);
+        let option = {
+          method: 'POST',
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(marray)
+        }
+
+        fetch(`/lineup/entry`, option);
+      } else {
+        console.log("no");
+      }
+
+      document.body.appendChild(movepage);
+      movepage.click();
+      document.body.removeChild(movepage);
+    })
+
   }
 })

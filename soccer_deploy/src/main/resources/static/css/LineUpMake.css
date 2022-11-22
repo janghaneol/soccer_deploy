@@ -200,3 +200,13 @@ div.sub{
     left: 590px;
     color: white;
 }
+
+ul.dropdown-menu{
+    background-color: rgba(255, 255, 255, 1);
+}
+button.Ysave{
+	background-color: #00abff;
+}
+button.Nsave{
+	background-color: #ff0038;
+}
