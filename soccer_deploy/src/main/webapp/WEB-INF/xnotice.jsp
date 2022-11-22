@@ -35,7 +35,7 @@
 #zero {
 	position: relative;
 	width: 1700px;
-	height: 750px;
+	height: 650px;
 	
 }
 
@@ -43,19 +43,19 @@
 	position: relative;
 	display: flex;
 	width: 100%;
-	height: 100%;
+	height:10%;
 }
 
 #deploy_one {
 	width: 15%;
 	height: 100%;
-	margin: 2%;
-	padding: 1%;
+
 }
 
 #deploy_two {
 	width: 70%;
 	height: 40%;
+	
 	/*border-radius: 30px;
 	border-style: solid;
 	border-color: rgb(224, 224, 224);*/
@@ -64,8 +64,7 @@
 #deploy_three {
 	width: 15%;
 	height: 100%;
-	margin: 2%;
-	padding: 1%;
+	
 }
 
 #image1 {
@@ -82,7 +81,7 @@
 #deploy_two_In {
 	positon: relative;
 	display: flex;
-	flex-directory: column;
+	flex-direction: column;
 	width: 100%;
 	height: 100%;
 }
@@ -111,8 +110,9 @@
 
 #chart_move{
 	
-	transform:translateY(-500px);
 }
+
+
 </style>
 
 <body>
@@ -120,9 +120,6 @@
 <div id="header">
 
 <jsp:include page="/WEB-INF/view/include/header.jsp"></jsp:include>
-
-	<!-- 여기까지가 기본구성.  -->
-	<!-- 필요하면 지워도 되는데 책임은 못짐. -->
 
 </div>
 	
@@ -147,13 +144,13 @@
 
 		<tbody>
 
-			<c:forEach var="notice" items="${select}">
+			<c:forEach var="notice" items="${view_content}">
 				<tr>
-					<td class="text-white">${notice.notice_index}</td> <br>
-					<td class="text-white">${notice.notice_title}</td> <br>	
-					<td class="text-white">${notice.notice_content}</td> <br>
-					<td class="text-white">${notice.notice_date}</td> <br>
-					<td class="text-white">${notice.notice_count}</td> <br>
+					<td class="text-white">${notice.notice_index}</td>
+					<td class="text-white">${notice.notice_title}</td> 
+					<td class="text-white">${notice.notice_content}</td>
+					<td class="text-white">${notice.notice_date}</td> 
+					<td class="text-white">${notice.notice_count}</td>
 				</tr>
 			</c:forEach>
 
@@ -161,9 +158,43 @@
 
 		</table>
 		
+		
+			
+			
+			
+			
+	         	
+		<div class="row justify-content-center">
+			<div class="col-lg-7 text-center">
+				<div class="custom-pagination">
+	    
+	    
+				<c:forEach items="${view_page_num}" var="pages">
+	   
+					
+	         	<a href="/xnotice?pagenum=${pages.pagenum}">${pages.pagenum}</a>
+	   
+	         	
+	         	</c:forEach>		
+		
+	         	</div>
+	         </div>
+	     </div>
+	     
+	     
+	     
+	     
+	       
+	    
+	     
 		</div>
 		
 			<div id="deploy_three"></div>
+			
+			
+		
+	   
+
 	
 	
 </div>

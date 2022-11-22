@@ -5,24 +5,22 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import soccer.deploy.dao.noticeDAO;
 import soccer.deploy.dao.pageDAO;
-import soccer.deploy.dto.pageDTO;
 import soccer.deploy.dto.noticeDTO;
+import soccer.deploy.dto.pageDTO;
 
 @Component
-public class noticeService {
+public class pageService {
 	
 	@Autowired
-	private noticeDAO NoticeDAO;
+	private pageDAO PageDAO;
 
-	public List<noticeDTO> view_content(int pagenum) {
+	public List<pageDTO> view_page_num() {
 		
-		List<noticeDTO> view_content = NoticeDAO.view_content(pagenum);
+		List<pageDTO> view_page_num = PageDAO.view_page_num();
 		
-		return view_content;
+		return view_page_num;
 	}
-	
 
 	
 }
