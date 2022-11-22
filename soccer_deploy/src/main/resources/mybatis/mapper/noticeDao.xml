@@ -5,8 +5,32 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
 <mapper namespace="soccer.deploy.dao.noticeDAO">
-	<select id="select" resultType="soccer.deploy.dto.noticeDTO">
-		SELECT * FROM notice
+	
+	<select id="view_content" resultType="soccer.deploy.dto.noticeDTO" parameterType="int">
+	<![CDATA[
+	SELECT * FROM notice n, pages p WHERE p.pagenum=#{pagenum} AND n.notice_index BETWEEN p.startNum AND p.endNum
+ 	]]>
 	</select>
+	
+	<!-- <select id="view_page_num" resultType="soccer.deploy.dto.noticeDTO">
+	<![CDATA[
+	SELECT notice_index, notice_title, notice_content, notice_date, notice_count
+	FROM pages p,
+  	(
+  	SELECT SEQ, notice_index, notice_title, notice_content, notice_date, notice_count
+  	FROM pages p,
+    (
+        SELECT ROWNUM AS SEQ, notice_index, notice_title, notice_content, notice_date, notice_count
+        FROM
+          (
+            SELECT *
+            FROM notice
+          )
+    )
+	WHERE SEQ >= p.startNum AND p.startnum =31
+  	)
+	WHERE ROWNUM <= p.amount
+ 	]]>
+	</select> -->
 
 </mapper>
