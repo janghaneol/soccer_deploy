@@ -8,7 +8,7 @@
 	
 	<select id="view_content" resultType="soccer.deploy.dto.noticeDTO" parameterType="int">
 	<![CDATA[
-	SELECT * FROM notice n, pages p WHERE p.pagenum=#{pagenum} AND n.notice_index BETWEEN p.startNum AND p.endNum
+	SELECT * FROM notice n, pages p WHERE p.pagenum=#{value} AND n.notice_index BETWEEN p.startNum AND p.endNum
  	]]>
 	</select>
 	

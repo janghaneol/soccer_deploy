@@ -5,6 +5,15 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
 <mapper namespace="soccer.deploy.dao.clickpagenumDAO">
+<select id="To_back_page_num">
+	<![CDATA[
+	update clickpagenum c, pages p, notice n set p.pagenum = p.pagenum - 1 where c.startclicknum>0 AND c.endclicknum>0
+ 	]]>
+</select>
 	
-	
+<select id="To_front_page_num">
+	<![CDATA[
+	update clickpagenum c, pages p, notice n set p.pagenum = p.pagenum + 1 where c.startclicknum>0 AND c.endclicknum>0
+ 	]]>
+</select>
 </mapper>

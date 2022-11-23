@@ -172,16 +172,14 @@
 			<div class="custom-pagination">
 
 				<form action="<c:url value="/To_back_page_num"/>" method="get" enctype="multipart/form-data">
-				<c:forEach items="${To_back_page_num}" var="pages">
 				
-				<a href="/xnotice?pagenum=${pages.pagenum}"><<</a>
-				
-				</c:forEach>				
+				<a href="/xnotice?pagenum=${pagenum}"><<</a>
+								
 				</form>
 
 			</div>
 		</div>
-	</div>	
+	</div>
 			
 			
 	         	
@@ -189,14 +187,16 @@
 			<div class="col-lg-7 text-center">
 				<div class="custom-pagination">
 	    
-	    
+				
+				
 				<c:forEach items="${view_page_num}" var="pages">
-	   
+				
 					
 	         	<a href="/xnotice?pagenum=${pages.pagenum}">${pages.pagenum}</a>
 	   
 	         	
-	         	</c:forEach>		
+	         	</c:forEach>	
+	        
 		
 	         	</div>
 	         </div>
@@ -209,11 +209,11 @@
 	  	   		<div class="custom-pagination">
 	  	 
 	  	   		<form action="<c:url value="/To_front_page_num"/>" method="get" enctype="multipart/form-data">
-	  	   		<c:forEach items="${To_back_page_num}" var="pages">
+	  	
 	  	   		
-	  	   		<a href="/xnotice?pagenum=${pages.pagenum}">>></a>
+	  	   		<a href="/xnotice?pagenum=${pagenum}">>></a>
 					   
-				</c:forEach>
+			
 				</form>
 
        	   </div>

@@ -10,7 +10,7 @@ public class pageDTO {
 	private int startnum;
 	private int endnum;
 	
-	public pageDTO() {}
+	public pageDTO() {pagenum = 1;}
 	
 	public pageDTO(int pagenum, int amount, int startnum, int endnum) {
 		super();

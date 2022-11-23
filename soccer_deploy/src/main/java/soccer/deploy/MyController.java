@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import soccer.deploy.dto.pageDTO;
+import soccer.deploy.dao.clickpagenumDAO;
 import soccer.deploy.dao.noticeDAO;
 import soccer.deploy.dao.pageDAO;
 import soccer.deploy.dto.noticeDTO;
@@ -41,6 +42,9 @@ public class MyController {
 	
 	@Autowired
 	private pageDAO PageDAO;
+	
+	@Autowired
+	private clickpagenumDAO ClickpagenumDAO;
 
 	@RequestMapping("/")
 	public String index() {
@@ -129,16 +133,20 @@ public class MyController {
 	}
 
 	@RequestMapping("/xnotice")
-	public String xnotice(Model model, @RequestParam("pagenum") int pagenum) {
+	public String xnotice(Model model, @RequestParam("pagenum") int pagenum, HttpServletRequest session) {
 		
 //		List<noticeDTO> view_page_num = NoticeService.view_page_num();
-		List<pageDTO> view_page_num = PageService.view_page_num();
+		List<pageDTO> view_page_num = PageService.view_page_num(pagenum);
 
-		model.addAttribute("view_page_num", view_page_num);
+		model.addAttribute("view_page_num",view_page_num);
 		
-		List<noticeDTO> view_content = NoticeService.view_content(pagenum);								
+		
+		List<noticeDTO> view_content = NoticeService.view_content(pagenum);
 
-		model.addAttribute("view_content", view_content);
+		model.addAttribute("view_content",view_content);
+		
+		
+		session.setAttribute("pagenum",(int)pagenum);
 		
 		
 		
@@ -161,22 +169,31 @@ public class MyController {
 	public String To_front_page_num(Model model, @RequestParam(value="pagenum",required=false) int pagenum, HttpSession session
 					) throws Exception {
 		
-					PageDAO.To_front_page_num();
+					int gotofront = ClickpagenumDAO.To_back_page_num();
+					
+					model.addAttribute("GO_TO_FRONT", gotofront );
 					
 					List<noticeDTO> view_content = NoticeService.view_content(pagenum);								
 
 					model.addAttribute("view_content", view_content);
+					
+					session.setAttribute("pagenum",(int)pagenum);
 		
 					return "xnotice";
 	}
 	@RequestMapping(value="/To_back_page_num", method=RequestMethod.GET)
-	public String To_back_page_num( Model model, @RequestParam(value="pagenum",required=false) int pagenum, HttpSession session) throws Exception {
+	public String To_back_page_num( Model model, @RequestParam(value="pagenum",required=false) int pagenum, HttpSession session
+					) throws Exception {
+		
+					int gotoback = ClickpagenumDAO.To_back_page_num();
 	
-		            PageDAO.To_back_page_num();
+					model.addAttribute("GO_TO_BACK", gotoback);
 					
 					List<noticeDTO> view_content = NoticeService.view_content(pagenum);								
 
 					model.addAttribute("view_content", view_content);
+					
+					session.setAttribute("pagenum",pagenum);
 							
 					return "xnotice";
 					

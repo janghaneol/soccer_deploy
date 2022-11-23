@@ -7,6 +7,8 @@ public class clickpagenumDTO {
 	private int startclicknum;
 	private int endclicknum;
 	
+	public clickpagenumDTO() {}
+	
 	public clickpagenumDTO(int clicknum, int total, int startclicknum, int endclicknum) {
 		super();
 		this.clicknum = clicknum;

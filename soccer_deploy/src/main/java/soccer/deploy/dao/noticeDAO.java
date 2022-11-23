@@ -10,7 +10,7 @@ import soccer.deploy.dto.noticeDTO;
 @Mapper
 public interface noticeDAO {
 
-	public List<noticeDTO> view_content(int pagenum);
+	public List<noticeDTO> view_content(int notice_index);
 
 
 }

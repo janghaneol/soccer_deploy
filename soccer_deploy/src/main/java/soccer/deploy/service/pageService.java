@@ -15,9 +15,9 @@ public class pageService {
 	@Autowired
 	private pageDAO PageDAO;
 
-	public List<pageDTO> view_page_num() {
+	public List<pageDTO> view_page_num(int pagenum) {
 		
-		List<pageDTO> view_page_num = PageDAO.view_page_num();
+		List<pageDTO> view_page_num = PageDAO.view_page_num(pagenum);
 		
 		return view_page_num;
 	}

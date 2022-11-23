@@ -11,8 +11,6 @@ import soccer.deploy.dto.pageDTO;
 @Mapper
 public interface pageDAO {
 	
-	public void To_front_page_num();
-	public void To_back_page_num();
-	public List<pageDTO> view_page_num();
+	public List<pageDTO> view_page_num(int pagenum);
 	
 }
