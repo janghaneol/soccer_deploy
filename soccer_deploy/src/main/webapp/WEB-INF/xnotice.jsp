@@ -204,7 +204,7 @@
 	     
 	     
 	     
-	     <div class="row justify-content-center">
+	   <div class="row justify-content-center">
 	  	   <div class="col-lg-7 text-center">
 	  	   		<div class="custom-pagination">
 	  	 
@@ -216,12 +216,10 @@
 			
 				</form>
 
-       	   </div>
+				</div>
 	  	   </div>
 	   </div>
 	       
-	    
-	     
 		</div>
 		
 			<div id="deploy_three"></div>

@@ -168,10 +168,6 @@ public class MyController {
 	@RequestMapping(value="/To_front_page_num", method=RequestMethod.GET)
 	public String To_front_page_num(Model model, @RequestParam(value="pagenum",required=false) int pagenum, HttpSession session
 					) throws Exception {
-		
-					int gotofront = ClickpagenumDAO.To_back_page_num();
-					
-					model.addAttribute("GO_TO_FRONT", gotofront );
 					
 					List<noticeDTO> view_content = NoticeService.view_content(pagenum);								
 
@@ -184,16 +180,12 @@ public class MyController {
 	@RequestMapping(value="/To_back_page_num", method=RequestMethod.GET)
 	public String To_back_page_num( Model model, @RequestParam(value="pagenum",required=false) int pagenum, HttpSession session
 					) throws Exception {
-		
-					int gotoback = ClickpagenumDAO.To_back_page_num();
-	
-					model.addAttribute("GO_TO_BACK", gotoback);
 					
 					List<noticeDTO> view_content = NoticeService.view_content(pagenum);								
 
 					model.addAttribute("view_content", view_content);
 					
-					session.setAttribute("pagenum",pagenum);
+					session.setAttribute("pagenum",(int)pagenum);
 							
 					return "xnotice";
 					

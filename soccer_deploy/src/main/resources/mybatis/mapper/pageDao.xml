@@ -7,7 +7,7 @@
 <mapper namespace="soccer.deploy.dao.pageDAO">	
 	<select id="view_page_num" resultType="soccer.deploy.dto.pageDTO" parameterType="int">
 	<![CDATA[
-	SELECT distinct(p.pagenum) FROM notice n, pages p, clickpagenum c WHERE c.startclicknum=1 AND p.pagenum Between c.startclicknum AND c.endclicknum
+	SELECT distinct(p.pagenum) FROM notice n, pages p, clickpagenum c WHERE c.clicknum=2 AND p.pagenum Between c.startclicknum AND c.endclicknum
 	AND n.notice_index BETWEEN p.startnum AND p.endnum Order by p.pagenum
  	]]>
 	</select>
