@@ -76,12 +76,9 @@
 
 							<tbody>
 
-								<c:forEach items="${userList.content}" var="user"
-									varStatus="status">
+								<c:forEach items="${userList.content}" var="user" varStatus="status">
 									<tr>
-										<td class="text-white"><a href="/user/${user.id}"
-											class="text-white">${user.name}</a> &nbsp|&nbsp
-											${user.backNum}</td>
+										<td class="text-white"><a href="/user/${user.id}"class="text-white">${user.name}</a> &nbsp|&nbsp ${user.backNum}</td>
 										<td class="text-white">${user.position}</td>
 										<td class="text-white">10</td>
 										<td class="text-white">4</td>
@@ -96,14 +93,14 @@
 					<div class="navBar" style="margin: auto;">
 					<nav aria-label="Page navigation example">
 						<ul class="pagination justify-content-center">
-							<li class="page-item"><a class="page-link"
-								href="/user/list?page=0">처음으로</a></li>
+							<li class="page-item"><a class="page-link" href="/user/list?page=0">처음으로</a></li>
 
 							<c:forEach begin="${startBlockPage}" end="${endBlockPage}"
 								var="i">
 								<li class="page-item"><a class="page-link"
 									href="/user/list/?page=${i-1}&value=${value}">${i}</a></li>
 							</c:forEach>
+							
 							<li class="page-item"><a class="page-link" href="#">다음으로</a></li>
 						</ul>
 					</nav>

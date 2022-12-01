@@ -11,6 +11,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.util.PatternMatchUtils;
 import lombok.extern.slf4j.Slf4j;
@@ -29,28 +30,45 @@ public class LoginCheckFilter implements Filter {
 	}
 
 	@Override
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
-			throws IOException, ServletException {
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		HttpServletResponse httpResponse = (HttpServletResponse) response;
 		String requestURI = httpRequest.getRequestURI();
-
+		
+		
+		// Cookie Filter
+//		try {
+//			// 로그인 체크가 필요한 URI인지
+//			if (isLoginCheckUri(requestURI)) {
+//				Cookie[] cookies = httpRequest.getCookies();
+//				// 로그인이 필요한 사용자인지
+//				if(isLoginCheckMember(cookies)) {
+//					log.info("미인증 사용자 요청 {}", requestURI);
+//					// 로그인 화면으로 리다이렉트
+//					httpResponse.sendRedirect("/user/login?redirect=" + requestURI);
+//					return;
+//				}
+//			}
+//			chain.doFilter(request, response);
+//		} catch (Exception ex) {
+//			ex.printStackTrace();
+//		}
+		
+		/*Session을 이용*/
 		try {
-			// 로그인 체크가 필요한 URI인지
-			if (isLoginCheckUri(requestURI)) {
-				Cookie[] cookies = httpRequest.getCookies();
-				// 로그인이 필요한 사용자인지
-				if(isLoginCheckMember(cookies)) {
-					log.info("미인증 사용자 요청 {}", requestURI);
-					// 로그인 화면으로 리다이렉트
-					httpResponse.sendRedirect("/user/login?redirect=" + requestURI);
-					return;
+		if(isLoginCheckUri(requestURI)) {
+			HttpSession session = httpRequest.getSession(false);
+			if(session == null || session.getAttribute("loginUser")==null) {
+				log.info("미인증 사용자 요청 {}",requestURI);
+				httpResponse.sendRedirect("/user/login?redirect=" + requestURI);
+				return;
+					}
 				}
+				chain.doFilter(httpRequest, httpResponse);
+			} catch(Exception e) {
+				e.printStackTrace();
 			}
-			chain.doFilter(request, response);
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
+		
 	}
 
 	/** 화이트 리스트의 경우 인증 체크하지 않음 */
@@ -58,7 +76,8 @@ public class LoginCheckFilter implements Filter {
 		return !PatternMatchUtils.simpleMatch(whitelist, requestURI);
 	}
 	
-	/** 로그인 여부 체크 */
+	/** 로그인 여부 체크 Cookie 
+	
 	private boolean isLoginCheckMember(Cookie[] cookies) {
 		if(cookies != null) {
 			for (Cookie cookie : cookies) {
@@ -69,6 +88,7 @@ public class LoginCheckFilter implements Filter {
 		}
 		return true;
 	}
+	*/
 
 	@Override
 	public void destroy() {

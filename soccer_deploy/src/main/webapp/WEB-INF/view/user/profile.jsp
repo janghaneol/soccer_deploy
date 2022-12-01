@@ -75,14 +75,8 @@
 }
 
 #image1 {
-	width: 450px;
-	height: 180px;
-	margin-left: 5%;
-	margin-right: 5%;
-	margin-top: 3.3%;
-	filter: invert() drop-shadow(5px 5px 5px #000);
-	float: right;
-	/* box-shadow: 5px 5px 5px #000; */
+	width: 300px;
+	height: 400px;
 }
 
 #deploy_two_In {
@@ -99,9 +93,10 @@
 }
 
 #deploy_two_In_two {
-	width: 40%;
-	height: 100%;
-	padding: 6.7%;
+    width: 40%;
+    height: 100%;
+    padding-left: 5%;
+    padding-bottom: 5%;
 }
 
 #to_center_footer {
@@ -186,8 +181,18 @@
                                     </tbody>
 
                                 </table>
+                                <c:if test="${loginUser.email equals}">
+                                <div class="logButton" style="display: inline;">
+                                	<a href="#" class="btn btn-primary">회원정보수정</a>
+                                	<a href="#" class="btn btn-primary" style="margin-left: 10px;">회원탈퇴</a>
+                                </div>
+                                </c:if>
 						</div>
+						<div id="deploy_two_In_two">
+						<img src="/title2.png" id="image1">
 					</div>
+					</div>
+					
 				</div>
 			</div>
 			<div id="deploy_three"></div>

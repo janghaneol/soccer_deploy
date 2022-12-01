@@ -3,6 +3,45 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<style>
+.iText{
+	width: 100px;
+	height: 20px;
+}
+
+.z:after{
+	display: inline-block;
+    width: 1px;
+    height: 15px;
+    background: #ccc;
+    vertical-align: middle;
+    content: "";
+    margin-left: 7px;
+    margin-right: 7px;
+}
+
+#header{
+	font-size: 12px;
+}
+
+#header:before {
+    position: absolute;
+    width: 100%;
+    height: 30px;
+    background: #f9f9f9;
+    border-bottom: 1px solid #ddd;
+    left: 0;
+    top: 0;
+    content: "";
+    z-index: -1;
+}
+#header #logged_info {
+    position: absolute;
+    top: 2px;
+    right: 21%;
+}
+
+</style>
 
 <div class="site-mobile-menu site-navbar-target">
 	<div class="site-mobile-menu-header">
@@ -14,14 +53,34 @@
 </div>
 
 
-<header class="site-navbar py-4" role="banner">
-
+<header class="site-navbar py-4" role="banner" id="header">
 	<div class="container">
+			<div class="d-flex align-items-center" id="logged_info">
+			<c:choose>
+				<c:when test="${loginUser==null}">
+				<form:form modelAttribute="loginForm" action="/user/login" method="post">
+					<input class="iText" type="text" name="email" value="" placeholder="이메일"> 
+					<input class="iText" type="password" name="passwd" value="" placeholder="비밀번호">
+				    <span class="keep"> <input name="keep_signed" type="checkbox" id="keepA" value="Y"><label for="keepA">자동 로그인</label></span>
+					<button type="submit">로그인</button>
+					<a href="/user/regist"><input type="button" value="회원가입"></a>
+				</form:form>
+				</c:when>
+				<c:otherwise>
+					<span class="z"><strong>${loginUser.name}님!</strong></span>
+					<span class="z"><a href="/user/${loginUser.id}">내 정보</a></span>
+					<a href="/user/logout"><input type="button" value="로그아웃"></a>
+				</c:otherwise>
+			</c:choose>
+			</div>
+		<br>
+	
 		<div class="d-flex align-items-center">
 			<div class="site-logo">
 				<a href="index"> <img src="/images/logo.png" alt="Logo">
 				</a>
 			</div>
+
 			<div class="ml-auto">
 				<nav class="site-navigation position-relative text-right"
 					role="navigation">
@@ -31,16 +90,13 @@
 						<li><a href="matches" class="nav-link">Matches</a></li>
 						<li><a href="/user/list" class="nav-link">Players</a></li>
 						<li><a href="mainPage" class="nav-link">MainPage</a></li>
-					<c:if test="${cookie.loginUser != null}">
-						<li><a href="#" class="nav-link">${cookie.loginUser.getValue()}님 반갑습니다!</a></li>
-					</c:if>
 					</ul>
 				</nav>
-				
+
 				<a href="#"
 					class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black float-right text-white"><span
 					class="icon-menu h3 text-white"></span></a>
-			</div>	
+			</div>
 		</div>
 	</div>
 

@@ -60,8 +60,10 @@ public class UserServiceTest {
 	
 	@Test
 	public void findUser() {
+		
 		Long userId = 4L;
 		Optional<User> optional = userService.findUser(userId);
 		log.info("검색한 회원 정보 : {}",optional.get());
+		
 	}
 }

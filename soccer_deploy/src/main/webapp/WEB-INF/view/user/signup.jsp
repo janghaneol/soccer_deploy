@@ -52,14 +52,15 @@
 }
 
 #deploy_two {
-	width: 100%;
-	height: 100%;
-	border-radius: 30px;
-	border-style: solid;
-	border-color: rgb(224, 224, 224);
-	padding-left: 5%;
-	padding-right: 5%;
-	padding-bottom: 5%;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    border-style: solid;
+    border-color: rgb(224, 224, 224);
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 5%;
+    margin-bottom: 10%;
 }
 
 #to_center_footer {
@@ -83,9 +84,7 @@
 }
 
 .bg {
-	height: 1053px;
-	padding-top: 55px;
-	padding-bottom: 75px;
+    padding-top: 10%;
 }
 
 .flex-fill.mx-xl-5.mb-2 {
@@ -126,25 +125,25 @@
 			<!-- registForm Start -->
 				<form:form modelAttribute="user" action="/user/regist" method="post" >
 				<fieldset>
-					<div class="form-group">
+					<div>
 						<label for="exampleInputEmail1" class="form-label mt-4">이메일</label>
 						<form:input type="text" class="form-control" value="${user.email}" 
 							aria-describedby="emailHelp" path="email" placeholder="이메일은 필수입력사항입니다."/>
 					</div>
 					
 					
-					<div class="form-group">
+					<div>
 						<label class="form-label mt-4" for="inputValid">비밀번호</label> 
 						<form:input	type="password" class="form-control" id="inputValid" placeholder="영어와 숫자를 포함한 6~12자" path="passwd"/>
 						<div class="valid-feedback"></div>
 					</div>	
 						
-					<div class="form-group">
+					<div>
 						<label class="form-label mt-4" for="inputInvalid">비밀번호 재확인</label>
 						<input type="password" class="form-control"	id="inputInvalid" placeholder="위의 칸과 같은 비밀번호를 입력해주세요."/>
 					</div>
 
-					<div class="form-group">
+					<div>
 						<label for="exampleInputEmail1" class="form-label mt-4">이름</label>
 						<form:input type="text" value="${user.name}" class="form-control" placeholder="이름은 필수입력사항입니다." path="name" />
 					</div>
@@ -170,7 +169,7 @@
 						</div>
 					</div>
 					 
-					<div class="form-group">
+					<div>
 						<label for="exampleInputEmail1" class="form-label mt-4">주소</label>
 						<form:input type="text" value="${user.address}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" path="address"/>
 					</div>

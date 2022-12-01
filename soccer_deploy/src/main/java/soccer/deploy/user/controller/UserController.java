@@ -4,12 +4,15 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -44,7 +47,7 @@ public class UserController {
 	
 	@PostMapping("/login")
 	public String login(@Validated @ModelAttribute("loginForm") LoginForm loginForm , BindingResult bindingResult, HttpServletResponse response,
-						@RequestParam(name = "redirect", defaultValue = "/xMain") String redirect, Model model) {
+						@RequestParam(name = "redirect", defaultValue = "/xMain") String redirect, Model model , HttpServletRequest request) {
 		
 		if(bindingResult.hasErrors()) {
 			return "/view/user/login";
@@ -57,22 +60,34 @@ public class UserController {
 			bindingResult.reject("loginFail", "ID와 비밀번호를 확인하여 주십시오");
 			return "/view/user/login";
 		}
-	
-		Cookie loginCookie = new Cookie("loginUser", loginUser.getName());
+		
+		/* Cookie로 로그인 할 경우 
+		Cookie loginCookie = new Cookie("loginUser", String.valueOf(loginUser.getId()));
 		loginCookie.setPath("/");
 		log.info("{}",loginCookie.getValue());
 		response.addCookie(loginCookie);
 		model.addAttribute("loginUser", loginCookie);
+		*/
+		
+		/* Session으로 로그인 */
+		HttpSession session = request.getSession();
+		session.setAttribute("loginUser", loginUser);
 		
 		return "redirect:"+redirect;
 	}
 	
 	@GetMapping("/logout")
-	public String logout(HttpServletResponse response) {
+	public String logout(HttpServletResponse response, HttpServletRequest request) {
+		/* Cookie 로그아웃
 		Cookie cookie = new Cookie("loginUser", null);
 		cookie.setMaxAge(0);
 		cookie.setPath("/");
 		response.addCookie(cookie);
+		*/
+		HttpSession session = request.getSession(false);
+		if(session != null) {
+			session.invalidate();
+		}
 		return "redirect:/xMain";
 	}
 	

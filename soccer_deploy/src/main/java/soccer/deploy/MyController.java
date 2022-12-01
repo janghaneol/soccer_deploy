@@ -8,11 +8,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import soccer.deploy.dto.noticeDTO;
 import soccer.deploy.dto.usersDTO;
 import soccer.deploy.service.noticeService;
 import soccer.deploy.service.usersService;
+import soccer.deploy.user.entity.User;
 
 @Controller
 public class MyController {
@@ -23,13 +25,23 @@ public class MyController {
 	@Autowired
 	private noticeService NoticeService;
 	
-	@RequestMapping("/")
+//	@RequestMapping("/") Cookie를 통한 로그인 유지 및 관리
 	public String index(Model model,@CookieValue(name = "loginUser", required = false) String loginUser) {
 		if(loginUser != null) {
 			model.addAttribute("loginUser", loginUser);
 		}
 		return "index";
 	}
+	
+	@RequestMapping("/")
+	public String sessionIndex(@SessionAttribute(name = "loginUser",required = false ) User loginUser ,Model model) {
+		if(loginUser != null) {
+			model.addAttribute("loginUser",loginUser);
+		}
+		return "index";
+	}
+	
+	
 	
 	@RequestMapping("/main")
 	public String main() {
@@ -87,17 +99,6 @@ public class MyController {
 	@GetMapping("/test")
 	public String lineUp() {
 		return "view/lineUp/lineUp";
-	}
-	
-//	Mybatis분들은 이거 보면서 하면 도움이 될거예요!
-	@RequestMapping("/users")
-	public String users(Model model) {
-		
-		List<usersDTO> select = UsersService.select();
-		
-		model.addAttribute("select", select);
-		
-		return "users";
 	}
 	
 	@RequestMapping("/notice")
