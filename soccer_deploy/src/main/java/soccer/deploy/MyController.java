@@ -32,9 +32,6 @@ public class MyController {
 	private usersService UsersService;
 
 	@Autowired
-	private noticeService NoticeService;
-
-	@Autowired
 	private pageService PageService;
 	
 	@Autowired
@@ -120,9 +117,6 @@ public class MyController {
 	@RequestMapping("/users")
 	public String users(Model model) {
 
-		List<usersDTO> select = UsersService.select();
-		model.addAttribute("select", select);
-
 		return "users";
 	}
 
@@ -136,17 +130,17 @@ public class MyController {
 	public String xnotice(Model model, @RequestParam("pagenum") int pagenum, HttpServletRequest session) {
 		
 //		List<noticeDTO> view_page_num = NoticeService.view_page_num();
-		List<pageDTO> view_page_num = PageService.view_page_num(pagenum);
-
-		model.addAttribute("view_page_num",view_page_num);
-		
-		
-		List<noticeDTO> view_content = NoticeService.view_content(pagenum);
-
-		model.addAttribute("view_content",view_content);
-		
-		
-		session.setAttribute("pagenum",(int)pagenum);
+//		List<pageDTO> view_page_num = PageService.view_page_num(pagenum);
+//
+//		model.addAttribute("view_page_num",view_page_num);
+//		
+//		
+//		List<noticeDTO> view_content = NoticeService.view_content(pagenum);
+//
+//		model.addAttribute("view_content",view_content);
+//		
+//		
+//		session.setAttribute("pagenum",(int)pagenum);
 		
 		
 		
@@ -169,11 +163,11 @@ public class MyController {
 	public String To_front_page_num(Model model, @RequestParam(value="pagenum",required=false) int pagenum, HttpSession session
 					) throws Exception {
 					
-					List<noticeDTO> view_content = NoticeService.view_content(pagenum);								
-
-					model.addAttribute("view_content", view_content);
-					
-					session.setAttribute("pagenum",(int)pagenum);
+//					List<noticeDTO> view_content = NoticeService.view_content(pagenum);								
+//
+//					model.addAttribute("view_content", view_content);
+//					
+//					session.setAttribute("pagenum",(int)pagenum);
 		
 					return "xnotice";
 	}
@@ -181,11 +175,11 @@ public class MyController {
 	public String To_back_page_num( Model model, @RequestParam(value="pagenum",required=false) int pagenum, HttpSession session
 					) throws Exception {
 					
-					List<noticeDTO> view_content = NoticeService.view_content(pagenum);								
-
-					model.addAttribute("view_content", view_content);
-					
-					session.setAttribute("pagenum",(int)pagenum);
+//					List<noticeDTO> view_content = NoticeService.view_content(pagenum);								
+//
+//					model.addAttribute("view_content", view_content);
+//					
+//					session.setAttribute("pagenum",(int)pagenum);
 							
 					return "xnotice";
 					
