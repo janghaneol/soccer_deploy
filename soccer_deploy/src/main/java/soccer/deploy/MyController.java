@@ -15,33 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import soccer.deploy.dto.pageDTO;
-import soccer.deploy.dao.clickpagenumDAO;
-import soccer.deploy.dao.noticeDAO;
-import soccer.deploy.dao.pageDAO;
-import soccer.deploy.dto.noticeDTO;
-import soccer.deploy.dto.usersDTO;
-import soccer.deploy.service.noticeService;
-import soccer.deploy.service.pageService;
-import soccer.deploy.service.usersService;
-
 @Controller
 public class MyController {
-
-	@Autowired
-	private usersService UsersService;
-
-	@Autowired
-	private pageService PageService;
-	
-	@Autowired
-	private noticeDAO NoticeDAO;
-	
-	@Autowired
-	private pageDAO PageDAO;
-	
-	@Autowired
-	private clickpagenumDAO ClickpagenumDAO;
 
 	@RequestMapping("/")
 	public String index() {
@@ -113,7 +88,6 @@ public class MyController {
 		return "view/lineUp/lineUp";
 	}
 
-//	Mybatis분들은 이거 보면서 하면 도움이 될거예요!
 	@RequestMapping("/users")
 	public String users(Model model) {
 
@@ -127,61 +101,9 @@ public class MyController {
 	}
 
 	@RequestMapping("/xnotice")
-	public String xnotice(Model model, @RequestParam("pagenum") int pagenum, HttpServletRequest session) {
-		
-//		List<noticeDTO> view_page_num = NoticeService.view_page_num();
-//		List<pageDTO> view_page_num = PageService.view_page_num(pagenum);
-//
-//		model.addAttribute("view_page_num",view_page_num);
-//		
-//		
-//		List<noticeDTO> view_content = NoticeService.view_content(pagenum);
-//
-//		model.addAttribute("view_content",view_content);
-//		
-//		
-//		session.setAttribute("pagenum",(int)pagenum);
-		
-		
-		
-		
-//		List<noticeDTO> select = NoticeService.select();
-//
-//		model.addAttribute("select", select);
-//		
-//		
-//		  model.addAttribute("To_front_page_num",NoticeDAO.select());
-//		  
-//		  model.addAttribute("To_back_page_num",NoticeDAO.select());
-		 
+	public String xnotice(Model model) {
 
 		return "xnotice";
 
 	}
-	
-	@RequestMapping(value="/To_front_page_num", method=RequestMethod.GET)
-	public String To_front_page_num(Model model, @RequestParam(value="pagenum",required=false) int pagenum, HttpSession session
-					) throws Exception {
-					
-//					List<noticeDTO> view_content = NoticeService.view_content(pagenum);								
-//
-//					model.addAttribute("view_content", view_content);
-//					
-//					session.setAttribute("pagenum",(int)pagenum);
-		
-					return "xnotice";
-	}
-	@RequestMapping(value="/To_back_page_num", method=RequestMethod.GET)
-	public String To_back_page_num( Model model, @RequestParam(value="pagenum",required=false) int pagenum, HttpSession session
-					) throws Exception {
-					
-//					List<noticeDTO> view_content = NoticeService.view_content(pagenum);								
-//
-//					model.addAttribute("view_content", view_content);
-//					
-//					session.setAttribute("pagenum",(int)pagenum);
-							
-					return "xnotice";
-					
-	}		
 }
