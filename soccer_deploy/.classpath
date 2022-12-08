@@ -25,6 +25,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.buildship.core.gradleclasspathcontainer"/>
-	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/view/chat/commons-dbcp2-2.9.0.jar"/>
+	<classpathentry kind="lib" path="src/test/validation-api-2.0.1.Final.jar"/>
 	<classpathentry kind="output" path="bin/default"/>
 </classpath>

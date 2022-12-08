@@ -308,6 +308,26 @@
     		
     		</div>
     		
+    		
+    		<script type="text/javascript">
+    	    var newName, n=0;
+    	    function newWindow(value)
+    	    {
+    	       n = n + 1;
+    	       newName = value + n;     
+    	    }
+
+    	    function MyOpenWindow()
+    	    {
+    	        newWindow("MyWindow");
+    	        window.open('http://localhost:5000/', newName, 
+    	         "width=1050,height=800,toolbar=no,location=no,status=no," +
+
+    	         "menubar=no,scrollbars=yes,resizable=yes,left=200,top=50");
+    	    }
+    	    </script>   
+    	
+    	
     		<div id="deploy_two_two">
     			
     			<div id="to_center_text">
@@ -316,7 +336,7 @@
     				<br>
     			
     				<div class="form-group">
-        				<a href="http://localhost:5000/"><button class="btn btn-primary py-3 px-5">Go To Chatting</button></a>
+        				<a href="#none" onclick="MyOpenWindow()"><button class="btn btn-primary py-3 px-5">Go To Chatting</button></a>
     				</div>
     			
     			</div>
