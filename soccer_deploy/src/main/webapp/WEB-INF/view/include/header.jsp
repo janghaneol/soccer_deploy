@@ -40,6 +40,9 @@
     top: 2px;
     right: 21%;
 }
+.logButton{
+	border-radius: revert;
+}
 
 </style>
 
@@ -62,7 +65,7 @@
 					<input class="iText" type="text" name="email" value="" placeholder="이메일"> 
 					<input class="iText" type="password" name="passwd" value="" placeholder="비밀번호">
 				    <span class="keep"> <input name="keep_signed" type="checkbox" id="keepA" value="Y"><label for="keepA">자동 로그인</label></span>
-					<button type="submit">로그인</button>
+					<button type="submit" class="logButton">로그인</button>
 					<a href="/user/regist"><input type="button" value="회원가입"></a>
 				</form:form>
 				</c:when>

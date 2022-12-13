@@ -25,7 +25,7 @@ public class MyController {
 	@Autowired
 	private noticeService NoticeService;
 	
-//	@RequestMapping("/") Cookie를 통한 로그인 유지 및 관리
+//	@RequestMapping("/") Cookie를 통한 로그인 유지 및 관리 Session으로 변경했습니다.
 	public String index(Model model,@CookieValue(name = "loginUser", required = false) String loginUser) {
 		if(loginUser != null) {
 			model.addAttribute("loginUser", loginUser);
@@ -33,6 +33,7 @@ public class MyController {
 		return "index";
 	}
 	
+	/*Session을 통한 로그인 유지 및 관리*/
 	@RequestMapping("/")
 	public String sessionIndex(@SessionAttribute(name = "loginUser",required = false ) User loginUser ,Model model) {
 		if(loginUser != null) {

@@ -40,7 +40,7 @@ public class LineUpController {
 	@Autowired 
 	private UserService userService;
 	
-	//Ã³À½ È­¸é Ãâ·ÂºÎºÐ
+	//Ã³ï¿½ï¿½ È­ï¿½ï¿½ ï¿½ï¿½ÂºÎºï¿½
 	@GetMapping
 	public String lineUpview(Model model) {
 		Long recentMatch = matchService.findRecentMatchNum();
@@ -51,7 +51,7 @@ public class LineUpController {
 		
 		return "view/lineUp/lineUp";
 	}
-	// °Ë»ö ºñµ¿±â·Î post·Î
+	// ï¿½Ë»ï¿½ ï¿½ñµ¿±ï¿½ï¿½ postï¿½ï¿½
 	@PostMapping
 	@ResponseBody
 	public List<Entry> search(@RequestBody String name) throws IOException{
@@ -62,7 +62,7 @@ public class LineUpController {
 		log.info("{}",entrys);
 		return entrys;
 	}
-	// ÆäÀÌÁö ÀÌµ¿½Ã ÀÚµ¿À¸·Î ¼¼¼Ç¿¡ ÀúÀå ÇÏÁö¸¸ ±×Àü¿¡ ¹°¾îº¸´Â Ã¢ ³ª¿À°Ô ÇØ¼­ Ãë¼Ò½Ã´Â ÀúÀå x È®ÀÎ½Ã ÀúÀå
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½ï¿½ ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½îº¸ï¿½ï¿½ Ã¢ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø¼ï¿½ ï¿½ï¿½Ò½Ã´ï¿½ ï¿½ï¿½ï¿½ï¿½ x È®ï¿½Î½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	@PostMapping("/entry")
 	@ResponseBody
 	public void saveEntry(@RequestBody List<LineUpDto> list, HttpSession session) throws IOException{

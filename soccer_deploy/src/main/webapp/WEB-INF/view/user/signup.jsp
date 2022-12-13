@@ -112,6 +112,9 @@
 	padding-left: 10px;
 }
 
+.errMsg{
+	color: red;
+}
 
 
 </style>
@@ -130,13 +133,26 @@
 						<form:input type="text" class="form-control" value="${user.email}" 
 							aria-describedby="emailHelp" path="email" placeholder="이메일은 필수입력사항입니다."/>
 					</div>
-					
+					<spring:hasBindErrors name="user">
+					<div class="col-lg-11 field-error">
+						<p class="errMsg">
+							<form:errors path="email"></form:errors>
+						</p>
+					</div>
+					</spring:hasBindErrors>
 					
 					<div>
 						<label class="form-label mt-4" for="inputValid">비밀번호</label> 
 						<form:input	type="password" class="form-control" id="inputValid" placeholder="영어와 숫자를 포함한 6~12자" path="passwd"/>
 						<div class="valid-feedback"></div>
-					</div>	
+					</div>
+					<spring:hasBindErrors name="user">
+					<div class="col-lg-11 field-error">
+						<p class="errMsg">
+							<form:errors path="passwd"></form:errors>
+						</p>
+					</div>
+					</spring:hasBindErrors>	
 						
 					<div>
 						<label class="form-label mt-4" for="inputInvalid">비밀번호 재확인</label>
@@ -147,16 +163,25 @@
 						<label for="exampleInputEmail1" class="form-label mt-4">이름</label>
 						<form:input type="text" value="${user.name}" class="form-control" placeholder="이름은 필수입력사항입니다." path="name" />
 					</div>
+					<spring:hasBindErrors name="user">
+					<div class="col-lg-11 field-error">
+						<p class="errMsg">
+							<form:errors path="name"></form:errors>
+						</p>
+					</div>
+					</spring:hasBindErrors>	
 
 					<div class="form">
 						<div class="age">
 							<label class="form-label mt-4">나이</label>
 							<form:input type="text" class="form-control" placeholder="나이" maxlength="3" path="age"/>
 						</div>
+						
 						<div class="backnum">
 							<label class="form-label mt-4">등 번호</label>
 							<form:input type="text" class="form-control" placeholder="최대 3자리" maxlength="3" path="backNum"/>
 						</div>
+						
 						
 						<div class="position">
 							<label class="form-label mt-4">포지션</label>
@@ -268,6 +293,21 @@
 		</div>
 	</footer>
 
+	<script>
+		var passwd = document.getElementById("inputValid"),
+			confirm_passwd = document.getElementById("inputInvalid");
+
+		function validatePasswd(){
+			if(passwd.value != confirm_passwd.value){
+			confirm_passwd.setCustomValidity("비밀번호가 일치하지 않습니다.");
+			} else {
+			confirm_passwd.setCustomValidity('');
+			}
+		}
+
+		passwd.onchange = validatePasswd;
+		confirm_passwd.onchange = validatePasswd;
+	</script>
 
 
 	<script src="js/jquery-3.3.1.min.js"></script>

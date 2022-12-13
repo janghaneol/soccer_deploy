@@ -7,7 +7,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import soccer.deploy.user.dto.UpdateUserDto;
 import soccer.deploy.user.entity.User;
+
 
 public interface UserService {
 	// 회원 가입
@@ -24,6 +26,13 @@ public interface UserService {
 	
 	// 회원 검색
 	public Page<User> searchUser(String name, Pageable pageable);
+	
+	// 회원 수정
+	public Long updateUser(Long userId ,UpdateUserDto updateUser);
+	
+	// 회원 탈퇴
+	public void delete(Long userId);
+	
 }
 	
 

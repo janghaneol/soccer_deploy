@@ -1,7 +1,6 @@
 package soccer.deploy.user.entity;
 
 
-
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -15,6 +14,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -35,6 +35,7 @@ import lombok.ToString;
 @ToString
 @Data
 @DynamicInsert
+@DynamicUpdate
 public class User {
 	
 	@Id
@@ -68,4 +69,18 @@ public class User {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date regdate;
 	
+	
+		
+
+
+		public void update(String address, String imgContType, String imgFileName, Integer backNum, String position,
+				Date regdate) {
+			
+			this.address = address;
+			this.imgContType = imgContType;
+			this.imgFileName = imgFileName;
+			this.backNum = backNum;
+			this.position = position;
+			this.regdate = regdate;
+		}
 }

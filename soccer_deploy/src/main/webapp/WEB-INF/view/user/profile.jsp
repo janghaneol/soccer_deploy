@@ -125,7 +125,7 @@
 	<div id="zero">
 
 		<div id="deploy">
-		<div id="deploy_one"></div>
+		
 			<div id="deploy_two">
 
 				<div class="site-section">
@@ -181,10 +181,10 @@
                                     </tbody>
 
                                 </table>
-                                <c:if test="${loginUser.email equals}">
+                                <c:if test="${loginUser.id == user.id}">
                                 <div class="logButton" style="display: inline;">
-                                	<a href="#" class="btn btn-primary">회원정보수정</a>
-                                	<a href="#" class="btn btn-primary" style="margin-left: 10px;">회원탈퇴</a>
+                                	<a href="/user/${loginUser.id}/checkpw" class="btn btn-primary">회원정보수정</a>
+                                	<a href="/user/${loginUser.id}/delete" class="btn btn-primary" style="margin-left: 10px;">회원탈퇴</a>
                                 </div>
                                 </c:if>
 						</div>

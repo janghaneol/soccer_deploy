@@ -9,8 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import lombok.extern.slf4j.Slf4j;
+import soccer.deploy.user.dto.UpdateUserDto;
 import soccer.deploy.user.entity.User;
 import soccer.deploy.user.repository.UserRepository;
 
@@ -19,7 +21,7 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserRepository userRepository;
-
+	
 	@Transactional
 	@Override
 	public Long register(User user) {
@@ -45,6 +47,21 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public Page<User> searchUser(String name,Pageable pageable) {
 		return userRepository.findAllByNameContaining(name, pageable);
+	}
+
+	@Transactional
+	@Override
+	public Long updateUser(Long userId, UpdateUserDto updateUser) {
+		User user = userRepository.findById(userId).orElseThrow(()-> new IllegalArgumentException("해당 회원이 없습니다. id= "+userId));
+		user.update(updateUser.getAddress(), updateUser.getImgContType(), updateUser.getImgFileName(), updateUser.getBackNum(), updateUser.getPosition(), updateUser.getRegdate());
+		return user.getId();
+	}
+	
+	@Transactional
+	@Override
+	public void delete(Long userId) {
+		User user = userRepository.findById(userId).orElseThrow(()-> new IllegalArgumentException("해당 회원은 존재하지 않습니다."));
+		userRepository.delete(user);
 	}
 
 }
