@@ -28,7 +28,6 @@ public class UserDto {
 	@NotBlank(message = "이름은 필수입력사항입니다.")
 	private String name;
 	
-	
 	private Integer age;
 	
 	private String address;

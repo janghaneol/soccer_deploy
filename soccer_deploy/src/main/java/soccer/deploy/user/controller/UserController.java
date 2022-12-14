@@ -105,19 +105,21 @@ public class UserController {
 	}
 	
 	@PostMapping("/regist")
-	public String registerForm(@Validated @ModelAttribute("user") UserDto user, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model) {
+	public String registerForm(@Validated @ModelAttribute("user") UserDto user, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model,
+				@RequestParam String add1 , String add2 , String add3) {
 		
 				if (bindingResult.hasErrors()) {
 					log.info("bindingResults : {}", bindingResult);
 					return "/view/user/signup";
 				}
+		String address = add1+"  "+add2+"  "+add3;
 				
 		User registUser = new User();
 		registUser.setEmail(user.getEmail());
 		registUser.setPasswd(user.getPasswd());
 		registUser.setAge(user.getAge());
 		registUser.setName(user.getName());
-		registUser.setAddress(user.getAddress());
+		registUser.setAddress(address);
 		registUser.setBackNum(user.getBackNum());
 		registUser.setImgContType(user.getImgContType());
 		registUser.setImgFileName(user.getImgFileName());
@@ -209,7 +211,10 @@ public class UserController {
 	 *  SpringBoot에선 Put과 Delete Mapping을 사용하기 위해선 HiddenHttpMethodFilter를 @Bean으로 Application에 선언해줘야 한다. (헤멜 수 있음)
 	 */
 	@PutMapping("{userId}/modify")
-	public String modifyForm(@PathVariable Long userId, @ModelAttribute("updateUser") UpdateUserDto user,Model model, RedirectAttributes redirectAttributes) {
+	public String modifyForm(@PathVariable Long userId, @ModelAttribute("updateUser") UpdateUserDto user,Model model, RedirectAttributes redirectAttributes,
+				@RequestParam String add1 , String add2) {
+		String address = add1 + " " +add2;
+		user.setAddress(address);
 		Long update	 = userService.updateUser(userId, user);
 		
 		redirectAttributes.addAttribute("userId", update);
