@@ -215,7 +215,7 @@
                                    </form>
                                 </div>
                                 <div id="deploy_two_In_two">
-                                    <img src="/title2.png" id="image1">
+                                    <img src="/images/profile/${loginUser.imgFileName}" id="image1">
                                 </div>
                            
                             </div>

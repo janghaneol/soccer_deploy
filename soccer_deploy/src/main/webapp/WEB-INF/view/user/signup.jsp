@@ -122,7 +122,7 @@
                 <div class="container py-4">
                     <div id="deploy_two">
                     <!-- registForm Start -->
-                        <form:form modelAttribute="user" action="/user/regist" method="post" >
+                        <form:form modelAttribute="user" action="/user/regist" method="post" enctype="multipart/form-data">
                         <fieldset>
                             <div>
                                 <label for="exampleInputEmail1" class="form-label mt-4">이메일</label>
@@ -202,9 +202,16 @@
                                     </form:select>
                                 </div>
                             </div>
-                             
-                        
-        
+                         
+                        <div class="form">
+                        	<label class="form-label mt-4">프로필 사진</label><br>
+                        		<div style="display: flex;">
+                        			<img src="/images/img_1.jpg" style="width: 200px; height: 200px;">
+                        			<input type="file" class="form-control" name="imageFile">
+                        		</div>
+        				</div>
+        			
+        					
                             <div>
                                 <button class="btn btn-primary btn-lg" type="submit" onclick="add()" style="margin-top: 10px;">가입하기</button>
                             </div>

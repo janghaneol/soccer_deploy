@@ -26,6 +26,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public Long register(User user) {
 		User saveUser = userRepository.save(user);
+		
 		return saveUser.getId();
 	}
 	

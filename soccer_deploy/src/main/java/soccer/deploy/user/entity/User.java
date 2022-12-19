@@ -66,6 +66,7 @@ public class User {
 	private String memberAuth;
 	@Column
 	private String position;
+	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date regdate;
 	
@@ -73,8 +74,7 @@ public class User {
 		
 
 
-		public void update(String address, String imgContType, String imgFileName, Integer backNum, String position,
-				Date regdate) {
+		public void update(String address, String imgContType, String imgFileName, Integer backNum, String position, Date regdate) {
 			
 			this.address = address;
 			this.imgContType = imgContType;

@@ -43,7 +43,14 @@
 .logButton{
 	border-radius: revert;
 }
-
+#profileView{
+	border-radius: 100%;
+	width: 20px;
+	height: 20px;
+}
+#profileView:hover{
+	border: #F00 2px solid;
+}
 </style>
 
 <div class="site-mobile-menu site-navbar-target">
@@ -70,6 +77,7 @@
 				</form:form>
 				</c:when>
 				<c:otherwise>
+					<span class="z"><img src="/images/profile/${loginUser.imgFileName}" id="profileView"></span>
 					<span class="z"><strong>${loginUser.name}님!</strong></span>
 					<span class="z"><a href="/user/${loginUser.id}">내 정보</a></span>
 					<a href="/user/logout"><input type="button" value="로그아웃"></a>

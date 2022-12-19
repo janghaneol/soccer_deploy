@@ -1,5 +1,7 @@
 package soccer.deploy.user.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -28,6 +30,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.extern.slf4j.Slf4j;
@@ -106,14 +110,31 @@ public class UserController {
 	
 	@PostMapping("/regist")
 	public String registerForm(@Validated @ModelAttribute("user") UserDto user, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model,
-				@RequestParam String add1 , String add2 , String add3) {
+				@RequestParam String add1 , String add2 , String add3,
+				@RequestParam MultipartFile imageFile) {
 		
 				if (bindingResult.hasErrors()) {
 					log.info("bindingResults : {}", bindingResult);
 					return "/view/user/signup";
 				}
+		
+		/*
+		 * 다음 API로 받은 주소를 다 조합해 address에 간단하게 저장		
+		 */
 		String address = add1+"  "+add2+"  "+add3;
-				
+		
+		/*
+		 * 프로필 사진 넣기
+		 */
+		try {
+			imageFile.transferTo(new File(imageFile.getOriginalFilename()));
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
 		User registUser = new User();
 		registUser.setEmail(user.getEmail());
 		registUser.setPasswd(user.getPasswd());
@@ -121,8 +142,8 @@ public class UserController {
 		registUser.setName(user.getName());
 		registUser.setAddress(address);
 		registUser.setBackNum(user.getBackNum());
-		registUser.setImgContType(user.getImgContType());
-		registUser.setImgFileName(user.getImgFileName());
+		registUser.setImgContType(imageFile.getContentType());
+		registUser.setImgFileName(imageFile.getOriginalFilename());
 		registUser.setPosition(user.getPosition());
 		registUser.setRegdate(user.getRegdate());
 		registUser.setMemberAuth(user.getMemberAuth());
@@ -131,7 +152,6 @@ public class UserController {
 		
 		redirectAttributes.addAttribute("userId", userId);
 		redirectAttributes.addAttribute("status", true);
-		
 		
 		return "redirect:/user/{userId}";
 	}
