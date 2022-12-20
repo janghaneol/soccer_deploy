@@ -30,19 +30,15 @@ public class UpdateUserDto {
 	private Integer backNum;
 		
 	private String position;
-	
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date regdate;
+
 
 	@Builder
-	public UpdateUserDto(String address, String imgContType, String imgFileName, Integer backNum, String position,
-			Date regdate) {
+	public UpdateUserDto(String address, String imgContType, String imgFileName, Integer backNum, String position) {
 		this.address = address;
 		this.imgContType = imgContType;
 		this.imgFileName = imgFileName;
 		this.backNum = backNum;
 		this.position = position;
-		this.regdate = regdate;
 	}
 
 	

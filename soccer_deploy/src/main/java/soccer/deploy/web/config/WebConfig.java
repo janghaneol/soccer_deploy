@@ -9,6 +9,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import soccer.deploy.web.filter.LoginCheckFilter;
+import soccer.deploy.web.interceptor.LoginCheckInterceptor;
 
 
 
@@ -26,7 +27,7 @@ public class WebConfig implements WebMvcConfigurer{
 	 * DispatcherType.ERROR); return filterRegistrationBean; }
 	 */
 
-	@Bean
+//	@Bean
 	public FilterRegistrationBean loginCheckFilter() {
 		FilterRegistrationBean<Filter> filterRegistrationBean = new FilterRegistrationBean<Filter>();
 		filterRegistrationBean.setFilter(new LoginCheckFilter());
@@ -36,6 +37,13 @@ public class WebConfig implements WebMvcConfigurer{
 		return filterRegistrationBean;
 	}
 	
-	
+	public void addInterceptors(InterceptorRegistry registry) {
+		registry.addInterceptor(new LoginCheckInterceptor())
+		        .order(1)
+		        .addPathPatterns("/**")
+		        .excludePathPatterns(
+		        		"/", "/*.ico", "/css/**", "/fonts/**", "/js/**", "/images/**", 
+		        		"/user/register","/user/login", "/user/logout", "/error", "/error/**");
+	}
 
 }

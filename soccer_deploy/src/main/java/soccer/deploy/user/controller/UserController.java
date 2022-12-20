@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -126,8 +127,11 @@ public class UserController {
 		/*
 		 * 프로필 사진 넣기
 		 */
+		UUID ranName = UUID.randomUUID();	// 랜덤한 문자열을 생성해 붙여줘야 같은 이름으로 파일의 중복을 방지한다. (덮어쓰기 방지)
+		
+		
 		try {
-			imageFile.transferTo(new File(imageFile.getOriginalFilename()));
+			imageFile.transferTo(new File(ranName +"_"+ imageFile.getOriginalFilename()));
 		} catch (IllegalStateException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -233,6 +237,7 @@ public class UserController {
 	@PutMapping("{userId}/modify")
 	public String modifyForm(@PathVariable Long userId, @ModelAttribute("updateUser") UpdateUserDto user,Model model, RedirectAttributes redirectAttributes,
 				@RequestParam String add1 , String add2) {
+		
 		String address = add1 + " " +add2;
 		user.setAddress(address);
 		Long update	 = userService.updateUser(userId, user);

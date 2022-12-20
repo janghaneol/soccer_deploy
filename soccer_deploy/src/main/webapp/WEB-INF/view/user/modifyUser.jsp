@@ -95,7 +95,7 @@
         }
         
         #deploy_two_In_one {
-            width: 60%;
+            width: 50%;
             height: 100%;
         }
         
@@ -129,7 +129,6 @@
             height: 30px;
         }eight: 30px;
         }
-        
         </style>
         
         <body>
@@ -140,11 +139,8 @@
             <!-- 필요하면 지워도 되는데 책임은 못짐. -->
         
             <div id="zero">
-
                 <div id="deploy">
-                
                     <div id="deploy_two">
-        
                         <div class="site-section">
                             <div class="container">
                                 <div id="deploy_two_In">
@@ -207,24 +203,20 @@
                                             	
                                             </tbody>
                                         </table>
-                                        
+                                         <div id="deploy_two_In_two">
+                                   			<img src="/images/profile/${loginUser.imgFileName}" id="image1" name="imgFileName">
+                              			</div>
                                         <div class="logButton" style="display: inline;">
                                             <button class="btn btn-primary lg" type="submit">등록</button>
                                             <a href="/user/${loginUser.id}" class="btn btn-primary" style="margin-left: 10px;">취소</a>
                                         </div>
-                                   </form>
-                                </div>
-                                <div id="deploy_two_In_two">
-                                    <img src="/images/profile/${loginUser.imgFileName}" id="image1">
-                                </div>
-                           
+                             	 </form>
+                               </div>
                             </div>
-                            
                         </div>
                     </div>
-                    <div id="deploy_three"></div>
+                    	<div id="deploy_three"></div>
                 </div>
-        
             </div>
         </div>
         

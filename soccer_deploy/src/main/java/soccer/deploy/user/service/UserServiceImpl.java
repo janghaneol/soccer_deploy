@@ -26,7 +26,6 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public Long register(User user) {
 		User saveUser = userRepository.save(user);
-		
 		return saveUser.getId();
 	}
 	
@@ -54,7 +53,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public Long updateUser(Long userId, UpdateUserDto updateUser) {
 		User user = userRepository.findById(userId).orElseThrow(()-> new IllegalArgumentException("해당 회원이 없습니다. id= "+userId));
-		user.update(updateUser.getAddress(), updateUser.getImgContType(), updateUser.getImgFileName(), updateUser.getBackNum(), updateUser.getPosition(), updateUser.getRegdate());
+		user.update(updateUser.getAddress(), updateUser.getImgContType(), updateUser.getImgFileName(), updateUser.getBackNum(), updateUser.getPosition());
 		return user.getId();
 	}
 	

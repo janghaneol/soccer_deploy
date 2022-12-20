@@ -70,17 +70,11 @@ public class User {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date regdate;
 	
-	
-		
-
-
-		public void update(String address, String imgContType, String imgFileName, Integer backNum, String position, Date regdate) {
-			
+		public void update(String address, String imgContType, String imgFileName, Integer backNum, String position) {
 			this.address = address;
 			this.imgContType = imgContType;
 			this.imgFileName = imgFileName;
-			this.backNum = backNum;
+			this.backNum = backNum;	
 			this.position = position;
-			this.regdate = regdate;
 		}
 }
