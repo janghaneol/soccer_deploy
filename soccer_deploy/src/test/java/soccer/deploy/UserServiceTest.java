@@ -28,10 +28,9 @@ public class UserServiceTest {
 	private UserRepository userRepository;
 
 	@Test
-	@Disabled
 	public void regist() {
 		User user = new User();
-		user.setEmail("Test2@Test.com");
+		user.setEmail("Test2@Test.com3");
 		user.setPasswd("test123456");
 		user.setName("테스트2");
 		user.setAge(20);
@@ -40,7 +39,7 @@ public class UserServiceTest {
 		user.setBackNum(7);
 		
 		Long userId = userService.register(user);
-		log.info("가입한 회원번호 : {}", userId);
+		log.info("가입한 회원 : {}", userId);
 	}
 
 	@Test
@@ -84,6 +83,7 @@ public class UserServiceTest {
 	}
 	
 	@Test
+	@Disabled
 	public void delete() {
 		
 		Long userId = 5L;	

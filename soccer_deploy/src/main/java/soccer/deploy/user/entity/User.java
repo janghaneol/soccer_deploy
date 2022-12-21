@@ -1,6 +1,8 @@
 package soccer.deploy.user.entity;
 
 
+
+
 import java.util.Date;
 
 import javax.persistence.Column;

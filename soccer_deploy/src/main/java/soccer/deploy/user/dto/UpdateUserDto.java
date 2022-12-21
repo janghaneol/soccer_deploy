@@ -1,5 +1,7 @@
 package soccer.deploy.user.dto;
 
+
+
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -30,7 +32,6 @@ public class UpdateUserDto {
 	private Integer backNum;
 		
 	private String position;
-
 
 	@Builder
 	public UpdateUserDto(String address, String imgContType, String imgFileName, Integer backNum, String position) {

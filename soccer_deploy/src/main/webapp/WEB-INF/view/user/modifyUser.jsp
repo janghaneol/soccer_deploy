@@ -150,6 +150,7 @@
                                         <input type="hidden" name="_method" value="put">
                                         <table class="table table-sm">
                                         <thead class="thead-dark">
+                                        	
                                                 <tr>
                                                     <th scope="col" colspan="2" >
                                                         기본 정보
@@ -162,9 +163,8 @@
                                                 <tr class="text-white">
                                                     <th scope="row">이메일</th>
                                                     <td>${user.email}</td>
-                                                    
                                                 </tr>
-        
+        							
                                                 <tr class="text-white">
                                                     <th scope="row">나이</th>
                                                     <td>${user.age}</td>

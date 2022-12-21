@@ -22,6 +22,8 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
 		log.info("LoginCheckInterceptor 실행...");
 		System.out.println(request.getDispatcherType());
 		String requestURI = request.getRequestURI();
+		HttpSession session = request.getSession();
+		Object logUser = session.getAttribute("loginUser");
 		/* Cookie 방식
 		Cookie[] cookies = request.getCookies();
 		// 로그인이 필요한 사용자인지
@@ -32,8 +34,8 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
 			return false;
 		}
 		*/
-		HttpSession session = request.getSession();
-		if(session==null || session.getAttribute("loginUser")==null) {
+		
+		if(session==null || logUser == null) {
 			response.sendRedirect("/user/login?redirect="+requestURI);
 			return false;
 		}
@@ -46,13 +48,9 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
 		
 //	/** 로그인 여부 체크 */
 //	private boolean isLoginCheckMember(HttpSession session) {
-//		if (cookies != null) {
-//			for (Cookie cookie : cookies) {
-//				if (cookie.getName().equalsIgnoreCase("loginId")) {
-//					return false;
-//					}
-//				}
-//			}
+//		if (session != null || session.getAttribute("loginUser")) {
+//				return false;
+//		}
 //		return true;
 //	}
 

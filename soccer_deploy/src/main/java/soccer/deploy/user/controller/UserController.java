@@ -2,6 +2,8 @@ package soccer.deploy.user.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -13,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -127,8 +130,7 @@ public class UserController {
 		/*
 		 * 프로필 사진 넣기
 		 */
-		UUID ranName = UUID.randomUUID();	// 랜덤한 문자열을 생성해 붙여줘야 같은 이름으로 파일의 중복을 방지한다. (덮어쓰기 방지)
-		
+		String ranName = UUID.randomUUID().toString();	// 랜덤한 문자열을 생성해 붙여줘야 같은 이름으로 파일의 중복을 방지한다. (덮어쓰기 방지)
 		
 		try {
 			imageFile.transferTo(new File(ranName +"_"+ imageFile.getOriginalFilename()));
