@@ -9,5 +9,6 @@ public interface UserService {
 	public Long register(User user);
 	// �쉶�썝�씤利� (濡쒓렇�씤)
 	public User Login(String email, String passwd);
+}
 	
 

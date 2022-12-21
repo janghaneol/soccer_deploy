@@ -12,7 +12,7 @@ import lombok.ToString;
 @Setter
 @ToString
 public class LineUpDto {
-	String backNum;
+	String backNum; 
 	String name;
 	String goal;
 	String assist;

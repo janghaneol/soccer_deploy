@@ -40,7 +40,7 @@ public class LineUpController {
 	@Autowired 
 	private UserService userService;
 	
-	//Ã³À½ È­¸é Ãâ·ÂºÎºĞ
+	//ì²˜ìŒ í™”ë©´ ì¶œë ¥ë¶€ë¶„
 	@GetMapping
 	public String lineUpview(Model model) {
 		Long recentMatch = matchService.findRecentMatchNum();
@@ -51,7 +51,7 @@ public class LineUpController {
 		
 		return "view/lineUp/lineUp";
 	}
-	// °Ë»ö ºñµ¿±â·Î post·Î
+	// ê²€ìƒ‰ ë¹„ë™ê¸°ë¡œ postë¡œ
 	@PostMapping
 	@ResponseBody
 	public List<Entry> search(@RequestBody String name) throws IOException{
@@ -62,7 +62,7 @@ public class LineUpController {
 		log.info("{}",entrys);
 		return entrys;
 	}
-	// ÆäÀÌÁö ÀÌµ¿½Ã ÀÚµ¿À¸·Î ¼¼¼Ç¿¡ ÀúÀå ÇÏÁö¸¸ ±×Àü¿¡ ¹°¾îº¸´Â Ã¢ ³ª¿À°Ô ÇØ¼­ Ãë¼Ò½Ã´Â ÀúÀå x È®ÀÎ½Ã ÀúÀå
+	// í˜ì´ì§€ ì´ë™ì‹œ ìë™ìœ¼ë¡œ ì„¸ì…˜ì— ì €ì¥ í•˜ì§€ë§Œ ê·¸ì „ì— ë¬¼ì–´ë³´ëŠ” ì°½ ë‚˜ì˜¤ê²Œ í•´ì„œ ì·¨ì†Œì‹œëŠ” ì €ì¥ x í™•ì¸ì‹œ ì €ì¥
 	@PostMapping("/entry")
 	@ResponseBody
 	public void saveEntry(@RequestBody List<LineUpDto> list, HttpSession session) throws IOException{
