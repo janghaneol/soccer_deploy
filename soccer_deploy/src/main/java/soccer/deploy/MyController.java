@@ -14,20 +14,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
-import soccer.deploy.dto.noticeDTO;
-import soccer.deploy.dto.usersDTO;
-import soccer.deploy.service.noticeService;
-import soccer.deploy.service.usersService;
 import soccer.deploy.user.entity.User;
 
 @Controller
 public class MyController {
 	
-	@Autowired 
-	private usersService UsersService;
-	
-	@Autowired
-	private noticeService NoticeService;
 	
 //	@RequestMapping("/") Cookie를 통한 로그인 유지 및 관리 Session으로 변경했습니다.
 	public String index(Model model,@CookieValue(name = "loginUser", required = false) String loginUser) {
@@ -115,13 +106,13 @@ public class MyController {
 		return "view/lineUp/lineUp";
 	}
 	
-	@RequestMapping("/notice")
-	public String notice(Model model) {
-		
-		List<noticeDTO> select = NoticeService.select();
-		
-		model.addAttribute("select", select);
-		
-		return "notice";
-	}
+//	@RequestMapping("/notice")
+//	public String notice(Model model) {
+//		
+//		List<noticeDTO> select = NoticeService.select();
+//		
+//		model.addAttribute("select", select);
+//		
+//		return "notice";
+//	}
 }
