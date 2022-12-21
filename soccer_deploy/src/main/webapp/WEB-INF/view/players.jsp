@@ -1,3 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
 <!DOCTYPE >
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -12,106 +21,101 @@
 	href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
 	rel="stylesheet">
 
-<link rel="stylesheet" href="fonts/icomoon/style.css">
+<link rel="stylesheet" href="/fonts/icomoon/style.css">
 
-<link rel="stylesheet" href="css/bootstrap/bootstrap.css">
-<link rel="stylesheet" href="css/jquery-ui.css">
-<link rel="stylesheet" href="css/owl.carousel.min.css">
-<link rel="stylesheet" href="css/owl.theme.default.min.css">
-<link rel="stylesheet" href="css/owl.theme.default.min.css">
+<link rel="stylesheet" href="/css/bootstrap/bootstrap.css">
+<link rel="stylesheet" href="/css/jquery-ui.css">
+<link rel="stylesheet" href="/css/owl.carousel.min.css">
+<link rel="stylesheet" href="/css/owl.theme.default.min.css">
+<link rel="stylesheet" href="/css/owl.theme.default.min.css">
 
-<link rel="stylesheet" href="css/jquery.fancybox.min.css">
+<link rel="stylesheet" href="/css/jquery.fancybox.min.css">
 
-<link rel="stylesheet" href="css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="/css/bootstrap-datepicker.css">
 
-<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+<link rel="stylesheet" href="/fonts/flaticon/font/flaticon.css">
 
-<link rel="stylesheet" href="css/aos.css">
+<link rel="stylesheet" href="/css/aos.css">
 
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="/css/style.css">
 
 
 
 </head>
 
 <body>
-
+<jsp:include page="/WEB-INF/view/include/header.jsp"></jsp:include>
 	<div class="site-wrap">
-	 <jsp:include page="/WEB-INF/view/include/header.jsp"></jsp:include>
+		
 		<div class="hero overlay"
-			style="background-image: url('images/bg_3.jpg');">
+			style="background-image: url('/images/bg_3.jpg');">
 			<div class="container">
 				<div class="row align-items-center">
 					<div class="col-lg-12">
-						<h1 class="text-white" align="center">Players</h1>
+						<h1 class="text-white" align="center">Record</h1>
+						<form class="row row-cols-lg-auto g-3 align-items-center">
+							<div class="col-12">
+								<p>검색된 회원 수 : ${userList.totalElements}</p>
+							</div>
 							
-							<table class="table custom-table">
-						<thead>
-							<tr>
-								<th>Player</th>
-								<th>Position</th>
-								<th>Goal</th>
-								<th>Assist</th>
-								<th>Matches</th>
-							</tr>
-						</thead>
+							<div class="col-12" style="float: right;">
+								<input type="text" name="value">
+								<button type="submit" class="btn btn-primary">검색</button>
+							</div>
+							
+						</form>
+						<table class="table custom-table">
+							<thead>
+								<tr>
+									<th>Player / Back Number</th>
+									<th>Position</th>
+									<th>Goal</th>
+									<th>Assist</th>
+									<th>Matches</th>
+								</tr>
+							</thead>
 
-						<tbody>
-							<tr>
-								<td><strong class="text-white">babo 9</strong></td>
-								<td class="text-white">FW</td>
-								<td class="text-white">10</td>
-								<td class="text-white">4</td>
-								<td class="text-white">8</td>
-							</tr>
+							<tbody>
 
-							<tr>
-								<td class="text-white"><strong class="text-white">ronaldo
-										7</strong></td>
-								<td class="text-white">FW</td>
-								<td class="text-white">30</td>
-								<td class="text-white">4</td>
-								<td class="text-white">15</td>
-							</tr>
+								<c:forEach items="${userList.content}" var="user" varStatus="status">
+									<tr>
+										<td class="text-white"><a href="/user/${user.id}"class="text-white">${user.name}</a> &nbsp|&nbsp ${user.backNum}</td>
+										<td class="text-white">${user.position}</td>
+										<td class="text-white">10</td>
+										<td class="text-white">4</td>
+										<td class="text-white">8</td>
+									</tr>
+								</c:forEach>
 
-							<tr>
-								<td><strong class="text-white">Messi 10</strong></td>
-								<td class="text-white">MF</td>
-								<td class="text-white">44</td>
-								<td class="text-white">44</td>
-								<td class="text-white">8</td>
-							</tr>
+							</tbody>
 
-							<tr>
-								<td><strong class="text-white">Ramos 4</strong></td>
-								<td class="text-white">DF</td>
-								<td class="text-white">3</td>
-								<td class="text-white">2</td>
-								<td class="text-white">5</td>
-							</tr>
+						</table>
+					</div>
+					<div class="navBar" style="margin: auto;">
+					<nav aria-label="Page navigation example">
+						<ul class="pagination justify-content-center">
+							<li class="page-item"><a class="page-link" href="/user/list?page=0">처음으로</a></li>
 
-							<tr>
-								<td><strong class="text-white">beckham 23</strong></td>
-								<td class="text-white">FW</td>
-								<td class="text-white">10</td>
-								<td class="text-white">4</td>
-								<td class="text-white">8</td>
-							</tr>
-
-						</tbody>
-
-					</table>
+							<c:forEach begin="${startBlockPage}" end="${endBlockPage}"
+								var="i">
+								<li class="page-item"><a class="page-link"
+									href="/user/list/?page=${i-1}&value=${value}">${i}</a></li>
+							</c:forEach>
+							
+							<li class="page-item"><a class="page-link" href="#">다음으로</a></li>
+						</ul>
+					</nav>
 					</div>
 				</div>
 			</div>
 		</div>
-		
-		
+
+
 		<jsp:include page="/WEB-INF/view/include/section.jsp"></jsp:include>
-		
+
 		<jsp:include page="/WEB-INF/view/include/footer.jsp"></jsp:include>
 
-		
+
 	</div>
 	<!-- .site-wrap -->
 

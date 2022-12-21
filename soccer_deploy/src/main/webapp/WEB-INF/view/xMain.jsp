@@ -12,20 +12,20 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
 	rel="stylesheet">
-<link rel="stylesheet" href="fonts/icomoon/style.css">
-<link rel="stylesheet" href="css/bootstrap/bootstrap.css">
-<link rel="stylesheet" href="css/jquery-ui.css">
-<link rel="stylesheet" href="css/owl.carousel.min.css">
-<link rel="stylesheet" href="css/owl.theme.default.min.css">
-<link rel="stylesheet" href="css/owl.theme.default.min.css">
+<link rel="stylesheet" href="/fonts/icomoon/style.css">
+<link rel="stylesheet" href="/css/bootstrap/bootstrap.css">
+<link rel="stylesheet" href="/css/jquery-ui.css">
+<link rel="stylesheet" href="/css/owl.carousel.min.css">
+<link rel="stylesheet" href="/css/owl.theme.default.min.css">
+<link rel="stylesheet" href="/css/owl.theme.default.min.css">
 
-<link rel="stylesheet" href="css/jquery.fancybox.min.css">
+<link rel="stylesheet" href="/css/jquery.fancybox.min.css">
 
-<link rel="stylesheet" href="css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="/css/bootstrap-datepicker.css">
 
-<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+<link rel="stylesheet" href="/fonts/flaticon/font/flaticon.css">
 
-<link rel="stylesheet" href="css/aos.css">
+<link rel="stylesheet" href="/css/aos.css">
 
 <link rel="stylesheet" href="css/style.css">
 
@@ -299,13 +299,22 @@
     				<h1 class="text-white" align="center">Login</h1>
     			
     				<br>
-    			
+    			<c:choose>
+    				<c:when test="${loginUser == null}">
     				<div class="form-group">
-        				<a href="login"><button class="btn btn-primary py-3 px-5">Go To Login</button></a>
+        				<a href="/user/login"><button class="btn btn-primary py-3 px-5">Go To Login</button></a>
     				</div>
-    			
+    				</c:when>
+    				<c:otherwise>
+    				<div class="form-group">
+        				<a href=""><button class="btn btn-primary py-3 px-5">${loginUser.name}님</button></a>
+        				<br>
+        				<a href="/user/logout"><button class="btn btn-primary py-3 px-5">Logout</button></a>
+    				</div>
+    				</c:otherwise>
+    			</c:choose>
     			</div>
-    		
+    			
     		</div>
     		
     		
@@ -332,13 +341,11 @@
     			
     			<div id="to_center_text">
     				<h1 class="text-white" align="center">Chatting</h1>
-    			
     				<br>
-    			
     				<div class="form-group">
         				<a href="#none" onclick="MyOpenWindow()"><button class="btn btn-primary py-3 px-5">Go To Chatting</button></a>
     				</div>
-    			
+    				
     			</div>
     			
     		</div>

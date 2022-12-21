@@ -5,7 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="form"   uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -75,14 +75,8 @@
 }
 
 #image1 {
-	width: 450px;
-	height: 180px;
-	margin-left: 5%;
-	margin-right: 5%;
-	margin-top: 3.3%;
-	filter: invert() drop-shadow(5px 5px 5px #000);
-	float: right;
-	/* box-shadow: 5px 5px 5px #000; */
+	width: 300px;
+	height: 400px;
 }
 
 #deploy_two_In {
@@ -99,9 +93,10 @@
 }
 
 #deploy_two_In_two {
-	width: 40%;
-	height: 100%;
-	padding: 6.7%;
+    width: 40%;
+    height: 100%;
+    padding-left: 5%;
+    padding-bottom: 5%;
 }
 
 #to_center_footer {
@@ -109,6 +104,14 @@
 }
 .field-error {
   color: #ff0000;
+}
+.thead{
+    text-align: center;
+}
+.th{
+    display: table-cell;
+    font-weight: bold;
+    text-align: left;
 }
 </style>
 
@@ -122,51 +125,81 @@
 	<div id="zero">
 
 		<div id="deploy">
-		<div id="deploy_one"></div>
+		
 			<div id="deploy_two">
 
 				<div class="site-section">
 					<div class="container">
 						<div id="deploy_two_In">
 							<div id="deploy_two_In_one">
-								<h3 class="mb-3">Login</h3>
-								<br> <br>
-								<div class="row">
-									<div class="col-lg-7">
-									<!-- loginForm Start -->
-										<form:form modelAttribute="loginForm" class="form-signin" action="/user/login" method="post">
-											<div class="form-group">
-												<input type="text" class="form-control" placeholder="EMAIL" name="email" value="${loginForm.email}">
-											</div>
-											<div class="form-group">
-												<input type="password" class="form-control"	placeholder="PASSWORD" name="passwd">
-											</div>
-												<form:errors path = "*" element = "div" cssClass="field-error"/>
-      											<input type="hidden" name="redirect" value="${param.redirect}">
-											<div class="form-group">
-												<button class="btn btn-primary py-3 px-3" type="submit">Login</button>
-												<!-- <input type="submit" class="btn btn-primary py-3 px-3" value="Login" style="margin-right: 10px;"> -->
-												<a href="/user/regist"><input type="button" class="btn btn-primary py-3 px-3" value="Sign Up"></a>
-											</div>
-											
-										</form:form>
-									<!-- loginForm End -->
-									</div>
-								</div>
-							</div>
+								<h3 class="mb-3">회원 정보</h3>
+								<table class="table table-sm">
+								
+								<thead class="thead-dark">
+										<tr>
+                                            <th scope="col" colspan="2" >
+                                                기본 정보
+                                            </th>
+                                        </tr>
+								</thead>
+                                    <tbody>
+                                        
+                                        <tr class="text-white">
+                                            <th scope="row"><strong>이메일</strong></th>
+                                            <td>${user.email}</td>
+                                        </tr>
 
-							<div id="deploy_two_In_two">
-								<img src="/title2.png" id="image1">
-							</div>
+                                        <tr class="text-white">
+                                            <th scope="row">나이</th>
+                                            <td>${user.age}</td>
+                                        </tr>
+                                        
+										<tr class="text-white">
+                                            <th scope="row">이름</th>
+                                            <td>${user.name}</td>
+                                        </tr>
+                                        
+                                        <tr class="text-white">
+                                            <th scope="row">등번호</th>
+                                            <td>${user.backNum}</td>
+                                        </tr>
+                                        
+                                        <tr class="text-white">
+                                            <th scope="row">포지션</th>
+                                            <td>${user.position}</td>
+                                        </tr>
+                                        
+                                        <tr class="text-white">
+                                            <th scope="row">주소</th>
+                                            <td>${user.address}</td>
+                                        </tr>
+                                        
+                                        <tr class="text-white">
+                                            <th scope="row">가입일</th>
+                                            <td>${user.regdate}</td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                                <c:if test="${loginUser.id == user.id}">
+                                <div class="logButton" style="display: inline;">
+                                	<a href="/user/${loginUser.id}/checkpw" class="btn btn-primary">회원정보수정</a>
+                                	<a href="/user/${loginUser.id}/delete" class="btn btn-primary" style="margin-left: 10px;">회원탈퇴</a>
+                                </div>
+                                </c:if>
 						</div>
+						<div id="deploy_two_In_two">
+						<img src="/images/profile/${loginUser.imgFileName}" id="image1">
 					</div>
+					</div>
+					
 				</div>
 			</div>
 			<div id="deploy_three"></div>
 		</div>
 
 	</div>
-
+</div>
 
 	<footer class="footer-section">
 		<div class="container">
