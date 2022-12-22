@@ -8,24 +8,37 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
+
+import soccer.deploy.user.entity.User;
 
 @Controller
 public class MyController {
-
-	//시작
-	@RequestMapping("/")
-	public String index() {
-
+	
+	
+//	@RequestMapping("/") Cookie를 통한 로그인 유지 및 관리 Session으로 변경했습니다.
+	public String index(Model model,@CookieValue(name = "loginUser", required = false) String loginUser) {
+		if(loginUser != null) {
+			model.addAttribute("loginUser", loginUser);
+		}
 		return "index";
 	}
-
-	//채팅예시, 스와이퍼
+	
+	/*Session을 통한 로그인 유지 및 관리*/
+	@RequestMapping("/")
+	public String sessionIndex(@SessionAttribute(name = "loginUser",required = false ) User loginUser ,Model model) {
+		if(loginUser != null) {
+			model.addAttribute("loginUser",loginUser);
+		}
+		return "index";
+	}
+	
+	
+	
 	@RequestMapping("/main")
 	public String main() {
 
@@ -45,15 +58,8 @@ public class MyController {
 
 		return "view/matches";
 	}
-
-	//선수에대한 정보(표)
-	@RequestMapping("/players")
-	public String players() {
-
-		return "view/players";
-	}
-
-	//댓글
+	
+	
 	@RequestMapping("/single")
 	public String single() {
 
@@ -99,12 +105,14 @@ public class MyController {
 	public String lineUp() {
 		return "view/lineUp/lineUp";
 	}
-
-	//지금 만들 공지사항
-	@RequestMapping("/xnotice")
-	public String xnotice(Model model) {
-
-		return "xnotice";
-
-	}
+	
+//	@RequestMapping("/notice")
+//	public String notice(Model model) {
+//		
+//		List<noticeDTO> select = NoticeService.select();
+//		
+//		model.addAttribute("select", select);
+//		
+//		return "notice";
+//	}
 }
