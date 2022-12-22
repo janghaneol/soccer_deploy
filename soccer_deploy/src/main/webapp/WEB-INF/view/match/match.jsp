@@ -104,12 +104,12 @@
 			</div>
 
 			<div class="bottom">
+				
+				
+				<!--<c:forEach var="dto" items="${list}">
+					${dto.userId}-->
+				
 				<ul>
-				
-				<c:forEach var="dto" items="${list}">
-					${dto.userId}
-				
-				
 					<li>
 						<div class="date">날짜</div>
 						<ul class="board">
@@ -156,9 +156,9 @@
 									class="bg-success" id="">상세보기</button></li>
 						</ul>
 					</li>
-
-				
-			</div>
+			</ul>
+		</div>
+			
 			<!-- #wrapper  -->
 
 			<div id="layer-mask"></div>
@@ -220,11 +220,10 @@
 					</p>
 				</footer>
 			</div>
-			</c:forEach>  
-			</ul>
+			<!--</c:forEach> -->
+			
 		</div>
 
-	</div>
 	</div>
 	<!---기본 메뉴--->
 

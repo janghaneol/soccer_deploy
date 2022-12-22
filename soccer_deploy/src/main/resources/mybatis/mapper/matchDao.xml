@@ -27,8 +27,8 @@
 			match_place	matchPlace,
 			user_id userId	 
 			FROM match
-		
-		
 	</select>
+	
+	
 
 </mapper>

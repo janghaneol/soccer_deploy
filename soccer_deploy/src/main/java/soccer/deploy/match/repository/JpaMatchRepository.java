@@ -16,4 +16,5 @@ public interface JpaMatchRepository extends JpaRepository<Match, Long> {
 	
 	@Query(value = "SELECT m FROM Match m WHERE m.id =:id")
 	public Optional<Match> recentMatch(@Param("id") Long id);
+	
 }
