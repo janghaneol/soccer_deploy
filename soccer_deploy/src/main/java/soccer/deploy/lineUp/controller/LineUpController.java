@@ -40,7 +40,8 @@ public class LineUpController {
 	@Autowired 
 	private UserService userService;
 	
-	//ó�� ȭ�� ��ºκ�
+
+	//처음 화면 출력부분
 	@GetMapping
 	public String lineUpview(Model model) {
 		Long recentMatch = matchService.findRecentMatchNum();
@@ -51,7 +52,8 @@ public class LineUpController {
 		
 		return "view/lineUp/lineUp";
 	}
-	// �˻� �񵿱�� post��
+
+	// 검색 비동기로 post로
 	@PostMapping
 	@ResponseBody
 	public List<Entry> search(@RequestBody String name) throws IOException{
@@ -62,24 +64,25 @@ public class LineUpController {
 		log.info("{}",entrys);
 		return entrys;
 	}
-	// ������ �̵��� �ڵ����� ���ǿ� ���� ������ ������ ����� â ������ �ؼ� ��ҽô� ���� x Ȯ�ν� ����
+
+	// 페이지 이동시 자동으로 세션에 저장 하지만 그전에 물어보는 창 나오게 해서 취소시는 저장 x 확인시 저장
 	@PostMapping("/entry")
 	@ResponseBody
 	public void saveEntry(@RequestBody List<LineUpDto> list, HttpSession session) throws IOException{
 		session.setAttribute("lineup", list);
 		log.info("sds{}",session.getAttribute("lineup"));
 	}
-	//�Ӥ�
+	//�Ӥ�
 		@RequestMapping("/board")
 		public String boardList() {
 			return "view/board/boardList";
 		}
-		//�ӽ�
+		//�ӽ�
 		@RequestMapping("/view")
 		public String boardView() {
 			return "view/board/boardView";
 		}
-		//�ӽ�
+		//�ӽ�
 		@RequestMapping("/reg")
 		public String boardReg() {
 			return "view/board/boardReg";

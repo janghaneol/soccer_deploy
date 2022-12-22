@@ -15,7 +15,7 @@ public class EntryServiceImpl implements EntryService {
 	@Autowired
 	private JpaEntryRepository jpaentryRepository;
 
-	@Override //ÃÖ½Å °æ±âÀÏÁ¤¿¡ ÇØ´çÇÏ´Â ¼±¼öµé °¡Á®¿À±â
+	@Override //ìµœì‹  ê²½ê¸°ì¼ì •ì— í•´ë‹¹í•˜ëŠ” ì„ ìˆ˜ë“¤ ê°€ì ¸ì˜¤ê¸°
 	public List<Entry> findEntryRecentMatch(Long id) {
 		return jpaentryRepository.findAllByMatchId(id);
 	}
