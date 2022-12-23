@@ -34,7 +34,7 @@ public class Match {
 	private Long id;
 	
 	@Column(name ="match_date",nullable = false)
-	@Temporal(TemporalType.DATE) // ³â¿ùÀÏ ½ÃºÐÃÊ
+	@Temporal(TemporalType.DATE) // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ãºï¿½ï¿½ï¿½
 	private Date matchDate;
 	
 	@Column(nullable = false)
@@ -56,4 +56,6 @@ public class Match {
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	private User user;
+	
+	
 }

@@ -12,11 +12,13 @@ import lombok.ToString;
 @Setter
 @ToString
 public class LineUpDto {
-	String backNum;
+	String backNum; 
 	String name;
 	String goal;
 	String assist;
 	String point;
+	//quarter pk 값 fk
 	String quarter;
+	//entry pk 값 fk
 	String playerId;
 }

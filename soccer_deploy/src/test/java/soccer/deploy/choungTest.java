@@ -11,6 +11,8 @@ import lombok.extern.slf4j.Slf4j;
 import soccer.deploy.entry.entity.Entry;
 import soccer.deploy.entry.repository.JpaEntryRepository;
 import soccer.deploy.entry.service.EntryService;
+import soccer.deploy.match.entity.Match;
+import soccer.deploy.match.myDao.matchDao;
 import soccer.deploy.match.service.MatchService;
 import soccer.deploy.quarter.entity.Quarter;
 import soccer.deploy.quarter.service.QuarterService;
@@ -31,6 +33,8 @@ public class choungTest {
 	private UserService userService;
 	@Autowired
 	private JpaEntryRepository entryRepository;
+	@Autowired
+	 matchDao MatchDao;
 	
 	@Test
 	@Disabled
@@ -43,6 +47,6 @@ public class choungTest {
 	
 	@Test
 	void test3() {
-		log.info("{}",entryRepository.findSearchEntry(1L, "sa"));
+		log.info("{}",MatchDao.list().get(0));
 	}
 }

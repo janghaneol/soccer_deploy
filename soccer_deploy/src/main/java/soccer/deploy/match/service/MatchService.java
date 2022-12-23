@@ -2,10 +2,20 @@ package soccer.deploy.match.service;
 
 import soccer.deploy.match.entity.Match;
 
+
 public interface MatchService {
-	//ÃÖ½Å ¸ÅÄ¡idÁ¤º¸ °¡Áö°í¿À±â
 	public Long findRecentMatchNum();
 	
-	//ÃÖ½Å °æ±â
+	/* Match ì¡°íšŒ */
 	public Match findeRecentMatch(Long id);
+	
+	/* Match ë“±ë¡ */
+	public Long registMatch(Match match);
+	
+	/* Match ì‚­ì œ */
+	public void deleteMatch(Long id);
+	
+	/* Match ìˆ˜ì • */
+	public Long modifyMatch(Long id, Match updateMatch);
+	
 }

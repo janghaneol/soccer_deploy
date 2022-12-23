@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="soccer.deploy.match.myDao.matchDao">
+	
+	<!-- <resultMap type="soccer.deploy.match.myDto.matchMyDto" id="matchMap">
+		<id property="match_id" column="match_id"></id>
+		<result property="match_date" column="match_date"/>
+		<result property="opteam" column="opteam"/>
+		<result property="match_regdate" column="match_regdate"/>
+		<result property="match_img_type" column="match_img_type"/>
+		<result property="match_img_name" column="match_img_name"/>
+		<result property="match_place" column="match_place"/>
+		<result property="user_id" column="user_id"/>
+	</resultMap> -->
+
+	<select id="list" resultType="soccer.deploy.match.myDto.matchMyDto">
+		SELECT match_id id,	
+			match_date	matchDate,
+			opteam opteam,
+			match_regdate	matchRegdate,
+			match_img_type	matchImgType,
+			match_img_name	matchImgName,
+			match_place	matchPlace,
+			user_id userId	 
+			FROM match
+	</select>
+	
+	
+
+</mapper>
