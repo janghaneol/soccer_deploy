@@ -202,16 +202,15 @@
                                     </form:select>
                                 </div>
                             </div>
-                         
-                        <div class="form">
-                        	<label class="form-label mt-4">프로필 사진</label><br>
+                        
+                       	    <div class="form">
+                        		<label class="form-label mt-4">프로필 사진</label><br>
                         		<div style="display: flex;">
-                        			<img src="/images/img_1.jpg" style="width: 200px; height: 200px;">
-                        			<input type="file" class="form-control" name="imageFile">
+                        			<input type="file" class="form-control" name="imageFile" required>
+                        			<button class="btn btn-primary" type="submit">등록</button>
                         		</div>
-        				</div>
+        					</div>
         			
-        					
                             <div>
                                 <button class="btn btn-primary btn-lg" type="submit" onclick="add()" style="margin-top: 10px;">가입하기</button>
                             </div>
