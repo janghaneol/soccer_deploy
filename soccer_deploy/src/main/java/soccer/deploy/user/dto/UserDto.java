@@ -40,7 +40,7 @@ public class UserDto {
 	@Column(name="img_file_name")
 	private String imgFileName;
 	
-	@Column(name = "back_num")
+	@Column(name = "backnum")
 	private Integer backNum;
 	
 	@Column(name="member_auth")
