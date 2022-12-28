@@ -140,7 +140,6 @@ public class UserController {
 			e.printStackTrace();
 		}
 		
-		
 		User registUser = new User();
 		registUser.setEmail(user.getEmail());
 		registUser.setPasswd(user.getPasswd());
@@ -158,7 +157,6 @@ public class UserController {
 		
 		redirectAttributes.addAttribute("userId", userId);
 		redirectAttributes.addAttribute("status", true);
-		
 		return "redirect:/user/{userId}";
 	}
 	

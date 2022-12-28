@@ -1,6 +1,9 @@
 
 package soccer.deploy;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -38,13 +41,20 @@ public class MatchServiceTest {
 //	@Disabled
 	public void regist() {
 		Date date = new Date();
-		Optional<User> user = userService.findUser(1L);
+		String matchdate = "22/02/03 13:00";
+		DateFormat dateFormat = new SimpleDateFormat("yy/MM/dd HH:mm");
+		
+		try {
+			date = dateFormat.parse(matchdate);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block		
+			e.printStackTrace();
+		}
+		
 		Match match = new Match();
 		match.setMatchPlace("의정부");
 		match.setOpteam("레알마드리드");
-		match.setUser(user.get());
 		match.setMatchDate(date);
-		
 		Long matchId = matchService.registMatch(match);
 		log.info("등록된 매치의 ID : {}",matchId);
 		
