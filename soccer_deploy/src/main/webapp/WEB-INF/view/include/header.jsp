@@ -98,7 +98,7 @@
 					<ul
 						class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
 						<li><a href="/xMain" class="nav-link">Home</a></li>
-						<li><a href="matches" class="nav-link">Matches</a></li>
+						<li><a href="/match" class="nav-link">Matches</a></li>
 						<li><a href="/user/list" class="nav-link">Players</a></li>
 						<li><a href="mainPage" class="nav-link">MainPage</a></li>
 						<li class="dropdown"><a href="/realBoard" class="dropdown-toggle "

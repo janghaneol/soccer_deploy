@@ -1,3 +1,4 @@
+
 package soccer.deploy.web.config;
 
 import javax.servlet.DispatcherType;
@@ -44,7 +45,6 @@ public class WebConfig implements WebMvcConfigurer{
 		        .addPathPatterns("/**")
 		        .excludePathPatterns(
 		        		"/", "/*.ico", "/css/**", "/fonts/**", "/js/**", "/images/**", 
-		        		"/user/regist","/user/login", "/user/logout", "/error", "/error/**");
+		        		"/user/regist","/user/login", "/user/logout", "/error", "/error/**" , "/images/profile/**");
 	}
-
 }

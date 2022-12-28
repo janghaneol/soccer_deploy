@@ -188,9 +188,10 @@
                                 </div>
                                 </c:if>
 						</div>
+						
 						<div id="deploy_two_In_two">
-						<img src="/images/profile/${loginUser.imgFileName}" id="image1">
-					</div>
+							<img src="/images/profile/${user.imgFileName}" id="image1">
+						</div>
 					</div>
 					
 				</div>

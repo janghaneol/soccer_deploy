@@ -17,7 +17,7 @@ import org.springframework.util.PatternMatchUtils;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * 인증 체크 필터 로그인 되지 않은 사용자는 회원 목록 등을 접근하지 못하게 설정
+ * �씤利� 泥댄겕 �븘�꽣 濡쒓렇�씤 �릺吏� �븡�� �궗�슜�옄�뒗 �쉶�썝 紐⑸줉 �벑�쓣 �젒洹쇳븯吏� 紐삵븯寃� �꽕�젙
  */
 @Slf4j
 public class LoginCheckFilter implements Filter {
@@ -38,13 +38,13 @@ public class LoginCheckFilter implements Filter {
 		
 		// Cookie Filter
 //		try {
-//			// 로그인 체크가 필요한 URI인지
+//			// 濡쒓렇�씤 泥댄겕媛� �븘�슂�븳 URI�씤吏�
 //			if (isLoginCheckUri(requestURI)) {
 //				Cookie[] cookies = httpRequest.getCookies();
-//				// 로그인이 필요한 사용자인지
+//				// 濡쒓렇�씤�씠 �븘�슂�븳 �궗�슜�옄�씤吏�
 //				if(isLoginCheckMember(cookies)) {
-//					log.info("미인증 사용자 요청 {}", requestURI);
-//					// 로그인 화면으로 리다이렉트
+//					log.info("誘몄씤利� �궗�슜�옄 �슂泥� {}", requestURI);
+//					// 濡쒓렇�씤 �솕硫댁쑝濡� 由щ떎�씠�젆�듃
 //					httpResponse.sendRedirect("/user/login?redirect=" + requestURI);
 //					return;
 //				}
@@ -54,12 +54,12 @@ public class LoginCheckFilter implements Filter {
 //			ex.printStackTrace();
 //		}
 		
-		/*Session을 이용*/
+		/*Session�쓣 �씠�슜*/
 		try {
 		if(isLoginCheckUri(requestURI)) {
 			HttpSession session = httpRequest.getSession(false);
 			if(session == null || session.getAttribute("loginUser")==null) {
-				log.info("미인증 사용자 요청 {}",requestURI);
+				log.info("誘몄씤利� �궗�슜�옄 �슂泥� {}",requestURI);
 				httpResponse.sendRedirect("/user/login?redirect=" + requestURI);
 				return;
 					}
@@ -71,12 +71,12 @@ public class LoginCheckFilter implements Filter {
 		
 	}
 
-	/** 화이트 리스트의 경우 인증 체크하지 않음 */
+	/** �솕�씠�듃 由ъ뒪�듃�쓽 寃쎌슦 �씤利� 泥댄겕�븯吏� �븡�쓬 */
 	private boolean isLoginCheckUri(String requestURI) {
 		return !PatternMatchUtils.simpleMatch(whitelist, requestURI);
 	}
 	
-	/** 로그인 여부 체크 Cookie 
+	/** 濡쒓렇�씤 �뿬遺� 泥댄겕 Cookie 
 	
 	private boolean isLoginCheckMember(Cookie[] cookies) {
 		if(cookies != null) {
