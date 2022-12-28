@@ -131,9 +131,9 @@ public class UserController {
 		 * 프로필 사진 넣기
 		 */
 		String ranName = UUID.randomUUID().toString();	// 랜덤한 문자열을 생성해 붙여줘야 같은 이름으로 파일의 중복을 방지한다. (덮어쓰기 방지)
-		
+		String storedFileName = ranName + "_" + imageFile.getOriginalFilename();
 		try {
-			imageFile.transferTo(new File(ranName +"_"+ imageFile.getOriginalFilename()));
+			imageFile.transferTo(new File(storedFileName));
 		} catch (IllegalStateException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -149,7 +149,7 @@ public class UserController {
 		registUser.setAddress(address);
 		registUser.setBackNum(user.getBackNum());
 		registUser.setImgContType(imageFile.getContentType());
-		registUser.setImgFileName(imageFile.getOriginalFilename());
+		registUser.setImgFileName(storedFileName);
 		registUser.setPosition(user.getPosition());
 		registUser.setRegdate(user.getRegdate());
 		registUser.setMemberAuth(user.getMemberAuth());

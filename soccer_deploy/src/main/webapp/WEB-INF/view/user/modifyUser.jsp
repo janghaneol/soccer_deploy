@@ -143,10 +143,11 @@
                     <div id="deploy_two">
                         <div class="site-section">
                             <div class="container">
+                            <form action="/user/${loginUser.id}/modify" method="post">
                                 <div id="deploy_two_In">
                                     <div id="deploy_two_In_one">
                                         <h3 class="mb-3">회원 정보 수정</h3>
-                                        <form action="/user/${loginUser.id}/modify" method="post">
+                                        
                                         <input type="hidden" name="_method" value="put">
                                         <table class="table table-sm">
                                         <thead class="thead-dark">
@@ -200,27 +201,33 @@
                                                         <input type="text" class="form-control" style="display: none;" id="sample6_extraAddress" placeholder="참고항목">
                                                     </td>
                                                 </tr>
-                                            	
+                                                
                                             </tbody>
                                         </table>
-                                         <div id="deploy_two_In_two">
-                                   			<img src="/images/profile/${loginUser.imgFileName}" id="image1" name="imgFileName">
-                              			</div>
                                         <div class="logButton" style="display: inline;">
                                             <button class="btn btn-primary lg" type="submit">등록</button>
                                             <a href="/user/${loginUser.id}" class="btn btn-primary" style="margin-left: 10px;">취소</a>
                                         </div>
-                             	 </form>
-                               </div>
+                              	 	</div>
+                              	  </div>
+                              	 </form>
+                              	<form action="/user/${loginUser.id}/modify/updateProfile" method="post" enctype="multipart/form-data">
+                               		<div id="deploy_two_In_two">
+                                   			<img src="/images/profile/${user.imgFileName}" id="image1" name="imgFileName">
+                              		</div>
+                              		<div class="profileButton">
+										<input type="file" class="form-control" name="updateProfile" required>                              	
+                              			<button class="btn btn-primary lg" type="submit">수정</button>
+                              		</div>
+                              	</form>
                             </div>
+                            
                         </div>
                     </div>
                     	<div id="deploy_three"></div>
                 </div>
             </div>
-        </div>
-        
-        
+       
       <script>
         
         //카카오 주소API를 사용하는 코드
