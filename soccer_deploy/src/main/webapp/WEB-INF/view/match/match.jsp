@@ -271,7 +271,7 @@
 	<script src="/js/jquery.stellar.min.js"></script>
 	<script src="/js/jquery.countdown.min.js"></script>
 	<script src="/js/bootstrap-datepicker.min.js"></script>
-	<script src="js/jquery.easing.1.3.js"></script>
+	<script src="/js/jquery.easing.1.3.js"></script>
 	<script src="/js/aos.js"></script>
 	<script src="/js/jquery.fancybox.min.js"></script>
 	<script src="/js/jquery.sticky.js"></script>
