@@ -101,6 +101,12 @@
 						<li><a href="/match" class="nav-link">Matches</a></li>
 						<li><a href="/user/list" class="nav-link">Players</a></li>
 						<li><a href="mainPage" class="nav-link">MainPage</a></li>
+						<li class="dropdown"><a href="/realBoard" class="dropdown-toggle "
+						data-toggle="dropdown">Board & Notice<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+						<li><a href="/realBoard" class="drop">Board</a></li>
+						<li><a href="/board" class="drop">자유게시판</a></li>
+						</ul></li>
 					</ul>
 				</nav>
 
