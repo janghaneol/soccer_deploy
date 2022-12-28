@@ -26,4 +26,5 @@ public class EntryServiceImpl implements EntryService {
 		return jpaentryRepository.findSearchEntry(id, name);
 	}
 	
+	
 }

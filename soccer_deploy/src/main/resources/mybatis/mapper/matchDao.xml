@@ -28,7 +28,34 @@
 			user_id userId	 
 			FROM match
 	</select>
+		<!-- 경기목록조회 -->
+	<insert id="matchRegist" parameterType="soccer.deploy.match.myDto.matchMyDto">
+		  INSERT into match(
+		 										 match_id,match_date,opteam,match_img_type,match_img_name,match_place,user_id)
+      VALUES(
+      				match_seq.NEXTVAL,
+      				#{matchDate},
+      				#{opteam},
+      				#{matchImgType},
+      				#{matchImgName},
+      				#{matchPlace},
+   					 	#{userId}
+   										 	)
+	</insert>
+	<!-- 수정 -->
+	<update id="matchUpdate" parameterType="soccer.deploy.match.myDto.matchMyDto">
+	  		UPDATE match
+  			SET match_date = #{match_date}, opteam = #{opteam}, match_regdate = #{match_regdate},  match_img_type = #{match_img_type}, match_img_name = #{match_img_name}, match_place = #{match_place},user_id = #{user_id}
+  		  WHERE match_id = #{match_id}
 	
-	
-
+	</update>
+	<!-- 삭제 -->
+	<delete id="matchDelete" parameterType="String">
+			 DELETE FROM match 
+			 WHERE match_id = #{match_id}
+	</delete>
+	<!-- 경기 아이디로조회 -->
+	<select id="selectMatch" parameterType="string" resultType="soccer.deploy.match.myDto.matchMyDto">
+        SELECT * FROM match WHERE match_id = #{match_id}
+    </select>
 </mapper>
