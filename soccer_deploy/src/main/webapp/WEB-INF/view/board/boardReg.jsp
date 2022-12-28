@@ -66,7 +66,7 @@
 												<div class="file-upload">이미지 업로드</div>
 											</label>
 											<span id="filenames">선택된 파일 없음</span>
-												<input type="file" id="file"  name="file" style="display:none;" multiple accept="image/*"/>
+												<input type="file" id="file"  name="file" style="display:none;"  accept="image/*"/>
 										</div>
 										<div class="board-reg-btn">
 											<button type="submit" class="btn btn-primary bt">등록</button>

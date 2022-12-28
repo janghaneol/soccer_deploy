@@ -1,41 +1,39 @@
-'use strict';
-/**
- * 팝업창 띄우기 
- */
- 
-// let target = document.querySelectorAll('.pop_open');
-// let btnPopClose = document.querySelectorAll('.pop_wrap .btn_close');
-// let targetID;
+function openLayerPopup(id, width, height, el) {
+			const $popup = document.getElementById(id);
+			const $mask = document.getElementById('layer-mask');
+			const $close = $popup.querySelector('.close');
+			const $last = $popup.querySelector('.last');
+			const $return = el;
 
-// // 팝업 열기
-// for(let i = 0; i < target.length; i++){
-//   target[i].addEventListener('click', function(){
-//     targetID = this.getAttribute('href');
-//     document.querySelector(targetID).style.display = 'block';
-//   });
-// }
+			// 팝업창 표시
+			$popup.setAttribute('style', 'width: ' + width + 'px; height: '
+					+ height + 'px;');
+			$popup.setAttribute('tabindex', 0);
+			$last.setAttribute('tabindex', 0);
+			$popup.insertAdjacentHTML('beforebegin', '<a href="#"></a>');
+			$popup.insertAdjacentHTML('afterend', '<a href="#"></a>');
+			$mask.classList.add('on');
+			$popup.classList.add('on');
+			$popup.focus();
 
-// // 팝업 닫기
-// for(let j = 0; j < target.length; j++){
-//   btnPopClose[j].addEventListener('click', function(){
-//     this.parentNode.parentNode.style.display = 'none';
-//   });
-// }
+			// 팝업창 닫기
+			$close.addEventListener('click', close, false);
 
+			// focus
+			$popup.previousElementSibling.addEventListener('focusin',
+					function() {
+						$last.focus();
+					}, false);
+			$popup.nextElementSibling.addEventListener('focusin', function() {
+				$popup.focus();
+			}, false);
 
-
-
-	// const $test = document.getElementById('test');
-	// $test.addEventListener('click', function() {
-	//   // document.querySelector('#layer-mask').classList.add('on');
-	//   // document.querySelector('#popup-02').classList.add('on');
-	// }, false);
-
-
-	// function openPopup(url, id, width, height) {
-	//   let windowWidth = (width === undefined) ? 600 : width;
-	//   let windowHeight = (height === undefined) ? 700 : height;
-	//   window.open(url, id, 'left=0, top=0, width=' + windowWidth + ', height=' + windowHeight);
-	// }
-
-	
+			function close() {
+				$return.focus();
+				$mask.classList.remove('on');
+				$popup.classList.remove('on');
+				$close.removeEventListener('click', close, false);
+				$popup.previousElementSibling.remove();
+				$popup.nextElementSibling.remove();
+			}
+		}
