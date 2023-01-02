@@ -44,7 +44,6 @@ public class MatchChoungServiceImpl implements MatchChoungService{
 			return dao.rank(year.concat("/").concat(month));
 		}
 	}
-
 	@Override
 	public List<String> year() {
 

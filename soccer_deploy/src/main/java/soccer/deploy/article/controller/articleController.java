@@ -132,7 +132,7 @@ public class articleController {
 	
 	@GetMapping("/intoArticleAction")
 	public String intoArticleAction(Model model,@RequestParam(required = false) int articleId, @RequestParam(required = false) String writer, @RequestParam(required = false) String content, @RequestParam(required = false) String regdate) {
-			
+		
 		jpaArticleRepository.findByArticleIdAndWriterAndContentAndRegdate(articleId,writer,content,regdate);
 		
 		return "thymeleaf/intoArticle";

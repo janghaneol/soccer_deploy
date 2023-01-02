@@ -48,6 +48,7 @@ public class matchMyController {
 	/*
 	 * 경기일정을 보여줌
 	 */
+	@GetMapping
 	public String matchList(Model model,@RequestParam(required = false, defaultValue = "2023") String matchYear, @RequestParam(required = false,defaultValue = "") String matchMonth) {
 		String date = matchYear.substring(2) +"/" + matchMonth;
 //		List<matchMyDto> list = MatchDao.list();
@@ -136,6 +137,11 @@ public class matchMyController {
 	public String listResult(@RequestParam(name = "redirect", defaultValue = "/match/result") String redirect) {
 		
 		return "redirect:"+redirect;
+	}
+	
+	@GetMapping("/kas")
+	public String tese() {
+		return "view/board/boardView";
 	}
 }
 
