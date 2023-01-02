@@ -1,0 +1,171 @@
+div.board-btn {display: flex;justify-content: space-between;}
+
+a.reg {
+    width: 70px !important;
+    height: 26px !important;
+    padding-bottom: 0px;
+    padding-top: 1px;
+    border: none !important;
+    border-radius: 4px !important;
+    font-size: 16px !important;
+    font-weight: bold !important;
+    background-color: #ee1e46; 
+    color:white !important;
+    
+}
+
+div.right {display: flex;
+    flex-direction: row-reverse;}
+div.reg-div {display: flex;align-items: center;}
+
+div.board-list {width: 1110 !important;height: 707.484 !important;}
+
+div.search-bar {display: flex;justify-content: flex-start;margin-bottom: 7px;}
+
+div.search-bar button.search {
+    background-image: url("../images/search.png");
+    background-repeat: no-repeat;
+    width: 33.19px;
+    background-size: 100%;
+    border: 0px;
+    background-color: rgba(255, 255, 255, 0);
+    z-index: 1;
+}
+
+table.board thead tr th.backNum {width: 100px;}
+
+table.board thead tr th.name {width: 100px;}
+
+table.board thead tr th.goal {width: 100px;}
+
+table.board thead tr th.assist {width: 100px;}
+
+table.board thead tr th.point {width: 100px;}
+
+table.board thead tr {text-align: center;}
+
+table.board tbody td {vertical-align: baseline !important; text-align: center;}
+
+ul.pagination {justify-content: center;}
+
+div.paginationpart {margin-top: 20px;}
+
+ul.pagination li a {margin: 10px;font-size: 25px;}
+
+tbody tr {color: #ee1e46;}
+
+h1.board-category {display: flex;justify-content: center;}
+
+div.col-lg-12 {z-index: 1;}
+
+form {background-color: rgba(255, 255, 255, 0);}
+
+.form-control {border: 1px solid black !important;color: black !important;}
+
+textarea.form-control {width: 100%;height: 500px !important;resize: none;}
+
+textarea.form-control::-webkit-scrollbar,textarea#comment::-webkit-scrollbar  {display: none;}
+
+div.write {margin: 5px 0px;}
+
+div.board-reg-btn {display: flex;justify-content: center;}
+
+button.btn,
+a.btn {margin: 0px 5px;width: 100px;}
+
+.board-subject::placeholder,
+.board-content::placeholder {color: white !important;}
+input[type=file]::file-selector-button:hover {color: white;background-color: #ee1e46;}
+
+div.file-upload {
+    width: 150px;
+    height: 30px;
+    background: #fff;
+    border: 1px solid rgb(77, 77, 77);
+    border-radius: 10px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+span#filenames,div.detail-view-body{color: white;}
+label.label-file{color: black;}
+
+
+div.detail-view-header p{margin-bottom: 0px;}
+div.detail-view-header,div.comment-div{padding: 10px;border: 1px solid rgba(0,0, 0, 0.5);border-bottom:none;}
+div.comment-div{border-top: none; color: white;}
+div.info{border-bottom: 1px solid black;}
+
+div.detail-view-btn{display: flex;justify-content: flex-end;margin-bottom: 10px;}
+div.detail-view-body {padding: 10px; height: auto; border: 1px solid rgba(0,0, 0, 0.5); border-top: none; border-bottom: none;}
+div.detail-view-body img{width: 25%; height: 300px; margin: auto;}
+div.detail-view, div.detail-view > .container > .row{height: auto !important;}
+div.detail{margin-top: 200px; margin-bottom: 30px; display: flex;
+    flex-direction: column;
+    align-items: center;}
+div.detail-view{margin-bottom: 10px;}
+div.img-div{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+div.comment-title h5{
+    margin-top: 10px;
+}
+div.comment-title{
+    margin-top: 8px;
+    border-top: 1px solid rgba(0,0, 0, 0.5);
+}
+div.comment-div ul{
+    list-style: none;
+}
+div.comment-div ul li{
+    border-bottom: 1px solid white;
+}
+div.comment-list-info{
+    color: white;
+    font-size: 10px;
+}
+div.comment-list-info button{
+    color: white;
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+}
+li.comment-list-comment{
+    padding-left: 30px !important;
+}
+li.comment-list-comment-reply, div.comment-write-reply{
+    padding-left: 60px !important;
+}
+ul.comment-list li > div{
+    margin: 5px 0px;
+}
+ul.comment-list li{
+    margin-bottom: 10px;
+}
+div.comment-write{
+    padding: 10px;
+    border: 1px solid rgba(0,0, 0, 0.5);
+    border-top: none;
+    color: white;
+}
+textarea#comment{
+    width: 100%;
+    height: 100px;
+    resize: none;
+}
+button.comment-reg-btn{
+    margin-top: 5px;
+    border-radius: 5px;
+    border: none;
+}
+div.comment-reg{
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 5px;
+}
+div.comment-write-reply{
+    border-bottom: 1px solid rgba(255,255, 255, 1);
+}

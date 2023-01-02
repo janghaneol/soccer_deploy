@@ -16,11 +16,15 @@ public class QuarterServiceImpl implements QuarterService {
 	@Autowired
 	private JpaQuarterRepository jpaQuarterRepository;
 
-	@Override //ÃÖ½Å °æ±â ÄõÅÍÁ¤º¸ °¡Á®¿À±â
+	@Override //ï¿½Ö½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public List<Quarter> findQuarterRecentMatch(Long id) {
 		
 		return jpaQuarterRepository.findAllByMatchId(id,Sort.by("id"));
 	}
-	
+	@Override
+	public void updateInsertQuarter(List<Quarter> outcome) {
+		
+		jpaQuarterRepository.saveAll(outcome);
+	}
 	
 }

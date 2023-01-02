@@ -120,7 +120,7 @@ document.querySelector(".list").addEventListener("click", function (event) {
 //클릭시 선수 추가 =========================================================
 function addPlayer(target) {
   let bool = true;
-
+console.log(manager.array);
   let test = document.querySelectorAll(`.${addPlayerPosition.classList[1]}`);
 
   test.forEach(element => {
@@ -302,7 +302,7 @@ document.querySelector(".ml-auto").addEventListener("click", function (event) {
     movepage.href = event.target.href;
     document.querySelector("div.btn_pop").addEventListener("click", function (event) {
       if (event.target && event.target.classList.contains("Ysave")) {
-        let marray = manager.array;
+        let marray =  manager.sorting(manager.array);
         console.log(marray);
         let option = {
           method: 'POST',
@@ -334,8 +334,8 @@ document.querySelector(".site-mobile-menu").addEventListener("click", function (
     movepage.href = event.target.href;
     document.querySelector("div.btn_pop").addEventListener("click", function (event) {
       if (event.target && event.target.classList.contains("Ysave")) {
-        let marray = manager.array;
-        console.log(marray);
+        let marray =  manager.sorting(manager.array);
+        
         let option = {
           method: 'POST',
           headers: {
@@ -353,6 +353,34 @@ document.querySelector(".site-mobile-menu").addEventListener("click", function (
       movepage.click();
       document.body.removeChild(movepage);
     })
+  }else if (event.target && event.target.classList.contains("drop")) {
+    event.preventDefault();
+    console.log(event.target);
+    document.querySelector(".pop").style.display = "flex";
+    let movepage = document.createElement("a");
+    movepage.href = event.target.href;
+    document.querySelector("div.btn_pop").addEventListener("click", function (event) {
+      if (event.target && event.target.classList.contains("Ysave")) {
+        let marray =  manager.sorting(manager.array);
+        
+        let option = {
+          method: 'POST',
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(marray)
+        }
+
+        fetch(`/lineup/entry`, option);
+      } else {
+        console.log("no");
+      }
+
+      document.body.appendChild(movepage);
+      movepage.click();
+      document.body.removeChild(movepage);
+    })
+
   }
 })
 
@@ -365,8 +393,8 @@ document.querySelector(".dropdown-menu").addEventListener("click", function (eve
     movepage.href = event.target.href;
     document.querySelector("div.btn_pop").addEventListener("click", function (event) {
       if (event.target && event.target.classList.contains("Ysave")) {
-        let marray = manager.array;
-        console.log(marray);
+        let marray =  manager.sorting(manager.array);
+        
         let option = {
           method: 'POST',
           headers: {
@@ -388,34 +416,6 @@ document.querySelector(".dropdown-menu").addEventListener("click", function (eve
   }
 })
 
-document.querySelector(".site-mobile-menu").addEventListener("click", function (event) {
-  if (event.target && event.target.classList.contains("drop")) {
-    event.preventDefault();
-    console.log(event.target);
-    document.querySelector(".pop").style.display = "flex";
-    let movepage = document.createElement("a");
-    movepage.href = event.target.href;
-    document.querySelector("div.btn_pop").addEventListener("click", function (event) {
-      if (event.target && event.target.classList.contains("Ysave")) {
-        let marray = manager.array;
-        console.log(marray);
-        let option = {
-          method: 'POST',
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(marray)
-        }
-
-        fetch(`/lineup/entry`, option);
-      } else {
-        console.log("no");
-      }
-
-      document.body.appendChild(movepage);
-      movepage.click();
-      document.body.removeChild(movepage);
-    })
-
-  }
-})
+// document.querySelector(".site-mobile-menu").addEventListener("click", function (event) {
+//   console.log(manager);
+// })
