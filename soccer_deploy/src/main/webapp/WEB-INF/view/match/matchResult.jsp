@@ -30,6 +30,7 @@
 <link rel="stylesheet" href="/css/style.css">
 
 <link rel="stylesheet" href="/css/match.css">
+<link rel="stylesheet" href="/css/result.css">
 
 </head>
 
@@ -41,19 +42,7 @@
 
 	<jsp:include page="/WEB-INF/view/include/header.jsp"></jsp:include>
 
-	<!-- 여기까지가 기본구성.  -->
-	<!-- 필요하면 지워도 되는데 책임은 못짐. -->
 
-	<!-- <div class="hero overlay"
-		style="background-image: url('images/match.jpg');">
-		<div class="container">
-			<div class="row align-items-center">
-				<div class="col-lg-5 mx-auto text-center">
-					<h1 class="text-white">Matches</h1>
-				</div>
-			</div>
-		</div>
-	</div> -->
 
 	<div class="wrap bg-visual"
 		style="background-image: url('images/match.jpg');">
@@ -72,78 +61,149 @@
 			<hr>
 			<div class="top">
 				<div class="center-date">
-					<h3>10월</h3>
-					<button type="button" id="prev" class="btn-outline-info "
-						onclick="">이전</button>
-					<button type="button" id="next" class="btn-outline-info "
-						onclick="">다음</button>
+					<h3>${empty param.Month ? month : param.Month }월</h3>
+					<c:choose>
+						<c:when test="${empty param.Month }">
+							<a type="button" id="prev" class="btn-outline-info "
+								href="./result?Year=${param.Year}&Month=${month - 1 < 1 ? '01' : (month - 1 < 10 ? '0'+= month - 1 : month -1 )}"
+								onclick="${month eq 1 ? 'return false' : ''}">이전</a>
+							<a type="button" id="next" class="btn-outline-info "
+								href="./result?Year=${param.Year}&Month=${month + 1 > 12 ? '12' : (month + 1< 10 ? '0'+= month + 1 : month + 1)}"
+								onclick="${month eq 12 ? 'return false' : ''}">다음</a>
+						</c:when>
+						<c:otherwise>
+							<a type="button" id="prev" class="btn-outline-info "
+								href="./result?Year=${param.Year}&Month=${param.Month - 1 < 1 ? '01' : (param.Month - 1 < 10 ? '0'+= param.Month - 1 : param.Month -1 )}"
+								onclick="${param.Month eq 1 ? 'return false' : ''}">이전</a>
+							<a type="button" id="next" class="btn-outline-info "
+								href="./result?Year=${param.Year}&Month=${param.Month + 1 > 12 ? '12' : (param.Month + 1< 10 ? '0'+= param.Month + 1 : param.Month + 1)}"
+								onclick="${param.Month eq 12 ? 'return false' : ''}">다음</a>
+						</c:otherwise>
+					</c:choose>
+
 				</div>
 				<div class="right">
-					<form id="matchForm" name="" method="GET" action="">
-						<select>
-							<option value="">전체</option>
-							<option value="2022">2022</option>
-						</select> <select name="matchesMonth" id="matchesMonth">
-							<option value="">전체</option>
-							<option value="01">1월</option>
-							<option value="02">2월</option>
-							<option value="03">3월</option>
-							<option value="04">4월</option>
-							<option value="05">5월</option>
-							<option value="06">6월</option>
-							<option value="07">7월</option>
-							<option value="08">8월</option>
-							<option value="09">9월</option>
-							<option value="10">10월</option>
-							<option value="11">11월</option>
-							<option value="12">12월</option>
-						</select> <input id="search" type="submit" value="검색" onclick="">
+				<div class="reg-div">
+
+				<a href="/lineup/result" class="btn btn-primary">등록</a>
+			</div>
+					<form id="matchForm" method="get" action="./result">
+						<select name="Year" id="Year">
+							<c:forEach var="year" items="${year}">
+								<option value="${year}" ${param.Year eq year ? "selected" : ""}>20${year}</option>
+							</c:forEach>
+						</select> <select name="Month" id="Month">
+							<c:forEach var="i" begin="1" end="12">
+								<c:choose>
+									<c:when test="${i < 10 }">
+										<option value="0${i}"
+											${empty param.Month ? (month eq i ? "selected" : "") : (param.Month eq i ? "selected" : "")}>${i}월</option>
+									</c:when>
+
+									<c:when test="${i eq 10 }">
+										<option value="${i}"
+											${empty param.Month ? (month eq i ? "selected" : "") : (param.Month eq i ? "selected" : "")}>${i}월</option>
+									</c:when>
+									<c:otherwise>
+										<option value="${i}"
+											${empty param.Month ? (month eq i ? "selected" : "") : (param.Month eq i ? "selected" : "")}>${i}월</option>
+									</c:otherwise>
+								</c:choose>
+
+							</c:forEach>
+						</select> <input id="search" type="submit" value="검색">
 					</form>
 				</div>
 			</div>
-
+			
 			<div class="bottom">
 
 
+				<c:choose>
+					<c:when test="${empty result }">
+						<ul>
+							<li>
+								<div class="date">날짜</div>
+								<ul class="board">
+									<li>기록없음</li>
 
-				<ul>
-					<li>
-						<div class="date">날짜</div>
-						<ul class="board">
-							<c:forEach var="item" items="${list}">
-								<li>${item.matchDate}</li>
-							</c:forEach>
+								</ul>
+							</li>
+							<li>
+								<div class="place">장소</div>
+								<ul class="board">
+
+
+									<li>기록없음</li>
+								</ul>
+							</li>
+							<li>
+								<div class="result">경기결과</div>
+								<ul class="board">
+
+									<li>기록없음</li>
+								</ul>
+
+							</li>
+
+
+							<li>
+								<div class="log">결과보기</div>
+								<ul class="board">
+									<li>기록없음</li>
+								</ul>
+							</li>
 						</ul>
-					</li>
-					<li>
-						<div class="place">장소</div>
-						<ul class="board">
+					</c:when>
+					<c:otherwise>
+						<ul>
+							<li>
+								<div class="date">날짜</div>
+								<ul class="board">
 
-							<c:forEach var="item" items="${list}">
-								<li>${item.matchPlace}</li>
-							</c:forEach>
+									<c:forEach var="item" items="${result}">
+										<fmt:formatDate var="set" value="${item.matchDate}"
+											pattern="yy/MM/dd HH:mm" />
+										<li>${set}</li>
+									</c:forEach>
+								</ul>
+							</li>
+							<li>
+								<div class="place">장소</div>
+								<ul class="board">
+
+									<c:forEach var="item" items="${result}">
+										<li>${item.matchPlace}</li>
+									</c:forEach>
+								</ul>
+							</li>
+							<li>
+								<div class="result">경기결과</div>
+								<ul class="board">
+									<c:forEach var="item" items="${result}">
+
+										<li>MyTeam ${item.win} : ${item.count - item.win}${item.opteam}
+										</li>
+									</c:forEach>
+								</ul>
+
+							</li>
+
+
+							<li>
+								<div class="log">결과보기</div>
+								<ul class="board">
+									<c:forEach var="item" items="${result}">
+										<li><button type="button"
+												onclick="openLayerPopup('popup-01', 900, 600, this);"
+												class="bg-success" id="">결과보기</button></li>
+									</c:forEach>
+								</ul>
+							</li>
 						</ul>
-					</li>
-					<li>
-						<div class="result">경기결과</div>
-						<ul class="board">
-							<c:forEach var="item" items="${list}">
-								<li>MyTeam 1 : 0 ${item.opteam}
-								
-								</li>
-							</c:forEach>
-						</ul>
+					</c:otherwise>
 
-					</li>
-
-
-					<li>
-						<div class="log">결과보기</div>
-							<button type="button"
-							onclick="openLayerPopup('popup-01', 900, 600, this);"
-							class="bg-success" id="">결과보기</button>
-					</li>
-				</ul>
+				</c:choose>
 			</div>
 
 			<!-- #wrapper  -->
@@ -208,16 +268,16 @@
 				</footer>
 			</div>
 
-	<!---기본 메뉴--->
+			<!---기본 메뉴--->
 
 
 
-	<jsp:include page="/WEB-INF/view/include/footer.jsp"></jsp:include>
+			<jsp:include page="/WEB-INF/view/include/footer.jsp"></jsp:include>
 
 
 
 
-	<script>
+			<script>
 		function openLayerPopup(id, width, height, el) {
 			const $popup = document.getElementById(id);
 			const $mask = document.getElementById('layer-mask');
@@ -255,21 +315,21 @@
 		}
 	</script>
 
-	<script src="/js/viewDetail.js"></script>
-	<script src="/js/jquery-3.3.1.min.js"></script>
-	<script src="/js/jquery-migrate-3.0.1.min.js"></script>
-	<script src="/js/jquery-ui.js"></script>
-	<script src="/js/popper.min.js"></script>
-	<script src="/js/bootstrap.min.js"></script>
-	<script src="/js/owl.carousel.min.js"></script>
-	<script src="/js/jquery.stellar.min.js"></script>
-	<script src="/js/jquery.countdown.min.js"></script>
-	<script src="/js/bootstrap-datepicker.min.js"></script>
-	<script src="/js/jquery.easing.1.3.js"></script>
-	<script src="/js/aos.js"></script>
-	<script src="/js/jquery.fancybox.min.js"></script>
-	<script src="/js/jquery.sticky.js"></script>
-	<script src="/js/jquery.mb.YTPlayer.min.js"></script>
-	<script src="/js/main.js"></script>
+			<script src="/js/viewDetail.js"></script>
+			<script src="/js/jquery-3.3.1.min.js"></script>
+			<script src="/js/jquery-migrate-3.0.1.min.js"></script>
+			<script src="/js/jquery-ui.js"></script>
+			<script src="/js/popper.min.js"></script>
+			<script src="/js/bootstrap.min.js"></script>
+			<script src="/js/owl.carousel.min.js"></script>
+			<script src="/js/jquery.stellar.min.js"></script>
+			<script src="/js/jquery.countdown.min.js"></script>
+			<script src="/js/bootstrap-datepicker.min.js"></script>
+			<script src="/js/jquery.easing.1.3.js"></script>
+			<script src="/js/aos.js"></script>
+			<script src="/js/jquery.fancybox.min.js"></script>
+			<script src="/js/jquery.sticky.js"></script>
+			<script src="/js/jquery.mb.YTPlayer.min.js"></script>
+			<script src="/js/main.js"></script>
 </body>
 </html>

@@ -38,7 +38,7 @@ public class matchMyController {
 	public String matchList(Model model) {
 		List<matchMyDto> list = MatchDao.list();
 		model.addAttribute("list", list);
-		log.info("{}",list);
+//		log.info("{}",list);
 		
 		return "view/match/match"; 
 	}
@@ -55,7 +55,6 @@ public class matchMyController {
 		Entry entry =new Entry();
 		entry.setMatch(m.findeRecentMatch(Long.parseLong(matchId)));
 		entry.setUser((User) session.getAttribute("loginUser"));
-		log.info("{}",matchId);
 		entryService.save(entry);
 		return "view/match/match";
 	}
@@ -67,19 +66,25 @@ public class matchMyController {
 	}
 	
 	@GetMapping("/result")
-	public String matchResult() {
-		
+	public String matchResult(@RequestParam(value= "Year", required = false, defaultValue = "first") String rankYear, @RequestParam(value= "Month", required = false, defaultValue = "first") String rankMonth, Model model) {
+		model.addAttribute("result", matchService.matchResult(rankYear, rankMonth));
+		model.addAttribute("year", matchService.year());
+		model.addAttribute("month",matchService.month());
+		log.info("resutl::{}", matchService.matchResult(rankYear, rankMonth));
 		return "view/match/matchResult";
 	}
-	@GetMapping("/test")
-	public String rank(@RequestParam(value= "rankYear", required = false, defaultValue = "first") String rankYear, @RequestParam(value= "rankMonth", required = false, defaultValue = "first") String rankMonth, Model model) {
-//		log.info("year:{}",matchService.year());
-		log.info("year:{} , month:{}",rankYear, rankMonth);
-		log.info("rank:{}",matchService.rank(rankYear, rankMonth));
+	@GetMapping("/rank")
+	public String rank(@RequestParam(value= "Year", required = false, defaultValue = "first") String rankYear, @RequestParam(value= "Month", required = false, defaultValue = "first") String rankMonth, Model model) {
 		model.addAttribute("rank", matchService.rank(rankYear, rankMonth));
 		model.addAttribute("year", matchService.year());
 		model.addAttribute("month",matchService.month());
 
 		return "view/match/rank";
 	}
+	@GetMapping("/test")
+	public String listResult(@RequestParam(name = "redirect", defaultValue = "/match/result") String redirect) {
+		
+		return "redirect:"+redirect;
+	}
 }
+

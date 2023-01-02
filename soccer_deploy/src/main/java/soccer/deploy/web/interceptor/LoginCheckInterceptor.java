@@ -12,24 +12,24 @@ import org.springframework.web.servlet.ModelAndView;
 import lombok.extern.slf4j.Slf4j;
 
 
-/* �씤利� 泥댄겕 �씤�꽣�뀎�꽣 (濡쒓렇�씤 �릺吏� �븡�� �궗�슜�옄�뒗 �쉶�썝 紐⑸줉 �벑�쓣 �젒洹쇳븯吏� 紐삵븯寃� �꽕�젙) */
+/* 占쎌뵥筌앾옙 筌ｋ똾寃� 占쎌뵥占쎄숲占쎈�롳옙苑� (嚥≪뮄�젃占쎌뵥 占쎈┷筌욑옙 占쎈륫占쏙옙 占쎄텢占쎌뒠占쎌쁽占쎈뮉 占쎌돳占쎌뜚 筌뤴뫖以� 占쎈쾻占쎌뱽 占쎌젔域뱀눛釉�筌욑옙 筌륁궢釉�野껓옙 占쎄퐬占쎌젟) */
 @Slf4j
 public class LoginCheckInterceptor implements HandlerInterceptor {
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		log.info("LoginCheckInterceptor �떎�뻾...");
+		log.info("LoginCheckInterceptor 占쎈뼄占쎈뻬...");
 		System.out.println(request.getDispatcherType());
 		String requestURI = request.getRequestURI();
 		HttpSession session = request.getSession();
 		Object logUser = session.getAttribute("loginUser");
-		/* Cookie 諛⑹떇
+		/* Cookie 獄쎻뫗�뻼
 		Cookie[] cookies = request.getCookies();
-		// 濡쒓렇�씤�씠 �븘�슂�븳 �궗�슜�옄�씤吏�
+		// 嚥≪뮄�젃占쎌뵥占쎌뵠 占쎈툡占쎌뒄占쎈립 占쎄텢占쎌뒠占쎌쁽占쎌뵥筌욑옙
 		if (isLoginCheckMember(cookies)) {
-			log.info("誘몄씤利� �궗�슜�옄 �슂泥� {}", requestURI);
-			// 濡쒓렇�씤 �솕硫댁쑝濡� 由щ떎�씠�젆�듃
+			log.info("沃섎챷�뵥筌앾옙 占쎄텢占쎌뒠占쎌쁽 占쎌뒄筌ｏ옙 {}", requestURI);
+			// 嚥≪뮄�젃占쎌뵥 占쎌넅筌롫똻�몵嚥∽옙 �뵳�됰뼄占쎌뵠占쎌젂占쎈뱜
 			response.sendRedirect("/members/login?redirect=" + requestURI);
 			return false;
 		}
@@ -46,7 +46,7 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
 	
 	
 		
-//	/** 濡쒓렇�씤 �뿬遺� 泥댄겕 */
+//	/** 嚥≪뮄�젃占쎌뵥 占쎈연�겫占� 筌ｋ똾寃� */
 //	private boolean isLoginCheckMember(HttpSession session) {
 //		if (session != null || session.getAttribute("loginUser")) {
 //				return false;

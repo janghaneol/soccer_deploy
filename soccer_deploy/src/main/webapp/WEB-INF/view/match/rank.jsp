@@ -74,49 +74,49 @@
 			<hr>
 			<div class="top">
 				<div class="center-date">	
-					<h3>${empty param.rankMonth ? month : param.rankMonth }월</h3>
+					<h3>${empty param.Month ? month : param.Month }월</h3>
 					<c:choose>
-						<c:when test="${empty param.rankMonth }">
+						<c:when test="${empty param.Month }">
 							<a type="button" id="prev" class="btn-outline-info "
-								href="./test?rankYear=${param.rankYear}&rankMonth=${month - 1 < 1 ? '01' : (month - 1 < 10 ? '0'+= month - 1 : month -1 )}"
+								href="./rank?Year=${param.Year}&Month=${month - 1 < 1 ? '01' : (month - 1 < 10 ? '0'+= month - 1 : month -1 )}"
 								onclick="${month eq 1 ? 'return false' : ''}">이전</a>
 							<a type="button" id="next" class="btn-outline-info "
-								href="./test?rankYear=${param.rankYear}&rankMonth=${month + 1 > 12 ? '12' : (month + 1< 10 ? '0'+= month + 1 : month + 1)}"
+								href="./rank?Year=${param.Year}&Month=${month + 1 > 12 ? '12' : (month + 1< 10 ? '0'+= month + 1 : month + 1)}"
 								onclick="${month eq 12 ? 'return false' : ''}">다음</a>
 						</c:when>
 						<c:otherwise>
 							<a type="button" id="prev" class="btn-outline-info "
-								href="./test?rankYear=${param.rankYear}&rankMonth=${param.rankMonth - 1 < 1 ? '01' : (param.rankMonth - 1 < 10 ? '0'+= param.rankMonth - 1 : param.rankMonth -1 )}"
-								onclick="${param.rankMonth eq 1 ? 'return false' : ''}">이전</a>
+								href="./rank?Year=${param.Year}&Month=${param.Month - 1 < 1 ? '01' : (param.Month - 1 < 10 ? '0'+= param.Month - 1 : param.Month -1 )}"
+								onclick="${param.Month eq 1 ? 'return false' : ''}">이전</a>
 							<a type="button" id="next" class="btn-outline-info "
-								href="./test?rankYear=${param.rankYear}&rankMonth=${param.rankMonth + 1 > 12 ? '12' : (param.rankMonth + 1< 10 ? '0'+= param.rankMonth + 1 : param.rankMonth + 1)}"
-								onclick="${param.rankMonth eq 12 ? 'return false' : ''}">다음</a>
+								href="./rank?Year=${param.Year}&Month=${param.Month + 1 > 12 ? '12' : (param.Month + 1< 10 ? '0'+= param.Month + 1 : param.Month + 1)}"
+								onclick="${param.Month eq 12 ? 'return false' : ''}">다음</a>
 						</c:otherwise>
 					</c:choose>
 
 				</div>
 				<div class="right">
-					<form id="matchForm" method="get" action="./test">
-						<select name="rankYear" id="rankYear">
+					<form id="matchForm" method="get" action="./rank">
+						<select name="Year" id="Year">
 							<c:forEach var="year" items="${year}">
 								<option value="${year}"
-									${param.rankYear eq year ? "selected" : ""}>20${year}</option>
+									${param.Year eq year ? "selected" : ""}>20${year}</option>
 							</c:forEach>
-						</select> <select name="rankMonth" id="rankMonth">
+						</select> <select name="Month" id="Month">
 							<c:forEach var="i" begin="1" end="12">
 								<c:choose>
 									<c:when test="${i < 10 }">
 										<option value="0${i}"
-											${empty param.rankMonth ? (month eq i ? "selected" : "") : (param.rankMonth eq i ? "selected" : "")}>${i}월</option>
+											${empty param.Month ? (month eq i ? "selected" : "") : (param.Month eq i ? "selected" : "")}>${i}월</option>
 									</c:when>
 
 									<c:when test="${i eq 10 }">
 										<option value="${i}"
-											${empty param.rankMonth ? (month eq i ? "selected" : "") : (param.rankMonth eq i ? "selected" : "")}>${i}월</option>
+											${empty param.Month ? (month eq i ? "selected" : "") : (param.Month eq i ? "selected" : "")}>${i}월</option>
 									</c:when>
 									<c:otherwise>
 										<option value="${i}"
-											${empty param.rankMonth ? (month eq i ? "selected" : "") : (param.rankMonth eq i ? "selected" : "")}>${i}월</option>
+											${empty param.Month ? (month eq i ? "selected" : "") : (param.Month eq i ? "selected" : "")}>${i}월</option>
 									</c:otherwise>
 								</c:choose>
 

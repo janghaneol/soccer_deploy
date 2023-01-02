@@ -13,8 +13,10 @@ import soccer.deploy.entry.repository.JpaEntryRepository;
 import soccer.deploy.entry.service.EntryService;
 import soccer.deploy.match.entity.Match;
 import soccer.deploy.match.myDao.matchDao;
+import soccer.deploy.match.repository.JpaMatchRepository;
 import soccer.deploy.match.service.MatchService;
 import soccer.deploy.quarter.entity.Quarter;
+import soccer.deploy.quarter.repository.JpaQuarterRepository;
 import soccer.deploy.quarter.service.QuarterService;
 import soccer.deploy.user.repository.UserRepository;
 import soccer.deploy.user.service.UserService;
@@ -34,7 +36,9 @@ public class choungTest {
 	@Autowired
 	private JpaEntryRepository entryRepository;
 	@Autowired
-	 matchDao MatchDao;
+	private JpaMatchRepository m;
+	@Autowired
+	private JpaQuarterRepository q;
 	
 	@Test
 	@Disabled
@@ -47,6 +51,7 @@ public class choungTest {
 	
 	@Test
 	void test3() {
-		log.info("{}",MatchDao.list().get(0));
+//		log.info("{}",m.resultMatch("23/11").get(0).getCount());
+//		log.info("{}",m.resultMatch("22/12").get(1).getWin());
 	}
 }

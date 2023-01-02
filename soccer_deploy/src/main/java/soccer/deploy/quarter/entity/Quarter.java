@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
+import org.hibernate.annotations.DynamicUpdate;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,6 +21,7 @@ import soccer.deploy.match.entity.Match;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@DynamicUpdate
 @SequenceGenerator(
 		name = "quarter_seq_gen",
 		sequenceName = "quarter_seq",
@@ -36,6 +39,9 @@ public class Quarter {
 	private String outcome;
 	
 	@ManyToOne
-	@JoinColumn(name ="match_id")
+	@JoinColumn(name ="match_id", insertable= false,updatable = false)
 	private Match match;
+	
+	@Column(name="match_id")
+	private Long matchId;
 }
