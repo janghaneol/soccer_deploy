@@ -34,7 +34,7 @@ public class Match {
 	private Long id;
 	
 	@Column(name ="match_date",nullable = false)
-	@Temporal(TemporalType.DATE) // ����� �ú���
+	@Temporal(TemporalType.DATE) // 占쏙옙占쏙옙占� 占시븝옙占쏙옙
 	private Date matchDate;
 	
 	@Column(nullable = false)
