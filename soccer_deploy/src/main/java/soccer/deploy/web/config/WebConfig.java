@@ -17,7 +17,7 @@ import soccer.deploy.web.interceptor.LoginCheckInterceptor;
 @Configuration
 public class WebConfig implements WebMvcConfigurer{
 
-	// 필터 등록을 위한 빈 설정
+	// �븘�꽣 �벑濡앹쓣 �쐞�븳 鍮� �꽕�젙
 	/*
 	 * @Bean public FilterRegistrationBean logFilter() {
 	 * FilterRegistrationBean<Filter> filterRegistrationBean = new

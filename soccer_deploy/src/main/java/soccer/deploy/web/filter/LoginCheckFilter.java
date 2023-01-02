@@ -17,8 +17,8 @@ import org.springframework.util.PatternMatchUtils;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * �씤利� 泥댄겕 �븘�꽣 濡쒓렇�씤 �릺吏� �븡�� �궗�슜�옄�뒗 �쉶�썝 紐⑸줉 �벑�쓣 �젒洹쇳븯吏� 紐삵븯寃� �꽕�젙
- */
+* 占쎌뵥筌앾옙 筌ｋ똾寃� 占쎈툡占쎄숲 嚥≪뮄�젃占쎌뵥 占쎈┷筌욑옙 占쎈륫占쏙옙 占쎄텢占쎌뒠占쎌쁽占쎈뮉 占쎌돳占쎌뜚 筌뤴뫖以� 占쎈쾻占쎌뱽 占쎌젔域뱀눛釉�筌욑옙 筌륁궢釉�野껓옙 占쎄퐬占쎌젟
+*/
 @Slf4j
 public class LoginCheckFilter implements Filter {
 
@@ -38,13 +38,13 @@ public class LoginCheckFilter implements Filter {
 		
 		// Cookie Filter
 //		try {
-//			// 濡쒓렇�씤 泥댄겕媛� �븘�슂�븳 URI�씤吏�
+//			// 嚥≪뮄�젃占쎌뵥 筌ｋ똾寃뺝첎占� 占쎈툡占쎌뒄占쎈립 URI占쎌뵥筌욑옙
 //			if (isLoginCheckUri(requestURI)) {
 //				Cookie[] cookies = httpRequest.getCookies();
-//				// 濡쒓렇�씤�씠 �븘�슂�븳 �궗�슜�옄�씤吏�
+//				// 嚥≪뮄�젃占쎌뵥占쎌뵠 占쎈툡占쎌뒄占쎈립 占쎄텢占쎌뒠占쎌쁽占쎌뵥筌욑옙
 //				if(isLoginCheckMember(cookies)) {
-//					log.info("誘몄씤利� �궗�슜�옄 �슂泥� {}", requestURI);
-//					// 濡쒓렇�씤 �솕硫댁쑝濡� 由щ떎�씠�젆�듃
+//					log.info("沃섎챷�뵥筌앾옙 占쎄텢占쎌뒠占쎌쁽 占쎌뒄筌ｏ옙 {}", requestURI);
+//					// 嚥≪뮄�젃占쎌뵥 占쎌넅筌롫똻�몵嚥∽옙 �뵳�됰뼄占쎌뵠占쎌젂占쎈뱜
 //					httpResponse.sendRedirect("/user/login?redirect=" + requestURI);
 //					return;
 //				}
@@ -54,12 +54,12 @@ public class LoginCheckFilter implements Filter {
 //			ex.printStackTrace();
 //		}
 		
-		/*Session�쓣 �씠�슜*/
+		/*Session占쎌뱽 占쎌뵠占쎌뒠*/
 		try {
 		if(isLoginCheckUri(requestURI)) {
 			HttpSession session = httpRequest.getSession(false);
 			if(session == null || session.getAttribute("loginUser")==null) {
-				log.info("誘몄씤利� �궗�슜�옄 �슂泥� {}",requestURI);
+				log.info("沃섎챷�뵥筌앾옙 占쎄텢占쎌뒠占쎌쁽 占쎌뒄筌ｏ옙 {}",requestURI);
 				httpResponse.sendRedirect("/user/login?redirect=" + requestURI);
 				return;
 					}
@@ -71,12 +71,12 @@ public class LoginCheckFilter implements Filter {
 		
 	}
 
-	/** �솕�씠�듃 由ъ뒪�듃�쓽 寃쎌슦 �씤利� 泥댄겕�븯吏� �븡�쓬 */
+	/** 占쎌넅占쎌뵠占쎈뱜 �뵳�딅뮞占쎈뱜占쎌벥 野껋럩�뒭 占쎌뵥筌앾옙 筌ｋ똾寃뺧옙釉�筌욑옙 占쎈륫占쎌벉 */
 	private boolean isLoginCheckUri(String requestURI) {
 		return !PatternMatchUtils.simpleMatch(whitelist, requestURI);
 	}
 	
-	/** 濡쒓렇�씤 �뿬遺� 泥댄겕 Cookie 
+	/** 嚥≪뮄�젃占쎌뵥 占쎈연�겫占� 筌ｋ똾寃� Cookie 
 	
 	private boolean isLoginCheckMember(Cookie[] cookies) {
 		if(cookies != null) {

@@ -1,5 +1,9 @@
 package soccer.deploy.lineUp.service;
 
-public interface LineUpService {
+import java.util.List;
 
+import soccer.deploy.lineUp.entity.LineUp;
+
+public interface LineUpService {
+	public void insertLineUp(List<LineUp> LineUp);
 }

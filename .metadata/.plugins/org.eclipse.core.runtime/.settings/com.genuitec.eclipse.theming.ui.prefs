@@ -3,7 +3,12 @@ approved.defs.file.last.changed.time=1649720987000
 configurationInstallLocation=/C\:/Users/Administrator/eclipse/jee-2022-03/eclipse/
 eclipse.preferences.version=1
 iconcolormode=primary
+<<<<<<< HEAD
 last.download.attempt.time=1672221929744
 lastConfiguration=1672221908217
+=======
+last.download.attempt.time=1672508069685
+lastConfiguration=1672508060776
+>>>>>>> 882add33a8f2edf93d9c35e757537dd1205ec767
 newinstall=true
 workbench.theme=Dark Gray

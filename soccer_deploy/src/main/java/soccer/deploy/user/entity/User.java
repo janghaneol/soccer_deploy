@@ -61,7 +61,7 @@ public class User {
 	@Column(name="img_file_name")
 	private String imgFileName;
 	
-	@Column(name = "backNum")
+	@Column(name = "backnum")
 	private Integer backNum;
 	
 	@Column(name="member_auth")
