@@ -1,5 +1,16 @@
 =\=\=\=\=\=\=
 <<<<<<<=HEAD
 >>>>>>>=7263eb88bd8de69f53ea22a4b7976aab9ad112b9
+arguments=
+auto.sync=false
+build.scans.enabled=false
+connection.gradle.distribution=GRADLE_DISTRIBUTION(WRAPPER)
 connection.project.dir=
 eclipse.preferences.version=1
+gradle.user.home=
+java.home=
+jvm.arguments=
+offline.mode=false
+override.workspace.settings=false
+show.console.view=false
+show.executions.view=false
