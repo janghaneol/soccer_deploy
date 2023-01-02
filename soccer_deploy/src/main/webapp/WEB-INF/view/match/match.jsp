@@ -73,10 +73,10 @@
 			<div class="top">
 				<div class="center-date">
 					<h3 id="hMonth">${matchMonth}월</h3> 
-					<a type="button" id="prev" class="btn-outline-info "
-						onclick='count("mi")'>이전</a>
-					<a type="button" id="next" class="btn-outline-info "
-						onclick='count("pl")'>다음</a>
+					<button type="button" id="prev" class="btn-outline-info "
+						onclick='count("mi")'>이전</button>
+					<button type="button" id="next" class="btn-outline-info "
+						onclick='count("pl")'>다음</button>
 				</div>
 				
 				<div class="right">
