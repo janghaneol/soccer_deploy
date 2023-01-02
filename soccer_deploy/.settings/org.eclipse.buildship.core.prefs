@@ -1,2 +1,13 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+arguments=--init-script C\:\\Users\\user\\AppData\\Roaming\\Code\\User\\globalStorage\\redhat.java\\1.13.0\\config_win\\org.eclipse.osgi\\53\\0\\.cp\\gradle\\init\\init.gradle --init-script C\:\\Users\\user\\AppData\\Roaming\\Code\\User\\globalStorage\\redhat.java\\1.13.0\\config_win\\org.eclipse.osgi\\53\\0\\.cp\\gradle\\protobuf\\init.gradle
+=======
+arguments=--init-script C\:\\Users\\jhano\\AppData\\Roaming\\Code\\User\\globalStorage\\redhat.java\\1.13.0\\config_win\\org.eclipse.osgi\\53\\0\\.cp\\gradle\\init\\init.gradle --init-script C\:\\Users\\jhano\\AppData\\Roaming\\Code\\User\\globalStorage\\redhat.java\\1.13.0\\config_win\\org.eclipse.osgi\\53\\0\\.cp\\gradle\\protobuf\\init.gradle
+>>>>>>> f17b57de8e28a100dc6487f9f9e57fa30d0b2a55
+auto.sync=false
+build.scans.enabled=false
+connection.gradle.distribution=GRADLE_DISTRIBUTION(WRAPPER)
+>>>>>>> 7263eb88bd8de69f53ea22a4b7976aab9ad112b9
 connection.project.dir=
 eclipse.preferences.version=1
