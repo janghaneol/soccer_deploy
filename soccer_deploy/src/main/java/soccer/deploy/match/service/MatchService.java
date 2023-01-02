@@ -1,5 +1,9 @@
 package soccer.deploy.match.service;
 
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
+
 import soccer.deploy.match.entity.Match;
 
 
@@ -18,4 +22,5 @@ public interface MatchService {
 	/* Match 수정 */
 	public Long modifyMatch(Long id, Match updateMatch);
 	
+	public List<Match> findMatchdate(String matchDate);
 }

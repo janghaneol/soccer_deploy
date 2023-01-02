@@ -3,9 +3,11 @@ package soccer.deploy.match.myController;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 
@@ -48,13 +50,24 @@ public class matchMyController {
 	 * 경기일정을 보여줌
 	 */
 	@GetMapping
-	public String matchList(Model model) {
-		List<matchMyDto> list = MatchDao.list();
+	public String matchList(Model model,@RequestParam(required = false, defaultValue = "2023") String matchYear, @RequestParam(required = false,defaultValue = "") String matchMonth) {
+		String date = matchYear.substring(2) +"/" + matchMonth;
+//		List<matchMyDto> list = MatchDao.list();
+//		model.addAttribute("list", list);
+		LocalDate now = LocalDate.now();
+		int year = now.getYear();
+		int month = now.getMonthValue();
+		
+		log.info("검색한 매치 : {}",date);
+		List<Match> list = m.findMatchdate(date);
 		model.addAttribute("list", list);
-		log.info("{}",list);
+		model.addAttribute("year",year);
+		model.addAttribute("month",month);
+		model.addAttribute("matchYear",matchYear);
+		model.addAttribute("matchMonth",matchMonth);
 		return "view/match/match"; 
 	}
-	 
+	   
 	/*
 	 * 경기일정 등록화면
 	 */
@@ -64,10 +77,13 @@ public class matchMyController {
 	}
 	
 	@PostMapping("/schedule")
-	public String matchSchedule(@ModelAttribute Match match,RedirectAttributes redirectAttributes,@RequestParam String publeYear, String time) {
+	public String matchSchedule(@ModelAttribute Match match,RedirectAttributes redirectAttributes,@RequestParam String publeYear, String time, HttpSession session,
+								@RequestParam String add2, String add3) {
 		Match registMatch = new Match();
-		String date = publeYear+time;
-		
+		String date = publeYear+" "+time;
+		String address = add2 + " " + add3;
+		log.info("시간:{}",date);
+		Date mDate = null;
 		/*
 		 * 	22/12/29 04:00 의 형태로 Date를 저장하려면 DB에서 session값을 바꿔줘야됩니다!
 		 *  alter session set nls_date_format = 'yyyy-MM-dd hh24:mi';
@@ -76,15 +92,16 @@ public class matchMyController {
 		
 		DateFormat dateFormat = new SimpleDateFormat("yy/MM/dd HH:mm");
 		try {
-			Date mDate =dateFormat.parse(date);
-			registMatch.setMatchDate(mDate);
+			mDate =dateFormat.parse(date);
+			
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
+		registMatch.setMatchDate(mDate);
 		registMatch.setOpteam(match.getOpteam());
-		registMatch.setMatchPlace(match.getMatchPlace());
+		registMatch.setMatchPlace(address);
+		registMatch.setUser((User)session.getAttribute("loginUser"));
 		Long matchId = m.registMatch(registMatch);
-		
 		redirectAttributes.addAttribute("matchId", matchId);
 		return "redirect:/match";
 	}
@@ -99,7 +116,7 @@ public class matchMyController {
 		log.info("{}",matchId);
 		entryService.save(entry);
 		log.info("{}",entry.getUser());
-		return "view/match/match";
+		return "redirect:/match";
 	}
 	
 	@GetMapping("/result")

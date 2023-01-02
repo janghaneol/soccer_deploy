@@ -259,7 +259,8 @@ public class UserController {
 								@RequestParam(required = false, defaultValue = "") String value) {
 		
 		Page<User> userList =userService.searchUser(value,pageable);
-		
+		log.info("검색 값 : {}", value);
+		log.info("유저리스트 : {}", userList);
 		int pageNumber = userList.getPageable().getPageNumber()+1;
 		int totalPage = userList.getTotalPages();
 		int pageBlock = 5;

@@ -5,6 +5,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,6 +13,7 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import lombok.extern.slf4j.Slf4j;
@@ -40,9 +42,9 @@ public class MatchServiceTest {
 	@Test
 //	@Disabled
 	public void regist() {
-		Date date = new Date();
-		String matchdate = "22/02/03 13:00";
-		DateFormat dateFormat = new SimpleDateFormat("yy/MM/dd HH:mm");
+		Date date = null;
+		String matchdate = "22/02/23 23:00";
+		DateFormat dateFormat = new SimpleDateFormat("yy/MM/dd kk:mm");
 		
 		try {
 			date = dateFormat.parse(matchdate);
@@ -53,10 +55,10 @@ public class MatchServiceTest {
 		
 		Match match = new Match();
 		match.setMatchPlace("의정부");
-		match.setOpteam("레알마드리드");
+		match.setOpteam("바르셀로나");
 		match.setMatchDate(date);
-		Long matchId = matchService.registMatch(match);
-		log.info("등록된 매치의 ID : {}",matchId);
+		matchService.registMatch(match);
+		log.info("등록된 매치의 ID : {}",match.getMatchDate());
 		
 	}
 
@@ -64,11 +66,12 @@ public class MatchServiceTest {
 	@Test
 	@Disabled
 	public void matchList() {
-		List<Match> allMatch = matchRepository.findAll();
-		log.info("등록된 모든 매치 : ");
-		for (Match match : allMatch) {
-			log.info("{}",match);
+		String matchdate = "";
+		List<Match> match = matchService.findMatchdate(matchdate);
+		for (Match list : match) {
+			log.info("검색한 매치 : {}",list);
 		}
+		
 	}
 	
 	@Test
