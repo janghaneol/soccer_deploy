@@ -53,7 +53,7 @@ public class LineUpController {
 		List<Quarter> quarter = quarterService.findQuarterRecentMatch(recentMatch);
 		model.addAttribute("entry", entry);
 		model.addAttribute("quarter", quarter);
-		
+		log.info("{}",recentMatch);
 		return "view/lineUp/lineUp";
 	}
 
