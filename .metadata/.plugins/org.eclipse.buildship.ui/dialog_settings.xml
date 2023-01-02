@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.buildship.ui.wizard.project.import">
+<<<<<<< HEAD
+		<item key="project_location" value="C:\Users\Administrator\Desktop\merge\soccer_deploy"/>
+=======
 		<item key="project_location" value="C:\Users\user\Desktop\test\soccer_deploy"/>
+>>>>>>> 882add33a8f2edf93d9c35e757537dd1205ec767
 	</section>
 </section>

@@ -24,7 +24,12 @@
     <fullyQualifiedTypeName name="org.apache.ibatis.annotations.Param"/>
     <fullyQualifiedTypeName name="soccer.deploy.user.entity.User"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
+<<<<<<< HEAD
+    <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.Query"/>
+    <fullyQualifiedTypeName name="org.springframework.data.repository.query.Param"/>
+=======
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
+>>>>>>> 882add33a8f2edf93d9c35e757537dd1205ec767
     <fullyQualifiedTypeName name="soccer.deploy.user.repository.UserRepository"/>
     <fullyQualifiedTypeName name="soccer.deploy.user.service.UserService"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ResponseBody"/>
@@ -49,6 +54,9 @@
     <fullyQualifiedTypeName name="org.springframework.boot.autoconfigure.AutoConfigureOrder"/>
     <fullyQualifiedTypeName name="soccer.deploy.lineUp.service.LineUpService"/>
     <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
+<<<<<<< HEAD
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+=======
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="soccer.deploy.match.entity.Match"/>
     <fullyQualifiedTypeName name="soccer.deploy.match.repository.JpaMatchRepository"/>
@@ -60,4 +68,5 @@
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
     <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
+>>>>>>> 882add33a8f2edf93d9c35e757537dd1205ec767
 </qualifiedTypeNameHistroy>

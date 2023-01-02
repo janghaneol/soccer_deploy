@@ -1,5 +1,7 @@
 package soccer.deploy.match.service;
 
+import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,7 +69,14 @@ public class MatchServiceImpl implements MatchService {
 		modMatch.setMatchImgName(updateMatch.getMatchImgName());
 		return modMatch.getId();
 	}
-	
-	
+
+	@Override
+	public List<Match> findMatchdate(String matchDate) {
+//		Optional<Match> match= jpaMatchRepository.findAllByMatchDate(matchDate);
+//		if(match.isEmpty()) {
+//			throw new RuntimeException(matchDate+"등록된 매치가 없습니다.");
+//		}
+		return jpaMatchRepository.findAllByMatchDate(matchDate);
+	}
 
 }
