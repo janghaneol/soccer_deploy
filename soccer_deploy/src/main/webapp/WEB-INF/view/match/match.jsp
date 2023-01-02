@@ -72,39 +72,40 @@
 			<hr>
 			<div class="top">
 				<div class="center-date">
-					<h3>10월</h3>
-					<button type="button" id="prev" class="btn-outline-info "
-						onclick="">이전</button>
-					<button type="button" id="next" class="btn-outline-info "
-						onclick="">다음</button>
+					<h3 id="hMonth">${matchMonth}월</h3> 
+					<a type="button" id="prev" class="btn-outline-info "
+						onclick='count("mi")'>이전</a>
+					<a type="button" id="next" class="btn-outline-info "
+						onclick='count("pl")'>다음</a>
 				</div>
+				
 				<div class="right">
-					<form id="matchForm" name="" method="GET" action="">
-						<select>
+					<form id="matchForm">
+						<select name="matchYear" id="matchYear">
+							<c:forEach begin="0" end="10" varStatus="status">
+								<option value="${year - status.current}"
+								<c:if test="${matchYear == year - status.current}">selected="selected"</c:if> >${year - status.current}년</option>
+							</c:forEach>
+						</select>  
+						<select name="matchMonth" id="matchMonth"
+							onchange="monthChange(this.value);">
 							<option value="">전체</option>
-							<option value="2022">2022</option>
-						</select> <select name="matchesMonth" id="matchesMonth">
-							<option value="">전체</option>
-							<option value="01">1월</option>
-							<option value="02">2월</option>
-							<option value="03">3월</option>
-							<option value="04">4월</option>
-							<option value="05">5월</option>
-							<option value="06">6월</option>
-							<option value="07">7월</option>
-							<option value="08">8월</option>
-							<option value="09">9월</option>
-							<option value="10">10월</option>
-							<option value="11">11월</option>
-							<option value="12">12월</option>
+							<c:forEach begin="1" end="12" varStatus="status">
+								<c:if test="${status.current < 10}">
+									<option value="0${status.current}"
+										<c:if test="${matchMonth == status.current}">selected="selected"</c:if>>${status.current}월</option>
+								</c:if>
+								<c:if test="${status.current >= 10}">
+									<option value="${status.current}"
+										<c:if test="${matchMonth == status.current}">selected="selected"</c:if>>${status.current}월</option>
+								</c:if>
+							</c:forEach>
 						</select> <input id="search" type="submit" value="검색" onclick="">
 					</form>
 				</div>
 			</div>
-
+  
 			<div class="bottom">
-
-
 
 				<ul>
 					<li>
@@ -118,8 +119,8 @@
 					<li>
 						<div class="place">장소</div>
 						<ul class="board">
-							
-						<c:forEach var="item" items="${list}">
+
+							<c:forEach var="item" items="${list}">
 								<li>${item.matchPlace}</li>
 							</c:forEach>
 						</ul>
@@ -127,11 +128,11 @@
 					<li>
 						<div class="result">경기일정</div>
 						<ul class="board">
-									<c:forEach var="item" items="${list}">
+							<c:forEach var="item" items="${list}">
 								<li><button type="button"
-									onclick="openLayerPopup('popup-01', 900, 600, this);"
-									class="bg-success" id="">참가명단</button> MyTeam 1 : 0 ${item.opteam}
-								</li>
+										onclick="openLayerPopup('popup-01', 900, 600, this);"
+										class="bg-success" id="">참가명단</button> MyTeam 1 : 0
+									${item.opteam}</li>
 							</c:forEach>
 						</ul>
 					</li>
@@ -140,8 +141,9 @@
 					<li>
 						<div class="log">참가버튼</div>
 						<ul class="board">
-									<c:forEach var="i" items="${list}" varStatus="index" begin="0" end="${list.size()}">
-								<li><a type="" href="/match/asd?matchId=10">참가신청</a></li>
+							<c:forEach var="i" items="${list}" varStatus="index" begin="0"
+								end="${list.size()}">
+								<li><a type="" href="/match/asd?matchId=${i.id}">참가신청</a></li>
 							</c:forEach>
 						</ul>
 					</li>
@@ -259,8 +261,58 @@
 				$popup.nextElementSibling.remove();
 			}
 		}
-	</script>
+		// select 의 월 옵션값이 헤드에 들어갑니다
+		var monthChange = function(value) {
+			$("#hMonth").text(value + "월");
+		}
 
+		// 이전, 다음 button으로 헤드값 수정하기 매우 더러워요 코드..
+		function count(type){
+			const result = document.getElementById("hMonth");
+			const month = document.getElementById("matchMonth");
+			const next = document.getElementById("next");
+			const prev = document.getElementById("prev")
+
+			let number = result.innerText;
+
+				if(type === 'pl'){
+					if(parseInt(number)<12){
+						number=parseInt(number)+1;
+						prev.disabled = false;
+						console.log(number);
+						if(number<10){
+							result.innerText = "0"+number+"월";
+						}
+						else{
+							result.innerText = number+"월";
+						}
+					}
+					else{
+						next.disabled='disabled';
+					}
+				}
+				
+				else if (type === 'mi'){
+					if(parseInt(number)>1){
+						number = parseInt(number)-1;
+						next.disabled = false;
+						console.log(number);
+						if(number<10){
+							result.innerText = "0"+number+"월";
+						}
+						else{
+							result.innerText = number+"월";
+						}	
+					}
+					else{
+						prev.disabled='disabled'; 
+					}
+				}	
+			
+		} 
+
+	</script>
+ 
 	<script type="/js/viewDetail.js"></script>
 	<script src="/js/jquery-3.3.1.min.js"></script>
 	<script src="/js/jquery-migrate-3.0.1.min.js"></script>

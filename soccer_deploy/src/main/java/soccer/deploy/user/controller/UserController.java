@@ -140,7 +140,6 @@ public class UserController {
 			e.printStackTrace();
 		}
 		
-		
 		User registUser = new User();
 		registUser.setEmail(user.getEmail());
 		registUser.setPasswd(user.getPasswd());
@@ -158,7 +157,6 @@ public class UserController {
 		
 		redirectAttributes.addAttribute("userId", userId);
 		redirectAttributes.addAttribute("status", true);
-		
 		return "redirect:/user/{userId}";
 	}
 	
@@ -261,7 +259,8 @@ public class UserController {
 								@RequestParam(required = false, defaultValue = "") String value) {
 		
 		Page<User> userList =userService.searchUser(value,pageable);
-		
+		log.info("검색 값 : {}", value);
+		log.info("유저리스트 : {}", userList);
 		int pageNumber = userList.getPageable().getPageNumber()+1;
 		int totalPage = userList.getTotalPages();
 		int pageBlock = 5;

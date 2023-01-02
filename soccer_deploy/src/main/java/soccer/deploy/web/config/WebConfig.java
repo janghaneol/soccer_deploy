@@ -1,4 +1,3 @@
-
 package soccer.deploy.web.config;
 
 import javax.servlet.DispatcherType;
@@ -48,3 +47,4 @@ public class WebConfig implements WebMvcConfigurer{
 		        		"/user/regist","/user/login", "/user/logout", "/error", "/error/**" , "/images/profile/**");
 	}
 }
+
