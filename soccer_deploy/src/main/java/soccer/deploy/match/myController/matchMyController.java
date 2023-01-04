@@ -133,11 +133,6 @@ public class matchMyController {
 
 		return "view/match/rank";
 	}
-	@GetMapping("/test")
-	public String listResult(@RequestParam(name = "redirect", defaultValue = "/match/result") String redirect) {
-		
-		return "redirect:"+redirect;
-	}
 	
 	@GetMapping("/kas")
 	public String tese() {
