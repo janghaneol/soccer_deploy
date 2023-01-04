@@ -74,7 +74,6 @@ input[name='publeYear'] {
 									<input type="text" name="add2" class="form-control"	id="sample6_address" placeholder="주소" readonly="readonly">
 									<input type="text" name="add3" class="form-control"	id="sample6_detailAddress" placeholder="상세주소" readonly>
 									<input type="text" class="form-control" style="display: none;" id="sample6_extraAddress" placeholder="참고항목">
- 
 								</div>
 								<!-- 내용 넘기기 -->
 							</div>
@@ -82,11 +81,22 @@ input[name='publeYear'] {
 						<div class="calForm"
 							style="display: flex; margin-top: 5%; margin-bottom: 5%;">
 							<input name="publeYear" autocomplete="off" readonly="readonly">
-							<label class="label-form"
-								style="color: white; margin-left: 20px;">시간 : </label> <input
-								name="time" style="margin-left: 10px;" type="time"
-								autocomplete="off">
+							<label class="label-form" style="color: white; margin-left: 20px;">시간 : </label> 
+							<input name="time" style="margin-left: 10px;" type="time" autocomplete="off">
 						</div>
+						<select name="quarterNumber" id="quarterNumber">
+								<option value="1">1쿼터</option>
+								<option value="2">2쿼터</option>
+								<option value="3">3쿼터</option>
+								<option value="4">4쿼터</option>
+						</select>
+						
+						<select name="quarterTime" id="quarterTime">
+							<c:forEach var="i" begin="1" end="9">
+								<option value="${i*10}">${i*10}분</option>
+							</c:forEach>
+						</select>
+						
 						<div>
 							<label for="file" class="label-file">
 								<div class="file-upload">이미지 업로드</div>

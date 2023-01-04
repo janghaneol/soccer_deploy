@@ -168,6 +168,7 @@
 									</c:forEach>
 								</ul>
 							</li>
+							
 							<li>
 								<div class="place">장소</div>
 								<ul class="board">

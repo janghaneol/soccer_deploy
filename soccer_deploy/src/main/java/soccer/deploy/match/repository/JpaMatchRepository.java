@@ -17,6 +17,9 @@ public interface JpaMatchRepository extends JpaRepository<Match, Long> {
 
 	@Query(value = "SELECT max(m.id) FROM Match m  where m.id not in(select m.id from LineUp l join l.entry e join e.match m group by m.id)")
 	public Long recentMatchNum();
+	
+	@Query(value = "SELECT max(m.id) FROM Match m")
+	public Long recentViewMatch();
     
 	@Query(value = "SELECT m FROM Match m WHERE m.id =:id")
 	public Optional<Match> recentMatch(@Param("id") Long id);

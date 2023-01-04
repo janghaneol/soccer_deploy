@@ -34,4 +34,10 @@ public interface matchDao {
 	
 	public List<String> year();
 	
+	public List<String> matchYear();
+	
+	public String matchDate();
+	
+	public String matchFirst();
+	
 }

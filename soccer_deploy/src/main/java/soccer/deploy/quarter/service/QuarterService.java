@@ -9,4 +9,6 @@ public interface QuarterService {
 	public List<Quarter> findQuarterRecentMatch(Long id);
 	
 	public void updateInsertQuarter(List<Quarter> outcome);
+	
+	public void registQuarter(List<Quarter> quarter);
 }
