@@ -3,6 +3,9 @@ package soccer.deploy.article.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -20,6 +23,8 @@ import lombok.extern.slf4j.Slf4j;
 import soccer.deploy.article.entity.article;
 import soccer.deploy.article.repository.JpaArticleRepository;
 import soccer.deploy.article.service.ArticleService;
+import soccer.deploy.notice.service.NoticeService;
+import soccer.deploy.notice.dto.*;
 
 @Controller
 @Slf4j
@@ -30,6 +35,8 @@ public class articleController {
 	private ArticleService articleService;
 	@Autowired
 	private JpaArticleRepository jpaArticleRepository;
+	@Autowired
+	private NoticeService noticeService;
 	
 	@GetMapping("/realArticleAction")
 	/* default page = 0, default size = 10 */
@@ -83,16 +90,20 @@ public class articleController {
 		return "thymeleaf/realArticle";
 	}
 	
-	@GetMapping("/{articleId}")
+	@RequestMapping("/{articleId}")
 	/* default page = 0, default size = 10 */
-	public String view(@PathVariable int articleId, Model model) {
+	public String view(@PathVariable Integer articleId,  Model model,HttpServletRequest request, @ModelAttribute("Article") article Article) {
+		
+//		List<article> reply = articleService.findArticles();
+//		model.addAttribute("reply", reply);
+		
+		List<Notice> reply = noticeService.showAll(articleId);
+		model.addAttribute("reply", reply);
+		
 		Optional<article> optional = articleService.findArticle(articleId);
-		
-//		if(optional.isPresent()) {
-//		model.addAttribute("list", optional.get());
-//		}
-		
 		model.addAttribute("list", optional.get());
+		
+		
 		return "thymeleaf/intoArticle";
 	}
 	
@@ -103,7 +114,7 @@ public class articleController {
 	}
 	
 	@GetMapping("/register")
-	public String register(Model model, @RequestParam(required = false, defaultValue = "") String search,  @ModelAttribute("Board") article Article, @PageableDefault(page = 0, size = 10, sort = "articleId", direction = Sort.Direction.ASC) Pageable pageable) {
+	public String register(Model model, @RequestParam(required = false, defaultValue = "") String search,  @ModelAttribute("Article") article Article, @PageableDefault(page = 0, size = 10, sort = "articleId", direction = Sort.Direction.ASC) Pageable pageable) {
 		
 		articleService.register(Article);
 		
@@ -130,10 +141,20 @@ public class articleController {
 		return "thymeleaf/realArticle";
 	}
 	
-	@GetMapping("/intoArticleAction")
-	public String intoArticleAction(Model model,@RequestParam(required = false) int articleId, @RequestParam(required = false) String writer, @RequestParam(required = false) String content, @RequestParam(required = false) String regdate) {
+	@GetMapping(value="/intoArticleAction")
+	public String intoArticleAction(Model model, HttpServletRequest request, @ModelAttribute("notice") Notice notice, @RequestParam("articleId") Integer articleId) throws Exception {
 		
-		jpaArticleRepository.findByArticleIdAndWriterAndContentAndRegdate(articleId,writer,content,regdate);
+//		articleService.register(Article);
+		
+		noticeService.register(notice);
+		
+		Optional<article> optional = articleService.findArticle(articleId);
+		model.addAttribute("list", optional.get());
+				
+		List<Notice> reply = noticeService.showAll(articleId);
+		model.addAttribute("reply", reply);
+		
+		
 		
 		return "thymeleaf/intoArticle";
 	}

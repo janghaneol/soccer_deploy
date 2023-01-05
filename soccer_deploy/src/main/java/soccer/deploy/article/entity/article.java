@@ -1,6 +1,7 @@
 package soccer.deploy.article.entity;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,14 +10,20 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.DynamicInsert;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.data.annotation.CreatedDate;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 @DynamicInsert
@@ -35,30 +42,31 @@ public class article {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "article_id_seq_gen")
-	private int articleId;
+	private Integer articleId;
 	@Column(name="board_id")
-	private int boardId;
+	private Integer boardId;
 	@Column(name="writer")
 	private String writer;
 	@Column(name="subject")
 	private String subject;
 	@Column(name="content")
 	private String content;
-	@Column(name="regdate")
-	private String regdate;
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date regdate;
 	@Column(name="hitcount")
-	private int hitcount;
+	private Integer hitcount;
 	@Column(name="group_no")
-	private int groupNo;
+	private Integer groupNo;
 	@Column(name="level_no")
-	private int levelNo;
+	private Integer levelNo;
 	@Column(name="order_no")
-	private int orderNo;
+	private Integer orderNo;
 	
 	public article() {}
 
-	public article(int articleId, int boardId, String writer, String subject, String content, String regdate,
-			int hitcount, int groupNo, int levelNo, int orderNo) {
+	public article(Integer articleId, Integer boardId, String writer, String subject, String content, Date regdate,
+			Integer hitcount, Integer groupNo, Integer levelNo, Integer orderNo) {
 		super();
 		this.articleId = articleId;
 		this.boardId = boardId;
@@ -72,19 +80,19 @@ public class article {
 		this.orderNo = orderNo;
 	}
 
-	public int getArticleId() {
+	public Integer getArticleId() {
 		return articleId;
 	}
 
-	public void setArticleId(int articleId) {
+	public void setArticleId(Integer articleId) {
 		this.articleId = articleId;
 	}
 
-	public int getBoardId() {
+	public Integer getBoardId() {
 		return boardId;
 	}
 
-	public void setBoardId(int boardId) {
+	public void setBoardId(Integer boardId) {
 		this.boardId = boardId;
 	}
 
@@ -112,47 +120,46 @@ public class article {
 		this.content = content;
 	}
 
-	public String getRegdate() {
+	public Date getRegdate() {
 		return regdate;
 	}
 
-	public void setRegdate(String regdate) {
+	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
 
-	public int getHitcount() {
+	public Integer getHitcount() {
 		return hitcount;
 	}
 
-	public void setHitcount(int hitcount) {
+	public void setHitcount(Integer hitcount) {
 		this.hitcount = hitcount;
 	}
 
-	public int getGroupNo() {
+	public Integer getGroupNo() {
 		return groupNo;
 	}
 
-	public void setGroupNo(int groupNo) {
+	public void setGroupNo(Integer groupNo) {
 		this.groupNo = groupNo;
 	}
 
-	public int getLevelNo() {
+	public Integer getLevelNo() {
 		return levelNo;
 	}
 
-	public void setLevelNo(int levelNo) {
+	public void setLevelNo(Integer levelNo) {
 		this.levelNo = levelNo;
 	}
 
-	public int getOrderNo() {
+	public Integer getOrderNo() {
 		return orderNo;
 	}
 
-	public void setOrderNo(int orderNo) {
+	public void setOrderNo(Integer orderNo) {
 		this.orderNo = orderNo;
 	}
 
-	
 	
 }
 

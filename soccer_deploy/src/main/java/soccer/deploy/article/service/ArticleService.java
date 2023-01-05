@@ -11,13 +11,15 @@ import soccer.deploy.article.entity.article;
 public interface ArticleService {
 	
 	/* 게시판등록 */
-	public int register(article Article);
+	public void register(article Article);
+	
+	public article insertReply(article Article);
 	
 	/** 게시판 인증 */
 	public article isArticle(String writer, String subject, String content);
 	
 	/** 게시판 상세 */
-	public Optional<article> findArticle(int articleId);
+	public Optional<article> findArticle(Integer articleId);
 
 	/** 전체 게시판 조회 */
 	public List<article> findArticles();

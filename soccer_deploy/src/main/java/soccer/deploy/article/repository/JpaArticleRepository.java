@@ -19,11 +19,10 @@ public interface JpaArticleRepository extends JpaRepository<article, String>{
 	// 게시판 작성자 또는 제목 또는 내용에 의한 검색 - 목록 페이징 처리
 	public Page<article> findAllByWriterOrSubjectContainingOrContentContaining(String writer, String subject, String content ,Pageable pageable);
 	
-	public Optional<article> findByArticleId(int articleId);
+	public Optional<article> findByArticleId(Integer articleId);
 	
-	public Optional<article> findByArticleIdAndWriterAndContentAndRegdate(int articleId, String writer, String content, String regdate);
+	public Optional<article> findByArticleIdAndWriterAndContentAndRegdate(Integer articleId, String writer, String content, String regdate);
 	
 	public Optional<article> findByWriter(String writer);
-	
 
 }
