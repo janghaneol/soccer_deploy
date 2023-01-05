@@ -67,12 +67,20 @@
 	</div>
 
 	<div class="wrapper">
-		<h2>일정</h2>
+		<div style="text-align: right; margin-right: 100px;">
+			<a href="/match/schedule" class="btn btn-primary">경기등록</a>
+		</div>
+		<div class="wrapper">
+			<h2>일정</h2>
+		</div>
+		
+		
 		<div class="contentWrap">
 			<hr>
 			<div class="top">
 				<div class="center-date">
 					<h3>${empty param.matchMonth ? month : param.matchMonth }월</h3>
+					
 				<c:choose>
 						<c:when test="${empty param.matchMonth }">
 							<a type="button" id="prev" class="btn-outline-info "
@@ -276,7 +284,6 @@
 
 
 		</div>
-		<a href="/match/schedule" class="btn btn-primary">경기등록</a>
 	</div>
 	<!---기본 메뉴--->
 

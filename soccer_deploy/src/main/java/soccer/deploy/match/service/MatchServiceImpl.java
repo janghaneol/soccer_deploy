@@ -93,10 +93,10 @@ public class MatchServiceImpl implements MatchService {
 			return jpaMatchRepository.findAllByMatchDate(formatedNow);
 			
 		}else if(year.equals("first") && !month.equals("first")) {
-//			formatter = DateTimeFormatter.ofPattern("yy/");
-//			formatedNow = now.format(formatter);
-			formatedNow = matchDao.matchFirst();
-			return jpaMatchRepository.findAllByMatchDate(formatedNow.concat("/"+month));
+			formatter = DateTimeFormatter.ofPattern("yy/");
+			formatedNow = now.format(formatter);
+//			formatedNow = matchDao.matchFirst();
+			return jpaMatchRepository.findAllByMatchDate(formatedNow.concat(month));
 			
 		}else if(!year.equals("first") && month.equals("first")) {
 			formatter = DateTimeFormatter.ofPattern("/MM");
