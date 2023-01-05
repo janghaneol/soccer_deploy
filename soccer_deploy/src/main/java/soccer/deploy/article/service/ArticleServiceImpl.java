@@ -20,10 +20,19 @@ public class ArticleServiceImpl implements ArticleService {
 	@Autowired
 	private JpaArticleRepository jpaArticleRepository;
 	
+//	@Override
+//	public String register(article Article) {
+//		article saveArticle = jpaArticleRepository.save(Article);
+//		return saveArticle.getWriter();
+//	}
 	@Override
-	public int register(article Article) {
-		article saveArticle = jpaArticleRepository.save(Article);
-		return saveArticle.getArticleId();
+	public void register(article Article) {
+		jpaArticleRepository.save(Article);
+	}
+	
+	@Override
+	public article insertReply(article Article){
+		return jpaArticleRepository.save(Article);
 	}
 
 	@Override
@@ -33,7 +42,7 @@ public class ArticleServiceImpl implements ArticleService {
 	}
 
 	@Override
-	public Optional<article> findArticle(int articleId) {
+	public Optional<article> findArticle(Integer articleId) {
 		return jpaArticleRepository.findByArticleId(articleId);
 	}
 	
