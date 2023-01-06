@@ -7,7 +7,6 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import soccer.deploy.entry.entity.Entry;
 import soccer.deploy.entry.repository.JpaEntryRepository;
 import soccer.deploy.match.myDao.matchDao;
 import soccer.deploy.match.myDto.matchMyDto;
@@ -38,10 +37,11 @@ public class matchMyServiceImpl implements matchMyService{
 		
 	}
 	
-	public matchMyDto selectMatch(int matchId) {
+	public matchMyDto selectMatch(String matchId) {
 		
 		return dao.selectMatch(matchId);
 	}
+
 
 
 }

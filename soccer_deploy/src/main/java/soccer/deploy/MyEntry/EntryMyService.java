@@ -15,8 +15,8 @@ public class EntryMyService {
 	private EntryMyDao entryMyDao;
 	
 	
-	public List<UserMyDto> show(){
-		List<UserMyDto> show = entryMyDao.show();
+	public List<UserMyDto> show(String matchId){
+		List<UserMyDto> show = entryMyDao.show(matchId);
 		return show;
 	}
 

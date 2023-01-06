@@ -15,8 +15,7 @@
 		<table border="">
 		<caption>참가신청명단</caption>
 			<tr>
-				<th scope="col">경기번호</th>
-				<th scope="col">유저ID</th>
+	
 				<th scope="col">이메일</th>
 				<th scope="col">나이</th>
 				<th scope="col">이름</th>
@@ -25,13 +24,12 @@
 			</tr>
 			<c:forEach var="popup" items="${popupList}">
 			<tr>
-				<td>${popup.match_id}</td>
-				<td>${popup.user_id}</td>
+	
 				<td>${popup.email}</td>
 				<td>${popup.age}</td>
 				<td>${popup.name}</td>
 				<td>${popup.position}</td>
-				<td>${popup.back_num}</td>
+				<td>${popup.backNum}</td>
 			</tr>
 			</c:forEach>
 		</table>

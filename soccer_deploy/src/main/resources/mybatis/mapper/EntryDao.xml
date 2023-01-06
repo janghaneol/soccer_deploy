@@ -6,7 +6,7 @@
 
 <mapper namespace="soccer.deploy.MyEntry.EntryMyDao">
 	
-	<!-- <resultMap type="EntryMyDto" id="EntryMyDto">
+	 <resultMap type="EntryMyDto" id="EntryMyDto">
 		<result column="entry_id" property="entryId"/>
 		<result column="match_id" property="matchId"/>
 		<result column="user_id" property="userId"/>
@@ -28,18 +28,17 @@
 		<result column="regdate" property="regdate"/>
 	</resultMap>
 	
-	<select id="show" parameterType="EntryMyDto" resultMap="EntryMyDto"> 
-		SELECT distinct  e.match_id matchId,
-           u.email email,
-           u.age age,
-           u.name name,
-           u.back_num backNum,
-           u. position position
+	<select id="show" parameterType="String" resultMap="UserMyDto"> 
+	SELECT  u.email email,
+            u.age age,
+            u.name name,
+            u.backNum backNum,
+            u. position position
 		FROM entry e
    			 INNER JOIN users u 
    							 ON e.user_id = u.user_id
-		WHERE  e.match_id = #{matchId}
-	</select> -->
+		WHERE  e.match_id = #{value}
+	</select> 
 
 
 </mapper>

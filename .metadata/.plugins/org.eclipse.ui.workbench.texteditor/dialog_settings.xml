@@ -1,46 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-<<<<<<< HEAD
-		<item key="selection" value=""/>
-=======
-		<item key="selection" value="logout"/>
->>>>>>> 882add33a8f2edf93d9c35e757537dd1205ec767
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="wrap" value="true"/>
-		<item key="incremental" value="false"/>
 		<list key="findhistory">
-<<<<<<< HEAD
-			<item value="${month}"/>
-			<item value="back"/>
-			<item value="scroll"/>
-			<item value="&lt;li class=&quot;dropdown&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;dropdown-toggle &quot; data-toggle=&quot;dropdown&quot;&gt;게시판&lt;b"/>
-			<item value="&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot;"/>
-			<item value="console.log"/>
-			<item value="background-age"/>
-			<item value="@Colu"/>
-=======
-			<item value="logout"/>
-			<item value="reg-div"/>
-			<item value="reg"/>
-			<item value="rank"/>
-			<item value="test"/>
-			<item value="ci"/>
-			<item value="fav"/>
-			<item value="session"/>
->>>>>>> 882add33a8f2edf93d9c35e757537dd1205ec767
+			<item value="selectMatch"/>
 		</list>
 		<list key="replacehistory">
-			<item value="result"/>
 		</list>
-	</section>
-	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="632"/>
-		<item key="DIALOG_Y_ORIGIN" value="235"/>
-		<item key="DIALOG_WIDTH" value="322"/>
-		<item key="DIALOG_HEIGHT" value="391"/>
-		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
 	</section>
 </section>

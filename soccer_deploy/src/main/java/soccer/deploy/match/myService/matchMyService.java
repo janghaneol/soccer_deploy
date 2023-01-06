@@ -20,6 +20,6 @@ public interface matchMyService{
 //	public void matchDelete(matchMyDto MatchMyDto);
 	
 	/* 경기이름으로 조회 */
-	public matchMyDto selectMatch(int matchId);
+	public matchMyDto selectMatch(String matchId);
 	
 }

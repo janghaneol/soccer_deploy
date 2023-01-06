@@ -197,10 +197,9 @@
 					<li>
 						<div class="result">경기일정</div>
 						<ul class="board">
+						
 							<c:forEach var="item" items="${result}">
-								<li><button type="button"
-										onclick="openLayerPopup('popup-01', 900, 600, this);"
-										class="bg-success" id="">참가명단</button>
+								<li><a href="/asdasd/asd/${result.id }"> </a>
 									${item.opteam}</li>
 							</c:forEach>
 						</ul>
