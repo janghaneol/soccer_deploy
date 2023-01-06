@@ -1,5 +1,7 @@
 package soccer.deploy;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.junit.jupiter.api.Test;
@@ -11,6 +13,8 @@ import soccer.deploy.entry.entity.Entry;
 import soccer.deploy.entry.repository.JpaEntryRepository;
 import soccer.deploy.match.myDao.matchDao;
 import soccer.deploy.match.service.MatchService;
+import soccer.deploy.user.dto.UserDto;
+import soccer.deploy.user.entity.User;
 import soccer.deploy.user.service.UserService;
 
 @SpringBootTest
@@ -35,5 +39,11 @@ public class matchTest {
 		
 		log.info("{}",MatchDao.list());
 	}
+	
+//	@Test
+//	public void popupList() {
+//		List<User> userInfo =User.findAll();
+//		List<User>	
+//	}
 	
 }
