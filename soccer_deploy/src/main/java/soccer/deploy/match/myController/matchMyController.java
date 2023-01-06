@@ -136,5 +136,10 @@ public class matchMyController {
 		
 		return "redirect:"+redirect;
 	}
+	
+	@GetMapping("/kas")
+	public String tese() {
+		return "view/board/boardView";
+	}
 }
 
