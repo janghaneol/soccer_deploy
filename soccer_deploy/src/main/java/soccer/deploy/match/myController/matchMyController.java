@@ -15,19 +15,32 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+<<<<<<< HEAD
+import org.springframework.web.bind.annotation.PathVariable;
+=======
 import org.springframework.web.bind.annotation.ModelAttribute;
+>>>>>>> 4e6bdc3b3eb82afcd5a56f5b3b7e0cbb062ca424
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.extern.slf4j.Slf4j;
+import soccer.deploy.MyEntry.EntryMyDao;
+import soccer.deploy.MyEntry.EntryMyService;
+import soccer.deploy.MyUser.UserMyDto;
 import soccer.deploy.entry.entity.Entry;
 import soccer.deploy.entry.repository.JpaEntryRepository;
 import soccer.deploy.match.entity.Match;
 import soccer.deploy.match.myDao.matchDao;
 import soccer.deploy.match.myDto.matchMyDto;
+<<<<<<< HEAD
+import soccer.deploy.match.myService.matchMyService;
+=======
 import soccer.deploy.match.myService.MatchChoungService;
+>>>>>>> 4e6bdc3b3eb82afcd5a56f5b3b7e0cbb062ca424
 import soccer.deploy.match.service.MatchService;
 import soccer.deploy.quarter.entity.Quarter;
 import soccer.deploy.quarter.service.QuarterService;
@@ -38,6 +51,8 @@ import soccer.deploy.user.entity.User;
 @Slf4j
 public class matchMyController {
 	
+	@Autowired
+	private EntryMyService entryMyService;
 	@Autowired
 	private matchDao MatchDao; 
 	@Autowired
@@ -136,6 +151,20 @@ public class matchMyController {
 		log.info("resutl::{}", matchService.matchResult(rankYear, rankMonth));
 		return "view/match/matchResult";
 	}
+<<<<<<< HEAD
+	
+//	팝업 리스트
+	@GetMapping("/popup")
+	public String popupList(Model model) {
+		
+		List<UserMyDto> list = entryMyService.show();
+		model.addAttribute("popupList",list);
+		
+		return "view/match/popup";
+	}
+
+	
+=======
 	@GetMapping("/rank")
 	public String rank(@RequestParam(value= "Year", required = false, defaultValue = "first") String rankYear, @RequestParam(value= "Month", required = false, defaultValue = "first") String rankMonth, Model model) {
 		model.addAttribute("rank", matchService.rank(rankYear, rankMonth));
@@ -154,5 +183,6 @@ public class matchMyController {
 	public String tese() {
 		return "view/board/boardView";
 	}
+>>>>>>> 4e6bdc3b3eb82afcd5a56f5b3b7e0cbb062ca424
 }
 

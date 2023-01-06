@@ -45,17 +45,22 @@
 	<!-- 수정 -->
 	<update id="matchUpdate" parameterType="soccer.deploy.match.myDto.matchMyDto">
 	  		UPDATE match
-  			SET match_date = #{match_date}, opteam = #{opteam}, match_regdate = #{match_regdate},  match_img_type = #{match_img_type}, match_img_name = #{match_img_name}, match_place = #{match_place},user_id = #{user_id}
-  		  WHERE match_id = #{match_id}
+  			SET match_date = #{matchDate}, opteam = #{opteam}, match_regdate = #{matchRegdate},  match_img_type = #{matchImgType}, match_img_name = #{matchImgName}, match_place = #{matchPlace},user_id = #{userId}
+  		  WHERE match_id = #{matchId}
 	
 	</update>
 	<!-- 삭제 -->
-	<delete id="matchDelete" parameterType="String">
+	<delete id="matchDelete" parameterType="string">
 			 DELETE FROM match 
-			 WHERE match_id = #{match_id}
+			 WHERE match_id = #{matchId}
 	</delete>
 	<!-- 경기 아이디로조회 -->
 	<select id="selectMatch" parameterType="string" resultType="soccer.deploy.match.myDto.matchMyDto">
+<<<<<<< HEAD
+        SELECT * FROM match WHERE match_id = #{matchId}
+  </select>
+    
+=======
         SELECT * FROM match WHERE match_id = #{match_id}
     </select>
     
@@ -134,4 +139,5 @@
         ORDER BY year desc 
 	</select>
 	
+>>>>>>> 4e6bdc3b3eb82afcd5a56f5b3b7e0cbb062ca424
 </mapper>
