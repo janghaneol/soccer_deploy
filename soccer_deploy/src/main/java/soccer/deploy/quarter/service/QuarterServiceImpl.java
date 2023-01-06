@@ -1,5 +1,6 @@
 package soccer.deploy.quarter.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import soccer.deploy.match.service.MatchService;
 import soccer.deploy.quarter.entity.Quarter;
 import soccer.deploy.quarter.repository.JpaQuarterRepository;
 
@@ -16,11 +18,19 @@ public class QuarterServiceImpl implements QuarterService {
 	@Autowired
 	private JpaQuarterRepository jpaQuarterRepository;
 
-	@Override //ÃÖ½Å °æ±â ÄõÅÍÁ¤º¸ °¡Á®¿À±â
+	@Override //ï¿½Ö½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public List<Quarter> findQuarterRecentMatch(Long id) {
 		
 		return jpaQuarterRepository.findAllByMatchId(id,Sort.by("id"));
 	}
+	@Override
+	public void updateInsertQuarter(List<Quarter> outcome) {
+		jpaQuarterRepository.saveAll(outcome);
+	}
 	
+	@Override
+	public void registQuarter(List<Quarter> quarter) {
+		jpaQuarterRepository.saveAll(quarter);
+	}
 	
 }

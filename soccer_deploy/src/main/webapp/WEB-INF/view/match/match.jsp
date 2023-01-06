@@ -67,59 +67,129 @@
 	</div>
 
 	<div class="wrapper">
-		<h2>일정/결과</h2>
+		<div style="text-align: right; margin-right: 100px;">
+			<a href="/match/schedule" class="btn btn-primary">경기등록</a>
+		</div>
+		<div class="wrapper">
+			<h2>일정</h2>
+		</div>
+		
+		
 		<div class="contentWrap">
 			<hr>
 			<div class="top">
 				<div class="center-date">
-					<h3>10월</h3>
-					<button type="button" id="prev" class="btn-outline-info "
-						onclick="">이전</button>
-					<button type="button" id="next" class="btn-outline-info "
-						onclick="">다음</button>
+					<h3>${empty param.matchMonth ? month : param.matchMonth }월</h3>
+					
+				<c:choose>
+						<c:when test="${empty param.matchMonth }">
+							<a type="button" id="prev" class="btn-outline-info "
+								href="?matchYear=${param.matchYear}&matchMonth=${month - 1 < 1 ? '01' : (month - 1 < 10 ? '0'+= month - 1 : month -1 )}"
+								onclick="${month eq 1 ? 'return false' : ''}">이전</a>
+							<a type="button" id="next" class="btn-outline-info "
+								href="?matchYear=${param.matchYear}&matchMonth=${month + 1 > 12 ? '12' : (month + 1< 10 ? '0'+= month + 1 : month + 1)}"
+								onclick="${month eq 12 ? 'return false' : ''}">다음</a>
+						</c:when>
+						<c:otherwise>
+							<a type="button" id="prev" class="btn-outline-info "
+								href="?matchYear=${param.matchYear}&matchMonth=${param.matchMonth - 1 < 1 ? '01' : (param.matchMonth - 1 < 10 ? '0'+= param.matchMonth - 1 : param.matchMonth -1 )}"
+								onclick="${param.matchMonth eq 1 ? 'return false' : ''}">이전</a>
+							<a type="button" id="next" class="btn-outline-info "
+								href="?matchYear=${param.matchYear}&matchMonth=${param.matchMonth + 1 > 12 ? '12' : (param.matchMonth + 1< 10 ? '0'+= param.matchMonth + 1 : param.matchMonth + 1)}"
+								onclick="${param.matchMonth eq 12 ? 'return false' : ''}">다음</a>
+						</c:otherwise>
+					</c:choose>
 				</div>
+				
 				<div class="right">
-					<form id="matchForm" name="" method="GET" action="">
-						<select>
-							<option value="">전체</option>
-							<option value="2022">2022</option>
-						</select> <select name="matchesMonth" id="matchesMonth">
-							<option value="">전체</option>
-							<option value="01">1월</option>
-							<option value="02">2월</option>
-							<option value="03">3월</option>
-							<option value="04">4월</option>
-							<option value="05">5월</option>
-							<option value="06">6월</option>
-							<option value="07">7월</option>
-							<option value="08">8월</option>
-							<option value="09">9월</option>
-							<option value="10">10월</option>
-							<option value="11">11월</option>
-							<option value="12">12월</option>
+					<form id="matchForm" method="get">
+						<select name="matchYear" id="matchYear">
+							<c:forEach var="year" items="${year}">
+								<option value="${year}" ${param.matchYear eq year ? "selected" : ""}>20${year}</option>
+							</c:forEach>
+						</select>  
+						<select name="matchMonth" id="matchMonth">
+							<c:forEach var="i" begin="1" end="12">
+								<c:choose>
+								  
+									<c:when test="${i < 10 }">
+										<option value="0${i}"
+											${empty param.matchMonth ? (month eq i ? "selected" : "") : (param.matchMonth eq i ? "selected" : "")}>${i}월</option>
+									</c:when>
+									
+									<c:when test="${i eq 10 }">
+										<option value="${i}"
+											${empty param.matchMonth ? (month eq i ? "selected" : "") : (param.matchMonth eq i ? "selected" : "")}>${i}월</option>
+									</c:when>
+									
+									<c:otherwise>
+										<option value="${i}"
+											${empty param.matchMonth ? (month eq i ? "selected" : "") : (param.matchMonth eq i ? "selected" : "")}>${i}월</option>
+									</c:otherwise>
+									
+								</c:choose>
+
+							</c:forEach>
 						</select> <input id="search" type="submit" value="검색" onclick="">
 					</form>
 				</div>
 			</div>
-
+  
 			<div class="bottom">
+				
+				<c:choose>
+					<c:when test="${empty result }">
+						<ul>
+							<li>
+								<div class="date">날짜</div>
+								<ul class="board">
+									<li>기록없음</li>
+
+								</ul>
+							</li>
+							<li>
+								<div class="place">장소</div>
+								<ul class="board">
 
 
+									<li>기록없음</li>
+								</ul>
+							</li>
+							<li>
+								<div class="result">경기결과</div>
+								<ul class="board">
 
+									<li>기록없음</li>
+								</ul>
+
+							</li>
+
+
+							<li>
+								<div class="log">결과보기</div>
+								<ul class="board">
+									<li>기록없음</li>
+								</ul>
+							</li>
+						</ul>
+					</c:when>
+				<c:otherwise>
 				<ul>
 					<li>
 						<div class="date">날짜</div>
 						<ul class="board">
-							<c:forEach var="item" items="${list}">
-								<li>${item.matchDate}</li>
+							<c:forEach var="item" items="${result}">
+										<fmt:formatDate var="time" value="${item.matchDate}"
+											pattern="yy/MM/dd HH:mm" />
+										<li>${time}</li>
 							</c:forEach>
 						</ul>
 					</li>
 					<li>
 						<div class="place">장소</div>
 						<ul class="board">
-							
-						<c:forEach var="item" items="${list}">
+
+							<c:forEach var="item" items="${result}">
 								<li>${item.matchPlace}</li>
 							</c:forEach>
 						</ul>
@@ -127,11 +197,11 @@
 					<li>
 						<div class="result">경기일정</div>
 						<ul class="board">
-									<c:forEach var="item" items="${list}">
+							<c:forEach var="item" items="${result}">
 								<li><button type="button"
-									onclick="openLayerPopup('popup-01', 900, 600, this);"
-									class="bg-success" id="">참가명단</button> MyTeam 1 : 0 ${item.opteam}
-								</li>
+										onclick="openLayerPopup('popup-01', 900, 600, this);"
+										class="bg-success" id="">참가명단</button>
+									${item.opteam}</li>
 							</c:forEach>
 						</ul>
 					</li>
@@ -140,12 +210,14 @@
 					<li>
 						<div class="log">참가버튼</div>
 						<ul class="board">
-									<c:forEach var="i" items="${list}" varStatus="index" begin="0" end="${list.size()}">
-								<li><a type="" href="/match/asd?matchId=10">참가신청</a></li>
+							<c:forEach var="i" items="${result}" varStatus="index" begin="0" end="${result.size()}">
+								<li><a type="" href="/match/asd?matchId=${i.id}">참가신청</a></li>
 							</c:forEach>
 						</ul>
 					</li>
 				</ul>
+					</c:otherwise>
+				</c:choose>
 			</div>
 
 			<!-- #wrapper  -->
@@ -212,7 +284,6 @@
 
 
 		</div>
-		<a href="/match/schedule" class="btn btn-primary">경기등록</a>
 	</div>
 	<!---기본 메뉴--->
 
@@ -259,8 +330,59 @@
 				$popup.nextElementSibling.remove();
 			}
 		}
-	</script>
+		/*
+		// select 의 월 옵션값이 헤드에 들어갑니다
+		var monthChange = function(value) {
+			$("#hMonth").text(value + "월");
+		}
+		
+		// 이전, 다음 button으로 헤드값 수정하기 매우 더러워요 코드..
+		function count(type){
+			const result = document.getElementById("hMonth");
+			const month = document.getElementById("matchMonth");
+			const next = document.getElementById("next");
+			const prev = document.getElementById("prev")
 
+			let number = result.innerText;
+
+				if(type === 'pl'){
+					if(parseInt(number)<12){
+						number=parseInt(number)+1;
+						prev.disabled = false;
+						console.log(number);
+						if(number<10){
+							result.innerText = "0"+number+"월";
+						}
+						else{
+							result.innerText = number+"월";
+						}
+					}
+					else{
+						next.disabled='disabled';
+					}
+				}
+				
+				else if (type === 'mi'){
+					if(parseInt(number)>1){
+						number = parseInt(number)-1;
+						next.disabled = false;
+						console.log(number);
+						if(number<10){
+							result.innerText = "0"+number+"월";
+						}
+						else{
+							result.innerText = number+"월";
+						}	
+					}
+					else{
+						prev.disabled='disabled'; 
+					}
+				}	
+			
+		} 
+	*/
+	</script>
+ 
 	<script type="/js/viewDetail.js"></script>
 	<script src="/js/jquery-3.3.1.min.js"></script>
 	<script src="/js/jquery-migrate-3.0.1.min.js"></script>

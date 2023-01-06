@@ -1,7 +1,6 @@
 package soccer.deploy.lineUp.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,20 +10,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.extern.slf4j.Slf4j;
 import soccer.deploy.entry.entity.Entry;
 import soccer.deploy.entry.service.EntryService;
 import soccer.deploy.lineUp.entity.LineUpDto;
+import soccer.deploy.lineUp.entity.LineUpListDto;
+import soccer.deploy.lineUp.service.LineUpService;
 import soccer.deploy.match.service.MatchService;
 import soccer.deploy.quarter.entity.Quarter;
+import soccer.deploy.quarter.entity.QuarterListDto;
 import soccer.deploy.quarter.service.QuarterService;
-import soccer.deploy.user.entity.User;
-import soccer.deploy.user.repository.UserRepository;
 import soccer.deploy.user.service.UserService;
 
 @Controller
@@ -39,6 +41,8 @@ public class LineUpController {
 	private QuarterService quarterService;
 	@Autowired 
 	private UserService userService;
+	@Autowired
+	private LineUpService lineUpService;
 	
 
 	//처음 화면 출력부분
@@ -49,7 +53,7 @@ public class LineUpController {
 		List<Quarter> quarter = quarterService.findQuarterRecentMatch(recentMatch);
 		model.addAttribute("entry", entry);
 		model.addAttribute("quarter", quarter);
-		
+		log.info("{}",recentMatch);
 		return "view/lineUp/lineUp";
 	}
 
@@ -59,9 +63,7 @@ public class LineUpController {
 	public List<Entry> search(@RequestBody String name) throws IOException{
 		Long recentMatch = matchService.findRecentMatchNum();
 		name = name.replaceAll("\"", "");
-			
 		List<Entry> entrys = entryService.SearchRecentEntry(recentMatch, name);
-		log.info("{}",entrys);
 		return entrys;
 	}
 
@@ -70,21 +72,27 @@ public class LineUpController {
 	@ResponseBody
 	public void saveEntry(@RequestBody List<LineUpDto> list, HttpSession session) throws IOException{
 		session.setAttribute("lineup", list);
-		log.info("sds{}",session.getAttribute("lineup"));
 	}
-	//�Ӥ�
-		@RequestMapping("/board")
-		public String boardList() {
-			return "view/board/boardList";
-		}
-		//�ӽ�
-		@RequestMapping("/view")
-		public String boardView() {
-			return "view/board/boardView";
-		}
-		//�ӽ�
-		@RequestMapping("/reg")
-		public String boardReg() {
-			return "view/board/boardReg";
-		}
+	
+	@GetMapping("/result")
+	public String lineUpReg(HttpSession session,Model model, HttpServletRequest request) {
+		String before_address = request.getHeader("referer");
+		log.info("이전주소{}",before_address);
+		Long recentMatch = matchService.findRecentMatchNum();
+		List<Quarter> quarter = quarterService.findQuarterRecentMatch(recentMatch);
+		model.addAttribute("quarter",quarter);
+		model.addAttribute("redirect",before_address);
+		log.info("{}",quarter);
+		return "view/match/matchResultReg";
+	}
+	
+	@PostMapping("/result")
+	public String regResult(@ModelAttribute("LineUpListDto") LineUpListDto L, @ModelAttribute("QuarterListDto") QuarterListDto Q,HttpSession session){
+		log.info("L:{}",L.getLineUpList());
+		log.info("Q'{}",Q.getQuarterList());
+		quarterService.updateInsertQuarter(Q.getQuarterList());
+		lineUpService.insertLineUp(L.getLineUpList());
+		session.removeAttribute("lineup");
+		return "redirect:/match/result";
+	}
 }

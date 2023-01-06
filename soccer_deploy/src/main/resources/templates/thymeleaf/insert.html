@@ -76,7 +76,7 @@
 						<li class="dropdown"><a href="#" class="dropdown-toggle "
 							data-toggle="dropdown">게시판<b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="/realNotice" class="drop">공지사항</a></li>
+								<li><a href="/realArticle" class="drop">공지사항</a></li>
 								<li><a href="/board" class="drop">자유게시판</a></li>
 							</ul></li>
 						<li><a href="/login" class="nav-link">Login</a></li>
@@ -103,13 +103,19 @@
 
                 <form th:action="@{/register}" method="get">
         						<div class="input_button_deploy">
-        					
-            						<input type="hidden" name="board_id" class="form-control" style="width:25%" placeholder="게시판 아이디" >
-									<input type="text" name="category" class="form-control" style="width:25%" placeholder="목록" >
-								  	<input type="text" name="title" class="form-control" style="width:25%" placeholder="제목" >
-								  	<input type="text" name="description" class="form-control" style="width:25%" placeholder="내용" >
-        					  		<a href="/realBoard"><button class="btn-primary" type="submit" style="width:25%;">전송</button></a>
-        					  	
+        							
+            						
+									<input type="text" name="boardId" class="form-control" style="width:25%;" placeholder="목록번호" >
+								  	<input type="text" name="writer" class="form-control" style="width:25%;" placeholder="저자" >
+								  	<input type="text" name="subject" class="form-control" style="width:25%;" placeholder="제목" >
+								  	<input type="text" name="content" class="form-control" style="width:25%;" placeholder="내용" >
+								  	<input type="text" name="regdate" class="form-control" style="width:25%;" placeholder="날짜" >
+								  	<input type="text" name="hitcount" class="form-control" style="width:25%;" placeholder="조회수" >
+								  	<input type="text" name="groupNo" class="form-control" style="width:25%;" placeholder="게시글 그룹번호" >
+								  	<input type="text" name="levelNo" class="form-control" style="width:25%;" placeholder="게시글 레벨" >
+								  	<input type="text" name="orderNo" class="form-control" style="width:25%;" placeholder="게시글 순서" >
+        					  		<a href="/realArticle"><button class="btn-primary" type="submit" style="width:25%;">전송</button></a>
+        					  		
         					  	</div>
     			</form>
 

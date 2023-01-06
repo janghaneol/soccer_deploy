@@ -1,5 +1,6 @@
 package soccer.deploy;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,17 +15,29 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import lombok.extern.slf4j.Slf4j;
+import soccer.deploy.match.myDao.matchDao;
+import soccer.deploy.match.myService.MatchChoungService;
+import soccer.deploy.match.service.MatchService;
 import soccer.deploy.user.entity.User;
 
 @Controller
+@Slf4j
 public class MyController {
 	
+	@Autowired
+	private matchDao dao ;
+	@Autowired
+	private MatchService matchService;
+	@Autowired
+	private MatchChoungService matchChoungService;
 	
 //	@RequestMapping("/") Cookie를 통한 로그인 유지 및 관리 Session으로 변경했습니다.
 	public String index(Model model,@CookieValue(name = "loginUser", required = false) String loginUser) {
 		if(loginUser != null) {
 			model.addAttribute("loginUser", loginUser);
 		}
+		
 		return "index";
 	}
 	
@@ -34,6 +47,10 @@ public class MyController {
 		if(loginUser != null) {
 			model.addAttribute("loginUser",loginUser);
 		}
+
+		Long viewMatchId = matchService.findRecentViewMatch();
+		model.addAttribute("recentMatch",matchService.findeRecentMatch(viewMatchId));
+		
 		return "index";
 	}
 	
