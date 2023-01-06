@@ -97,6 +97,26 @@
         WHERE rownum &lt; 2
 	</select>
 	
+	<select id="matchDate" resultType="String">
+		SELECT  firstDate 
+		FROM(
+				SELECT FIRST_VALUE(TO_CHAR(match_date,'yy/MM')) OVER() firstDate
+         		FROM match m
+        GROUP BY TO_CHAR(match_date,'yy/MM')
+        ORDER BY TO_CHAR(match_date,'yy/MM') asc)
+        where rownum &lt; 2
+	</select>
+	
+	<select id="matchFirst" resultType="String">
+		SELECT  firstDate 
+		FROM(
+				SELECT FIRST_VALUE(TO_CHAR(match_date,'yy')) OVER() firstDate
+         		FROM match m
+        GROUP BY TO_CHAR(match_date,'yy')
+        ORDER BY TO_CHAR(match_date,'yy') asc)
+        where rownum &lt; 2
+	</select>
+	
 	<select id="year" resultType="String">
 		select  TO_CHAR(match_date,'yy') year
         from match m join entry e
@@ -106,5 +126,12 @@
         group by TO_CHAR(match_date,'yy')
         ORDER BY year desc 
 	</select>
-    
+	  
+	<select id="matchYear" resultType="String">
+		select  TO_CHAR(match_date,'yy') year
+        from match m 
+        group by TO_CHAR(match_date,'yy')
+        ORDER BY year desc 
+	</select>
+	
 </mapper>
