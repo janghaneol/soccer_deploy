@@ -42,6 +42,7 @@ public class article {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "article_id_seq_gen")
+	@Column(name="article_id")
 	private Integer articleId;
 	@Column(name="board_id")
 	private Integer boardId;
