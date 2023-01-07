@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import lombok.extern.slf4j.Slf4j;
+import soccer.deploy.MyEntry.EntryMyDao;
 import soccer.deploy.entry.entity.Entry;
 import soccer.deploy.entry.repository.JpaEntryRepository;
 import soccer.deploy.entry.service.EntryService;
@@ -40,12 +41,15 @@ public class choungTest {
 	@Autowired
 	private JpaQuarterRepository q;
 	
+	@Autowired
+	private EntryMyDao entryMyDao;
+	
 	@Test
 	@Disabled
 	void test1(){
 		for(Entry e :entryService.findEntryRecentMatch(1L)){
 			
-			log.info("{}",e);
+			log.info("test{}",entryMyDao.show("1").get(0));
 		}
 	}
 	

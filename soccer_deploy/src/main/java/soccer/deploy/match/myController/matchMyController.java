@@ -3,11 +3,9 @@ package soccer.deploy.match.myController;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 
@@ -22,13 +20,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.extern.slf4j.Slf4j;
+import soccer.deploy.MyEntry.EntryMyService;
+import soccer.deploy.MyUser.UserMyDto;
 import soccer.deploy.entry.entity.Entry;
 import soccer.deploy.entry.repository.JpaEntryRepository;
 import soccer.deploy.match.entity.Match;
 import soccer.deploy.match.myDao.matchDao;
-import soccer.deploy.match.myDto.matchMyDto;
 import soccer.deploy.match.myService.MatchChoungService;
 import soccer.deploy.match.service.MatchService;
+import soccer.deploy.quarter.entity.Quarter;
+import soccer.deploy.quarter.service.QuarterService;
 import soccer.deploy.user.entity.User;
 
 @Controller
@@ -37,6 +38,8 @@ import soccer.deploy.user.entity.User;
 public class matchMyController {
 	
 	@Autowired
+	private EntryMyService entryMyService;
+	@Autowired
 	private matchDao MatchDao; 
 	@Autowired
 	private JpaEntryRepository entryService;
@@ -44,26 +47,20 @@ public class matchMyController {
 	private MatchService m;
 	@Autowired
 	private MatchChoungService matchService;
+	@Autowired
+	private QuarterService quarterService;
 	
 	/*
 	 * 경기일정을 보여줌
 	 */
 	@GetMapping
-	public String matchList(Model model,@RequestParam(required = false, defaultValue = "2023") String matchYear, @RequestParam(required = false,defaultValue = "") String matchMonth) {
-		String date = matchYear.substring(2) +"/" + matchMonth;
-//		List<matchMyDto> list = MatchDao.list();
-//		model.addAttribute("list", list);
-		LocalDate now = LocalDate.now();
-		int year = now.getYear();
-		int month = now.getMonthValue();
-		
-		log.info("검색한 매치 : {}",date);
-		List<Match> list = m.findMatchdate(date);
-		model.addAttribute("list", list);
-		model.addAttribute("year",year);
-		model.addAttribute("month",month);
-		model.addAttribute("matchYear",matchYear);
-		model.addAttribute("matchMonth",matchMonth);
+
+	public String matchList(Model model,@RequestParam(required = false, defaultValue = "first") String matchYear, @RequestParam(required = false,defaultValue = "first") String matchMonth) {
+		model.addAttribute("result", m.findMatch(matchYear, matchMonth));
+		model.addAttribute("year", m.matchYear());
+		model.addAttribute("month",m.month());
+		log.info("List : {}", m.findMatch(matchYear, matchMonth));
+		log.info("year : {}",matchYear);
 		return "view/match/match"; 
 	}
 	   
@@ -77,18 +74,20 @@ public class matchMyController {
 	
 	@PostMapping("/schedule")
 	public String matchSchedule(@ModelAttribute Match match,RedirectAttributes redirectAttributes,@RequestParam String publeYear, String time, HttpSession session,
-								@RequestParam String add2, String add3) {
+								@RequestParam String add2, String add3 , @RequestParam(required = false, defaultValue = "1") String quarterNumber, 
+								@RequestParam(required = false, defaultValue = "30") String quarterTime) {
 		Match registMatch = new Match();
+		List<Quarter> quarters = new ArrayList<Quarter>();
 		String date = publeYear+" "+time;
 		String address = add2 + " " + add3;
-		log.info("시간:{}",date);
 		Date mDate = null;
-		/*
-		 * 	22/12/29 04:00 의 형태로 Date를 저장하려면 DB에서 session값을 바꿔줘야됩니다!
-		 *  alter session set nls_date_format = 'yyyy-MM-dd hh24:mi';
-		 *  위의 줄을 SQL에서 실행해주세요~
-		 */
+		int qNum = Integer.parseInt(quarterNumber);
+		int qTime = Integer.parseInt(quarterTime);
+		log.info("경기 시간: {} " , date);
 		
+		/*
+		 * 경기등록 부분
+		 */
 		DateFormat dateFormat = new SimpleDateFormat("yy/MM/dd HH:mm");
 		try {
 			mDate =dateFormat.parse(date);
@@ -101,6 +100,19 @@ public class matchMyController {
 		registMatch.setMatchPlace(address);
 		registMatch.setUser((User)session.getAttribute("loginUser"));
 		Long matchId = m.registMatch(registMatch);
+		
+		/*
+		 * 쿼터 등록 부분
+		 */
+		while (qNum --> 0) {
+			Quarter quarter = new Quarter();
+			quarter.setMatch(registMatch);
+			quarter.setMatchId(registMatch.getId());
+			quarter.setQuarterTime(qTime);
+			quarters.add(quarter);
+		}
+		quarterService.registQuarter(quarters);
+		
 		redirectAttributes.addAttribute("matchId", matchId);
 		return "redirect:/match";
 	}
@@ -125,6 +137,20 @@ public class matchMyController {
 		log.info("resutl::{}", matchService.matchResult(rankYear, rankMonth));
 		return "view/match/matchResult";
 	}
+
+	
+//	팝업 리스트
+	@GetMapping("/popup")
+	public String popupList(Model model) {
+		
+		List<UserMyDto> list = entryMyService.show("1");
+		model.addAttribute("popupList",list);
+		
+		return "view/match/popup";
+	}
+
+	
+
 	@GetMapping("/rank")
 	public String rank(@RequestParam(value= "Year", required = false, defaultValue = "first") String rankYear, @RequestParam(value= "Month", required = false, defaultValue = "first") String rankMonth, Model model) {
 		model.addAttribute("rank", matchService.rank(rankYear, rankMonth));
@@ -138,5 +164,6 @@ public class matchMyController {
 	public String tese() {
 		return "view/board/boardView";
 	}
+
 }
 

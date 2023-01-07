@@ -1,9 +1,11 @@
 
 package soccer.deploy;
 
+import java.lang.reflect.Array;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -20,6 +22,9 @@ import lombok.extern.slf4j.Slf4j;
 import soccer.deploy.match.entity.Match;
 import soccer.deploy.match.repository.JpaMatchRepository;
 import soccer.deploy.match.service.MatchService;
+import soccer.deploy.quarter.entity.Quarter;
+import soccer.deploy.quarter.repository.JpaQuarterRepository;
+import soccer.deploy.quarter.service.QuarterService;
 import soccer.deploy.user.dto.UpdateUserDto;
 import soccer.deploy.user.entity.User;
 import soccer.deploy.user.repository.UserRepository;
@@ -39,11 +44,17 @@ public class MatchServiceTest {
 	@Autowired
 	private JpaMatchRepository matchRepository;
 	
+	@Autowired
+	private JpaQuarterRepository quarterRepository;
+	
+	@Autowired
+	private QuarterService quarterService;
+	
 	@Test
-//	@Disabled
+	@Disabled
 	public void regist() {
 		Date date = null;
-		String matchdate = "22/02/23 23:00";
+		String matchdate = "22/01/23 23:00";
 		DateFormat dateFormat = new SimpleDateFormat("yy/MM/dd kk:mm");
 		
 		try {
@@ -54,11 +65,30 @@ public class MatchServiceTest {
 		}
 		
 		Match match = new Match();
-		match.setMatchPlace("의정부");
-		match.setOpteam("바르셀로나");
+		match.setMatchPlace("쿼터Test");
+		match.setOpteam("쿼터등록 Test");
 		match.setMatchDate(date);
 		matchService.registMatch(match);
-		log.info("등록된 매치의 ID : {}",match.getMatchDate());
+		log.info("등록된 매치의 ID : {}",match.getId());
+		
+		List<Quarter> quarter = new ArrayList<Quarter>();
+		for(int i=0; i<4; i++) {
+			Quarter registQuarterList = new Quarter();
+			registQuarterList.setMatchId(match.getId());
+			registQuarterList.setMatch(match);
+			registQuarterList.setQuarterTime(30);
+			quarter.add(registQuarterList);
+			log.info("쿼터 ID : {} : ", registQuarterList.getMatchId());
+		}
+		quarterService.registQuarter(quarter);
+		
+		
+//		quarter.setMatchId(match.getId());
+//		quarter.setMatch(match);
+//		quarter.setQuarterTime(30);
+//		quarterService.registQuarter(quarter);
+		log.info("해당 Match의 쿼터 : {}", quarter);
+		
 		
 	}
 
@@ -75,10 +105,10 @@ public class MatchServiceTest {
 	}
 	
 	@Test
-	@Disabled
+//	@Disabled
 	public void findMatch() {
-		Match match = matchService.findeRecentMatch(2L);
-		log.info("검색한 경기 정보 : {}",match);
+		Long match = matchService.findRecentViewMatch();
+		log.info("최근 Match  : : : {}",matchService.findeRecentMatch(match));
 	}
 	
 	@Test

@@ -1,5 +1,7 @@
 package soccer.deploy.match.service;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import soccer.deploy.match.entity.Match;
+import soccer.deploy.match.myDao.matchDao;
 import soccer.deploy.match.repository.JpaMatchRepository;
 
 @Service
@@ -17,7 +20,8 @@ public class MatchServiceImpl implements MatchService {
 
 	@Autowired
 	private JpaMatchRepository jpaMatchRepository; 
-	
+	@Autowired
+	private matchDao matchDao;
 	@Override
 	public Long findRecentMatchNum() {
 		
@@ -77,6 +81,46 @@ public class MatchServiceImpl implements MatchService {
 //			throw new RuntimeException(matchDate+"등록된 매치가 없습니다.");
 //		}
 		return jpaMatchRepository.findAllByMatchDate(matchDate);
+	}
+
+	@Override
+	public List<Match> findMatch(String year, String month) {
+		LocalDate now = LocalDate.now();
+		DateTimeFormatter formatter;
+		String formatedNow;
+		if(year.equals("first") && month.equals("first") ) {
+			formatedNow = matchDao.matchDate();
+			return jpaMatchRepository.findAllByMatchDate(formatedNow);
+			
+		}else if(year.equals("first") && !month.equals("first")) {
+			formatter = DateTimeFormatter.ofPattern("yy/");
+			formatedNow = now.format(formatter);
+//			formatedNow = matchDao.matchFirst();
+			return jpaMatchRepository.findAllByMatchDate(formatedNow.concat(month));
+			
+		}else if(!year.equals("first") && month.equals("first")) {
+			formatter = DateTimeFormatter.ofPattern("/MM");
+			formatedNow = now.format(formatter);	
+			return jpaMatchRepository.findAllByMatchDate(year.concat(formatedNow));
+			
+		}else {
+			return jpaMatchRepository.findAllByMatchDate(year.concat("/").concat(month));
+		}
+	}
+
+	@Override
+	public List<String> matchYear() {
+		return matchDao.matchYear();
+	}
+
+	@Override
+	public String month() {
+		return matchDao.matchDate().split("/")[1];
+	}
+
+	@Override
+	public Long findRecentViewMatch() {
+		return jpaMatchRepository.recentViewMatch();
 	}
 
 }

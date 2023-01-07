@@ -61,11 +61,11 @@
         <div class="col-lg-12">
           
           <div class="d-flex team-vs">
-            <span class="score">4-1</span>
+            <span class="score">VS</span>
             <div class="team-1 w-50">
               <div class="team-details w-100 text-center">
                 <img src="images/logo_1.png" alt="Image" class="img-fluid">
-                <h3>LA LEGA <span>(win)</span></h3>
+                <h3>${recentMatch.opteam} <span>(win)</span></h3>
                 <ul class="list-unstyled">
                   <li>Anja Landry (7)</li>
                   <li>Eadie Salinas (12)</li>

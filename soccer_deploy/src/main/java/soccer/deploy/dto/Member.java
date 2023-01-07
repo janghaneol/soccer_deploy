@@ -36,8 +36,6 @@ CREATE TABLE member (
     age          NUMBER(3)    NOT NULL,
     regdate      DATE DEFAULT SYSDATE
 );
-
 ALTER TABLE member
     ADD ( CONSTRAINT member_id_pk PRIMARY KEY(member_id));
 */
-
