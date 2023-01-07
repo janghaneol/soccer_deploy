@@ -1,6 +1,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 !SESSION 2023-01-05 06:30:43.374 -----------------------------------------------
 eclipse.buildId=4.24.0.I20220607-0700
 java.version=11.0.16
@@ -593,6 +594,8 @@ org.osgi.framework.BundleException: Could not resolve module: org.springframewor
 >>>>>>> 1ca556964cb7d5b6c181cbf99f9bce62d4841e93
 =======
 >>>>>>> 1ca556964cb7d5b6c181cbf99f9bce62d4841e93
+=======
+>>>>>>> 1ca556964cb7d5b6c181cbf99f9bce62d4841e93
 !SESSION 2023-01-06 18:59:45.499 -----------------------------------------------
 eclipse.buildId=4.23.0.I20220308-0310
 java.version=11.0.15.1
@@ -609,6 +612,9 @@ Created Time: 2023-01-06 19:00:28.245
 !SUBENTRY 1 org.eclipse.jface 2 0 2023-01-06 19:00:28.245
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 1ca556964cb7d5b6c181cbf99f9bce62d4841e93
+=======
 >>>>>>> 1ca556964cb7d5b6c181cbf99f9bce62d4841e93
 =======
 >>>>>>> 1ca556964cb7d5b6c181cbf99f9bce62d4841e93
@@ -622,7 +628,11 @@ Binding(CTRL+SHIFT+T,
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@37403f66,
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@72a1ccad,
+>>>>>>> 1ca556964cb7d5b6c181cbf99f9bce62d4841e93
 =======
 		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@72a1ccad,
 >>>>>>> 1ca556964cb7d5b6c181cbf99f9bce62d4841e93
@@ -639,6 +649,7 @@ Binding(CTRL+SHIFT+T,
 	ParameterizedCommand(Command(org.eclipse.lsp4e.symbolinworkspace,Go to Symbol in Workspace,
 		,
 		Category(org.eclipse.lsp4e.category,Language Servers,null,true),
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -670,6 +681,8 @@ Binding(ALT+SHIFT+X R,
 >>>>>>> 1ca556964cb7d5b6c181cbf99f9bce62d4841e93
 =======
 >>>>>>> 1ca556964cb7d5b6c181cbf99f9bce62d4841e93
+=======
+>>>>>>> 1ca556964cb7d5b6c181cbf99f9bce62d4841e93
 		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@420849f6,
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
@@ -677,6 +690,9 @@ Binding(ALT+SHIFT+X R,
 !SUBENTRY 1 org.eclipse.jface 2 0 2023-01-06 19:00:28.245
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 1ca556964cb7d5b6c181cbf99f9bce62d4841e93
+=======
 >>>>>>> 1ca556964cb7d5b6c181cbf99f9bce62d4841e93
 =======
 >>>>>>> 1ca556964cb7d5b6c181cbf99f9bce62d4841e93
@@ -690,7 +706,11 @@ Binding(ALT+SHIFT+R,
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@348523f2,
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@24f6f6bf,
+>>>>>>> 1ca556964cb7d5b6c181cbf99f9bce62d4841e93
 =======
 		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@24f6f6bf,
 >>>>>>> 1ca556964cb7d5b6c181cbf99f9bce62d4841e93
@@ -707,6 +727,7 @@ Binding(ALT+SHIFT+R,
 	ParameterizedCommand(Command(org.eclipse.ui.edit.rename,Rename,
 		Rename the selected item,
 		Category(org.eclipse.ui.category.file,File,null,true),
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -738,10 +759,14 @@ Binding(ALT+SHIFT+D R,
 =======
 		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@255845b1,
 >>>>>>> 1ca556964cb7d5b6c181cbf99f9bce62d4841e93
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@255845b1,
+>>>>>>> 1ca556964cb7d5b6c181cbf99f9bce62d4841e93
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.ui.contexts.window,,,system)
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1029,6 +1054,8 @@ org.eclipse.core.runtime.CoreException: Cannot determine URI for '/soccer_deploy
 >>>>>>> 1ca556964cb7d5b6c181cbf99f9bce62d4841e93
 =======
 >>>>>>> 1ca556964cb7d5b6c181cbf99f9bce62d4841e93
+=======
+>>>>>>> 1ca556964cb7d5b6c181cbf99f9bce62d4841e93
 !ENTRY org.eclipse.core.filebuffers 4 0 2023-01-06 19:00:31.794
 !MESSAGE The content type with id "com.genuitec.eclipse.codetogether.type" specified in the extension point does not exist.
 
@@ -1044,6 +1071,9 @@ org.eclipse.core.runtime.CoreException: Cannot determine URI for '/soccer_deploy
 !ENTRY org.eclipse.egit.ui 2 0 2023-01-06 19:00:32.844
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 1ca556964cb7d5b6c181cbf99f9bce62d4841e93
+=======
 >>>>>>> 1ca556964cb7d5b6c181cbf99f9bce62d4841e93
 =======
 >>>>>>> 1ca556964cb7d5b6c181cbf99f9bce62d4841e93
@@ -1142,8 +1172,96 @@ java.lang.InterruptedException
 	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 1ca556964cb7d5b6c181cbf99f9bce62d4841e93
 =======
 >>>>>>> 1ca556964cb7d5b6c181cbf99f9bce62d4841e93
 =======
 >>>>>>> 1ca556964cb7d5b6c181cbf99f9bce62d4841e93
+=======
+>>>>>>> 1ca556964cb7d5b6c181cbf99f9bce62d4841e93
+
+!ENTRY org.eclipse.core.jobs 4 2 2023-01-08 03:56:15.477
+!MESSAGE An internal error occurred during: "Loading tasks of all Gradle projects".
+!STACK 0
+com.google.common.util.concurrent.ExecutionError: java.lang.NoClassDefFoundError: Could not initialize class org.eclipse.buildship.ui.internal.console.ConsoleProcessStreamsProvider$BackgroundJobProcessStream
+	at com.google.common.cache.LocalCache$Segment.get(LocalCache.java:2049)
+	at com.google.common.cache.LocalCache.get(LocalCache.java:3951)
+	at com.google.common.cache.LocalCache$LocalManualCache.get(LocalCache.java:4848)
+	at org.eclipse.buildship.core.internal.workspace.DefaultModelProvider.getFromCache(DefaultModelProvider.java:98)
+	at org.eclipse.buildship.core.internal.workspace.DefaultModelProvider.executeOperation(DefaultModelProvider.java:90)
+	at org.eclipse.buildship.core.internal.workspace.DefaultModelProvider.fetchModel(DefaultModelProvider.java:48)
+	at org.eclipse.buildship.ui.internal.view.task.ReloadTaskViewJob.loadContent(ReloadTaskViewJob.java:63)
+	at org.eclipse.buildship.ui.internal.view.task.ReloadTaskViewJob.runInToolingApi(ReloadTaskViewJob.java:55)
+	at org.eclipse.buildship.ui.internal.view.task.ReloadTaskViewJob.runInToolingApi(ReloadTaskViewJob.java:40)
+	at org.eclipse.buildship.core.internal.operation.ToolingApiJob$1.runInToolingApi(ToolingApiJob.java:54)
+	at org.eclipse.buildship.core.internal.operation.DefaultToolingApiOperationManager$WorkspaceRunnableAdapter.run(DefaultToolingApiOperationManager.java:58)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2380)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2405)
+	at org.eclipse.buildship.core.internal.operation.DefaultToolingApiOperationManager.run(DefaultToolingApiOperationManager.java:39)
+	at org.eclipse.buildship.core.internal.operation.ToolingApiJob.run(ToolingApiJob.java:65)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.lang.NoClassDefFoundError: Could not initialize class org.eclipse.buildship.ui.internal.console.ConsoleProcessStreamsProvider$BackgroundJobProcessStream
+	at org.eclipse.buildship.ui.internal.console.ConsoleProcessStreamsProvider.getBackgroundJobProcessStreams(ConsoleProcessStreamsProvider.java:35)
+	at org.eclipse.buildship.core.internal.gradle.GradleProgressAttributes$GradleProgressAttributesBuilder.build(GradleProgressAttributes.java:151)
+	at org.eclipse.buildship.core.internal.util.gradle.IdeAttachedProjectConnection.newInstance(IdeAttachedProjectConnection.java:107)
+	at org.eclipse.buildship.core.internal.DefaultGradleBuild$GradleConnectionOperation.runInToolingApi(DefaultGradleBuild.java:323)
+	at org.eclipse.buildship.core.internal.operation.DefaultToolingApiOperationManager$WorkspaceRunnableAdapter.run(DefaultToolingApiOperationManager.java:58)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2380)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2405)
+	at org.eclipse.buildship.core.internal.operation.DefaultToolingApiOperationManager.run(DefaultToolingApiOperationManager.java:39)
+	at org.eclipse.buildship.core.internal.DefaultGradleBuild.withConnection(DefaultGradleBuild.java:122)
+	at org.eclipse.buildship.core.internal.workspace.DefaultModelProvider.lambda$fetchModel$1(DefaultModelProvider.java:49)
+	at com.google.common.cache.LocalCache$LocalManualCache$1.load(LocalCache.java:4853)
+	at com.google.common.cache.LocalCache$LoadingValueReference.loadFuture(LocalCache.java:3529)
+	at com.google.common.cache.LocalCache$Segment.loadSync(LocalCache.java:2278)
+	at com.google.common.cache.LocalCache$Segment.lockedGetOrLoad(LocalCache.java:2155)
+	at com.google.common.cache.LocalCache$Segment.get(LocalCache.java:2045)
+	... 15 more
+
+!ENTRY org.eclipse.buildship.core 4 6 2023-01-08 03:56:15.934
+!MESSAGE Project import failed due to an unexpected error.
+!STACK 0
+com.google.common.util.concurrent.ExecutionError: java.lang.ExceptionInInitializerError
+	at com.google.common.cache.LocalCache$Segment.get(LocalCache.java:2049)
+	at com.google.common.cache.LocalCache.get(LocalCache.java:3951)
+	at com.google.common.cache.LocalCache$LocalManualCache.get(LocalCache.java:4848)
+	at org.eclipse.buildship.core.internal.workspace.DefaultModelProvider.getFromCache(DefaultModelProvider.java:98)
+	at org.eclipse.buildship.core.internal.workspace.DefaultModelProvider.executeOperation(DefaultModelProvider.java:90)
+	at org.eclipse.buildship.core.internal.workspace.DefaultModelProvider.fetchEclipseProjectAndRunSyncTasks(DefaultModelProvider.java:72)
+	at org.eclipse.buildship.core.internal.DefaultGradleBuild$SynchronizeOperation.runInToolingApi(DefaultGradleBuild.java:226)
+	at org.eclipse.buildship.core.internal.operation.DefaultToolingApiOperationManager$WorkspaceRunnableAdapter.run(DefaultToolingApiOperationManager.java:58)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2380)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2405)
+	at org.eclipse.buildship.core.internal.operation.DefaultToolingApiOperationManager.run(DefaultToolingApiOperationManager.java:39)
+	at org.eclipse.buildship.core.internal.DefaultGradleBuild$SynchronizeOperation.run(DefaultGradleBuild.java:192)
+	at org.eclipse.buildship.core.internal.DefaultGradleBuild.synchronize(DefaultGradleBuild.java:100)
+	at org.eclipse.buildship.ui.internal.wizard.project.ProjectImportWizardController$5.run(ProjectImportWizardController.java:213)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:122)
+Caused by: java.lang.ExceptionInInitializerError
+	at org.eclipse.buildship.ui.internal.console.ConsoleProcessStreamsProvider.getBackgroundJobProcessStreams(ConsoleProcessStreamsProvider.java:35)
+	at org.eclipse.buildship.core.internal.gradle.GradleProgressAttributes$GradleProgressAttributesBuilder.build(GradleProgressAttributes.java:151)
+	at org.eclipse.buildship.core.internal.util.gradle.IdeAttachedProjectConnection.newInstance(IdeAttachedProjectConnection.java:107)
+	at org.eclipse.buildship.core.internal.DefaultGradleBuild$GradleConnectionOperation.runInToolingApi(DefaultGradleBuild.java:323)
+	at org.eclipse.buildship.core.internal.operation.DefaultToolingApiOperationManager$WorkspaceRunnableAdapter.run(DefaultToolingApiOperationManager.java:58)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2380)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2405)
+	at org.eclipse.buildship.core.internal.operation.DefaultToolingApiOperationManager.run(DefaultToolingApiOperationManager.java:39)
+	at org.eclipse.buildship.core.internal.DefaultGradleBuild.withConnection(DefaultGradleBuild.java:122)
+	at org.eclipse.buildship.core.internal.workspace.DefaultModelProvider.lambda$fetchEclipseProjectAndRunSyncTasks$5(DefaultModelProvider.java:75)
+	at com.google.common.cache.LocalCache$LocalManualCache$1.load(LocalCache.java:4853)
+	at com.google.common.cache.LocalCache$LoadingValueReference.loadFuture(LocalCache.java:3529)
+	at com.google.common.cache.LocalCache$Segment.loadSync(LocalCache.java:2278)
+	at com.google.common.cache.LocalCache$Segment.lockedGetOrLoad(LocalCache.java:2155)
+	at com.google.common.cache.LocalCache$Segment.get(LocalCache.java:2045)
+	... 14 more
+Caused by: java.lang.IllegalArgumentException: Image descriptor TASK in state ENABLED not available in UiPlugin image registry.
+	at org.eclipse.buildship.ui.internal.PluginImages$1.getImageDescriptor(PluginImages.java:108)
+	at org.eclipse.buildship.ui.internal.console.GradleConsole.<init>(GradleConsole.java:60)
+	at org.eclipse.buildship.ui.internal.console.GradleConsole.<init>(GradleConsole.java:52)
+	at org.eclipse.buildship.ui.internal.console.ConsoleProcessStreamsProvider.createAndRegisterNewConsole(ConsoleProcessStreamsProvider.java:59)
+	at org.eclipse.buildship.ui.internal.console.ConsoleProcessStreamsProvider$BackgroundJobProcessStream.<clinit>(ConsoleProcessStreamsProvider.java:69)
+	... 29 more
+
+!ENTRY org.eclipse.ui 2 2 2023-01-08 03:56:30.499
+!MESSAGE Invalid property category path: org.springframework.ide.eclipse.beans.ui.properties.ProjectPropertyPage (bundle: org.springframework.ide.eclipse.xml.namespaces, propertyPage: org.springframework.ide.eclipse.beans.ui.namespaces.projectPropertyPage)
