@@ -45,17 +45,18 @@
 	<!-- 수정 -->
 	<update id="matchUpdate" parameterType="soccer.deploy.match.myDto.matchMyDto">
 	  		UPDATE match
-  			SET match_date = #{match_date}, opteam = #{opteam}, match_regdate = #{match_regdate},  match_img_type = #{match_img_type}, match_img_name = #{match_img_name}, match_place = #{match_place},user_id = #{user_id}
-  		  WHERE match_id = #{match_id}
+  			SET match_date = #{matchDate}, opteam = #{opteam}, match_regdate = #{matchRegdate},  match_img_type = #{matchImgType}, match_img_name = #{matchImgName}, match_place = #{matchPlace},user_id = #{userId}
+  		  WHERE match_id = #{matchId}
 	
 	</update>
 	<!-- 삭제 -->
-	<delete id="matchDelete" parameterType="String">
+	<delete id="matchDelete" parameterType="string">
 			 DELETE FROM match 
-			 WHERE match_id = #{match_id}
+			 WHERE match_id = #{matchId}
 	</delete>
 	<!-- 경기 아이디로조회 -->
 	<select id="selectMatch" parameterType="string" resultType="soccer.deploy.match.myDto.matchMyDto">
+
         SELECT * FROM match WHERE match_id = #{match_id}
     </select>
     
@@ -97,6 +98,26 @@
         WHERE rownum &lt; 2
 	</select>
 	
+	<select id="matchDate" resultType="String">
+		SELECT  firstDate 
+		FROM(
+				SELECT FIRST_VALUE(TO_CHAR(match_date,'yy/MM')) OVER() firstDate
+         		FROM match m
+        GROUP BY TO_CHAR(match_date,'yy/MM')
+        ORDER BY TO_CHAR(match_date,'yy/MM') asc)
+        where rownum &lt; 2
+	</select>
+	
+	<select id="matchFirst" resultType="String">
+		SELECT  firstDate 
+		FROM(
+				SELECT FIRST_VALUE(TO_CHAR(match_date,'yy')) OVER() firstDate
+         		FROM match m
+        GROUP BY TO_CHAR(match_date,'yy')
+        ORDER BY TO_CHAR(match_date,'yy') asc)
+        where rownum &lt; 2
+	</select>
+	
 	<select id="year" resultType="String">
 		select  TO_CHAR(match_date,'yy') year
         from match m join entry e
@@ -106,5 +127,12 @@
         group by TO_CHAR(match_date,'yy')
         ORDER BY year desc 
 	</select>
-    
+	  
+	<select id="matchYear" resultType="String">
+		select  TO_CHAR(match_date,'yy') year
+        from match m 
+        group by TO_CHAR(match_date,'yy')
+        ORDER BY year desc 
+	</select>
+
 </mapper>

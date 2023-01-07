@@ -1,6 +1,7 @@
 package soccer.deploy.match.myDao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -10,6 +11,7 @@ import soccer.deploy.match.myDto.rank;
 //@Mapper : �씤�꽣�럹�씠�뒪 �븿�닔�� mybatis �뿰寃� 
 @Mapper
 public interface matchDao {
+
 	
 	/* 寃쎄린紐⑸줉議고쉶 */
 //	public List<matchMyDto> list();	
@@ -34,4 +36,11 @@ public interface matchDao {
 	
 	public List<String> year();
 	
+	public List<String> matchYear();
+	
+	public String matchDate();
+	
+	public String matchFirst();
+	
+
 }
