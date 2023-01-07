@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 !SESSION 2023-01-05 06:30:43.374 -----------------------------------------------
 eclipse.buildId=4.24.0.I20220607-0700
 java.version=11.0.16
@@ -590,6 +591,8 @@ org.osgi.framework.BundleException: Could not resolve module: org.springframewor
 =======
 =======
 >>>>>>> 1ca556964cb7d5b6c181cbf99f9bce62d4841e93
+=======
+>>>>>>> 1ca556964cb7d5b6c181cbf99f9bce62d4841e93
 !SESSION 2023-01-06 18:59:45.499 -----------------------------------------------
 eclipse.buildId=4.23.0.I20220308-0310
 java.version=11.0.15.1
@@ -605,6 +608,9 @@ Created Time: 2023-01-06 19:00:28.245
 !MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
 !SUBENTRY 1 org.eclipse.jface 2 0 2023-01-06 19:00:28.245
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 1ca556964cb7d5b6c181cbf99f9bce62d4841e93
+=======
 >>>>>>> 1ca556964cb7d5b6c181cbf99f9bce62d4841e93
 =======
 >>>>>>> 1ca556964cb7d5b6c181cbf99f9bce62d4841e93
@@ -615,7 +621,11 @@ Binding(CTRL+SHIFT+T,
 		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@37403f66,
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@72a1ccad,
+>>>>>>> 1ca556964cb7d5b6c181cbf99f9bce62d4841e93
 =======
 		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@72a1ccad,
 >>>>>>> 1ca556964cb7d5b6c181cbf99f9bce62d4841e93
@@ -629,6 +639,7 @@ Binding(CTRL+SHIFT+T,
 	ParameterizedCommand(Command(org.eclipse.lsp4e.symbolinworkspace,Go to Symbol in Workspace,
 		,
 		Category(org.eclipse.lsp4e.category,Language Servers,null,true),
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@da51aa8,
@@ -657,12 +668,17 @@ Binding(ALT+SHIFT+X R,
 =======
 =======
 >>>>>>> 1ca556964cb7d5b6c181cbf99f9bce62d4841e93
+=======
+>>>>>>> 1ca556964cb7d5b6c181cbf99f9bce62d4841e93
 		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@420849f6,
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.ui.contexts.window,,,system)
 !SUBENTRY 1 org.eclipse.jface 2 0 2023-01-06 19:00:28.245
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 1ca556964cb7d5b6c181cbf99f9bce62d4841e93
+=======
 >>>>>>> 1ca556964cb7d5b6c181cbf99f9bce62d4841e93
 =======
 >>>>>>> 1ca556964cb7d5b6c181cbf99f9bce62d4841e93
@@ -673,7 +689,11 @@ Binding(ALT+SHIFT+R,
 		Category(org.eclipse.jdt.ui.category.refactoring,Refactor - Java,Java Refactoring Actions,true),
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@348523f2,
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@24f6f6bf,
+>>>>>>> 1ca556964cb7d5b6c181cbf99f9bce62d4841e93
 =======
 		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@24f6f6bf,
 >>>>>>> 1ca556964cb7d5b6c181cbf99f9bce62d4841e93
@@ -687,6 +707,7 @@ Binding(ALT+SHIFT+R,
 	ParameterizedCommand(Command(org.eclipse.ui.edit.rename,Rename,
 		Rename the selected item,
 		Category(org.eclipse.ui.category.file,File,null,true),
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@11501f90,
@@ -714,10 +735,14 @@ Binding(ALT+SHIFT+D R,
 =======
 		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@255845b1,
 >>>>>>> 1ca556964cb7d5b6c181cbf99f9bce62d4841e93
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@255845b1,
+>>>>>>> 1ca556964cb7d5b6c181cbf99f9bce62d4841e93
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.ui.contexts.window,,,system)
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 !ENTRY org.eclipse.core.filebuffers 4 0 2023-01-08 03:54:02.057
@@ -1002,6 +1027,8 @@ org.eclipse.core.runtime.CoreException: Cannot determine URI for '/soccer_deploy
 =======
 =======
 >>>>>>> 1ca556964cb7d5b6c181cbf99f9bce62d4841e93
+=======
+>>>>>>> 1ca556964cb7d5b6c181cbf99f9bce62d4841e93
 !ENTRY org.eclipse.core.filebuffers 4 0 2023-01-06 19:00:31.794
 !MESSAGE The content type with id "com.genuitec.eclipse.codetogether.type" specified in the extension point does not exist.
 
@@ -1016,6 +1043,9 @@ org.eclipse.core.runtime.CoreException: Cannot determine URI for '/soccer_deploy
 
 !ENTRY org.eclipse.egit.ui 2 0 2023-01-06 19:00:32.844
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 1ca556964cb7d5b6c181cbf99f9bce62d4841e93
+=======
 >>>>>>> 1ca556964cb7d5b6c181cbf99f9bce62d4841e93
 =======
 >>>>>>> 1ca556964cb7d5b6c181cbf99f9bce62d4841e93
@@ -1111,6 +1141,9 @@ java.lang.InterruptedException
 	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
 	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 1ca556964cb7d5b6c181cbf99f9bce62d4841e93
+=======
 >>>>>>> 1ca556964cb7d5b6c181cbf99f9bce62d4841e93
 =======
 >>>>>>> 1ca556964cb7d5b6c181cbf99f9bce62d4841e93
