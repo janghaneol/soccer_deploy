@@ -38,19 +38,23 @@
 
 <link rel="stylesheet" href="/css/style.css">
 
-
+<link rel="stylesheet" href="/css/match.css">
 
 </head>
 
 <body>
-
-	<div class="site-wrap">
-		<jsp:include page="/WEB-INF/view/include/header.jsp"></jsp:include>
-		<div class="hero overlay">
-			<div class="container">
-				<div class="row align-items-center">
-					<div class="col-lg-12">
-						<h1 class="text-white" align="center">Record</h1>
+<jsp:include page="/WEB-INF/view/include/header.jsp"></jsp:include>
+	<div class="wrap bg-visual"
+		style="background-image: url('/images/match.jpg'); background-position: center center; background-size: cover">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-5 mx-auto text-center">
+					<h1 class="text-white">Players</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+					<div class="container">
 						<form class="row row-cols-lg-auto g-3 align-items-center">
 							<div class="col-12">
 								<p>검색된 회원 수 : ${userList.totalElements}</p>
@@ -86,27 +90,24 @@
 								</c:forEach>
 
 							</tbody>
-
 						</table>
-					</div>
+					
 					<div class="navBar" style="margin: auto;">
 					<nav aria-label="Page navigation example">
 						<ul class="pagination justify-content-center">
 							<li class="page-item"><a class="page-link" href="/user/list?page=0">처음으로</a></li>
 
-							<c:forEach begin="${startBlockPage}" end="${endBlockPage}"
-								var="i">
-								<li class="page-item"><a class="page-link"
-									href="/user/list/?page=${i-1}&value=${value}">${i}</a></li>
+							<c:forEach begin="${startBlockPage}" end="${endBlockPage}" var="i">
+								<li class="page-item"><a class="page-link" href="/user/list/?page=${i-1}&value=${value}">${i}</a></li>
 							</c:forEach>
 							
 							<li class="page-item"><a class="page-link" href="#">다음으로</a></li>
 						</ul>
 					</nav>
-					</div>
 				</div>
 			</div>
-		</div>
+			
+		
 
 
 		<jsp:include page="/WEB-INF/view/include/section.jsp"></jsp:include>
@@ -114,7 +115,6 @@
 		<jsp:include page="/WEB-INF/view/include/footer.jsp"></jsp:include>
 
 
-	</div>
 	<!-- .site-wrap -->
 
 	<script src="/js/jquery-3.3.1.min.js"></script>

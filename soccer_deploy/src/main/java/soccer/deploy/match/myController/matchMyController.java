@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
+ 
 import lombok.extern.slf4j.Slf4j;
 import soccer.deploy.MyEntry.EntryMyService;
 import soccer.deploy.MyUser.UserMyDto;
@@ -149,7 +149,7 @@ public class matchMyController {
 	}
 
 	
-	@GetMapping("/asd")
+	@GetMapping("/participation")
 	public String test(@RequestParam("matchId")String matchId,  HttpSession session)
 	{   //濡쒓렇�씤 �꽭�뀡媛�
 		Entry entry =new Entry();

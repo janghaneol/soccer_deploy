@@ -89,6 +89,10 @@
 #translateY2 {
 	transform: translateY(270px);
 }
+
+#v{
+	text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+}
 </style>
 
 <body>
@@ -101,15 +105,39 @@
 		<div class="hero overlay">
 			<div class="container">
 				<div class="row align-items-center">
-					<div class="col-lg-5 ml-auto">
-						<h1 class="text-white">World Cup Event</h1>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-							Soluta, molestias repudiandae pariatur.</p>
-						<div id="date-countdown"></div>
-						<p>
-							<a href="#" class="btn btn-primary py-3 px-4 mr-3">Book
-								Ticket</a> <a href="#" class="more light">Learn More</a>
-						</p>
+					<div class="col-lg-12">
+						<div class="widget-next-match">
+							<div class="widget-title">
+								<h3>Next Match</h3>
+							</div>
+							<div class="widget-body mb-3">
+								<div class="widget-vs">
+									<div class="d-flex align-items-center justify-content-around justify-content-between w-100">
+										<div class="team-1 text-center">
+											<img src="images/logo_1.png" alt="Image">
+											<h3 id="v">My Team</h3>
+										</div>
+										<div>
+											<span class="vs"><span>VS</span></span>
+										</div>
+										<div class="team-2 text-center">
+											<img src="images/${recentMatch.matchImgName}" alt="Image">
+											<h3 id="v">${recentMatch.opteam}</h3>
+										</div>
+									</div>
+								</div>
+							</div>
+   
+							<div class="text-center widget-vs-contents mb-4">
+								<h4 style="text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;">경기 시간 / 장소</h4>
+								<p class="mb-5">
+									<fmt:formatDate var="time" value="${recentMatch.matchDate}" pattern="yy/MM/dd HH:mm" />
+									<span class="d-block" id="v">${time}</span> 
+									<a href="" onClick="window.open('/findRoad','','width=700,height=500');return false"><span class="d-block" id="v">${recentMatch.matchPlace}</span></a>
+								</p>
+								<a href="/match/participation?matchId=${recentMatch.id}" class="btn btn-primary">참가신청</a>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -141,22 +169,18 @@
 										<div class="col-lg-12">
 
 											<div class="d-flex team-vs ">
-												
+
 												<div class="team-1 w-50">
 													<div class="team-details w-100 text-center">
 														<img src="/images/basic.png" alt="Image" class="img-fluid">
-														<h3>
-															기록없음
-														</h3>
+														<h3>기록없음</h3>
 
 													</div>
 												</div>
 												<div class="team-2 w-50">
 													<div class="team-details w-100 text-center">
 														<img src="images/basic.png" alt="Image" class="img-fluid">
-														<h3>
-															기록없음
-														</h3>
+														<h3>기록없음</h3>
 													</div>
 												</div>
 											</div>
