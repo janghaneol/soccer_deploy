@@ -28,9 +28,20 @@ public interface JpaMatchRepository extends JpaRepository<Match, Long> {
 	@Query(value= "SELECT new soccer.deploy.match.myDto.MatchDto(m.id,m.matchDate,m.opteam,m.matchImgType,m.matchImgName,m.matchPlace, SUM(q.outcome),COUNT(q.id)) from Quarter q join q.match m WHERE m.id in (select distinct m.id from LineUp l join l.quarter q join q.match m where m.matchDate Like CONCAT(:date,'%') )  GROUP BY m.id,m.matchDate,m.opteam,m.matchImgType,m.matchImgName,m.matchPlace ORDER BY m.matchDate DESC")
 	public List<MatchDto> resultMatch(@Param("date") String date);
     
+	@Query(value= "SELECT new soccer.deploy.match.myDto.MatchDto(m.id,m.matchDate,m.opteam,m.matchImgType,m.matchImgName,m.matchPlace, SUM(q.outcome),COUNT(q.id)) from Quarter q join q.match m WHERE m.id in (select distinct m.id from LineUp l join l.quarter q join q.match m where m.id =:id )  GROUP BY m.id,m.matchDate,m.opteam,m.matchImgType,m.matchImgName,m.matchPlace ORDER BY m.matchDate DESC")
+	public Optional<MatchDto> resultMatchById(@Param("id") Long id);
+	
 
 	@Query(value = "SELECT m FROM Match m WHERE TO_CHAR(m.matchDate,'YY/MM') = :matchDate")
 	public List<Match> findAllByMatchDate(@Param("matchDate") String matchDate);
 	
+	@Query(value="        select match_id from("
+			+ "select distinct m.match_id,m.match_date"
+			+ "         from match m join entry e"
+			+ "            on m.match_id = e.match_id  join lineup l"
+			+ "                    on e.entry_id = l.entry_id"
+			+ "        order by match_date desc)"
+			+ "        where rownum <= 2 ",nativeQuery = true)
+	public List<Long> findRecentTwoResultMatchId();
 }
 	

@@ -2,6 +2,7 @@ package soccer.deploy.match.myService;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import lombok.extern.slf4j.Slf4j;
+import soccer.deploy.lineUp.repository.JpaLineUpRepository;
 import soccer.deploy.match.myDao.matchDao;
 import soccer.deploy.match.myDto.MatchDto;
 import soccer.deploy.match.myDto.rank;
@@ -22,6 +24,9 @@ public class MatchChoungServiceImpl implements MatchChoungService{
 	private matchDao dao;
 	@Autowired
 	private JpaMatchRepository jpaMatchRepository;
+	@Autowired
+	private JpaLineUpRepository jpaLineUpRepository;
+
 	@Override
 	public List<rank> rank(String year, String month) {
 		LocalDate now = LocalDate.now();
@@ -73,9 +78,29 @@ public class MatchChoungServiceImpl implements MatchChoungService{
 		}else {
 			return jpaMatchRepository.resultMatch(year.concat("/").concat(month));
 		}
-//		return null;
+		//		return null;
 	}
 
+	@Override
+	public HashMap<String, MatchDto> recentTwoMatchResult(List<Long> id) {
+		HashMap<String, MatchDto> twoList  =new HashMap<>();
 
+		twoList.put("first", jpaMatchRepository.resultMatchById(id.get(0)).get());
+		twoList.put("second", jpaMatchRepository.resultMatchById(id.get(1)).get());
+		return twoList;
+	}
 
+	@Override
+	public HashMap<String, List<rank>> recentTwoMatchPlayer(List<Long> id) {
+		HashMap<String, List<rank>> twoList  =new HashMap<>();
+
+		twoList.put("first", jpaLineUpRepository.findRecentMatchOutCome(id.get(0)));
+		twoList.put("second", jpaLineUpRepository.findRecentMatchOutCome(id.get(1)));
+		return twoList;
+	}
+	@Override
+	public List<Long> findRecentTwoResultMatchId() {
+
+		return jpaMatchRepository.findRecentTwoResultMatchId();
+	}
 }	

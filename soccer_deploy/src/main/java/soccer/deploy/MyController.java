@@ -1,6 +1,7 @@
 package soccer.deploy;
 
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 
 import lombok.extern.slf4j.Slf4j;
 import soccer.deploy.match.myDao.matchDao;
+import soccer.deploy.match.myDto.MatchDto;
+import soccer.deploy.match.myDto.rank;
 import soccer.deploy.match.myService.MatchChoungService;
 import soccer.deploy.match.service.MatchService;
 import soccer.deploy.user.entity.User;
@@ -32,14 +35,6 @@ public class MyController {
 	@Autowired
 	private MatchChoungService matchChoungService;
 	
-//	@RequestMapping("/") Cookie를 통한 로그인 유지 및 관리 Session으로 변경했습니다.
-	public String index(Model model,@CookieValue(name = "loginUser", required = false) String loginUser) {
-		if(loginUser != null) {
-			model.addAttribute("loginUser", loginUser);
-		}
-		
-		return "index";
-	}
 	
 	/*Session을 통한 로그인 유지 및 관리*/
 	@RequestMapping("/")
@@ -47,9 +42,14 @@ public class MyController {
 		if(loginUser != null) {
 			model.addAttribute("loginUser",loginUser);
 		}
-
+		List<Long> resultId = matchChoungService.findRecentTwoResultMatchId();
+		HashMap<String, MatchDto> resultMatch = matchChoungService.recentTwoMatchResult(resultId);
+		HashMap<String, List<rank>> resultPlayer = matchChoungService.recentTwoMatchPlayer(resultId);
 		Long viewMatchId = matchService.findRecentViewMatch();
 		model.addAttribute("recentMatch",matchService.findeRecentMatch(viewMatchId));
+		
+		model.addAttribute("resultMatch", resultMatch);
+		model.addAttribute("resultPlayer", resultPlayer);
 		
 		return "index";
 	}
@@ -104,13 +104,7 @@ public class MyController {
 		return "view/user/login";
 	}
 
-	//채팅과 로그인으로 들어가는 버튼
-	@RequestMapping("/xMain")
-	public String xMain() {
 
-		return "view/xMain";
-	}
-	
 	//회원가입
 	@RequestMapping("/signup")
 	public String signUp() {
@@ -123,13 +117,5 @@ public class MyController {
 		return "view/lineUp/lineUp";
 	}
 	
-//	@RequestMapping("/notice")
-//	public String notice(Model model) {
-//		
-//		List<noticeDTO> select = NoticeService.select();
-//		
-//		model.addAttribute("select", select);
-//		
-//		return "notice";
-//	}
+
 }

@@ -45,7 +45,7 @@
 
 
 	<div class="wrap bg-visual"
-		style="background-image: url('images/match.jpg');">
+		style="background-image: url('/images/match.jpg'); background-position: center center; background-size: cover">
 		<div class="container">
 			<div class="row align-items-center">
 				<div class="col-lg-5 mx-auto text-center">
@@ -56,7 +56,7 @@
 	</div>
 
 	<div class="wrapper">
-		<h2>일정/결과</h2>
+		<h2>경기결과</h2>
 		<div class="contentWrap">
 			<hr>
 			<div class="top">
@@ -182,8 +182,13 @@
 								<div class="result">경기결과</div>
 								<ul class="board">
 									<c:forEach var="item" items="${result}">
-
-										<li>MyTeam ${item.win} : ${item.count - item.win}${item.opteam}
+										
+										<li class="imgclass"><img src="/images/logo_1.png" alt="Image"
+																	class="img-fluid customCh">
+																	
+																	<span class="imgspan">MyTeam <span class="score">${item.win} : ${item.count - item.win}</span>  ${item.opteam} </span>
+																	<img src="/image/${item.matchImgName}" alt="Image"
+																	class="img-fluid customCh">
 										</li>
 									</c:forEach>
 								</ul>

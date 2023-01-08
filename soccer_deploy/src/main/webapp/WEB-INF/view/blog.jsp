@@ -37,7 +37,7 @@
 
   <jsp:include page="/WEB-INF/view/include/header.jsp"></jsp:include>
   
-    <div class="hero overlay" style="background-image: url('images/bg_3.jpg');">
+    <div class="hero overlay" >
       <div class="container">
         <div class="row align-items-center">
           <div class="col-lg-5 mx-auto text-center">

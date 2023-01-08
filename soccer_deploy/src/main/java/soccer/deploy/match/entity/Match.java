@@ -13,6 +13,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.DynamicInsert;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,6 +24,7 @@ import soccer.deploy.user.entity.User;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@DynamicInsert
 @SequenceGenerator(
 		name = "match_seq_gen",
 		sequenceName = "match_seq",
@@ -40,6 +43,7 @@ public class Match {
 	@Column(nullable = false)
 	private String opteam;
 	
+
 	@Temporal(TemporalType.DATE)
 	@Column(name ="match_regdate")
 	private Date matchRegdate;

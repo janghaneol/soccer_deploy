@@ -148,8 +148,8 @@ console.log(manager.array);
       addPlayerPosition.dataset.name = target.dataset.name;
       addPlayerPosition.dataset.playId = target.dataset.playid;
       button.classList.add('cancle');
-      //let imgName = target.dataset.imgname; 나중에 이미지 파일 위치 나오면 수정해야함 20221112
-      addPlayerPosition.style.backgroundImage = "url('../images/img_2.jpg')";
+      let imgName = target.dataset.imgname; //나중에 이미지 파일 위치 나오면 수정해야함 20221112
+      addPlayerPosition.style.backgroundImage = `url('../images/${imgName}')`;
 
       addPlayerPosition.appendChild(div);
       addPlayerPosition.appendChild(button);

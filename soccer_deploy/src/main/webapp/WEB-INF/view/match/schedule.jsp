@@ -47,74 +47,80 @@ input[name='publeYear'] {
 
 	<jsp:include page="/WEB-INF/view/include/header.jsp"></jsp:include>
 
-<section style="padding-top: 5%;">
-	<div class="site-section">
-		<div class="container"
-			style="width: 50%; border: solid; border-radius: 30px; color: white; padding: 5%;">
-			<h1>경기 등록</h1>
-			<div class="wrapper">
-				<form method="post" action="/match/schedule">
-					<input type="hidden" id="writer" value="${loginUser.id}">
-					<div class="form-group">
-						<label class="form-label mt-4">상대팀</label> <input type="text"
-							name="opteam" class="form-control" placeholder="Opteam Name">
-					</div>
+	<section style="padding-top: 5%;">
+		<div class="site-section">
+			<div class="container"
+				style="width: 50%; border: solid; border-radius: 30px; color: white; padding: 5%;">
+				<h1>경기 등록</h1>
+				<div class="wrapper">
+					<form method="post" action="/match/schedule" enctype="multipart/form-data">
+						<input type="hidden" id="writer" value="${loginUser.id}">
+						<div class="form-group">
+							<label class="form-label mt-4">상대팀</label> <input type="text"
+								name="opteam" class="form-control" placeholder="Opteam Name">
+						</div>
 
-					<label class="form-label mt-4">경기일정</label>
-					<div class="form-group" style="display: flex;">
-						<input name="publeYear" autocomplete="off" readonly="readonly">
-						<label class="label-form" style="color: white; margin-left: 20px;">시간
-							: </label> <input name="time" style="margin-left: 10px;" type="time"
-							autocomplete="off">
-					</div>
+						<label class="form-label mt-4">경기일정</label>
+						<div class="form-group" style="display: flex;">
+							<input name="publeYear" autocomplete="off" readonly="readonly">
+							<label class="label-form"
+								style="color: white; margin-left: 20px;">시간 : </label> <input
+								name="time" style="margin-left: 10px;" type="time"
+								autocomplete="off">
+						</div>
 
-					<label class="form-label mt-4">쿼터 수 / 경기시간</label>
-					<div class="form-group" style="display: flex;">
-						<select class="form-control" name="quarterNumber"
-							id="quarterNumber">
-							<option value="1">1쿼터</option>
-							<option value="2">2쿼터</option>
-							<option value="3">3쿼터</option>
-							<option value="4">4쿼터</option>
-						</select> <select class="form-control" name="quarterTime" id="quarterTime">
-							<c:forEach var="i" begin="1" end="9">
-								<option value="${i*10}">${i*10}분</option>
-							</c:forEach>
-						</select>
-					</div>
-
-
-					<label class="form-label mt-4">주소</label>
-					<div class="form-group" style="display: flex;">
-						<input style="width: 200px; margin-right: 10px;" type="text"
-							name="add1" class="form-control" id="sample6_postcode"
-							placeholder="우편번호" readonly="readonly"> <input
-							type="button" class="btn btn-primary py-2 px-3"
-							id="sample6_button" onclick="sample6_execDaumPostcode()"
-							value="우편번호 찾기">
-					</div>
-
-					<div class="form-group">
-						<input type="text" name="add2" class="form-control"
-							id="sample6_address" placeholder="주소" readonly="readonly">
-					</div>
-					<div class="form-group">
-						<input type="text" name="add3" class="form-control"
-							id="sample6_detailAddress" placeholder="상세주소" readonly>
-					</div>
-					<input type="text" class="form-control" style="display: none;"
-						id="sample6_extraAddress" placeholder="참고항목">
+						<label class="form-label mt-4">쿼터 수 / 경기시간</label>
+						<div class="form-group" style="display: flex;">
+							<select class="form-control" name="quarterNumber"
+								id="quarterNumber">
+								<option value="1">1쿼터</option>
+								<option value="2">2쿼터</option>
+								<option value="3">3쿼터</option>
+								<option value="4">4쿼터</option>
+							</select> <select class="form-control" name="quarterTime" id="quarterTime">
+								<c:forEach var="i" begin="1" end="9">
+									<option value="${i*10}">${i*10}분</option>
+								</c:forEach>
+							</select>
+						</div>
 
 
-					<div class="form-group" style="text-align: right;">
-						<input type="submit" class="btn btn-primary" value="등록"> 
-						<a href="/match" class="btn btn-primary">취소</a>
-					</div>
-				</form>
+						<label class="form-label mt-4">주소</label>
+						<div class="form-group" style="display: flex;">
+							<input style="width: 200px; margin-right: 10px;" type="text"
+								name="add1" class="form-control" id="sample6_postcode"
+								placeholder="우편번호" readonly="readonly"> <input
+								type="button" class="btn btn-primary py-2 px-3"
+								id="sample6_button" onclick="sample6_execDaumPostcode()"
+								value="우편번호 찾기">
+						</div>
+
+						<div class="form-group">
+							<input type="text" name="add2" class="form-control"
+								id="sample6_address" placeholder="주소" readonly="readonly">
+						</div>
+						<div class="form-group">
+							<input type="text" name="add3" class="form-control"
+								id="sample6_detailAddress" placeholder="상세주소" readonly>
+						</div>
+						<input type="text" class="form-control" style="display: none;"
+							id="sample6_extraAddress" placeholder="참고항목">
+
+						<div>
+							<label for="file" class="label-file">
+								<div class="file-upload">이미지 업로드</div>
+							</label> <span id="filenames">선택된 파일 없음</span> <input type="file"
+								id="file" name="img" style="display: none;" accept="image/*" />
+						</div>
+						<div class="form-group" style="text-align: right;">
+							<input type="submit" class="btn btn-primary" value="등록">
+							<a href="/match" class="btn btn-primary">취소</a>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
-	</div>
-</section>
+	</section>
 
 
 
@@ -122,6 +128,7 @@ input[name='publeYear'] {
 	<script
 		src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script src="/js/jquery-3.3.1.min.js"></script>
+	<script defer src="/js/imgReg.js"></script>
 	<script src="/js/jquery-migrate-3.0.1.min.js"></script>
 	<script src="/js/jquery-ui.js"></script>
 	<script src="/js/popper.min.js"></script>

@@ -58,7 +58,7 @@
 	</div> -->
 
 	<div class="wrap bg-visual"
-		style="background-image: url('/images/match.jpg');">
+		style="background-image: url('/images/match.jpg'); background-position: center center; background-size: cover">
 		<div class="container">
 			<div class="row align-items-center">
 				<div class="col-lg-5 mx-auto text-center">
@@ -69,7 +69,7 @@
 	</div>
 
 	<div class="wrapper">
-		<h2>일정/결과</h2>
+		<h2>순위</h2>
 		<div class="contentWrap">
 			<hr>
 			<div class="top">

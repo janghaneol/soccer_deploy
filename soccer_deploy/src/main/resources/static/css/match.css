@@ -182,3 +182,19 @@ body.popup ul.button li + li {margin-top: 30px;}
 .layer-popup .footer p.logo {position: absolute; right: 20px; top: 50%; transform: translate(0, -50%);}
 .layer-popup .footer p.logo img {height: 24px;}
 
+li.imgclass{
+	padding-top:15px !important;
+}
+span.imgspan{
+	margin : 0px 10px;
+}
+span.score{
+	margin : 0px 5px;
+	letter-spacing: 3px;
+}
+li.imgclass.cal{
+	padding-right : 30px !important;
+}
+a.entryList{
+	margin-left: 10px;
+}

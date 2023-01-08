@@ -1,4 +1,6 @@
 package soccer.deploy;
+import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Disabled;
@@ -8,18 +10,15 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import lombok.extern.slf4j.Slf4j;
-import soccer.deploy.MyEntry.EntryMyDao;
 import soccer.deploy.entry.entity.Entry;
 import soccer.deploy.entry.repository.JpaEntryRepository;
 import soccer.deploy.entry.service.EntryService;
-import soccer.deploy.match.entity.Match;
-import soccer.deploy.match.myDao.matchDao;
+import soccer.deploy.lineUp.repository.JpaLineUpRepository;
+import soccer.deploy.match.myService.MatchChoungService;
 import soccer.deploy.match.repository.JpaMatchRepository;
 import soccer.deploy.match.service.MatchService;
-import soccer.deploy.quarter.entity.Quarter;
 import soccer.deploy.quarter.repository.JpaQuarterRepository;
 import soccer.deploy.quarter.service.QuarterService;
-import soccer.deploy.user.repository.UserRepository;
 import soccer.deploy.user.service.UserService;
 
 @SpringBootTest
@@ -42,20 +41,24 @@ public class choungTest {
 	private JpaQuarterRepository q;
 	
 	@Autowired
-	private EntryMyDao entryMyDao;
+	private JpaLineUpRepository l;
+	@Autowired
+	private MatchChoungService matchChoungService;
 	
 	@Test
 	@Disabled
 	void test1(){
 		for(Entry e :entryService.findEntryRecentMatch(1L)){
 			
-			log.info("test{}",entryMyDao.show("1").get(0));
+//			log.info("test{}",entryMyDao.show("1").get(0));
 		}
 	}
 	
 	@Test
-	void test3() {
-//		log.info("{}",m.resultMatch("23/11").get(0).getCount());
-//		log.info("{}",m.resultMatch("22/12").get(1).getWin());
+	void test3() throws ParseException {
+		List<Long> list = new ArrayList();
+		list.add(27L);
+		list.add(1L);
+		log.info("{}",matchChoungService.recentTwoMatchResult(list).get("first"));
 	}
 }

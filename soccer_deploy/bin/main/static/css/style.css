@@ -600,6 +600,7 @@ h1, h2, h3, h4, h5,
 
 /* Blocks */
 .hero {
+	background-image : url('/images/match.jpg');
   background-size: cover;
   background-position: center center; }
   .hero, .hero > .container > .row {
@@ -1131,4 +1132,8 @@ ul.dropdown-menu li{
 
 ul.dropdown-menu li a{
     color: #212529;
+}
+
+img.customCh{
+	width: 70px;
 }
