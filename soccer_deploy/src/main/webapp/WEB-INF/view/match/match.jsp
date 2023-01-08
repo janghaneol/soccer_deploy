@@ -67,9 +67,6 @@
 	</div>
 
 	<div class="wrapper">
-		<div style="text-align: right; margin-right: 100px;">
-			<a href="/match/schedule" class="btn btn-primary">경기등록</a>
-		</div>
 		<div class="wrapper">
 			<h2>일정</h2>
 		</div>
@@ -130,7 +127,7 @@
 								</c:choose>
 
 							</c:forEach>
-						</select> <input id="search" type="submit" value="검색" onclick="">
+						</select> <input id="search" type="submit" value="검색" onclick=""><a href="/match/schedule" class="btn btn-primary" style="margin-left: 5px;">경기등록</a>
 					</form>
 				</div>
 			</div>
