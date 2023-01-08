@@ -56,7 +56,7 @@
 	</div> -->
 
 	<div class="wrap bg-visual"
-		style="background-image: url('images/match.jpg');">
+		style="background-image: url('/images/match.jpg'); background-position: center center; background-size: cover">
 		<div class="container">
 			<div class="row align-items-center">
 				<div class="col-lg-5 mx-auto text-center">
@@ -71,7 +71,7 @@
 			<a href="/match/schedule" class="btn btn-primary">경기등록</a>
 		</div>
 		<div class="wrapper">
-			<h2>일정</h2>
+			<h2>경기일정</h2>
 		</div>
 		
 		
@@ -199,8 +199,8 @@
 						<ul class="board">
 						
 							<c:forEach var="item" items="${result}">
-								<li><a href="/asdasd/asd/${result.id }"> </a>
-									${item.opteam}</li>
+								<li><a href="/asdasd/asd/${item.id }" style="width: auto;">참가명단</a>
+									${item.opteam}</li> 
 							</c:forEach>
 						</ul>
 					</li>

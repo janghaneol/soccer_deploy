@@ -88,7 +88,7 @@
 	
 		<div class="d-flex align-items-center">
 			<div class="site-logo">
-				<a href="index"> <img src="/images/logo.png" alt="Logo">
+				<a href="/"> <img src="/images/logo.png" alt="Logo">
 				</a>
 			</div>
 
@@ -97,10 +97,18 @@
 					role="navigation">
 					<ul
 						class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-						<li><a href="/xMain" class="nav-link">Home</a></li>
-						<li><a href="/match" class="nav-link">Matches</a></li>
+						<li><a href="/" class="nav-link">Home</a></li>
+						
+						<li class="dropdown"><a href="/match" class="dropdown-toggle "
+						data-toggle="dropdown">Matches<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+						<li><a href="/match" class="drop">경기일정</a></li>
+						<li><a href="/match/result" class="drop">경기결과</a></li>
+						<li><a href="/match/rank" class="drop">순위</a></li>
+						</ul></li>
+						
 						<li><a href="/user/list" class="nav-link">Players</a></li>
-						<li><a href="mainPage" class="nav-link">MainPage</a></li>
+						<li><a href="/mainPage" class="nav-link">MainPage</a></li>
 						<li class="dropdown"><a href="/realArticle" class="dropdown-toggle "
 						data-toggle="dropdown">Board & Notice<b class="caret"></b></a>
 						<ul class="dropdown-menu">

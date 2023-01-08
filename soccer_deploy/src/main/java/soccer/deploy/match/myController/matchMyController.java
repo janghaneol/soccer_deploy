@@ -98,7 +98,9 @@ public class matchMyController {
 		registMatch.setMatchDate(mDate);
 		registMatch.setOpteam(match.getOpteam());
 		registMatch.setMatchPlace(address);
+		
 		registMatch.setUser((User)session.getAttribute("loginUser"));
+		
 		Long matchId = m.registMatch(registMatch);
 		
 		/*
@@ -106,9 +108,10 @@ public class matchMyController {
 		 */
 		while (qNum --> 0) {
 			Quarter quarter = new Quarter();
-			quarter.setMatch(registMatch);
+//			quarter.setMatch(registMatch);
 			quarter.setMatchId(registMatch.getId());
 			quarter.setQuarterTime(qTime);
+			quarter.setOutcome("0");
 			quarters.add(quarter);
 		}
 		quarterService.registQuarter(quarters);

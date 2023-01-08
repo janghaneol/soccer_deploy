@@ -1,5 +1,6 @@
 package soccer.deploy.match.myService;
 
+import java.util.HashMap;
 import java.util.List;
 
 import soccer.deploy.match.myDto.MatchDto;
@@ -12,4 +13,10 @@ public interface MatchChoungService {
 	public String month();
 	
 	public List<MatchDto> matchResult(String year, String month);
+	
+	public List<Long> findRecentTwoResultMatchId();
+	
+	public HashMap<String,MatchDto> recentTwoMatchResult(List<Long> id);
+	
+	public HashMap<String,List<rank>> recentTwoMatchPlayer(List<Long> id);
 }
