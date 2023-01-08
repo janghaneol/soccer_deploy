@@ -5,10 +5,6 @@ import java.util.List;
 import soccer.deploy.quarter.entity.Quarter;
 
 public interface QuarterService {
-	//ï¿½Ö½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//ÃÖ½Å °æ±â ÄõÅÍÁ¤º¸ °¡Á®¿À±â
 	public List<Quarter> findQuarterRecentMatch(Long id);
-	
-	public void updateInsertQuarter(List<Quarter> outcome);
-	
-	public void registQuarter(List<Quarter> quarter);
 }

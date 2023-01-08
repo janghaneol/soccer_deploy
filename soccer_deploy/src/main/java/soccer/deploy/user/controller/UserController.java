@@ -131,14 +131,15 @@ public class UserController {
 		 * 프로필 사진 넣기
 		 */
 		String ranName = UUID.randomUUID().toString();	// 랜덤한 문자열을 생성해 붙여줘야 같은 이름으로 파일의 중복을 방지한다. (덮어쓰기 방지)
-		String storedFileName = ranName + "_" + imageFile.getOriginalFilename();
+		
 		try {
-			imageFile.transferTo(new File(storedFileName));
+			imageFile.transferTo(new File(ranName +"_"+ imageFile.getOriginalFilename()));
 		} catch (IllegalStateException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
 		
 		User registUser = new User();
 		registUser.setEmail(user.getEmail());
@@ -148,7 +149,7 @@ public class UserController {
 		registUser.setAddress(address);
 		registUser.setBackNum(user.getBackNum());
 		registUser.setImgContType(imageFile.getContentType());
-		registUser.setImgFileName(storedFileName);
+		registUser.setImgFileName(imageFile.getOriginalFilename());
 		registUser.setPosition(user.getPosition());
 		registUser.setRegdate(user.getRegdate());
 		registUser.setMemberAuth(user.getMemberAuth());
@@ -157,6 +158,7 @@ public class UserController {
 		
 		redirectAttributes.addAttribute("userId", userId);
 		redirectAttributes.addAttribute("status", true);
+		
 		return "redirect:/user/{userId}";
 	}
 	
@@ -259,8 +261,7 @@ public class UserController {
 								@RequestParam(required = false, defaultValue = "") String value) {
 		
 		Page<User> userList =userService.searchUser(value,pageable);
-		log.info("검색 값 : {}", value);
-		log.info("유저리스트 : {}", userList);
+		
 		int pageNumber = userList.getPageable().getPageNumber()+1;
 		int totalPage = userList.getTotalPages();
 		int pageBlock = 5;

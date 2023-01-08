@@ -33,8 +33,6 @@ public interface UserService {
 	// 회원 탈퇴
 	public void delete(Long userId);
 	
-	// 회원 프로필 수정
-	public void imgUpdate(Long userId, String profile);
 }
 	
 

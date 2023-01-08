@@ -31,11 +31,11 @@ public class LineUp {
 	private Long id;
 	
 	@ManyToOne
-	@JoinColumn(name ="entry_id", insertable= false,updatable = false)
+	@JoinColumn(name ="entry_id")
 	private Entry entry;
 	
 	@ManyToOne
-	@JoinColumn(name= "quarter_id", insertable= false,updatable = false)
+	@JoinColumn(name= "quarter_id")
 	private Quarter quarter;
 	@Column
 	private Integer goal;
@@ -43,11 +43,4 @@ public class LineUp {
 	private Integer assist;
 	@Column
 	private Integer point;
-	
-	@Column(name="quarter_id")
-	private Long quarterId;
-	
-	@Column(name="entry_id")
-	private Long entryId;
-	
 }	

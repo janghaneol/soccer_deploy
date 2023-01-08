@@ -64,11 +64,4 @@ public class UserServiceImpl implements UserService {
 		userRepository.delete(user);
 	}
 
-	@Override
-	public void imgUpdate(Long userId, String profile) {
-		Optional<User> user = userRepository.findById(userId);
-		user.get().setImgFileName(profile);
-		User updateProfile = user.get();
-		userRepository.save(updateProfile);
-	}
 }

@@ -605,7 +605,6 @@ h1, h2, h3, h4, h5,
   .hero, .hero > .container > .row {
     height: 100vh;
     min-height: 500px; }
- /*
   .hero.overlay:before {
     content: "";
     position: absolute;
@@ -614,7 +613,6 @@ h1, h2, h3, h4, h5,
     left: 0;
     right: 0;
     bottom: 0; }
-    */
   .hero h1 {
     font-weight: 700;
     font-size: 4rem; }
