@@ -1,11 +1,14 @@
 package soccer.deploy.match.myController;
 
+import java.io.File;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
 
@@ -17,6 +20,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.extern.slf4j.Slf4j;
@@ -75,7 +79,7 @@ public class matchMyController {
 	@PostMapping("/schedule")
 	public String matchSchedule(@ModelAttribute Match match,RedirectAttributes redirectAttributes,@RequestParam String publeYear, String time, HttpSession session,
 								@RequestParam String add2, String add3 , @RequestParam(required = false, defaultValue = "1") String quarterNumber, 
-								@RequestParam(required = false, defaultValue = "30") String quarterTime) {
+								@RequestParam(required = false, defaultValue = "30") String quarterTime,@RequestParam MultipartFile img ){
 		Match registMatch = new Match();
 		List<Quarter> quarters = new ArrayList<Quarter>();
 		String date = publeYear+" "+time;
@@ -84,6 +88,29 @@ public class matchMyController {
 		int qNum = Integer.parseInt(quarterNumber);
 		int qTime = Integer.parseInt(quarterTime);
 		log.info("경기 시간: {} " , date);
+		
+		
+		/*
+		 * 이미지 부분
+		 */
+		String fileName;
+		if(img.getOriginalFilename().isEmpty()) {
+			 fileName = "basic.png";
+			 registMatch.setMatchImgName(fileName);
+				registMatch.setMatchImgType("image/png"); 
+		}else{
+			 fileName = UUID.randomUUID() + "_" + img.getOriginalFilename();
+			 registMatch.setMatchImgName(fileName);
+			registMatch.setMatchImgType(img.getContentType());
+		}
+		try {
+			
+			img.transferTo(new File(fileName));
+		} catch (IllegalStateException | IOException e1) {
+
+			e1.printStackTrace();
+		}
+		
 		
 		/*
 		 * 경기등록 부분
@@ -95,6 +122,7 @@ public class matchMyController {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
+		
 		registMatch.setMatchDate(mDate);
 		registMatch.setOpteam(match.getOpteam());
 		registMatch.setMatchPlace(address);

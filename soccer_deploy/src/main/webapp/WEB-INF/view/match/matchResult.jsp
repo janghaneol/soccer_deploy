@@ -182,8 +182,13 @@
 								<div class="result">경기결과</div>
 								<ul class="board">
 									<c:forEach var="item" items="${result}">
-
-										<li>MyTeam ${item.win} : ${item.count - item.win}${item.opteam}
+										
+										<li class="imgclass"><img src="/images/logo_1.png" alt="Image"
+																	class="img-fluid customCh">
+																	
+																	<span class="imgspan">MyTeam <span class="score">${item.win} : ${item.count - item.win}</span>  ${item.opteam} </span>
+																	<img src="/image/${item.matchImgName}" alt="Image"
+																	class="img-fluid customCh">
 										</li>
 									</c:forEach>
 								</ul>

@@ -199,8 +199,16 @@
 						<ul class="board">
 						
 							<c:forEach var="item" items="${result}">
-								<li><a href="/asdasd/asd/${item.id }" style="width: auto;">참가명단</a>
-									${item.opteam}</li> 
+								
+									<li class="imgclass cal"><img src="/images/logo_1.png" alt="Image"
+																	class="img-fluid customCh">
+																	
+																	<span class="imgspan">MyTeam <span class="score">VS</span>  ${item.opteam} </span>
+																	<img src="/image/${item.matchImgName}" alt="Image"
+																	class="img-fluid customCh">
+																	<a class="entryList" href="/asdasd/asd/${item.id }" style="width: auto;">참가명단</a>
+										</li>
+										
 							</c:forEach>
 						</ul>
 					</li>

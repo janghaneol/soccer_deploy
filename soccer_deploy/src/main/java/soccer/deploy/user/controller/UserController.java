@@ -132,6 +132,7 @@ public class UserController {
 		 */
 		String ranName = UUID.randomUUID().toString();	// 랜덤한 문자열을 생성해 붙여줘야 같은 이름으로 파일의 중복을 방지한다. (덮어쓰기 방지)
 		String storedFileName = ranName + "_" + imageFile.getOriginalFilename();
+		log.info("{}",imageFile.getOriginalFilename());
 		try {
 			imageFile.transferTo(new File(storedFileName));
 		} catch (IllegalStateException e) {

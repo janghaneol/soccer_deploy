@@ -134,44 +134,29 @@
 				<c:forEach var="item" items="${resultMatch}" varStatus="status">
 
 					<c:choose>
-						<c:when test="${status.index eq 0 }">
-							<div id="translateY1" class="tooltipCustom">
-
-								<span class="tooltiptext tooltip-left">
-									<ul class="list-unstyled">
-										<c:forEach var="player" items="${resultPlayer['first']}">
-											<li>${player.name}(${player.backNum})</li>
-										</c:forEach>
-									</ul>
-								</span>
+						<c:when test="${empty item}">
+							<div id="translateY${status.index + 1}" class="tooltipCustom">
 								<div class="container">
 									<div class="row">
 										<div class="col-lg-12">
 
 											<div class="d-flex team-vs ">
-												<span class="score">${item.value.win }-${item.value.count - item.value.win}</span>
+												
 												<div class="team-1 w-50">
 													<div class="team-details w-100 text-center">
-														<img src="images/logo_1.png" alt="Image" class="img-fluid">
+														<img src="/images/basic.png" alt="Image" class="img-fluid">
 														<h3>
-																<c:choose>
-														<c:when test="${item.value.win > (item.value.count - item.value.win)}">myTeam <span>(win)</span></c:when>
-														<c:when test="${item.value.win < (item.value.count - item.value.win)}">myTeam <span>(loss)</span></c:when>
-														<c:otherwise>myTeam <span>(draw)</span></c:otherwise>
-														</c:choose>
+															기록없음
 														</h3>
 
 													</div>
 												</div>
 												<div class="team-2 w-50">
 													<div class="team-details w-100 text-center">
-														<img src="images/logo_2.png" alt="Image" class="img-fluid">
+														<img src="images/basic.png" alt="Image" class="img-fluid">
 														<h3>
-														<c:choose>
-														<c:when test="${item.value.win < (item.value.count - item.value.win)}">${item.value.opteam} <span>(win)</span></c:when>
-														<c:when test="${item.value.win > (item.value.count - item.value.win)}">${item.value.opteam} <span>(loss)</span></c:when>
-														<c:otherwise>${item.value.opteam} <span>(draw)</span></c:otherwise>
-														</c:choose>														</h3>
+															기록없음
+														</h3>
 													</div>
 												</div>
 											</div>
@@ -181,57 +166,136 @@
 
 
 							</div>
+
 						</c:when>
 						<c:otherwise>
-							<div id="translateY2" class="tooltipCustom">
+							<c:choose>
+								<c:when test="${status.index eq 0 }">
+									<div id="translateY1" class="tooltipCustom">
 
-								<span class="tooltiptext tooltip-left">
-									<ul class="list-unstyled">
-										<c:forEach var="player" items="${resultPlayer['second']}">
-											<li>${player.name}(${player.backNum})</li>
-										</c:forEach>
-									</ul>
-								</span>
-								<div class="container">
-									<div class="row">
-										<div class="col-lg-12">
+										<span class="tooltiptext tooltip-left">
+											<ul class="list-unstyled">
+												<c:forEach var="player" items="${resultPlayer['first']}">
+													<li>${player.name}(${player.backNum})</li>
+												</c:forEach>
+											</ul>
+										</span>
+										<div class="container">
+											<div class="row">
+												<div class="col-lg-12">
 
-											<div class="d-flex team-vs ">
-												<span class="score">${item.value.win }-${item.value.count - item.value.win}</span>
-												<div class="team-1 w-50">
-													<div class="team-details w-100 text-center">
-														<img src="images/logo_1.png" alt="Image" class="img-fluid">
-															<h3>
-														<c:choose>
-														<c:when test="${item.value.win > (item.value.count - item.value.win)}">myTeam <span>(win)</span></c:when>
-														<c:when test="${item.value.win < (item.value.count - item.value.win)}">myTeam <span>(loss)</span></c:when>
-														<c:otherwise>myTeam <span>(draw)</span></c:otherwise>
-														</c:choose>
-														</h3>
+													<div class="d-flex team-vs ">
+														<span class="score">${item.value.win }-${item.value.count - item.value.win}</span>
+														<div class="team-1 w-50">
+															<div class="team-details w-100 text-center">
+																<img src="images/logo_1.png" alt="Image"
+																	class="img-fluid">
+																<h3>
+																	<c:choose>
+																		<c:when
+																			test="${item.value.win > (item.value.count - item.value.win)}">myTeam <span>(win)</span>
+																		</c:when>
+																		<c:when
+																			test="${item.value.win < (item.value.count - item.value.win)}">myTeam <span>(loss)</span>
+																		</c:when>
+																		<c:otherwise>myTeam <span>(draw)</span>
+																		</c:otherwise>
+																	</c:choose>
+																</h3>
 
-													</div>
-												</div>
-												<div class="team-2 w-50">
-													<div class="team-details w-100 text-center">
-														<img src="images/logo_2.png" alt="Image" class="img-fluid">
-														<h3>
-															
-															<c:choose>
-														<c:when test="${item.value.win < (item.value.count - item.value.win)}">${item.value.opteam} <span>(win)</span></c:when>
-														<c:when test="${item.value.win > (item.value.count - item.value.win)}">${item.value.opteam} <span>(loss)</span></c:when>
-														<c:otherwise>${item.value.opteam} <span>(draw)</span></c:otherwise>
-														</c:choose>
-														</h3>
+															</div>
+														</div>
+														<div class="team-2 w-50">
+															<div class="team-details w-100 text-center">
+																<img src="/image/${item.value.matchImgName}" alt="Image"
+																	class="img-fluid">
+																<h3>
+																	<c:choose>
+																		<c:when
+																			test="${item.value.win < (item.value.count - item.value.win)}">${item.value.opteam} <span>(win)</span>
+																		</c:when>
+																		<c:when
+																			test="${item.value.win > (item.value.count - item.value.win)}">${item.value.opteam} <span>(loss)</span>
+																		</c:when>
+																		<c:otherwise>${item.value.opteam} <span>(draw)</span>
+																		</c:otherwise>
+																	</c:choose>
+																</h3>
+															</div>
+														</div>
 													</div>
 												</div>
 											</div>
 										</div>
+
+
 									</div>
-								</div>
+								</c:when>
+								<c:otherwise>
+									<div id="translateY2" class="tooltipCustom">
+
+										<span class="tooltiptext tooltip-left">
+											<ul class="list-unstyled">
+												<c:forEach var="player" items="${resultPlayer['second']}">
+													<li>${player.name}(${player.backNum})</li>
+												</c:forEach>
+											</ul>
+										</span>
+										<div class="container">
+											<div class="row">
+												<div class="col-lg-12">
+
+													<div class="d-flex team-vs ">
+														<span class="score">${item.value.win }-${item.value.count - item.value.win}</span>
+														<div class="team-1 w-50">
+															<div class="team-details w-100 text-center">
+																<img src="images/logo_1.png" alt="Image"
+																	class="img-fluid">
+																<h3>
+																	<c:choose>
+																		<c:when
+																			test="${item.value.win > (item.value.count - item.value.win)}">myTeam <span>(win)</span>
+																		</c:when>
+																		<c:when
+																			test="${item.value.win < (item.value.count - item.value.win)}">myTeam <span>(loss)</span>
+																		</c:when>
+																		<c:otherwise>myTeam <span>(draw)</span>
+																		</c:otherwise>
+																	</c:choose>
+																</h3>
+
+															</div>
+														</div>
+														<div class="team-2 w-50">
+															<div class="team-details w-100 text-center">
+																<img src="/image/${item.value.matchImgName}" alt="Image"
+																	class="img-fluid">
+																<h3>
+
+																	<c:choose>
+																		<c:when
+																			test="${item.value.win < (item.value.count - item.value.win)}">${item.value.opteam} <span>(win)</span>
+																		</c:when>
+																		<c:when
+																			test="${item.value.win > (item.value.count - item.value.win)}">${item.value.opteam} <span>(loss)</span>
+																		</c:when>
+																		<c:otherwise>${item.value.opteam} <span>(draw)</span>
+																		</c:otherwise>
+																	</c:choose>
+																</h3>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
 
 
-							</div>
+									</div>
+								</c:otherwise>
+							</c:choose>
 						</c:otherwise>
+
 					</c:choose>
 
 
