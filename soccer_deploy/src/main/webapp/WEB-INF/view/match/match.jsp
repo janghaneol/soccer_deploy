@@ -67,9 +67,6 @@
 	</div>
 
 	<div class="wrapper">
-		<div style="text-align: right; margin-right: 100px;">
-			<a href="/match/schedule" class="btn btn-primary">경기등록</a>
-		</div>
 		<div class="wrapper">
 			<h2>경기일정</h2>
 		</div>
@@ -131,6 +128,7 @@
 
 							</c:forEach>
 						</select> <input id="search" type="submit" value="검색" onclick="">
+						<a href="/match/schedule" class="btn btn-primary" style="margin-left: 5px;">경기등록</a>
 					</form>
 				</div>
 			</div>
@@ -218,7 +216,7 @@
 						<div class="log">참가버튼</div>
 						<ul class="board">
 							<c:forEach var="i" items="${result}" varStatus="index" begin="0" end="${result.size()}">
-								<li><a type="" href="/match/asd?matchId=${i.id}">참가신청</a></li>
+								<li><a type="" href="/match/participation?matchId=${i.id}">참가신청</a></li>
 							</c:forEach>
 						</ul>
 					</li>

@@ -64,7 +64,7 @@ public class UserController {
 	
 	@PostMapping("/login")
 	public String login(@Validated @ModelAttribute("loginForm") LoginForm loginForm , BindingResult bindingResult, HttpServletResponse response,
-						@RequestParam(name = "redirect", defaultValue = "/xMain") String redirect, Model model , HttpServletRequest request) {
+						@RequestParam(name = "redirect", defaultValue = "/") String redirect, Model model , HttpServletRequest request) {
 		
 		if(bindingResult.hasErrors()) {
 			return "/view/user/login";
@@ -272,6 +272,6 @@ public class UserController {
 		model.addAttribute("userList", userList);
 		model.addAttribute("startBlockPage", startBlockPage);
 		model.addAttribute("endBlockPage", endBlockPage);	
-		return "view/players";
+		return "view/user/players";
 	}
 }

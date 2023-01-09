@@ -113,6 +113,16 @@
         .addressForm #sample6_postcode{ width: 120px; }
         #sample6_detailAddress{margin-top: 7px;}
         label{color: white;}
+        
+#sample6_postcode{
+	background-color: #222831;
+}
+#sample6_address{
+	background-color: #222831;
+}
+#a{
+	background-color: #222831;
+}
         </style>
 <body>
 
@@ -195,10 +205,10 @@
                                 <div class="position">
                                     <label class="form-label mt-4">포지션</label>
                                     <form:select class="form-control" path="position">
-                                    <option>FW</option>
-                                    <option>MF</option>
-                                    <option>DF</option>
-                                    <option>GK</option>
+                                    <option id="a">FW</option>
+                                    <option id="a">MF</option>
+                                    <option id="a">DF</option>
+                                    <option id="a">GK</option>
                                     </form:select>
                                 </div>
                             </div>

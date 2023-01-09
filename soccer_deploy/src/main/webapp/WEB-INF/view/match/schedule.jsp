@@ -35,14 +35,26 @@
 </head>
 
 <style>
-
+.select {
+    border: 1px solid #fff;
+    background-color: transparent;
+}
 /* --------------------- */
 input[name='publeYear'] {
 	text-align: center;
 }
+#sample6_postcode{
+	background-color: #222831;
+}
+#sample6_address{
+	background-color: #222831;
+}
+#a{
+	background-color: #222831;
+}
 </style>
 
-
+         
 <body>
 
 	<jsp:include page="/WEB-INF/view/include/header.jsp"></jsp:include>
@@ -73,13 +85,13 @@ input[name='publeYear'] {
 						<div class="form-group" style="display: flex;">
 							<select class="form-control" name="quarterNumber"
 								id="quarterNumber">
-								<option value="1">1쿼터</option>
-								<option value="2">2쿼터</option>
-								<option value="3">3쿼터</option>
-								<option value="4">4쿼터</option>
+								<option id="a" value="1">1쿼터</option>
+								<option id="a" value="2">2쿼터</option>
+								<option id="a" value="3">3쿼터</option>
+								<option id="a" value="4">4쿼터</option>
 							</select> <select class="form-control" name="quarterTime" id="quarterTime">
 								<c:forEach var="i" begin="1" end="9">
-									<option value="${i*10}">${i*10}분</option>
+									<option id="a" value="${i*10}">${i*10}분</option>
 								</c:forEach>
 							</select>
 						</div>

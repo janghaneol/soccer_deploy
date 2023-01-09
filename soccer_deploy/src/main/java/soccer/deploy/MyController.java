@@ -111,5 +111,13 @@ public class MyController {
 		return "view/lineUp/lineUp";
 	}
 	
+	@GetMapping("/findRoad")
+	public String road(Model model) {
+		
+		Long viewMatchId = matchService.findRecentViewMatch();
+		model.addAttribute("recentMatch",matchService.findeRecentMatch(viewMatchId));
+		
+		return "view/roadPop";
+	}
 
 }
