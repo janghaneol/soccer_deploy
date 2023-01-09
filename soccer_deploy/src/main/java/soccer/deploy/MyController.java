@@ -1,22 +1,17 @@
 package soccer.deploy;
 
-import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import lombok.extern.slf4j.Slf4j;
+import soccer.deploy.match.entity.Match;
 import soccer.deploy.match.myDao.matchDao;
 import soccer.deploy.match.myDto.MatchDto;
 import soccer.deploy.match.myDto.rank;
@@ -47,7 +42,6 @@ public class MyController {
 		HashMap<String, List<rank>> resultPlayer = matchChoungService.recentTwoMatchPlayer(resultId);
 		Long viewMatchId = matchService.findRecentViewMatch();
 		model.addAttribute("recentMatch",matchService.findeRecentMatch(viewMatchId));
-		
 		model.addAttribute("resultMatch", resultMatch);
 		model.addAttribute("resultPlayer", resultPlayer);
 		

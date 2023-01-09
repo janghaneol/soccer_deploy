@@ -59,6 +59,6 @@ public class choungTest {
 		List<Long> list = new ArrayList();
 		list.add(27L);
 		list.add(1L);
-		log.info("{}",matchChoungService.recentTwoMatchResult(list).get("first"));
+		
 	}
 }

@@ -162,7 +162,7 @@
 				<c:forEach var="item" items="${resultMatch}" varStatus="status">
 
 					<c:choose>
-						<c:when test="${empty item}">
+						<c:when test="${empty item.value}">
 							<div id="translateY${status.index + 1}" class="tooltipCustom">
 								<div class="container">
 									<div class="row">
