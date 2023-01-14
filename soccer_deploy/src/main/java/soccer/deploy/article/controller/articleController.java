@@ -13,24 +13,31 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import lombok.extern.slf4j.Slf4j;
 import soccer.deploy.article.entity.article;
 import soccer.deploy.article.repository.JpaArticleRepository;
 import soccer.deploy.article.service.ArticleService;
 import soccer.deploy.notice.service.NoticeService;
+import soccer.deploy.user.dto.LoginForm;
+import soccer.deploy.user.entity.User;
+import soccer.deploy.user.service.UserService;
 import soccer.deploy.notice.dto.*;
+import soccer.deploy.match.entity.Match;
 
 @Controller
 @Slf4j
 public class articleController {
 	
-	
+	@Autowired
+	private UserService userService;
 	@Autowired
 	private ArticleService articleService;
 	@Autowired
@@ -92,10 +99,14 @@ public class articleController {
 	
 	@RequestMapping("/{articleId}")
 	/* default page = 0, default size = 10 */
-	public String view(@PathVariable Integer articleId,  Model model,HttpServletRequest request, @ModelAttribute("Article") article Article) {
+	public String view(@PathVariable Integer articleId,HttpSession session, Model model,HttpServletRequest request, @ModelAttribute("Article") article Article) {
 		
 //		List<article> reply = articleService.findArticles();
 //		model.addAttribute("reply", reply);
+		
+		Match registMatch = new Match();
+		
+		registMatch.setUser((User)session.getAttribute("loginUser"));
 		
 		List<Notice> reply = noticeService.showAll(articleId);
 		model.addAttribute("reply", reply);
@@ -108,7 +119,7 @@ public class articleController {
 	}
 	
 	@RequestMapping("/insert")
-	public String insert(Model model) {
+	public String insert(@ModelAttribute Match match, Model model, HttpSession session, HttpServletRequest request) {
 		
 		return "thymeleaf/insert";
 	}
@@ -142,9 +153,13 @@ public class articleController {
 	}
 	
 	@GetMapping(value="/intoArticleAction")
-	public String intoArticleAction(Model model, HttpServletRequest request, @ModelAttribute("notice") Notice notice, @RequestParam("articleId") Integer articleId) throws Exception {
+	public String intoArticleAction(Model model,HttpSession session, HttpServletRequest request, @ModelAttribute("notice") Notice notice, @RequestParam("articleId") Integer articleId) throws Exception {
 		
 //		articleService.register(Article);
+		
+		Match registMatch = new Match();
+		
+		registMatch.setUser((User)session.getAttribute("loginUser"));
 		
 		noticeService.register(notice);
 		

@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -42,6 +41,7 @@ public class Notice {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "num_gen")
 	private Integer noticeId;
+	@Column(name="article_id")
 	private Integer articleId;
 	private String writer;
 	private String content;
@@ -50,8 +50,12 @@ public class Notice {
 	private Date regdate;
 	
 	
-	
-	
+	public Integer getNoticeId() {
+		return noticeId;
+	}
+	public void setNoticeId(Integer noticeId) {
+		this.noticeId = noticeId;
+	}
 	public Integer getArticleId() {
 		return articleId;
 	}
@@ -78,6 +82,9 @@ public class Notice {
 	}
 	
 	
+	
+	
+	
 
 	
 	
@@ -89,7 +96,7 @@ public class Notice {
 
 
 //create table notice(
-//	    articleId       NUMBER(7)        NOT NULL,
+//	    article_id       NUMBER(7)        NOT NULL,
 //	    writer          VARCHAR2(30)     NOT NULL, 
 //		content         varchar2(2000), 
 //		regdate         DATE             DEFAULT SYSDATE NOT NULL
