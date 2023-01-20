@@ -20,10 +20,10 @@ import lombok.extern.slf4j.Slf4j;
 
 @Entity
 @DynamicInsert
-//@RequiredArgsConstructor
-//@AllArgsConstructor
-//@Getter
-//@Setter
+@RequiredArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 @Slf4j
 @ToString
 @Table(name="board")
@@ -34,59 +34,15 @@ import lombok.extern.slf4j.Slf4j;
 public class board {
 
 	@Id
+	@Column(name="board_id")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "board_id_seq_gen")
-	private int boardId;
+	private Long boardId;
 	@Column(name="category")
-	private int category;
+	private Long category;
 	@Column(name="title")
 	private String title;
 	@Column(name="description")
 	private String description;
-	
-	public board() {}
-	
-	public board(int boardId, int category, String title, String description) {
-		super();
-		this.boardId = boardId;
-		this.category = category;
-		this.title = title;
-		this.description = description;
-	}
 
-	public int getBoardId() {
-		return boardId;
-	}
-
-	public void setBoardId(int boardId) {
-		this.boardId = boardId;
-	}
-
-	public int getCategory() {
-		return category;
-	}
-
-	public void setCategory(int category) {
-		this.category = category;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	
-	
-	
 	
 }

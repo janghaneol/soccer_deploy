@@ -1,7 +1,7 @@
 package soccer.deploy.article.service;
 
 import java.util.List;
-import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -9,51 +9,51 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import lombok.extern.slf4j.Slf4j;
-import soccer.deploy.article.entity.article;
+import soccer.deploy.article.dto.ArticleDto;
+import soccer.deploy.article.entity.Article;
 import soccer.deploy.article.repository.JpaArticleRepository;
 
-@Slf4j
 @Service
 @Transactional
+@Slf4j
 public class ArticleServiceImpl implements ArticleService {
-
 	@Autowired
 	private JpaArticleRepository jpaArticleRepository;
 	
-//	@Override
-//	public String register(article Article) {
-//		article saveArticle = jpaArticleRepository.save(Article);
-//		return saveArticle.getWriter();
-//	}
 	@Override
-	public void register(article Article) {
-		jpaArticleRepository.save(Article);
+	
+	public Article RegArticleNextPk(Article article) {
+		 
+		jpaArticleRepository.registArticle(article);
+		return jpaArticleRepository.findFirstByWriterOrderByRegdateDesc(article.getWriter()).orElseGet(Article :: new);   
+	}
+	@Override
+	public Page<Article> findPageArticle(Long boardId, String searchValue, Pageable pageable) {
+
+		return jpaArticleRepository.findArticle(boardId, searchValue, pageable);
 	}
 	
 	@Override
-	public article insertReply(article Article){
-		return jpaArticleRepository.save(Article);
+	public List<Article> detailArticle(Long boardId, Long groupNo) {
+		jpaArticleRepository.UpdateHitcount(groupNo);
+		return jpaArticleRepository.findAllByBoardIdAndGroupNoOrderByOrderNo(boardId, groupNo);
 	}
-
 	@Override
-	@Transactional(readOnly = true)
-	public article isArticle(String writer, String subject, String content) {
-		return jpaArticleRepository.findByWriterAndSubjectAndContent(writer, subject, content);
+	public void RegDatArticle(Article article) {
+		jpaArticleRepository.UpdateHitcount(article.getGroupNo());
+		jpaArticleRepository.save(article);
 	}
-
 	@Override
-	public Optional<article> findArticle(Integer articleId) {
-		return jpaArticleRepository.findByArticleId(articleId);
+	public void RegDaDatArticle(Article article) {
+		jpaArticleRepository.UpdateHitcount(article.getGroupNo());
+		jpaArticleRepository.UpdateOrderNo(article.getOrderNo(),article.getGroupNo());
+		jpaArticleRepository.save(article);
+		
 	}
 	
 	@Override
-	public List<article> findArticles() {
-		return jpaArticleRepository.findAll();
+	public List<ArticleDto> prevNext(Long boardId, Long groupNo, String searchValue) {
+		
+		return jpaArticleRepository.prevNext(boardId, groupNo, searchValue);
 	}
-
-	@Override
-	public Page<article> findArticles(String searchValue, Pageable pageable) {
-		return jpaArticleRepository.findAllByWriterOrSubjectContainingOrContentContaining(searchValue, searchValue, searchValue, pageable);
-	}
-	
 }

@@ -46,7 +46,7 @@
 
 
 	<!---기본 메뉴--->
-	<div class="hero overlay detail-view">
+	<div class="herol overlay detail-view">
 		<div class="container">
 			<div class="row align-items-center line_up_row">
 				<div class="col-lg-12 detail">
@@ -76,13 +76,13 @@
 										<td>${lineup.backNum}</td>
 										<td>${lineup.name}</td>
 										<td><input type="text" 
-											class="form-control board-subject" placeholder="골"
+											class="form-control board-subject" 
 											value="${lineup.goal}" onfocus="this.select()" id="goal" name="LineUpList[${status.index}].goal"></td>
 										<td><input type="text" 
-											class="form-control board-subject" placeholder="어시스트"
+											class="form-control board-subject" 
 											value="${lineup.assist}" onfocus="this.select()" id="assist" name="LineUpList[${status.index}].assist"></td>
 										<td><input type="text"
-											class="form-control board-subject" placeholder="포인트"
+											class="form-control board-subject" 
 											readonly="readonly" value="${lineup.point}" id="point" name="LineUpList[${status.index}].point"></td>
 									</tr>
 									<input type="hidden" value="${lineup.quarter}" name="LineUpList[${status.index}].quarterId">

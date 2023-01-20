@@ -10,7 +10,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="stylesheet" href="/css/board.css">
+<link rel="stylesheet" href="/css/board.css">
 
 
 <link
@@ -37,121 +37,154 @@
 </head>
 
 <body>
-	
-		<jsp:include page="/WEB-INF/view/include/header.jsp"></jsp:include>
 
-		<div class="hero overlay" >
-            <div class="container">
-                <div class="row align-items-center line_up_row">
-                    <div class="col-lg-12 board-list">
-                        <h1 class="board-category">공지사항 or 자유게시글</h1>
-                        <div class="board-btn">
-                            <div class="search-bar">
-                                <input type="text" class="searchval">
-                                <button type="button" class="search"></button>
-                            </div>
-                            <div class="reg-div">
-                                <a  class="reg btn" href="/reg">등록</a>
-                            </div>
-                        </div>
+	<jsp:include page="/WEB-INF/view/include/header.jsp"></jsp:include>
 
-                        <table class="table custom-table board">
-                            
-                            <thead>
-                                <tr>
-                                    <th class="title">제목</th>
-                                    <th class="author">작성자</th>
-                                    <th class="regdate">작성일</th>
-                                    <th class="view">조회</th>
-                                </tr>
-                            </thead>
-                            <tbody class="text-center">
-                                <!-- jstl 필요한 시작 부분 for문 -->
-                                <tr>
-                                    <td><a href="#">제목1</a></td>
-                                    <td>작성자이름1</td>
-                                    <td>작성일1</td>
-                                    <td>조회수1</td>
-                                </tr>
-                                <tr><td><a href="#">제목2</a></td>
-                                    <td>작성자이름2</td>
-                                    <td>작성일2</td>
-                                    <td>조회수2</td></tr>
-                                <tr>
-                                    <td><a href="#">제목3</a></td>
-                                    <td>작성자이름3</td>
-                                    <td>작성일3</td>
-                                    <td>조회수3</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#">제목4</a></td>
-                                    <td>작성자이름4</td>
-                                    <td>작성일4</td>
-                                    <td>조회수3</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#">제목5</a></td>
-                                    <td>작성자이름5</td>
-                                    <td>작성일5</td>
-                                    <td>조회수3</td>
-                                </tr>
-                                <tr>    
-                                    <td><a href="#">제목6</a></td>
-                                    <td>작성자이름6</td>
-                                    <td>작성일6</td>
-                                    <td>조회수6</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#">제목7</a></td>
-                                    <td>작성자이름7</td>
-                                    <td>작성일7</td>
-                                    <td>조회수7</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#">제목8</a></td>
-                                    <td>작성자이름8</td>
-                                    <td>작성일8</td>
-                                    <td>조회수8</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#">제목9</a></td>
-                                    <td>작성자이름9</td>
-                                    <td>작성일9</td>
-                                    <td>조회수9</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#">제목10</a></td>
-                                    <td>작성자이름10</td>
-                                    <td>작성일10</td>
-                                    <td>조회수10</td>
-                                </tr>
-                                <!-- jstl 필요한 끝 부분 for문 -->
-                            </tbody>
-                        </table>
+	<div class="herol overlay">
+		<div class="container">
+			<div class="row align-items-center line_up_row">
+				<div class="col-lg-12 board-list">
+					<h1 class="board-category">
+					<c:choose>
+						<c:when test="${boardId eq 10 }">
+							자유게시판
+						</c:when>
+						<c:when test="${boardId eq 20 }">
+							공지사항
+						</c:when>
+					</c:choose>
+					</h1>
+					<div class="board-btn">
+						<form
+							action="${requestScope['javax.servlet.forward.servlet_path']}"
+							method="get">
+							<div class="search-bar">
+								<input type="text" name="searchValue" class="searchval">
+								<button type="submit" class="search"></button>
+							</div>
+						</form>
+						<div class="reg-div">
+							<a class="reg btn"
+								href="${requestScope['javax.servlet.forward.servlet_path']}/write">등록</a>
+						</div>
+					</div>
 
-                        <div class="text-center paginationpart">
-                            <ul class="pagination">
-                                <!-- jstl 필요한 시작 부분 선생님 페이지처리 참고 -->
-                                <li><a href="#">«</a></li>
-                                <li class="active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li><a href="#">»</a></li>
-                                <!-- jstl 필요한 끝 부분 선생님 페이지처리 참고 -->
-                            </ul>
-                        </div>
-                    </div>
+					<table class="table custom-table board">
+
+						<thead>
+							<tr>
+								<th class="title">제목</th>
+								<th class="author">작성자</th>
+								<th class="regdate">작성일</th>
+								<th class="view">조회</th>
+							</tr>
+						</thead>
+						<tbody class="text-center">
+							<!-- jstl 필요한 시작 부분 for문 -->
+							<c:if test="${!empty pageResults }">
+								<c:forEach var="article" items="${pageResults.content}">
+									<tr>
+										<c:if test="${!empty param.searchValue }">
+											<td><a href="./article/${article.articleId}?searchValue=${param.searchValue}">${article.subject}</a></td>
+										</c:if>
+										<c:if test="${empty param.searchValue }">
+										<td><a href="./article/${article.articleId}">${article.subject}</a></td>
+										</c:if>
+										<td>${article.writer}</td>
+						
+										<fmt:formatDate var="set" value="${article.regdate}"
+											pattern="yy/MM/dd HH:mm" />
+										<td>${set}</td>
+										<td>${article.hitcount}</td>
+									</tr>
+								</c:forEach>
+							</c:if>
+
+							<!-- jstl 필요한 끝 부분 for문 -->
+						</tbody>
+					</table>
+
+					<c:if test="${empty pageResults}">
+						<div class="no-article">
+							<span>글을 등록해주세요</span>
+						</div>
+					</c:if>
+
+					<div class="text-center paginationpart">
+						<ul class="pagination">
+							<c:choose>
+								<c:when test="${empty param.searchValue }">
+									<c:choose>
+										<c:when test="${pageResults.hasPrevious()}">
+											<li><a href="?page=${pageResults.number -1  } "><<</a></li>
+										</c:when>
+										<c:otherwise>
+											<li><a><<</a></li>
+										</c:otherwise>
+									</c:choose>
+									<!-- 0부터 시작하므로 end < 0 으로 나온다 따라서 이렇게 해준다. -->
+									<c:if test="${endPage > -1 }">
+										<c:forEach begin="${startPage}" end="${endPage }" step="1"
+											varStatus="status">
+											<li
+												class=" ${ pageResults.number == status.index ? 'active' : ''}"><a
+												href="?page=${status.index }">${status.index+1 }</a></li>
+										</c:forEach>
+									</c:if>
+
+									<c:choose>
+										<c:when test="${pageResults.hasNext()}">
+											<li><a href="?page=${pageResults.number +1}">>></a></li>
+										</c:when>
+										<c:otherwise>
+											<li><a>>></a></li>
+										</c:otherwise>
+									</c:choose>
+								</c:when>
+
+								<c:otherwise>
+									<c:choose>
+										<c:when test="${pageResults.hasPrevious()}">
+											<li><a
+												href="?searchValue=${param.searchValue }&page=${pageResults.number -1 } "><<</a></li>
+										</c:when>
+										<c:otherwise>
+											<li><a><<</a></li>
+										</c:otherwise>
+									</c:choose>
+									<c:if test="${endPage > -1 }">
+										<c:forEach begin="${startPage}" end="${endPage }" step="1"
+											varStatus="status">
+											<li
+												class=" ${ pageResults.number  == status.index ? 'active' : ''}"><a
+												href="?searchValue=${param.searchValue }&page=${status.index }">${status.index+1 }</a></li>
+										</c:forEach>
+									</c:if>
+									<c:choose>
+										<c:when test="${pageResults.hasNext()}">
+											<li><a
+												href="?searchValue=${param.searchValue }&page=${pageResults.number +1}">>></a></li>
+										</c:when>
+										<c:otherwise>
+											<li><a>>></a></li>
+										</c:otherwise>
+									</c:choose>
+								</c:otherwise>
 
 
-                </div>
-            </div>
-        </div>
+							</c:choose>
+						</ul>
+					</div>
+				</div>
 
-		
 
-		<jsp:include page="/WEB-INF/view/include/footer.jsp"></jsp:include>
+			</div>
+		</div>
+	</div>
+
+
+
+	<jsp:include page="/WEB-INF/view/include/footer.jsp"></jsp:include>
 	<!-- .site-wrap -->
 
 	<script src="/js/jquery-3.3.1.min.js"></script>

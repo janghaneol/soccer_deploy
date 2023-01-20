@@ -180,9 +180,6 @@ div.pop{
     border-radius: 5px;
     padding: 10px;
     border : 0px;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
 
 }
 div.pop h4{
