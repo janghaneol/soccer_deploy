@@ -36,6 +36,8 @@
 .col-lg-12{
 	width : 1900px;
 	height : 400px;
+	
+	margin: 1%;
 }
 .pagination{
 	
@@ -50,6 +52,20 @@
 	justify-content: center;
 	margin-top : 40px;
 	
+}
+
+
+
+#move_right{
+	
+	float:right;
+	
+	width : 80px;
+	height : 40px;
+}
+.form-control{
+	
+	height : 120px;
 }
 
 </style>
@@ -101,49 +117,49 @@
                 <div class="page-header">
                     <h2 id="container">공지사항</h2>
                 </div>
+<div style="border-radius : 9px; border-style: solid; border-color: rgb(224, 224, 224); margin-top : 30px; padding : 15px; padding-top:80px; padding-bottom:80px;">
+
 
                 <tr th:if="${totalElements == 0}"><td colspan="5" class="text-center">검색된 회원이 없습니다.</td></tr>
               		<tr class="text-center" th:each="article, articleStat : ${list}">
-                				<td th:text="${articleStat.count}">1</td><br>
-                				<td th:text="${article.boardId}">1</td><br>
-                				<td><a th:href="@{/{articleId}(articleId=${article.articleId})}">[[${article.writer}]]</a></td><br>
-                				<td th:text="${article.subject}">tester</td><br>
-                				<td th:text="${article.content}">tester</td><br>
-                				<td th:text="${article.regdate}">tester</td><br>
-                				<td th:text="${article.hitcount}">0</td><br>
-                				<td th:text="${article.groupNo}">1</td><br>
-                				<td th:text="${article.levelNo}">1</td><br>
-                				<td th:text="${article.orderNo}">1</td><br>
+                				
+                				작성자 : <td><a th:href="@{/{articleId}(articleId=${article.articleId})}">[[${article.writer}]]</a></td> <br>
+                				제 목 :<td th:text="${article.subject}">tester</td><br>
+                				내 용 :<td th:text="${article.content}">tester</td><br>
+                				날 짜 :<td th:text="${article.regdate}">tester</td><br>
+                				
                 	</tr>
                   
 				</div>
-	     </div>
-	     
-	     								
+			
+</div>	          								
                 			
+          <div class="col-lg-12">      			
                 			
                 			
                 						<form action="/intoArticleAction" method="get">
                                            		<tr class="text-center" th:each="Notice, NoticeStat : ${list}">
-                                           	
-                                           		<input type="text" name="articleId" th:value="${Notice.articleId}">
-                                            	<div class="comment-writer"><strong><input type="text" name="writer" th:value="${Notice.writer}"></strong></div>
+                                        
+                                           		<input type="hidden" name="articleId" th:value="${Notice.articleId}">
+                                        <div class="input_button_deploy">
+                                            	<div class="comment-writer"><strong><input type="hidden" name="writer" th:value="${session.loginUser.email}"></strong></div>
                                                 <input id="comment" class="form-control" name="content">
-                                                    <input type="text" name="regdate" th:value="${Notice.regdate}">
+                                                    <input type="hidden" name="regdate" th:value="${Notice.regdate}">
                                      
+                                     	<br>
                                                 <div class="comment-reg">
-                                                    <button type="submit" class="btn-primary">
-                                                     등록
+                                                    <button type="submit" id="move_right" class="btn-primary">
+                                                     입 력 
                                                     </button>
                                                 </div>
+                                        </div>
                                                	</tr>
-                                            </form>
-                                        
-                                        
-                                        
-                            <tr class="text-center" th:each="Notice, NoticeStat : ${reply}">
+                                        </form>
+                                                                        
+              
+                            <tr class="text-center" th:each="Notice, NoticeStat : ${reply}" style="margin: 30px; padding : 15px;">
                 				
-                				<td><a th:href="@{/{articleId}(articleId=${Notice.articleId})}">[[${Notice.writer}]]</a></td><br>
+                				<td><a th:href="@{/{articleId}(articleId=${Notice.articleId})}">[[${session.loginUser.email}]]</a></td><br>
                 				
                 				<td th:text="${Notice.content}">tester</td><br>
          						
@@ -153,8 +169,9 @@
                 		
                 			</tr>
                                         
-                                        
-                                        </div>
+           </div>     
+      </div>                
+   </div>
                 			
                 						
                 				
