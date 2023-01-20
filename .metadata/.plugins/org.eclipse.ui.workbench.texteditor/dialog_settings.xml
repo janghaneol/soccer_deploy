@@ -6,16 +6,17 @@
 		<item key="isRegEx" value="false"/>
 		<item key="selection" value=""/>
 		<list key="findhistory">
-			<item value="optional"/>
-			<item value="location"/>
-			<item value="session"/>
-			<item value="dao"/>
-			<item value="width"/>
-			<item value="board.js"/>
-			<item value="\"/>
-			<item value="imgName"/>
+			<item value="black"/>
+			<item value="alsk"/>
+			<item value="banner"/>
+			<item value="myid"/>
+			<item value="name2"/>
+			<item value="img"/>
+			<item value="previous"/>
+			<item value="value"/>
 		</list>
 		<list key="replacehistory">
+			<item value="searchValue"/>
 			<item value="/"/>
 		</list>
 	</section>
