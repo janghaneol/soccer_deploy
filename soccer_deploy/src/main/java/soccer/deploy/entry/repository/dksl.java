@@ -38,7 +38,7 @@ public interface dksl extends JpaRepository<LineUp, Long> {
 	List<testDto> dksl(@org.springframework.data.repository.query.Param("key") String key);
 	
 	
-	@Query(value= "select m.matchDate from Match m")
-	List<String> qwe();
+	
+	//List<String> qwe();
 	
 }

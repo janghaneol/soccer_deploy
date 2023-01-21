@@ -146,7 +146,7 @@ li {list-style: none;}
  /* --------------------List-------------------------- */
 .wrapper{text-align: center; padding : 50px;}
 .wrapper > h2{position: relative;}
-.wrapper > h2::before{content:""; position: absolute; width:1200px; height:3px; background-color: white; left:50%; bottom:-40px; transform:translate(-50%, 0);}
+
 .bottom > ul> li> board{height : 300px;}
 .bottom {height : 800px; width: 1200px; margin: 0 auto; padding:150px;  }
 .bottom > ul {display: flex; padding: 20px; justify-content: center}
@@ -197,4 +197,39 @@ li.imgclass.cal{
 }
 a.entryList{
 	margin-left: 10px;
+}
+
+button.check{
+    color: white;
+    border-radius: 5px;
+    margin: 0px 2px;
+    border : 0px;
+    background-color: rgba(34,40,49,1);
+}
+div.btn_pop{
+	margin-top:10px;
+}
+div.pop{
+    display: none;
+    background-color: white; 
+    z-index: 5;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+    margin: 0 auto;
+    height: 120px;
+    border-radius: 5px;
+    padding: 10px;
+ 	width: 400px;
+    border: 1px solid gray;
+   	
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+}
+div.pop > h4{
+	color:black;   
+	margin-top: 20px; 
 }

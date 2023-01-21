@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.extern.slf4j.Slf4j;
@@ -43,18 +42,24 @@ public class LineUpController {
 	private UserService userService;
 	@Autowired
 	private LineUpService lineUpService;
-	
+
 
 	//처음 화면 출력부분
 	@GetMapping
-	public String lineUpview(Model model) {
+	public String lineUpview(Model model,HttpServletRequest request) {
 		Long recentMatch = matchService.findRecentMatchNum();
 		List<Entry> entry = entryService.findEntryRecentMatch(recentMatch);
-		List<Quarter> quarter = quarterService.findQuarterRecentMatch(recentMatch);
-		model.addAttribute("entry", entry);
-		model.addAttribute("quarter", quarter);
-		log.info("{}",recentMatch);
-		return "view/lineUp/lineUp";
+		int test= 0;
+		if(entry.size() == 0) {
+			log.info("주소테스트{}",request.getHeader("Referer"));
+			return "redirect:"+request.getHeader("Referer");
+		}else {
+			List<Quarter> quarter = quarterService.findQuarterRecentMatch(recentMatch);
+			model.addAttribute("entry", entry);
+			model.addAttribute("quarter", quarter);
+			log.info("{}",recentMatch);
+			return "view/lineUp/lineUp";
+		}
 	}
 
 	// 검색 비동기로 post로
@@ -72,8 +77,9 @@ public class LineUpController {
 	@ResponseBody
 	public void saveEntry(@RequestBody List<LineUpDto> list, HttpSession session) throws IOException{
 		session.setAttribute("lineup", list);
+		
 	}
-	
+
 	@GetMapping("/result")
 	public String lineUpReg(HttpSession session,Model model, HttpServletRequest request) {
 		String before_address = request.getHeader("referer");
@@ -85,7 +91,7 @@ public class LineUpController {
 		log.info("{}",quarter);
 		return "view/match/matchResultReg";
 	}
-	
+
 	@PostMapping("/result")
 	public String regResult(@ModelAttribute("LineUpListDto") LineUpListDto L, @ModelAttribute("QuarterListDto") QuarterListDto Q,HttpSession session){
 		log.info("L:{}",L.getLineUpList());
