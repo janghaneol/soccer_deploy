@@ -71,4 +71,13 @@ public class UserServiceImpl implements UserService {
 		User updateProfile = user.get();
 		userRepository.save(updateProfile);
 	}
+
+	@Override
+	public int idCheck(String email) {
+		User user = userRepository.findByEmail(email);
+		if(user != null) {
+			return 1;
+		}
+		return 0;
+	}
 }

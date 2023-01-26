@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -18,6 +19,7 @@ import org.hibernate.annotations.DynamicInsert;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import soccer.deploy.entry.entity.Entry;
 import soccer.deploy.user.entity.User;
 
 @Data
@@ -60,6 +62,5 @@ public class Match {
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	private User user;
-	
 	
 }
