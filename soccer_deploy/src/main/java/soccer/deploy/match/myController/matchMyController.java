@@ -215,11 +215,7 @@ public class matchMyController {
 
 		return "view/match/rank";
 	}
-	 
-	@GetMapping("/kas")
-	public String tese() {
-		return "view/board/boardView";
-	}
+
 
 }
 

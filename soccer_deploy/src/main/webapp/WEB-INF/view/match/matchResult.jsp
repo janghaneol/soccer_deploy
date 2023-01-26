@@ -58,7 +58,12 @@
 	<div class="wrapper">
 		<h2>경기결과</h2>
 		<div class="contentWrap">
-			<hr>
+			<div class="pop">
+				<h4>저장할 경기기록이 없습니다.</h4>
+				<div class="btn_pop">
+					<button type="button" class="check">확인</button>
+				</div>
+			</div>
 			<div class="top">
 				<div class="center-date">
 					<h3>${empty param.Month ? month : param.Month }월</h3>
@@ -83,10 +88,11 @@
 
 				</div>
 				<div class="right">
-				<div class="reg-div">
+					<div class="reg-div">
 
-				<a href="/lineup/result" class="btn btn-primary">등록</a>
-			</div>
+						<a href="/lineup/result" class="btn btn-primary" id="matchReg"
+							data-line="${!empty lineup ? true : false }">등록</a>
+					</div>
 					<form id="matchForm" method="get" action="./result">
 						<select name="Year" id="Year">
 							<c:forEach var="year" items="${year}">
@@ -115,7 +121,7 @@
 					</form>
 				</div>
 			</div>
-			
+
 			<div class="bottom">
 
 
@@ -168,7 +174,7 @@
 									</c:forEach>
 								</ul>
 							</li>
-							
+
 							<li>
 								<div class="place">장소</div>
 								<ul class="board">
@@ -182,14 +188,13 @@
 								<div class="result">경기결과</div>
 								<ul class="board">
 									<c:forEach var="item" items="${result}">
-										
-										<li class="imgclass"><img src="/images/logo_1.png" alt="Image"
-																	class="img-fluid customCh">
-																	
-																	<span class="imgspan">MyTeam <span class="score">${item.win} : ${item.count - item.win}</span>  ${item.opteam} </span>
-																	<img src="/image/${item.matchImgName}" alt="Image"
-																	class="img-fluid customCh">
-										</li>
+
+										<li class="imgclass"><img src="/images/logo_1.png"
+											alt="Image" class="img-fluid customCh"> <span
+											class="imgspan">MyTeam <span class="score">${item.win}
+													: ${item.count - item.win}</span> ${item.opteam}
+										</span> <img src="/image/${item.matchImgName}" alt="Image"
+											class="img-fluid customCh"></li>
 									</c:forEach>
 								</ul>
 
@@ -319,6 +324,10 @@
 				$popup.nextElementSibling.remove();
 			}
 		}
+		
+		
+		
+		
 	</script>
 
 			<script src="/js/viewDetail.js"></script>
@@ -337,5 +346,6 @@
 			<script src="/js/jquery.sticky.js"></script>
 			<script src="/js/jquery.mb.YTPlayer.min.js"></script>
 			<script src="/js/main.js"></script>
+			<script src="/js/matchReg.js"></script>
 </body>
 </html>

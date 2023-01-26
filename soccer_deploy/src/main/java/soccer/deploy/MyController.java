@@ -1,23 +1,19 @@
 package soccer.deploy;
 
-import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import lombok.extern.slf4j.Slf4j;
-import soccer.deploy.match.myDao.matchDao;
+import soccer.deploy.board.service.BoardService;
 import soccer.deploy.match.myDto.MatchDto;
 import soccer.deploy.match.myDto.rank;
 import soccer.deploy.match.myService.MatchChoungService;
@@ -29,12 +25,11 @@ import soccer.deploy.user.entity.User;
 public class MyController {
 	
 	@Autowired
-	private matchDao dao ;
-	@Autowired
 	private MatchService matchService;
 	@Autowired
 	private MatchChoungService matchChoungService;
-	
+	@Autowired
+	private BoardService boardService;
 	
 	/*Session을 통한 로그인 유지 및 관리*/
 	@RequestMapping("/")
@@ -42,12 +37,13 @@ public class MyController {
 		if(loginUser != null) {
 			model.addAttribute("loginUser",loginUser);
 		}
+	
+		
 		List<Long> resultId = matchChoungService.findRecentTwoResultMatchId();
 		HashMap<String, MatchDto> resultMatch = matchChoungService.recentTwoMatchResult(resultId);
 		HashMap<String, List<rank>> resultPlayer = matchChoungService.recentTwoMatchPlayer(resultId);
 		Long viewMatchId = matchService.findRecentViewMatch();
 		model.addAttribute("recentMatch",matchService.findeRecentMatch(viewMatchId));
-		
 		model.addAttribute("resultMatch", resultMatch);
 		model.addAttribute("resultPlayer", resultPlayer);
 		

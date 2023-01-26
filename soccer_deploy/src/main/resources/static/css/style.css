@@ -599,6 +599,10 @@ h1, h2, h3, h4, h5,
     padding-bottom: 10px !important; }
 
 /* Blocks */
+.herol, .herol> .container > .row{
+	 height: 100vh;
+    min-height: 500px;
+}
 .hero {
 	background-image : url('/images/match.jpg');
   background-size: cover;

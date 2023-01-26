@@ -19,18 +19,14 @@ document.querySelector(".comment-div").addEventListener("click",function(event) 
 
         //나중에 controller 주소와 post인지 get인지 넣어주면 동작
         let form = document.createElement("form");
-        form.action ="#";
+        form.action =`${window.location.href}`;
         form.method = "post"
 
         let textarea = document.createElement("textarea");
         textarea.name="content";
         textarea.id = "comment";
         textarea.placeholder="댓글을 입력하세요.";
-        //article id        
-        let input1 = document.createElement("input");
-        input1.type ="hidden";
-        input1.name = arr[0];
-        input1.value = lipart.parentElement.dataset.article;
+
         // 작성자 아이디
         let input2 = document.createElement("input");
         input2.type ="hidden";
@@ -50,10 +46,12 @@ document.querySelector(".comment-div").addEventListener("click",function(event) 
         let input5 = document.createElement("input");
         input5.type ="hidden";
         input5.name = arr[4];
-        input5.value = lipart.dataset.orderno;
+        input5.value = +lipart.dataset.orderno+1;
 
-
-
+        let input6 = document.createElement("input");
+        input6.type ="hidden";
+        input6.name= "subject";
+        input6.value="대댓글";
 
 
         let form_div_first = document.createElement("div");
@@ -67,11 +65,13 @@ document.querySelector(".comment-div").addEventListener("click",function(event) 
         form.appendChild(textarea);
         form.appendChild(form_div_first);
 
-        form.appendChild(input1);
+        
         form.appendChild(input2);
         form.appendChild(input3);
         form.appendChild(input4);
         form.appendChild(input5);
+        form.appendChild(input6);
+        
 
 
 

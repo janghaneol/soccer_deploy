@@ -161,3 +161,12 @@ div.comment-reg{
 div.comment-write-reply{
     border-bottom: 1px solid rgba(255,255, 255, 1);
 }
+
+div.no-article{
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    color: white;
+    font-size: 40px;
+}

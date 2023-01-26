@@ -63,7 +63,7 @@
 </div>
 
 
-<header class="site-navbar py-4" role="banner" id="header">
+<header class="site-navbar py-4" role="banner" id="header" >
 	<div class="container">
 			<div class="d-flex align-items-center" id="logged_info">
 			<c:choose>
@@ -87,7 +87,7 @@
 		<br>
 	
 		<div class="d-flex align-items-center">
-			<div class="site-logo">
+			<div class="site-logo" >
 				<a href="/"> <img src="/images/logo.png" alt="Logo">
 				</a>
 			</div>
@@ -108,12 +108,14 @@
 						</ul></li>
 						
 						<li><a href="/user/list" class="nav-link">Players</a></li>
-						<li><a href="/mainPage" class="nav-link">MainPage</a></li>
+						<li><a href="/lineup" class="nav-link">상황판</a></li>
 						<li class="dropdown"><a href="/realArticle" class="dropdown-toggle "
-						data-toggle="dropdown">Board & Notice<b class="caret"></b></a>
+						data-toggle="dropdown">게시글<b class="caret"></b></a>
 						<ul class="dropdown-menu">
-						<li><a href="/realArticle" class="drop">Board</a></li>
-						<li><a href="/board" class="drop">자유게시판</a></li>
+						
+							<li><a href="/board/10/article" class="drop">자유게시판</a></li>
+							<li><a href="/board/20/article" class="drop">공지사항</a></li>
+						
 						</ul></li>
 					</ul>
 				</nav>

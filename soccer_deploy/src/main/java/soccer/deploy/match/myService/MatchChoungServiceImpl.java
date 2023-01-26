@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import lombok.extern.slf4j.Slf4j;
 import soccer.deploy.lineUp.repository.JpaLineUpRepository;
+import soccer.deploy.match.entity.Match;
 import soccer.deploy.match.myDao.matchDao;
 import soccer.deploy.match.myDto.MatchDto;
 import soccer.deploy.match.myDto.rank;
@@ -85,8 +86,8 @@ public class MatchChoungServiceImpl implements MatchChoungService{
 	public HashMap<String, MatchDto> recentTwoMatchResult(List<Long> id) {
 		HashMap<String, MatchDto> twoList  =new HashMap<>();
 
-		twoList.put("first", jpaMatchRepository.resultMatchById(id.get(0)).get());
-		twoList.put("second", jpaMatchRepository.resultMatchById(id.get(1)).get());
+		twoList.put("first", jpaMatchRepository.resultMatchById(id.get(0)).orElseGet(MatchDto :: new));
+		twoList.put("second", jpaMatchRepository.resultMatchById(id.get(1)).orElseGet(MatchDto :: new));
 		return twoList;
 	}
 
@@ -103,4 +104,5 @@ public class MatchChoungServiceImpl implements MatchChoungService{
 
 		return jpaMatchRepository.findRecentTwoResultMatchId();
 	}
+	
 }	
