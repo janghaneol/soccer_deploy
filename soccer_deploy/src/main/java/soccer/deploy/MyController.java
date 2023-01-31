@@ -32,7 +32,7 @@ public class MyController {
 	private BoardService boardService;
 	
 	/*Session을 통한 로그인 유지 및 관리*/
-	@RequestMapping("/")
+	@GetMapping("/")
 	public String sessionIndex(@SessionAttribute(name = "loginUser",required = false ) User loginUser ,Model model) {
 		if(loginUser != null) {
 			model.addAttribute("loginUser",loginUser);
@@ -52,49 +52,49 @@ public class MyController {
 	
 	
 	
-	@RequestMapping("/main")
+	@GetMapping("/main")
 	public String main() {
 
 		return "view/main";
 	}
 
 	//네개의 컬럼 보내기
-	@RequestMapping("/contact")
+	@GetMapping("/contact")
 	public String contact() {
 
 		return "view/contact";
 	}
 
 	//대진표
-	@RequestMapping("/matches")
+	@GetMapping("/matches")
 	public String matches() {
 
 		return "view/matches";
 	}
 	
 	
-	@RequestMapping("/single")
+	@GetMapping("/single")
 	public String single() {
 
 		return "view/single";
 	}
 
 	//블로그
-	@RequestMapping("/blog")
+	@GetMapping("/blog")
 	public String blog() {
 
 		return "view/blog";
 	}
 
 	//옛날 내가만든거. 데이터 뿌리기용으로 쓰세요
-	@RequestMapping("/mainPage")
+	@GetMapping("/mainPage")
 	public String mainPage() {
 
 		return "view/mainPage";
 	}
 
 	//로그인
-	@RequestMapping("/login")
+	@GetMapping("/login")
 	public String login() {
 
 		return "view/user/login";
@@ -102,7 +102,7 @@ public class MyController {
 
 
 	//회원가입
-	@RequestMapping("/signup")
+	@GetMapping("/signup")
 	public String signUp() {
 		return "signup";
 	}
