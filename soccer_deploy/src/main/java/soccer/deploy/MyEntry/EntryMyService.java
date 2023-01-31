@@ -15,7 +15,7 @@ public class EntryMyService {
 	private EntryMyDao entryMyDao;
 	
 	
-	public List<UserMyDto> show(String matchId){
+	public List<UserMyDto> show(Long matchId){
 		List<UserMyDto> show = entryMyDao.show(matchId);
 		return show;
 	}

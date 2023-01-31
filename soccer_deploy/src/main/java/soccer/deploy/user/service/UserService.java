@@ -35,6 +35,9 @@ public interface UserService {
 	
 	// 회원 프로필 수정
 	public void imgUpdate(Long userId, String profile);
+	
+	// 이메일 중복확인
+	public int idCheck(String email);
 }
 	
 

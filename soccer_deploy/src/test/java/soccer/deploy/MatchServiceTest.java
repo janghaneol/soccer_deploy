@@ -7,6 +7,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
@@ -19,6 +20,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import lombok.extern.slf4j.Slf4j;
+import soccer.deploy.entry.entity.Entry;
+import soccer.deploy.entry.repository.JpaEntryRepository;
+import soccer.deploy.entry.service.EntryService;
 import soccer.deploy.match.entity.Match;
 import soccer.deploy.match.repository.JpaMatchRepository;
 import soccer.deploy.match.service.MatchService;
@@ -48,7 +52,13 @@ public class MatchServiceTest {
 	private JpaQuarterRepository quarterRepository;
 	
 	@Autowired
+	private EntryService entryService;
+	
+	@Autowired
 	private QuarterService quarterService;
+	
+	@Autowired
+	private JpaEntryRepository entryRepository;
 	
 	@Test
 	@Disabled
@@ -94,18 +104,45 @@ public class MatchServiceTest {
 
 	
 	@Test
-	@Disabled
+//	@Disabled
 	public void matchList() {
-		String matchdate = "";
+		String matchdate = "23/01";
 		List<Match> match = matchService.findMatchdate(matchdate);
-		for (Match list : match) {
-			log.info("검색한 매치 : {}",list);
+		HashMap<Long, List<Entry>> entryList = new HashMap<Long, List<Entry>>();
+
+		for (Match matchs : match) {
+				List<Entry> entry = entryService.findEntryRecentMatch(matchs.getId());
+				entryList.put(matchs.getId(), entry);
+ 		}
+		
+		
+		
+		System.out.println("============ entryList Size ============  : : : "+entryList.size());
+		System.out.println("============ Match Size ============= : : : : " + match.size());
+	}
+	
+	@Test
+	@Disabled
+	public void entryList() {
+//		List<Match> match = matchService.findMatch("23", "01");
+//		for (Match matchs : match) {
+//			log.info("찾은 Match : : {}", matchs);
+//			List<Entry> entry = entryService.findEntryRecentMatch(matchs.getId());
+//			for (Entry entrys : entry) {
+//				log.info("해당 Match{} 의 Entry : : {}",matchs.getId(),entrys.getUser().getId());
+//			}
+//		}
+		List<Entry> entry = entryRepository.findAll();
+		for (Entry entry2 : entry) {
+			log.info("entry : : : {} ",entry2.getMatch());
 		}
+		
+		
 		
 	}
 	
 	@Test
-//	@Disabled
+	@Disabled
 	public void findMatch() {
 		Long match = matchService.findRecentViewMatch();
 		log.info("최근 Match  : : : {}",matchService.findeRecentMatch(match));

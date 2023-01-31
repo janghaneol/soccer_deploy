@@ -1,12 +1,18 @@
 package soccer.deploy.entry.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import soccer.deploy.entry.entity.Entry;
+import soccer.deploy.match.entity.Match;
+import soccer.deploy.user.entity.User;
 
 public interface EntryService {
-	//ÃÖ½Å ¸ÅÄ¡ ¿£Æ®¸® °¡Á®¿À±â
+	//ï¿½Ö½ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public List<Entry> findEntryRecentMatch(Long id);
 	
 	public List<Entry> SearchRecentEntry(Long id, String name);
+	
+	public List<Boolean> findUserAndEntryByMatch(List<Match> match, User user);
+	
 }

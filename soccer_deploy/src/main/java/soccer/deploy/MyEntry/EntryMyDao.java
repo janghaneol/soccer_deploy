@@ -10,6 +10,6 @@ import soccer.deploy.user.entity.User;
 @Mapper
 public interface EntryMyDao {
 
-	public List<UserMyDto> show(String matchId);
+	public List<UserMyDto> show(Long matchId);
 	
 }

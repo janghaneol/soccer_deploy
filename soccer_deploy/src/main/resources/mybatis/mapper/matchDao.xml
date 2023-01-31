@@ -104,7 +104,7 @@
 				SELECT FIRST_VALUE(TO_CHAR(match_date,'yy/MM')) OVER() firstDate
          		FROM match m
         GROUP BY TO_CHAR(match_date,'yy/MM')
-        ORDER BY TO_CHAR(match_date,'yy/MM') asc)
+        ORDER BY TO_CHAR(match_date,'yy/MM') desc)
         where rownum &lt; 2
 	</select>
 	

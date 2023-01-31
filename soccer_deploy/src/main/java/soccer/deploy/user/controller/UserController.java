@@ -71,7 +71,6 @@ public class UserController {
 		}
 		
 		User loginUser = userService.login(loginForm.getEmail(), loginForm.getPasswd());
-		System.out.println(loginUser);
 		
 		if(loginUser==null) {
 			bindingResult.reject("loginFail", "ID와 비밀번호를 확인하여 주십시오");
@@ -89,6 +88,13 @@ public class UserController {
 		/* Session으로 로그인 */
 		HttpSession session = request.getSession();
 		session.setAttribute("loginUser", loginUser);
+		
+		/*
+		 * 로그인 후 로그인 하기 전 페이지로 redirect하기
+		 */
+		String uri = request.getHeader("Referer");
+		request.getSession().setAttribute("prevPage", uri);
+		redirect=(String)session.getAttribute("prevPage");
 		return "redirect:"+redirect;
 	}
 	
@@ -104,12 +110,19 @@ public class UserController {
 		if(session != null) {
 			session.invalidate();
 		}
-		return "redirect:/xMain";
+		return "redirect:/";
 	}
 	
 	@GetMapping("/regist")
 	public String registPage(@ModelAttribute("user") User user) {
 		return "/view/user/signup";
+	}
+	
+	@PostMapping("/idCheck")
+	@ResponseBody
+	public int idCheck(@RequestParam String email) {
+		int cnt = userService.idCheck(email);
+		return cnt;
 	}
 	
 	@PostMapping("/regist")
@@ -270,6 +283,7 @@ public class UserController {
 		endBlockPage = endBlockPage>totalPage ? totalPage : endBlockPage ;
 		
 		model.addAttribute("userList", userList);
+		model.addAttribute("value", value);
 		model.addAttribute("startBlockPage", startBlockPage);
 		model.addAttribute("endBlockPage", endBlockPage);	
 		return "view/user/players";
