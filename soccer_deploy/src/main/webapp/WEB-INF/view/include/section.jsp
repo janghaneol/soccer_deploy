@@ -19,7 +19,7 @@
                 <div class="owl-4-slider owl-carousel">
                     <div class="item">
                         <div class="video-media">
-                            <img src="images/img_1.jpg" alt="Image" class="img-fluid">
+                            <img src="/images/img_1.jpg" alt="Image" class="img-fluid">
                             <a href="https://vimeo.com/139714818" class="d-flex play-button align-items-center"
                                 data-fancybox>
                                 <span class="icon mr-3">
@@ -33,7 +33,7 @@
                     </div>
                     <div class="item">
                         <div class="video-media">
-                            <img src="images/img_2.jpg" alt="Image" class="img-fluid">
+                            <img src="/images/img_2.jpg" alt="Image" class="img-fluid">
                             <a href="https://vimeo.com/139714818" class="d-flex play-button align-items-center"
                                 data-fancybox>
                                 <span class="icon mr-3">
@@ -47,7 +47,7 @@
                     </div>
                     <div class="item">
                         <div class="video-media">
-                            <img src="images/img_3.jpg" alt="Image" class="img-fluid">
+                            <img src="/images/img_3.jpg" alt="Image" class="img-fluid">
                             <a href="https://vimeo.com/139714818" class="d-flex play-button align-items-center"
                                 data-fancybox>
                                 <span class="icon mr-3">
@@ -62,7 +62,7 @@
 
                     <div class="item">
                         <div class="video-media">
-                            <img src="images/img_1.jpg" alt="Image" class="img-fluid">
+                            <img src="/images/img_1.jpg" alt="Image" class="img-fluid">
                             <a href="https://vimeo.com/139714818" class="d-flex play-button align-items-center"
                                 data-fancybox>
                                 <span class="icon mr-3">
@@ -76,7 +76,7 @@
                     </div>
                     <div class="item">
                         <div class="video-media">
-                            <img src="images/img_2.jpg" alt="Image" class="img-fluid">
+                            <img src="/images/img_2.jpg" alt="Image" class="img-fluid">
                             <a href="https://vimeo.com/139714818" class="d-flex play-button align-items-center"
                                 data-fancybox>
                                 <span class="icon mr-3">
@@ -90,7 +90,7 @@
                     </div>
                     <div class="item">
                         <div class="video-media">
-                            <img src="images/img_3.jpg" alt="Image" class="img-fluid">
+                            <img src="/images/img_3.jpg" alt="Image" class="img-fluid">
                             <a href="https://vimeo.com/139714818" class="d-flex play-button align-items-center"
                                 data-fancybox>
                                 <span class="icon mr-3">
@@ -118,7 +118,7 @@
                 <div class="col-lg-6">
                     <div class="custom-media d-flex">
                         <div class="img mr-4">
-                            <img src="images/img_1.jpg" alt="Image" class="img-fluid">
+                            <img src="/images/img_1.jpg" alt="Image" class="img-fluid">
                         </div>
                         <div class="text">
                             <span class="meta">May 20, 2020</span>
@@ -132,7 +132,7 @@
                 <div class="col-lg-6">
                     <div class="custom-media d-flex">
                         <div class="img mr-4">
-                            <img src="images/img_3.jpg" alt="Image" class="img-fluid">
+                            <img src="/images/img_3.jpg" alt="Image" class="img-fluid">
                         </div>
                         <div class="text">
                             <span class="meta">May 20, 2020</span>
