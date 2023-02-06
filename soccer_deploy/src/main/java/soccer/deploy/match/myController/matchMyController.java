@@ -5,18 +5,22 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -71,28 +75,20 @@ public class matchMyController {
 	 * 경기일정을 보여줌
 	 */
 	@GetMapping
-	public String matchList(Model model,@RequestParam(required = false, defaultValue = "first") String matchYear, @RequestParam(required = false,defaultValue = "first") String matchMonth,
-							HttpSession session) {
+	public String matchList(Model model,@RequestParam(required = false, defaultValue = "first") String matchYear, 
+			@RequestParam(required = false,defaultValue = "first") String matchMonth, HttpSession session) {
 		model.addAttribute("result", m.findMatch(matchYear, matchMonth));
 		model.addAttribute("year", m.matchYear());
 		model.addAttribute("month",m.month());
 		
 		List<Match> match = m.findMatch(matchYear, matchMonth);
+		model.addAttribute("expiration", m.matchExpiration(match));
 		User user = (User)session.getAttribute("loginUser");
-		List<Boolean> boolList = e.findUserAndEntryByMatch(match, user);
+		List<Boolean> entryList = e.findUserAndEntryByMatch(match, user);
+		model.addAttribute("entry", entryList);
 		
-		model.addAttribute("entry", boolList);
-		log.info("BOOL LIST : : : : : : {}",boolList);
+		log.info("entry : : : {} " , entryList);
 		
-//		HashMap<Long, List<Entry>> entrys = new HashMap<Long, List<Entry>>();
-//		
-//		for (Match match2 : match) {
-//			List<Entry> entry = e.findEntryRecentMatch(match2.getId());
-//			entrys.put(match2.getId(), entry);
-//		} 
-//		model.addAttribute("entry", entrys);
-//		log.info("List : {}", m.findMatch(matchYear, matchMonth)); 
-//		log.info("entrySize : {}", entrys.size());
 		return "view/match/match"; 
 	}
 
@@ -177,8 +173,8 @@ public class matchMyController {
 	}
 
 	
-	@GetMapping("/participation")
-	public String test(@RequestParam("matchId")String matchId,  HttpSession session,RedirectAttributes attributes)
+	@GetMapping("/enrollment")
+	public String matchEnroll(@RequestParam("matchId")String matchId, HttpSession session, RedirectAttributes attributes)
 	{   //濡쒓렇�씤 �꽭�뀡媛�
 		Entry entry =new Entry();
 		entry.setMatch(m.findeRecentMatch(Long.parseLong(matchId)));
@@ -188,6 +184,22 @@ public class matchMyController {
 		log.info("{}",entry.getUser());
 		return "redirect:/match/{matchId}";
 	}
+	
+	@GetMapping("/cancel")
+	public String matchCancel(@RequestParam("matchId")String matchId, HttpSession session, RedirectAttributes redirectAttributes,
+								HttpServletRequest request, @RequestParam(name = "redirect" , defaultValue = "/")String redirect) {
+		User user = (User)session.getAttribute("loginUser");
+		
+		e.deleteEntry(Long.parseLong(matchId), user);
+		redirectAttributes.addFlashAttribute("success", "success");
+		
+		// 참가신청 취소 후 이전 페이지로 
+		String uri = request.getHeader("Referer");
+		request.getSession().setAttribute("prevPage", uri);
+		redirect=(String)session.getAttribute("prevPage");
+		return "redirect:" + redirect;
+	}
+	
 	
 	@GetMapping("/result")
 	public String matchResult(@RequestParam(value= "Year", required = false, defaultValue = "first") String rankYear, @RequestParam(value= "Month", required = false, defaultValue = "first") String rankMonth, Model model) {

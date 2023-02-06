@@ -65,6 +65,7 @@ input[name='publeYear'] {
 				style="width: 50%; border: solid; border-radius: 30px; color: white; padding: 5%;">
 				<h1>경기 등록</h1>
 				<div class="wrapper">
+				
 					<form method="post" action="/match/schedule" enctype="multipart/form-data">
 						<input type="hidden" id="writer" value="${loginUser.id}">
 						<div class="form-group">

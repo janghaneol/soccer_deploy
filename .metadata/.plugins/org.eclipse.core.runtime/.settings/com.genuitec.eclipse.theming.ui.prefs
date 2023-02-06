@@ -3,10 +3,11 @@
 >>>>>>>=1ca556964cb7d5b6c181cbf99f9bce62d4841e93
 applyBackground=false
 approved.defs.file.last.changed.time=1649720987000
-configurationInstallLocation=/C\:/Users/Administrator/eclipse/jee-2022-03/eclipse/
+configurationInstallLocation=/C\:/Users/haneol/eclipse/jee-2022-12/eclipse/
 eclipse.preferences.version=1
 iconcolormode=primary
-last.download.attempt.time=1674194619153
-lastConfiguration=1674194608982
+includeThemingInOomph=false
+last.download.attempt.time=1675683202585
+lastConfiguration=1675683192391
 newinstall=true
 workbench.theme=Dark Gray

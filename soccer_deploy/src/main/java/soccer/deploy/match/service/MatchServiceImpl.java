@@ -1,7 +1,11 @@
 package soccer.deploy.match.service;
 
+import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -94,9 +98,8 @@ public class MatchServiceImpl implements MatchService {
 			
 		}else if(year.equals("first") && !month.equals("first")) {
 			formatter = DateTimeFormatter.ofPattern("yy/");
-			formatedNow = now.format(formatter);
-//			formatedNow = matchDao.matchFirst();
-			return jpaMatchRepository.findAllByMatchDate(formatedNow.concat(month));
+			formatedNow = matchDao.matchFirst();
+			return jpaMatchRepository.findAllByMatchDate(formatedNow.concat("/").concat(month));
 			
 		}else if(!year.equals("first") && month.equals("first")) {
 			formatter = DateTimeFormatter.ofPattern("/MM");
@@ -107,12 +110,30 @@ public class MatchServiceImpl implements MatchService {
 			return jpaMatchRepository.findAllByMatchDate(year.concat("/").concat(month));
 		}
 	}
-
+	
+	@Override
+	public List<Boolean> matchExpiration(List<Match> match){
+		List<Boolean> boolList = new ArrayList<>();
+		LocalDate localDate = LocalDate.now();
+		Instant instant = localDate.atStartOfDay(ZoneId.systemDefault()).toInstant();
+        Date date = Date.from(instant);
+        
+		for (Match matchs : match) {
+			if(matchs.getMatchDate().after(date)) {
+				boolList.add(true);
+			}
+			else {
+				boolList.add(false);
+			}
+		}
+		return boolList;
+	}
+	
 	@Override
 	public List<String> matchYear() {
 		return matchDao.matchYear();
 	}
-
+	
 	@Override
 	public String month() {
 		return matchDao.matchDate().split("/")[1];

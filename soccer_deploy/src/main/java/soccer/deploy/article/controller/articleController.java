@@ -34,7 +34,7 @@ import soccer.deploy.image.service.ImageService;
 @Controller
 @Slf4j
 @RequestMapping("/board")
-public class ArticleController {
+public class articleController {
 	
 	@Value("${spring.servlet.multipart.location}") // location 안에 값이 들어감 EL사용
 	private String location;

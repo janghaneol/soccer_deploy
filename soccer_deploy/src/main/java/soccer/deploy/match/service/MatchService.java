@@ -33,5 +33,7 @@ public interface MatchService {
 	
 	/* 등록된 가장 최신 매치의 id*/
 	public Long findRecentViewMatch();
+
+	List<Boolean> matchExpiration(List<Match> match);
 	
 }

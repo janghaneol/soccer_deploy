@@ -15,4 +15,6 @@ public interface EntryService {
 	
 	public List<Boolean> findUserAndEntryByMatch(List<Match> match, User user);
 	
+	public void deleteEntry(Long id, User user);
+	
 }

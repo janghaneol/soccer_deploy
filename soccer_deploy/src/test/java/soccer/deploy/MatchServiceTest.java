@@ -5,12 +5,16 @@ import java.lang.reflect.Array;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
+
+import javax.transaction.Transactional;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -104,7 +108,7 @@ public class MatchServiceTest {
 
 	
 	@Test
-//	@Disabled
+	@Disabled
 	public void matchList() {
 		String matchdate = "23/01";
 		List<Match> match = matchService.findMatchdate(matchdate);
@@ -167,4 +171,41 @@ public class MatchServiceTest {
 		}
 	}
 	
+	@Test
+	@Disabled
+	public void cancelEntry() {
+		Match match = matchService.findeRecentMatch(6L);
+		log.info("Match{}",match);
+		List<Entry> entrys = entryService.findEntryRecentMatch(match.getId());
+		Optional<User> user = userService.findUser(4L);
+		log.info("User{}",user.get());
+		for (Entry entry : entrys) {
+			if(entry.getUser().equals(user.get())) {
+				log.info("Entry{}",entry.getUser().getId());
+				entryService.deleteEntry(match.getId(), user.get());
+			}
+		}
+		
+	}
+	
+	@Test
+	@Disabled
+	public void boolList() {
+		List<Match> matchs = matchService.findMatch("23", "02");
+		Optional<User> user = userService.findUser(4L);
+		for (Match match : matchs) {
+			log.info("matchDate : : : {}",match.getMatchDate());
+		}
+		List<Boolean> boolList2=entryService.findUserAndEntryByMatch(matchs, user.get());
+		log.info("boolList : : : {} ",boolList2);
+	}
+	
+	@Test
+//	@Disabled
+	public void cal() {
+		List<Match> matchs = matchService.findMatch("23", "02");
+		List<Boolean> boolList = matchService.matchExpiration(matchs);
+		log.info("지났나 안지났나 {} ",boolList);
+		
+	}
 }

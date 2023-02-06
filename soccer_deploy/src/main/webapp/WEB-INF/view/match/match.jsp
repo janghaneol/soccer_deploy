@@ -217,18 +217,25 @@
 						<ul class="board"> 
 						
 							<c:forEach var="result" items="${result}" varStatus="status" begin="0" end="${result.size()}">
-								<c:if test="${entry[status.index]}">
-									<li><a type="" href="/match/cancel?matchId=${result.id}">참가취소</a></li>
-								</c:if>
-								
-								<c:if test="${!entry[status.index]}">
-									<li><a type="" href="/match/participation?matchId=${result.id}">참가신청</a></li>
-								</c:if>
-								
-								<c:if test="${entry[status.index] == null}">
-									<li><a type="" href="/match/cancel?matchId=${result.id}">회원가입</a></li>
-								</c:if>
 							
+								<c:choose>
+									
+									<c:when test="${expiration[status.index] == false}">
+										<li><a type="" >기간만료</a></li>
+									</c:when>
+									
+									<c:when test="${entry[status.index] == true}">
+										<li><a type="" href="/match/cancel?matchId=${result.id}">참가취소</a></li>
+									</c:when>
+									
+									<c:when test="${entry[status.index] == false}">
+										<li><a type="" href="/match/enrollment?matchId=${result.id}">참가신청</a></li>
+									</c:when>
+									
+									<c:otherwise>
+										<li><a type="" href="/match/cancel?matchId=${result.id}">회원가입</a></li>
+									</c:otherwise>
+								</c:choose>
 							</c:forEach> 
 						 
 						</ul>  
@@ -399,6 +406,8 @@
 			
 		} 
 	*/
+	
+   
 	</script>
  
 	<script type="/js/viewDetail.js"></script>

@@ -16,7 +16,6 @@ import soccer.deploy.user.entity.User;
 public interface JpaEntryRepository extends JpaRepository<Entry, Long> {
 	List<Entry> findAllByMatchId(Long Id);
 	
-	
 	@Query(value="SELECT  u.user_id id"
 			+ "		FROM entry e"
 			+ "   			 INNER JOIN users u"

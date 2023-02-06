@@ -33,19 +33,34 @@ public class EntryServiceImpl implements EntryService {
 	@Override
 	public List<Boolean> findUserAndEntryByMatch(List<Match> match, User user) {
 		List<Boolean> boolList = new ArrayList<Boolean>();
-		Boolean bool = null;
 		for (Match match2 : match) {
 			List<Entry> entry = jpaentryRepository.findAllByMatchId(match2.getId());
-			for (Entry e : entry) {
-				if(e.getUser().equals(user)) {
-					bool = true;
-					break;
+			if (entry.isEmpty()) {
+				boolList.add(false);
+			} else {
+				for (Entry e : entry) {
+					if (e.getUser().equals(user)) {
+						boolList.add(true);
+						break;
+					} else {
+						boolList.add(false);
+						break;
+					}
 				}
-				bool = e.getUser().equals(user);
 			}
-			boolList.add(bool);
 		}
 		return boolList;
+	}
+
+	@Transactional
+	@Override
+	public void deleteEntry(Long matchId, User user) {
+		List<Entry> entrys = jpaentryRepository.findAllByMatchId(matchId);
+		for (Entry entry : entrys) {
+			if (entry.getUser().equals(user)) {
+				jpaentryRepository.delete(entry);
+			}
+		}
 	}
 
 }

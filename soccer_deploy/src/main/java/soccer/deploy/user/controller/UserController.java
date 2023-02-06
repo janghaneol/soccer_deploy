@@ -162,7 +162,7 @@ public class UserController {
 		registUser.setAddress(address);
 		registUser.setBackNum(user.getBackNum());
 		registUser.setImgContType(imageFile.getContentType());
-		registUser.setImgFileName(storedFileName);
+		registUser.setImgFileName(storedFileName); 
 		registUser.setPosition(user.getPosition());
 		registUser.setRegdate(user.getRegdate());
 		registUser.setMemberAuth(user.getMemberAuth());
