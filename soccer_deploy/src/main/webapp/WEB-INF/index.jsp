@@ -135,7 +135,15 @@
 									<span class="d-block" id="v">${time}</span> 
 									<a href="" onClick="window.open('/findRoad','','width=700,height=500');return false"><span class="d-block" id="v">${recentMatch.matchPlace}</span></a>
 								</p>
-								<a href="/match/participation?matchId=${recentMatch.id}" class="btn btn-primary">참가신청</a>
+									<c:choose>
+										<c:when test="${entry == false}">
+											<a href="/match/enrollment?matchId=${recentMatch.id}" class="btn btn-primary">참가신청</a>
+										</c:when>
+										
+										<c:otherwise>
+											<a href="/match/cancel?matchId=${recentMatch.id}" class="btn btn-primary">참가취소</a>
+										</c:otherwise>
+									</c:choose>
 							</div>
 						</div>
 					</div>

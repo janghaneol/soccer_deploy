@@ -63,4 +63,14 @@ public class EntryServiceImpl implements EntryService {
 		}
 	}
 
+	@Override
+	public Boolean indexMatch(Match match, User user) {
+		List<Entry> entry = jpaentryRepository.findAllByMatchId(match.getId());
+		for (Entry entry2 : entry) {
+			if(entry2.getUser().equals(user)) {
+				return true;
+			}
+		}
+		return false;
+	}
 }

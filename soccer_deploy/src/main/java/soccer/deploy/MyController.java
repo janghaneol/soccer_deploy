@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 
 import lombok.extern.slf4j.Slf4j;
 import soccer.deploy.board.service.BoardService;
+import soccer.deploy.entry.service.EntryService;
+import soccer.deploy.match.entity.Match;
 import soccer.deploy.match.myDto.MatchDto;
 import soccer.deploy.match.myDto.rank;
 import soccer.deploy.match.myService.MatchChoungService;
@@ -30,6 +32,8 @@ public class MyController {
 	private MatchChoungService matchChoungService;
 	@Autowired
 	private BoardService boardService;
+	@Autowired
+	private EntryService entryService;
 	
 	/*Session을 통한 로그인 유지 및 관리*/
 	@GetMapping("/")
@@ -46,7 +50,10 @@ public class MyController {
 		model.addAttribute("recentMatch",matchService.findeRecentMatch(viewMatchId));
 		model.addAttribute("resultMatch", resultMatch);
 		model.addAttribute("resultPlayer", resultPlayer);
+		Match match = matchService.findeRecentMatch(viewMatchId);
 		
+		model.addAttribute("entry", entryService.indexMatch(match, loginUser));
+		log.info("matchBool : : :{}", entryService.indexMatch(match, loginUser));
 		return "index";
 	}
 	

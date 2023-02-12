@@ -87,7 +87,7 @@ public class MatchChoungServiceImpl implements MatchChoungService{
 		HashMap<String, MatchDto> twoList  =new HashMap<>();
 
 		twoList.put("first", jpaMatchRepository.resultMatchById(id.get(0)).orElseGet(MatchDto :: new));
-		twoList.put("second", jpaMatchRepository.resultMatchById(id.get(1)).orElseGet(MatchDto :: new));
+//		twoList.put("second", jpaMatchRepository.resultMatchById(id.get(1)).orElseGet(MatchDto :: new));
 		return twoList;
 	}
 
@@ -96,7 +96,7 @@ public class MatchChoungServiceImpl implements MatchChoungService{
 		HashMap<String, List<rank>> twoList  =new HashMap<>();
 
 		twoList.put("first", jpaLineUpRepository.findRecentMatchOutCome(id.get(0)));
-		twoList.put("second", jpaLineUpRepository.findRecentMatchOutCome(id.get(1)));
+//		twoList.put("second", jpaLineUpRepository.findRecentMatchOutCome(id.get(1)));
 		return twoList;
 	}
 	@Override
