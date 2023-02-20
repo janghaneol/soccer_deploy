@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import soccer.deploy.match.entity.Match;
 import soccer.deploy.match.myDao.matchDao;
+import soccer.deploy.match.myDto.matchMyDto;
 import soccer.deploy.match.repository.JpaMatchRepository;
 
 @Service
@@ -144,4 +145,14 @@ public class MatchServiceImpl implements MatchService {
 		return jpaMatchRepository.recentViewMatch();
 	}
 
+	@Override
+	public List<Match> userMatch(Long userId) {
+		return matchDao.matchEntry(userId);
+	}
+
+//	@Override
+//	public List<matchMyDto> userMatch(Long userId) {
+//		return matchDao.matchEntry(userId);
+//	}
+	
 }

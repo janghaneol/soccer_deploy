@@ -201,11 +201,21 @@ public class MatchServiceTest {
 	}
 	
 	@Test
-//	@Disabled
+	@Disabled
 	public void cal() {
 		List<Match> matchs = matchService.findMatch("23", "02");
 		List<Boolean> boolList = matchService.matchExpiration(matchs);
 		log.info("지났나 안지났나 {} ",boolList);
 		
+	}
+	
+	@Test
+//	@Disabled
+	public void userEntryList() {
+		Optional<User> user = userService.findUser(4L);
+		List<Entry> matchs = entryService.findEntryUserId(user.get().getId());
+		for (Entry match : matchs) {
+			log.info("match : : : {}", match);
+		}
 	}
 }

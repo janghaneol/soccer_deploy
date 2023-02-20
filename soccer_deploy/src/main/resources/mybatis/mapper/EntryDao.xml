@@ -39,6 +39,6 @@
    							 ON e.user_id = u.user_id
 		WHERE  e.match_id = #{value}
 	</select> 
-
+	
 
 </mapper>

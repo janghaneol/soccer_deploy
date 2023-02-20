@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -72,5 +73,10 @@ public class EntryServiceImpl implements EntryService {
 			}
 		}
 		return false;
+	}
+
+	@Override
+	public List<Entry> findEntryUserId(Long userId) {
+		return jpaentryRepository.findAllByUserId(userId);
 	}
 }

@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import soccer.deploy.match.entity.Match;
 import soccer.deploy.match.myDto.matchMyDto;
 import soccer.deploy.match.myDto.rank;
 
@@ -42,5 +43,7 @@ public interface matchDao {
 	
 	public String matchFirst();
 	
-
+//	public List<matchMyDto> matchEntry(Long userId);
+	public List<Match> matchEntry(Long userId);
+	
 }

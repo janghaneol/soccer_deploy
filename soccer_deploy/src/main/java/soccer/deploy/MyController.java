@@ -125,7 +125,7 @@ public class MyController {
 		
 		Long viewMatchId = matchService.findRecentViewMatch();
 		model.addAttribute("recentMatch",matchService.findeRecentMatch(viewMatchId));
-		
+			
 		return "view/roadPop";
 	}
 

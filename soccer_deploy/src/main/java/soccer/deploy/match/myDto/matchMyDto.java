@@ -6,7 +6,7 @@ import soccer.deploy.user.entity.User;
 
 public class matchMyDto {
 	private int id;
-	private String matchDate;
+	private Date matchDate;
 	private String opteam;
 	private Date matchRegdate;
 	private String matchImgType;
@@ -17,7 +17,7 @@ public class matchMyDto {
 	public matchMyDto() {
 	}
 
-	public matchMyDto(int id, String matchDate, String opteam, Date matchRegdate, String matchImgType,
+	public matchMyDto(int id, Date matchDate, String opteam, Date matchRegdate, String matchImgType,
 			String matchImgName, String matchPlace, int userId) {
 		super();
 		this.id = id;
@@ -38,11 +38,11 @@ public class matchMyDto {
 		this.id = id;
 	}
 
-	public String getMatchDate() {
+	public Date getMatchDate() {
 		return matchDate;
 	}
 
-	public void setMatchDate(String matchDate) {
+	public void setMatchDate(Date matchDate) {
 		this.matchDate = matchDate;
 	}
 

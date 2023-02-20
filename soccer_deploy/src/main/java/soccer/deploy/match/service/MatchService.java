@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import soccer.deploy.match.entity.Match;
+import soccer.deploy.match.myDto.matchMyDto;
 import soccer.deploy.quarter.entity.Quarter;
 
 
@@ -36,4 +37,6 @@ public interface MatchService {
 
 	List<Boolean> matchExpiration(List<Match> match);
 	
+//	public List<matchMyDto> userMatch(Long userId);
+	public List<Match> userMatch(Long userId);
 }
