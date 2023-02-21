@@ -80,6 +80,7 @@
 					<span class="z"><img src="/image/${loginUser.imgFileName}" id="profileView"></span>
 					<span class="z"><strong>${loginUser.name}님!</strong></span>
 					<span class="z"><a href="/user/${loginUser.id}">내 정보</a></span>
+					<span class="z"><a href="/user/${loginUser.id}/match">경기신청 내역</a></span>
 					<a href="/user/logout"><input type="button" value="로그아웃"></a>
 				</c:otherwise>
 			</c:choose>

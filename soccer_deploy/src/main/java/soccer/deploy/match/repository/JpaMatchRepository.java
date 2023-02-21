@@ -24,7 +24,6 @@ public interface JpaMatchRepository extends JpaRepository<Match, Long> {
 	@Query(value = "SELECT m FROM Match m WHERE m.id =:id")
 	public Optional<Match> recentMatch(@Param("id") Long id);
 	
-
 	@Query(value= "SELECT new soccer.deploy.match.myDto.MatchDto(m.id,m.matchDate,m.opteam,m.matchImgType,m.matchImgName,m.matchPlace, SUM(q.outcome),COUNT(q.id)) from Quarter q join q.match m WHERE m.id in (select distinct m.id from LineUp l join l.quarter q join q.match m where m.matchDate Like CONCAT(:date,'%') )  GROUP BY m.id,m.matchDate,m.opteam,m.matchImgType,m.matchImgName,m.matchPlace ORDER BY m.matchDate DESC")
 	public List<MatchDto> resultMatch(@Param("date") String date);
     

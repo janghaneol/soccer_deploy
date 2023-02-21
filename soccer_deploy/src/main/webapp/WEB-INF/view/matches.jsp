@@ -34,7 +34,7 @@
 <body>
 <jsp:include page="/WEB-INF/view/include/header.jsp"></jsp:include>
 
-    <div class="hero overlay" ">
+    <div class="hero overlay">
       <div class="container">
         <div class="row align-items-center">
           <div class="col-lg-5 mx-auto text-center">

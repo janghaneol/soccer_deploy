@@ -9,11 +9,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import lombok.extern.slf4j.Slf4j;
 import soccer.deploy.board.service.BoardService;
+import soccer.deploy.entry.service.EntryService;
+import soccer.deploy.match.entity.Match;
 import soccer.deploy.match.myDto.MatchDto;
 import soccer.deploy.match.myDto.rank;
 import soccer.deploy.match.myService.MatchChoungService;
@@ -30,9 +34,11 @@ public class MyController {
 	private MatchChoungService matchChoungService;
 	@Autowired
 	private BoardService boardService;
+	@Autowired
+	private EntryService entryService;
 	
 	/*Session을 통한 로그인 유지 및 관리*/
-	@RequestMapping("/")
+	@GetMapping("/")
 	public String sessionIndex(@SessionAttribute(name = "loginUser",required = false ) User loginUser ,Model model) {
 		if(loginUser != null) {
 			model.addAttribute("loginUser",loginUser);
@@ -46,55 +52,58 @@ public class MyController {
 		model.addAttribute("recentMatch",matchService.findeRecentMatch(viewMatchId));
 		model.addAttribute("resultMatch", resultMatch);
 		model.addAttribute("resultPlayer", resultPlayer);
+		Match match = matchService.findeRecentMatch(viewMatchId);
 		
+		model.addAttribute("entry", entryService.indexMatch(match, loginUser));
+		log.info("matchBool : : :{}", entryService.indexMatch(match, loginUser));
 		return "index";
 	}
 	
 	
 	
-	@RequestMapping("/main")
+	@GetMapping("/main")
 	public String main() {
 
 		return "view/main";
 	}
 
 	//네개의 컬럼 보내기
-	@RequestMapping("/contact")
+	@GetMapping("/contact")
 	public String contact() {
 
 		return "view/contact";
 	}
 
 	//대진표
-	@RequestMapping("/matches")
+	@GetMapping("/matches")
 	public String matches() {
 
 		return "view/matches";
 	}
 	
 	
-	@RequestMapping("/single")
+	@GetMapping("/single")
 	public String single() {
 
 		return "view/single";
 	}
 
 	//블로그
-	@RequestMapping("/blog")
+	@GetMapping("/blog")
 	public String blog() {
 
 		return "view/blog";
 	}
 
 	//옛날 내가만든거. 데이터 뿌리기용으로 쓰세요
-	@RequestMapping("/mainPage")
+	@GetMapping("/mainPage")
 	public String mainPage() {
 
 		return "view/mainPage";
 	}
 
 	//로그인
-	@RequestMapping("/login")
+	@GetMapping("/login")
 	public String login() {
 
 		return "view/user/login";
@@ -102,7 +111,7 @@ public class MyController {
 
 
 	//회원가입
-	@RequestMapping("/signup")
+	@GetMapping("/signup")
 	public String signUp() {
 		return "signup";
 	}
@@ -113,11 +122,13 @@ public class MyController {
 		return "view/lineUp/lineUp";
 	}
 	
-	@GetMapping("/findRoad")
-	public String road(Model model) {
+	@GetMapping("/findRoad/{matchId}")
+	public String road(Model model,@PathVariable Long matchId) {
 		
-		Long viewMatchId = matchService.findRecentViewMatch();
-		model.addAttribute("recentMatch",matchService.findeRecentMatch(viewMatchId));
+//		Long viewMatchId = matchService.findRecentViewMatch();
+		Match match = matchService.findeRecentMatch(matchId);
+		model.addAttribute("match",match);
+//		model.addAttribute("recentMatch",matchService.findeRecentMatch(viewMatchId));
 		
 		return "view/roadPop";
 	}

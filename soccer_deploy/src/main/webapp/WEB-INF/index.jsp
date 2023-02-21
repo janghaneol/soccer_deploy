@@ -97,8 +97,6 @@
 
 <body>
 
-	<div class="site-wrap">
-
 		<jsp:include page="/WEB-INF/view/include/header.jsp"></jsp:include>
 
 
@@ -121,7 +119,7 @@
 											<span class="vs"><span>VS</span></span>
 										</div>
 										<div class="team-2 text-center">
-											<img src="images/${recentMatch.matchImgName}" alt="Image">
+											<img src="image/${recentMatch.matchImgName}" alt="Image">
 											<h3 id="v">${recentMatch.opteam}</h3>
 										</div>
 									</div>
@@ -133,9 +131,17 @@
 								<p class="mb-5">
 									<fmt:formatDate var="time" value="${recentMatch.matchDate}" pattern="yy/MM/dd HH:mm" />
 									<span class="d-block" id="v">${time}</span> 
-									<a href="" onClick="window.open('/findRoad','','width=700,height=500');return false"><span class="d-block" id="v">${recentMatch.matchPlace}</span></a>
+									<a href="" onClick="window.open('/findRoad/${recentMatch.id}','','width=700,height=500');return false"><span class="d-block" id="v">${recentMatch.matchPlace}</span></a>
 								</p>
-								<a href="/match/participation?matchId=${recentMatch.id}" class="btn btn-primary">참가신청</a>
+									<c:choose>
+										<c:when test="${entry == false}">
+											<a href="/match/enrollment?matchId=${recentMatch.id}" class="btn btn-primary">참가신청</a>
+										</c:when>
+										
+										<c:otherwise>
+											<a href="/match/cancel?matchId=${recentMatch.id}" class="btn btn-primary">참가취소</a>
+										</c:otherwise>
+									</c:choose>
 							</div>
 						</div>
 					</div>
@@ -143,7 +149,7 @@
 			</div>
 		</div>
 
-	</div>
+
 
 
 
@@ -232,7 +238,7 @@
 														</div>
 														<div class="team-2 w-50">
 															<div class="team-details w-100 text-center">
-																<img src="/image/${item.value.matchImgName}" alt="Image"
+																<img src="/images/${item.value.matchImgName}" alt="Image"
 																	class="img-fluid">
 																<h3>
 																	<c:choose>
@@ -293,18 +299,18 @@
 														</div>
 														<div class="team-2 w-50">
 															<div class="team-details w-100 text-center">
-																<img src="/image/${item.value.matchImgName}" alt="Image"
+																<img src="image/${recentMatch.matchImgName}" alt="Image"
 																	class="img-fluid">
 																<h3>
 
 																	<c:choose>
 																		<c:when
-																			test="${item.value.win < (item.value.count - item.value.win)}">${item.value.opteam} <span>(win)</span>
+																			test="${item.value.win < (item.value.count - item.value.win)}">${recentMatch.opteam} <span>(win)</span>
 																		</c:when>
 																		<c:when
-																			test="${item.value.win > (item.value.count - item.value.win)}">${item.value.opteam} <span>(loss)</span>
+																			test="${item.value.win > (item.value.count - item.value.win)}">${recentMatch.opteam} <span>(loss)</span>
 																		</c:when>
-																		<c:otherwise>${item.value.opteam} <span>(draw)</span>
+																		<c:otherwise>${recentMatch.opteam} <span>(draw)</span>
 																		</c:otherwise>
 																	</c:choose>
 																</h3>

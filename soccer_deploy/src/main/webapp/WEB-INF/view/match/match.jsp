@@ -204,23 +204,43 @@
 																	<span class="imgspan">MyTeam <span class="score">VS</span>  ${item.opteam} </span>
 																	<img src="/image/${item.matchImgName}" alt="Image"
 																	class="img-fluid customCh">
-																	<a class="entryList" href="/asdasd/asd/${item.id }" style="width: auto;">참가명단</a>
+																	<a class="entryList" href="/match/${item.id}" style="width: auto;">참가명단</a>
 										</li>
 										
 							</c:forEach>
 						</ul>
 					</li>
-
+					
 
 					<li>
 						<div class="log">참가버튼</div>
-						<ul class="board">
-							<c:forEach var="i" items="${result}" varStatus="index" begin="0" end="${result.size()}">
-								<li><a type="" href="/match/participation?matchId=${i.id}">참가신청</a></li>
-							</c:forEach>
-						</ul>
+						<ul class="board"> 
+						
+							<c:forEach var="result" items="${result}" varStatus="status" begin="0" end="${result.size()}">
+							
+								<c:choose>
+									
+									<c:when test="${expiration[status.index] == false}">
+										<li><a type="" >기간만료</a></li>
+									</c:when>
+									
+									<c:when test="${entry[status.index] == true}">
+										<li><a type="" href="/match/cancel?matchId=${result.id}">참가취소</a></li>
+									</c:when>
+									
+									<c:when test="${entry[status.index] == false}">
+										<li><a type="" href="/match/enrollment?matchId=${result.id}">참가신청</a></li>
+									</c:when>
+									
+									<c:otherwise>
+										<li><a type="" href="/match/cancel?matchId=${result.id}">회원가입</a></li>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach> 
+						 
+						</ul>  
 					</li>
-				</ul>
+				</ul> 
 					</c:otherwise>
 				</c:choose>
 			</div>
@@ -386,6 +406,8 @@
 			
 		} 
 	*/
+	
+   
 	</script>
  
 	<script type="/js/viewDetail.js"></script>

@@ -5,16 +5,22 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
+import java.util.Optional;
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,14 +35,21 @@ import soccer.deploy.MyEntry.EntryMyService;
 import soccer.deploy.MyUser.UserMyDto;
 import soccer.deploy.entry.entity.Entry;
 import soccer.deploy.entry.repository.JpaEntryRepository;
+<<<<<<< HEAD
 import soccer.deploy.lineUp.entity.LineUp;
+=======
+import soccer.deploy.entry.service.EntryService;
+>>>>>>> b2a48bec26ed0a9e8257b21e8a2fbfc0b13bea84
 import soccer.deploy.match.entity.Match;
 import soccer.deploy.match.myDao.matchDao;
 import soccer.deploy.match.myService.MatchChoungService;
+import soccer.deploy.match.repository.JpaMatchRepository;
 import soccer.deploy.match.service.MatchService;
 import soccer.deploy.quarter.entity.Quarter;
 import soccer.deploy.quarter.service.QuarterService;
 import soccer.deploy.user.entity.User;
+import soccer.deploy.user.repository.UserRepository;
+import soccer.deploy.user.service.UserService;
 
 @Controller
 @RequestMapping("/match")
@@ -52,28 +65,41 @@ public class matchMyController {
 	@Autowired
 	private MatchService m;
 	@Autowired
+	private EntryService e;
+	@Autowired
 	private MatchChoungService matchService;
 	@Autowired
 	private QuarterService quarterService;
+	@Autowired
+	private UserService userService;
+	@Autowired
+	private UserRepository userRepository;
 	
 	/*
 	 * 경기일정을 보여줌
 	 */
 	@GetMapping
-
-	public String matchList(Model model,@RequestParam(required = false, defaultValue = "first") String matchYear, @RequestParam(required = false,defaultValue = "first") String matchMonth) {
+	public String matchList(Model model,@RequestParam(required = false, defaultValue = "first") String matchYear, 
+			@RequestParam(required = false,defaultValue = "first") String matchMonth, HttpSession session) {
 		model.addAttribute("result", m.findMatch(matchYear, matchMonth));
 		model.addAttribute("year", m.matchYear());
 		model.addAttribute("month",m.month());
-		log.info("List : {}", m.findMatch(matchYear, matchMonth));
-		log.info("year : {}",matchYear);
+		
+		List<Match> match = m.findMatch(matchYear, matchMonth);
+		model.addAttribute("expiration", m.matchExpiration(match));
+		User user = (User)session.getAttribute("loginUser");
+		List<Boolean> entryList = e.findUserAndEntryByMatch(match, user);
+		model.addAttribute("entry", entryList);
+		
+		log.info("entry : : : {} " , entryList);
+		
 		return "view/match/match"; 
 	}
-	   
+
 	/*
 	 * 경기일정 등록화면
 	 */
-	@GetMapping("/schedule")
+	@GetMapping("/schedule")  
 	public String matchSchedule(Model model) {
 		return "view/match/schedule";
 	}
@@ -151,16 +177,33 @@ public class matchMyController {
 	}
 
 	
-	@GetMapping("/participation")
-	public String test(@RequestParam("matchId")String matchId,  HttpSession session)
+	@GetMapping("/enrollment")
+	public String matchEnroll(@RequestParam("matchId")String matchId, HttpSession session, RedirectAttributes attributes)
 	{   //濡쒓렇�씤 �꽭�뀡媛�
 		Entry entry =new Entry();
 		entry.setMatch(m.findeRecentMatch(Long.parseLong(matchId)));
 		entry.setUser((User) session.getAttribute("loginUser"));
 		entryService.save(entry);
+		attributes.addAttribute("matchId", matchId);
 		log.info("{}",entry.getUser());
-		return "redirect:/match";
+		return "redirect:/match/{matchId}";
 	}
+	
+	@GetMapping("/cancel")
+	public String matchCancel(@RequestParam("matchId")String matchId, HttpSession session, RedirectAttributes redirectAttributes,
+								HttpServletRequest request, @RequestParam(name = "redirect" , defaultValue = "/")String redirect) {
+		User user = (User)session.getAttribute("loginUser");
+		
+		e.deleteEntry(Long.parseLong(matchId), user);
+		redirectAttributes.addFlashAttribute("success", "success");
+		
+		// 참가신청 취소 후 이전 페이지로 
+		String uri = request.getHeader("Referer");
+		request.getSession().setAttribute("prevPage", uri);
+		redirect=(String)session.getAttribute("prevPage");
+		return "redirect:" + redirect;
+	}
+	
 	
 	@GetMapping("/result")
 	public String matchResult(@RequestParam(value= "Year", required = false, defaultValue = "first") String rankYear, @RequestParam(value= "Month", required = false, defaultValue = "first") String rankMonth, Model model) {
@@ -172,17 +215,14 @@ public class matchMyController {
 	}
 
 	
-//	팝업 리스트
-	@GetMapping("/popup")
-	public String popupList(Model model) {
-		
-		List<UserMyDto> list = entryMyService.show("1");
-		model.addAttribute("popupList",list);
-		
-		return "view/match/popup";
+	@GetMapping("/{matchId}")
+	public String popupList(@PathVariable Long matchId,Model model) {
+		List<Entry> entry = e.findEntryMatchId(matchId);
+		Match match = m.findeRecentMatch(matchId);
+		model.addAttribute("entry",entry);
+		model.addAttribute("match",match);
+		return "view/match/matchEntry";
 	}
-
-	
 
 	@GetMapping("/rank")
 	public String rank(@RequestParam(value= "Year", required = false, defaultValue = "first") String rankYear, @RequestParam(value= "Month", required = false, defaultValue = "first") String rankMonth, Model model) {
@@ -192,6 +232,7 @@ public class matchMyController {
 
 		return "view/match/rank";
 	}
+<<<<<<< HEAD
 	@GetMapping("/result/{matchId}")
 	public String detailResult(@PathVariable Long matchId, Model model) {
 		List<LineUp> lineUp = matchService.findLineupResult(matchId);
@@ -200,6 +241,9 @@ public class matchMyController {
 		model.addAttribute("quarter",quarterService.checkQuarter(matchId,lineUp));
 		return "view/match/matchDetailResult";
 	}
+=======
+
+>>>>>>> b2a48bec26ed0a9e8257b21e8a2fbfc0b13bea84
 
 }
 

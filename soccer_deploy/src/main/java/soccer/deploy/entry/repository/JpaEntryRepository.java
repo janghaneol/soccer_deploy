@@ -1,6 +1,7 @@
 package soccer.deploy.entry.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -10,9 +11,19 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import soccer.deploy.entry.entity.Entry;
+import soccer.deploy.user.entity.User;
 
 public interface JpaEntryRepository extends JpaRepository<Entry, Long> {
-	List<Entry> findAllByMatchId(Long Id);
+	List<Entry> findAllByMatchId(Long matchId);
+	
+	List<Entry> findAllByUserId(Long id);
+	
+	@Query(value="SELECT  u.user_id id"
+			+ "		FROM entry e"
+			+ "   			 INNER JOIN users u"
+			+ "   							 ON e.user_id = u.user_id"
+			+ "		WHERE  e.match_id = :match_id",nativeQuery = true)
+	List<Long> findUser(@Param("match_id") Long id);
 	
 	@Query(value="SELECT  e from Entry e join e.user u where e.match.id = :id and LOWER(u.name) like LOWER(concat('%',:name,'%'))")
 	List<Entry> findSearchEntry(@Param("id") Long id , @Param("name") String name);

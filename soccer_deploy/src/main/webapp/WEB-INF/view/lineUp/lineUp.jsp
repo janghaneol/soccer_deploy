@@ -47,7 +47,7 @@
 		
 		html2canvas(div).then(function(canvas) {
 			let myImage = canvas.toDataURL();
-			downloadURI(myImage, fomat+"_"+setName+".png");
+			downloadURI(myImage, fomat+"_"+setName+".jpg");
 		});
 	}
 	function downloadURI(uri, name) {

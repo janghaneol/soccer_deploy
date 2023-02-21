@@ -104,7 +104,7 @@
 				SELECT FIRST_VALUE(TO_CHAR(match_date,'yy/MM')) OVER() firstDate
          		FROM match m
         GROUP BY TO_CHAR(match_date,'yy/MM')
-        ORDER BY TO_CHAR(match_date,'yy/MM') asc)
+        ORDER BY TO_CHAR(match_date,'yy/MM') desc)
         where rownum &lt; 2
 	</select>
 	
@@ -134,5 +134,20 @@
         group by TO_CHAR(match_date,'yy')
         ORDER BY year desc 
 	</select>
-
+	
+	<select id="matchEntry" parameterType="Long" resultType="soccer.deploy.match.entity.Match">
+		select m.match_id id,	
+			match_date	matchDate,
+			opteam opteam,
+			match_regdate	matchRegdate,
+			match_img_type	matchImgType,
+			match_img_name	matchImgName,
+			match_place	matchPlace,
+			e.user_id userId
+		from match m 
+			JOIN entry e 
+				on m.match_id = e.match_id 
+			where e.user_id = #{value}
+			order by m.match_date
+	</select>
 </mapper>

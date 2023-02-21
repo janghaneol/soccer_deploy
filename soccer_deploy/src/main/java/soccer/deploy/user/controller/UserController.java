@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
@@ -39,6 +40,11 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.extern.slf4j.Slf4j;
+import soccer.deploy.entry.entity.Entry;
+import soccer.deploy.entry.service.EntryService;
+import soccer.deploy.match.entity.Match;
+import soccer.deploy.match.myDto.matchMyDto;
+import soccer.deploy.match.service.MatchService;
 import soccer.deploy.user.dto.LoginForm;
 import soccer.deploy.user.dto.UpdateUserDto;
 import soccer.deploy.user.dto.UserDto;
@@ -57,6 +63,12 @@ public class UserController {
 	@Autowired
 	private UserRepository userRepository;
 	
+	@Autowired
+	private EntryService entryService;
+	
+	@Autowired
+	private MatchService matchService;
+	
 	@GetMapping("/login")
 	public String loginPage(@ModelAttribute("loginForm") LoginForm loginForm){
 		return "view/user/login";
@@ -71,7 +83,6 @@ public class UserController {
 		}
 		
 		User loginUser = userService.login(loginForm.getEmail(), loginForm.getPasswd());
-		System.out.println(loginUser);
 		
 		if(loginUser==null) {
 			bindingResult.reject("loginFail", "ID와 비밀번호를 확인하여 주십시오");
@@ -89,6 +100,13 @@ public class UserController {
 		/* Session으로 로그인 */
 		HttpSession session = request.getSession();
 		session.setAttribute("loginUser", loginUser);
+		
+		/*
+		 * 로그인 후 로그인 하기 전 페이지로 redirect하기
+		 */
+		String uri = request.getHeader("Referer");
+		request.getSession().setAttribute("prevPage", uri);
+		redirect=(String)session.getAttribute("prevPage");
 		return "redirect:"+redirect;
 	}
 	
@@ -104,12 +122,19 @@ public class UserController {
 		if(session != null) {
 			session.invalidate();
 		}
-		return "redirect:/xMain";
+		return "redirect:/";
 	}
 	
 	@GetMapping("/regist")
 	public String registPage(@ModelAttribute("user") User user) {
 		return "/view/user/signup";
+	}
+	
+	@PostMapping("/idCheck")
+	@ResponseBody
+	public int idCheck(@RequestParam String email) {
+		int cnt = userService.idCheck(email);
+		return cnt;
 	}
 	
 	@PostMapping("/regist")
@@ -149,7 +174,7 @@ public class UserController {
 		registUser.setAddress(address);
 		registUser.setBackNum(user.getBackNum());
 		registUser.setImgContType(imageFile.getContentType());
-		registUser.setImgFileName(storedFileName);
+		registUser.setImgFileName(storedFileName); 
 		registUser.setPosition(user.getPosition());
 		registUser.setRegdate(user.getRegdate());
 		registUser.setMemberAuth(user.getMemberAuth());
@@ -170,6 +195,19 @@ public class UserController {
 		log.info("가입한 회원 정보{}",user);
 		return "view/user/profile";
 	}
+	
+	/*
+	 *  User가 참가신청한 Match들을 보여주는 View
+	 */
+	@GetMapping("/{userId}/match")
+	public String userMatchView(@PathVariable Long userId, Model model) {
+//		List<matchMyDto> match = matchService.userMatch(userId);
+		List<Match> match = matchService.userMatch(userId);
+		model.addAttribute("entry", match);
+		model.addAttribute("date",matchService.matchExpiration(match));
+		return "view/user/userMatch";
+	}
+	
 	/*
 	 *  회원정보에서 탈퇴버튼을 클릭할 경우 passwdConfirm창으로 이동한다.
 	 */
@@ -270,6 +308,7 @@ public class UserController {
 		endBlockPage = endBlockPage>totalPage ? totalPage : endBlockPage ;
 		
 		model.addAttribute("userList", userList);
+		model.addAttribute("value", value);
 		model.addAttribute("startBlockPage", startBlockPage);
 		model.addAttribute("endBlockPage", endBlockPage);	
 		return "view/user/players";

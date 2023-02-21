@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import soccer.deploy.match.entity.Match;
+import soccer.deploy.match.myDto.matchMyDto;
 import soccer.deploy.quarter.entity.Quarter;
 
 
@@ -33,5 +34,9 @@ public interface MatchService {
 	
 	/* 등록된 가장 최신 매치의 id*/
 	public Long findRecentViewMatch();
+
+	List<Boolean> matchExpiration(List<Match> match);
 	
+//	public List<matchMyDto> userMatch(Long userId);
+	public List<Match> userMatch(Long userId);
 }
