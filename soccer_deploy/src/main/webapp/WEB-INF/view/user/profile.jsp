@@ -190,7 +190,7 @@
 						</div>
 						
 						<div id="deploy_two_In_two">
-							<img src="/image/${user.imgFileName}" id="image1">
+							<img src="/image/${user.imgFileName}" id="image1" style="border-radius: 10%;">
 						</div>
 					</div>
 					
