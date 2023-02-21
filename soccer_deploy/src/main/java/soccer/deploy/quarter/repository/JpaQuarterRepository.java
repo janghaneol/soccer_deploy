@@ -13,6 +13,8 @@ public interface JpaQuarterRepository extends JpaRepository<Quarter, Long> {
 	
 	List<Quarter> findAllByMatchId(Long id,Sort sort);
 
-
 	
+	@Query(value = "SELECT q.id FROM Quarter q WHERE q.matchId = :matchId ORDER BY q.id")
+	List<Long> findByMatchId(@Param("matchId")Long matchId);
+
 }

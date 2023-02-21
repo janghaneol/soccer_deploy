@@ -16,4 +16,10 @@ public interface JpaLineUpRepository extends JpaRepository<LineUp, Long> {
 			+ "GROUP BY u.backNum,m.matchDate,u.name"
 			)
 	public List<rank> findRecentMatchOutCome(@Param("id")Long id);
+	
+	
+	@Query(value = "SELECT  l from LineUp l where l.entryId in (SELECT e.id "
+			+ "FROM Entry e WHERE e.matchId=:matchId) AND (l.goal > 0 or l.assist > 0)"
+			+ "ORDER BY l.quarterId")
+	public List<LineUp> findLineupResult(@Param("matchId")Long matchId);
 }

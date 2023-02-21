@@ -205,9 +205,7 @@
 								<div class="log">결과보기</div>
 								<ul class="board">
 									<c:forEach var="item" items="${result}">
-										<li><button type="button"
-												onclick="openLayerPopup('popup-01', 900, 600, this);"
-												class="bg-success" id="">결과보기</button></li>
+										<li><a href="./result/${item.matchId }">결과보기</a></li>
 									</c:forEach>
 								</ul>
 							</li>
@@ -285,50 +283,6 @@
 
 			<jsp:include page="/WEB-INF/view/include/footer.jsp"></jsp:include>
 
-
-
-
-			<script>
-		function openLayerPopup(id, width, height, el) {
-			const $popup = document.getElementById(id);
-			const $mask = document.getElementById('layer-mask');
-			const $close = $popup.querySelector('.close');
-			const $last = $popup.querySelector('.last');
-			const $return = el;
-			// 팝업창 표시
-			$popup.setAttribute('style', 'width: ' + width + 'px; height: '
-					+ height + 'px;');
-			$popup.setAttribute('tabindex', 0);
-			$last.setAttribute('tabindex', 0);
-			$popup.insertAdjacentHTML('beforebegin', '<a href="#"></a>');
-			$popup.insertAdjacentHTML('afterend', '<a href="#"></a>');
-			$mask.classList.add('on');
-			$popup.classList.add('on');
-			$popup.focus();
-			// 팝업창 닫기
-			$close.addEventListener('click', close, false);
-			// focus
-			$popup.previousElementSibling.addEventListener('focusin',
-					function() {
-						$last.focus();
-					}, false);
-			$popup.nextElementSibling.addEventListener('focusin', function() {
-				$popup.focus();
-			}, false);
-			function close() {
-				$return.focus();
-				$mask.classList.remove('on');
-				$popup.classList.remove('on');
-				$close.removeEventListener('click', close, false);
-				$popup.previousElementSibling.remove();
-				$popup.nextElementSibling.remove();
-			}
-		}
-		
-		
-		
-		
-	</script>
 
 			<script src="/js/viewDetail.js"></script>
 			<script src="/js/jquery-3.3.1.min.js"></script>

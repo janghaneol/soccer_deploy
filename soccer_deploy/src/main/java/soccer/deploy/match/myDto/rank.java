@@ -20,6 +20,4 @@ public class rank {
 	private Long goal;
 	private Long assist;
 	private Long point;
-	
-	
 }

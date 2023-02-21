@@ -31,8 +31,11 @@ public class Entry {
 	private Long id;
 	
 	@ManyToOne
-	@JoinColumn(name="match_id")
+	@JoinColumn(name="match_id",insertable = false, updatable = false)
 	private Match match;
+	
+	@Column(name="match_id")
+	private Long matchId;
 	
 	@ManyToOne
 	@JoinColumn(name="user_id")

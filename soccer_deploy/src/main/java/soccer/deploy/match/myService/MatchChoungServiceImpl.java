@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import lombok.extern.slf4j.Slf4j;
+import soccer.deploy.lineUp.entity.LineUp;
 import soccer.deploy.lineUp.repository.JpaLineUpRepository;
 import soccer.deploy.match.entity.Match;
 import soccer.deploy.match.myDao.matchDao;
@@ -101,8 +102,16 @@ public class MatchChoungServiceImpl implements MatchChoungService{
 	}
 	@Override
 	public List<Long> findRecentTwoResultMatchId() {
-
+		
 		return jpaMatchRepository.findRecentTwoResultMatchId();
 	}
 	
+	public Match findById(Long id) {
+		return jpaMatchRepository.findById(id).orElseGet(Match :: new );
+	}
+	@Override
+	public List<LineUp> findLineupResult(Long matchId) {
+		// TODO Auto-generated method stub
+		return jpaLineUpRepository.findLineupResult(matchId);
+	}
 }	

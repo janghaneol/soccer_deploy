@@ -47,7 +47,7 @@
 	<div class="herol overlay">
 		<div class="container">
 			<div class="row align-items-center line_up_row">
-				<div class="col-lg-12">
+				<div class="col-lg-12" style="width: 50%; border: solid; border-radius: 30px; color: white; padding: 5%; margin-top: 130px;">
 					<h1>글쓰기</h1>
 					<form method="post"
 						action="${requestScope['javax.servlet.forward.servlet_path']}"

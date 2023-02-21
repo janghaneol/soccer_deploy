@@ -17,17 +17,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
- 
+
 import lombok.extern.slf4j.Slf4j;
 import soccer.deploy.MyEntry.EntryMyService;
 import soccer.deploy.MyUser.UserMyDto;
 import soccer.deploy.entry.entity.Entry;
 import soccer.deploy.entry.repository.JpaEntryRepository;
+import soccer.deploy.lineUp.entity.LineUp;
 import soccer.deploy.match.entity.Match;
 import soccer.deploy.match.myDao.matchDao;
 import soccer.deploy.match.myService.MatchChoungService;
@@ -190,7 +192,14 @@ public class matchMyController {
 
 		return "view/match/rank";
 	}
-	
+	@GetMapping("/result/{matchId}")
+	public String detailResult(@PathVariable Long matchId, Model model) {
+		List<LineUp> lineUp = matchService.findLineupResult(matchId);
+		model.addAttribute("lineUp",lineUp);
+		model.addAttribute("match",matchService.findById(matchId));
+		model.addAttribute("quarter",quarterService.checkQuarter(matchId,lineUp));
+		return "view/match/matchDetailResult";
+	}
 
 }
 

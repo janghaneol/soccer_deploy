@@ -384,7 +384,7 @@ document.querySelector(".site-mobile-menu").addEventListener("click", function (
   }
 })
 
-document.querySelector(".dropdown-menu").addEventListener("click", function (event) {
+document.querySelector(".main-menu").addEventListener("click", function (event) {
   if (event.target && event.target.classList.contains("drop")) {
     event.preventDefault();
     console.log(event.target);

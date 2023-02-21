@@ -200,6 +200,7 @@
 										<span class="tooltiptext tooltip-left">
 											<ul class="list-unstyled">
 												<c:forEach var="player" items="${resultPlayer['first']}">
+												
 													<li>${player.name}(${player.backNum})</li>
 												</c:forEach>
 											</ul>

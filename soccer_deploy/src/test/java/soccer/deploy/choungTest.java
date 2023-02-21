@@ -12,6 +12,8 @@ import soccer.deploy.article.dto.ArticleDto;
 import soccer.deploy.article.repository.JpaArticleRepository;
 import soccer.deploy.article.service.ArticleService;
 import soccer.deploy.image.service.ImageService;
+import soccer.deploy.match.myService.MatchChoungService;
+import soccer.deploy.quarter.service.QuarterService;
 
 @SpringBootTest
 @Transactional
@@ -22,7 +24,7 @@ public class choungTest {
 	@Autowired
 	private ImageService imageService;
 	@Autowired
-	private JpaArticleRepository j;
+	private QuarterService q;
 	@Test
 	@Disabled
 	void test1(){
@@ -31,8 +33,9 @@ public class choungTest {
 	
 	@Test
 	void test3() throws ParseException {
-		
-	log.info("{}",articleService.prevNext(10L,71L,"").get(0));
+	
+//		log.info("{}",q.checkQuarter(27L));
+	
 	
 		
 	}
