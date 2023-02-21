@@ -8,10 +8,8 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.web.WebAppConfiguration;
 
 import lombok.extern.slf4j.Slf4j;
-import soccer.deploy.user.dto.UpdateUserDto;
 import soccer.deploy.user.entity.User;
 import soccer.deploy.user.repository.UserRepository;
 import soccer.deploy.user.service.UserService;

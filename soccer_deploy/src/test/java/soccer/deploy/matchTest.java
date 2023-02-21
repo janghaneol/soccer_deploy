@@ -1,9 +1,5 @@
 package soccer.deploy;
 
-import java.util.List;
-
-import javax.transaction.Transactional;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,8 +9,6 @@ import soccer.deploy.entry.entity.Entry;
 import soccer.deploy.entry.repository.JpaEntryRepository;
 import soccer.deploy.match.myDao.matchDao;
 import soccer.deploy.match.service.MatchService;
-import soccer.deploy.user.dto.UserDto;
-import soccer.deploy.user.entity.User;
 import soccer.deploy.user.service.UserService;
 
 @SpringBootTest

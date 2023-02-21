@@ -8,11 +8,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import lombok.extern.slf4j.Slf4j;
-import soccer.deploy.article.dto.ArticleDto;
-import soccer.deploy.article.repository.JpaArticleRepository;
 import soccer.deploy.article.service.ArticleService;
 import soccer.deploy.image.service.ImageService;
-import soccer.deploy.match.myService.MatchChoungService;
 import soccer.deploy.quarter.service.QuarterService;
 
 @SpringBootTest

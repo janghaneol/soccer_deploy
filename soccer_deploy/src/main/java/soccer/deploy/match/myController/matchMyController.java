@@ -5,13 +5,9 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
-import java.util.Optional;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +16,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,18 +27,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.extern.slf4j.Slf4j;
 import soccer.deploy.MyEntry.EntryMyService;
-import soccer.deploy.MyUser.UserMyDto;
 import soccer.deploy.entry.entity.Entry;
 import soccer.deploy.entry.repository.JpaEntryRepository;
-<<<<<<< HEAD
-import soccer.deploy.lineUp.entity.LineUp;
-=======
 import soccer.deploy.entry.service.EntryService;
->>>>>>> b2a48bec26ed0a9e8257b21e8a2fbfc0b13bea84
+import soccer.deploy.lineUp.entity.LineUp;
 import soccer.deploy.match.entity.Match;
 import soccer.deploy.match.myDao.matchDao;
 import soccer.deploy.match.myService.MatchChoungService;
-import soccer.deploy.match.repository.JpaMatchRepository;
 import soccer.deploy.match.service.MatchService;
 import soccer.deploy.quarter.entity.Quarter;
 import soccer.deploy.quarter.service.QuarterService;
@@ -178,10 +168,11 @@ public class matchMyController {
 
 	
 	@GetMapping("/enrollment")
-	public String matchEnroll(@RequestParam("matchId")String matchId, HttpSession session, RedirectAttributes attributes)
+	public String matchEnroll(@RequestParam("matchId")Long matchId, HttpSession session, RedirectAttributes attributes)
 	{   //濡쒓렇�씤 �꽭�뀡媛�
+		log.info("{}",m.findeRecentMatch(matchId));
 		Entry entry =new Entry();
-		entry.setMatch(m.findeRecentMatch(Long.parseLong(matchId)));
+		entry.setMatchId(matchId);
 		entry.setUser((User) session.getAttribute("loginUser"));
 		entryService.save(entry);
 		attributes.addAttribute("matchId", matchId);
@@ -190,11 +181,11 @@ public class matchMyController {
 	}
 	
 	@GetMapping("/cancel")
-	public String matchCancel(@RequestParam("matchId")String matchId, HttpSession session, RedirectAttributes redirectAttributes,
+	public String matchCancel(@RequestParam("matchId")Long matchId, HttpSession session, RedirectAttributes redirectAttributes,
 								HttpServletRequest request, @RequestParam(name = "redirect" , defaultValue = "/")String redirect) {
 		User user = (User)session.getAttribute("loginUser");
 		
-		e.deleteEntry(Long.parseLong(matchId), user);
+		e.deleteEntry(matchId, user);
 		redirectAttributes.addFlashAttribute("success", "success");
 		
 		// 참가신청 취소 후 이전 페이지로 
@@ -232,7 +223,7 @@ public class matchMyController {
 
 		return "view/match/rank";
 	}
-<<<<<<< HEAD
+
 	@GetMapping("/result/{matchId}")
 	public String detailResult(@PathVariable Long matchId, Model model) {
 		List<LineUp> lineUp = matchService.findLineupResult(matchId);
@@ -241,9 +232,7 @@ public class matchMyController {
 		model.addAttribute("quarter",quarterService.checkQuarter(matchId,lineUp));
 		return "view/match/matchDetailResult";
 	}
-=======
 
->>>>>>> b2a48bec26ed0a9e8257b21e8a2fbfc0b13bea84
 
 }
 

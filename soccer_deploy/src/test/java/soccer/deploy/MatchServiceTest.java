@@ -1,27 +1,19 @@
 
 package soccer.deploy;
 
-import java.lang.reflect.Array;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
-
-import javax.transaction.Transactional;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.test.context.web.WebAppConfiguration;
 
 import lombok.extern.slf4j.Slf4j;
 import soccer.deploy.entry.entity.Entry;
@@ -33,9 +25,7 @@ import soccer.deploy.match.service.MatchService;
 import soccer.deploy.quarter.entity.Quarter;
 import soccer.deploy.quarter.repository.JpaQuarterRepository;
 import soccer.deploy.quarter.service.QuarterService;
-import soccer.deploy.user.dto.UpdateUserDto;
 import soccer.deploy.user.entity.User;
-import soccer.deploy.user.repository.UserRepository;
 import soccer.deploy.user.service.UserService;
 
 @SpringBootTest

@@ -81,7 +81,7 @@
 			<div class="row align-items-center line_up_row">
 				<div class="col-lg-12 detail"
 					style="align-items: initial !important;">
-					<h1>경기상세</h1>
+					
 					<div class="reg-div"
 						style="justify-content: flex-end !important; padding: 10px 0px;">
 
@@ -95,28 +95,41 @@
 						</c:choose>
 
 					</div>
+					<div class="widget-next-match">
+							<div class="widget-title">
+								<h3>경기상세</h3>
+							</div>
+							<div class="widget-body mb-3">
+								<div class="widget-vs">
+									<div class="d-flex align-items-center justify-content-around justify-content-between w-100">
+										<div class="team-1 text-center">
+											<img src="/images/logo_1.png" alt="Image">
+											<h3 id="v">My Team</h3>
+										</div>
+										<div>
+											<span class="vs"><span>VS</span></span>
+										</div>
+										<div class="team-2 text-center">
+											<img src="/image/${match.matchImgName}" alt="Image">
+											<h3 id="v">${match.opteam}</h3>
+										</div>
+									</div>
+								</div>
+							</div>
+   
+							<div class="text-center widget-vs-contents mb-4">
+								<h4 style="text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;">경기 시간 / 장소</h4>
+								<p class="mb-5">
+									<fmt:formatDate var="time" value="${match.matchDate}" pattern="yy/MM/dd HH:mm" />
+									<span class="d-block" id="v">${time}</span> 
+									<a href="" onClick="window.open('/findRoad/${match.id}','','width=700,height=500');return false"><span class="d-block" id="v">${match.matchPlace}</span></a>
+								</p>
+							</div>
+						</div>
 					<table class="tg">
-						<thead style="color: #ee1e46;">
-							<tr>
-								<th class="tg-baqh">장소</th>
-								<th class="tg-baqh" colspan="3"><a href=""
-									onClick="window.open('/findRoad','','width=700,height=500');return false">
-										${match.matchPlace}</a></th>
-							</tr>
-						</thead>
+						
 						<tbody>
-							<tr>
-								<td class="tg-baqh">날짜</td>
-								<fmt:formatDate var="set" value="${match.matchDate}"
-									pattern="yy/MM/dd HH:mm" />
-
-								<td class="tg-baqh" colspan="3">${set}</td>
-
-							</tr>
-							<tr>
-								<td class="tg-baqh">상대팀</td>
-								<td class="tg-baqh" colspan="3">${match.opteam}</td>
-							</tr>
+							
 							<c:forEach var="quarter" items="${quarter}" varStatus="st" begin="0">
 								<tr>
 									<td class="tg-baqh" colspan="4">${quarter - lineUp[0].quarterId + 1}set</td>
