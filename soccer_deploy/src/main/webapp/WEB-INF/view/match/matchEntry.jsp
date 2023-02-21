@@ -100,6 +100,7 @@
 
 						<thead>
 							<tr>
+								<th>신청순서</th>
 								<th>이름</th>
 								<th>나이</th>
 								<th>포지션</th>
@@ -109,6 +110,7 @@
 						<tbody class="text-center">
 							<c:forEach items="${entry}" var="entry" varStatus="status">
 								<tr>
+									<td class="text-white">${status.index+1}</td>
 									<td class="text-white"><img src="/image/${entry.user.imgFileName}" id="matchProfile">  ${entry.user.name}</td>
 									<td class="text-white">${entry.user.age}</td>
 									<td class="text-white">${entry.user.position}</td>
