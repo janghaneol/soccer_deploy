@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import lombok.extern.slf4j.Slf4j;
@@ -120,12 +122,14 @@ public class MyController {
 		return "view/lineUp/lineUp";
 	}
 	
-	@GetMapping("/findRoad")
-	public String road(Model model) {
+	@GetMapping("/findRoad/{matchId}")
+	public String road(Model model,@PathVariable Long matchId) {
 		
-		Long viewMatchId = matchService.findRecentViewMatch();
-		model.addAttribute("recentMatch",matchService.findeRecentMatch(viewMatchId));
-			
+//		Long viewMatchId = matchService.findRecentViewMatch();
+		Match match = matchService.findeRecentMatch(matchId);
+		model.addAttribute("match",match);
+//		model.addAttribute("recentMatch",matchService.findeRecentMatch(viewMatchId));
+		
 		return "view/roadPop";
 	}
 

@@ -21,4 +21,5 @@ public interface EntryService {
 	
 	public void deleteEntry(Long id, User user);
 	
+	public List<Entry> findEntryMatchId(Long matchId);
 }

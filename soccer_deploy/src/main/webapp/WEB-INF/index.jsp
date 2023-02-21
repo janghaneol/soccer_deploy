@@ -97,8 +97,6 @@
 
 <body>
 
-	<div class="site-wrap">
-
 		<jsp:include page="/WEB-INF/view/include/header.jsp"></jsp:include>
 
 
@@ -133,7 +131,7 @@
 								<p class="mb-5">
 									<fmt:formatDate var="time" value="${recentMatch.matchDate}" pattern="yy/MM/dd HH:mm" />
 									<span class="d-block" id="v">${time}</span> 
-									<a href="" onClick="window.open('/findRoad','','width=700,height=500');return false"><span class="d-block" id="v">${recentMatch.matchPlace}</span></a>
+									<a href="" onClick="window.open('/findRoad/${recentMatch.id}','','width=700,height=500');return false"><span class="d-block" id="v">${recentMatch.matchPlace}</span></a>
 								</p>
 									<c:choose>
 										<c:when test="${entry == false}">
@@ -151,7 +149,7 @@
 			</div>
 		</div>
 
-	</div>
+
 
 
 

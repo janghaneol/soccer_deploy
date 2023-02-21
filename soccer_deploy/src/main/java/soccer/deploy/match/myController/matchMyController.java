@@ -211,12 +211,13 @@ public class matchMyController {
 	}
 
 	
-//	팝업 리스트
 	@GetMapping("/{matchId}")
 	public String popupList(@PathVariable Long matchId,Model model) {
-		List<UserMyDto> list = entryMyService.show(matchId);
-		model.addAttribute("popup",list);
-		return "view/match/popup";
+		List<Entry> entry = e.findEntryMatchId(matchId);
+		Match match = m.findeRecentMatch(matchId);
+		model.addAttribute("entry",entry);
+		model.addAttribute("match",match);
+		return "view/match/matchEntry";
 	}
 
 	@GetMapping("/rank")

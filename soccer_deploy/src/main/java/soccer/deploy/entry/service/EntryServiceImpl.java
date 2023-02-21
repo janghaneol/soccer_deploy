@@ -79,4 +79,9 @@ public class EntryServiceImpl implements EntryService {
 	public List<Entry> findEntryUserId(Long userId) {
 		return jpaentryRepository.findAllByUserId(userId);
 	}
+
+	@Override
+	public List<Entry> findEntryMatchId(Long matchId) {
+		return jpaentryRepository.findAllByMatchId(matchId);
+	}
 }

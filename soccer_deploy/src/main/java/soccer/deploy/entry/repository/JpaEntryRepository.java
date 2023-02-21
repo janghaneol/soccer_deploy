@@ -14,7 +14,7 @@ import soccer.deploy.entry.entity.Entry;
 import soccer.deploy.user.entity.User;
 
 public interface JpaEntryRepository extends JpaRepository<Entry, Long> {
-	List<Entry> findAllByMatchId(Long Id);
+	List<Entry> findAllByMatchId(Long matchId);
 	
 	List<Entry> findAllByUserId(Long id);
 	

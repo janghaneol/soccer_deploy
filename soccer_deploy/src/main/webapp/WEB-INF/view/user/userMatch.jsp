@@ -42,9 +42,13 @@
 
 	<div class="herol overlay">
 		<div class="container">
-			<div class="row align-items-center line_up_row">
-				<div class="col-lg-12 board-list">
 
+			<div class="row align-items-center line_up_row">
+
+				<div class="col-lg-12 board-list">
+					<div class="wrapper" style="text-align: center;">
+						<h3>내가 신청한 경기 목록</h3>
+					</div>
 					<table class="table custom-table board">
 
 						<thead>
@@ -52,13 +56,14 @@
 								<th class="matchDate">경기시간</th>
 								<th class="title">위치</th>
 								<th class="author">상대팀</th>
-								
+
 								<th class="view">신청여부</th>
 							</tr>
 						</thead>
 						<tbody class="text-center">
 							<c:forEach items="${entry}" var="entry" varStatus="status">
-							<fmt:formatDate var="time" value="${entry.matchDate}" pattern="yy/MM/dd HH:mm" />
+								<fmt:formatDate var="time" value="${entry.matchDate}"
+									pattern="yy/MM/dd HH:mm" />
 								<tr>
 									<td class="text-white">${time}</td>
 									<td class="text-white">${entry.matchPlace}</td>
@@ -68,7 +73,8 @@
 											<td><a href=""><input type="button" value="기간 만료"></a></td>
 										</c:when>
 										<c:otherwise>
-											<td><a href="/match/cancel?matchId=${entry.id}"><input type="button" value="신청 취소"></a></td>
+											<td><a href="/match/cancel?matchId=${entry.id}"><input
+													type="button" value="신청 취소"></a></td>
 										</c:otherwise>
 									</c:choose>
 								</tr>
