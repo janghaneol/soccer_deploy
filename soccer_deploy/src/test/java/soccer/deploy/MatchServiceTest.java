@@ -186,8 +186,8 @@ public class MatchServiceTest {
 		for (Match match : matchs) {
 			log.info("matchDate : : : {}",match.getMatchDate());
 		}
-		List<Boolean> boolList2=entryService.findUserAndEntryByMatch(matchs, user.get());
-		log.info("boolList : : : {} ",boolList2);
+//		List<Boolean> boolList2=entryService.findUserAndEntryByMatch(matchs, user.get());
+//		log.info("boolList : : : {} ",boolList2);
 	}
 	
 	@Test

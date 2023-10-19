@@ -119,7 +119,7 @@
 											<span class="vs"><span>VS</span></span>
 										</div>
 										<div class="team-2 text-center">
-											<img src="image/${recentMatch.matchImgName}" alt="Image">
+											<img src="images/profile/${recentMatch.matchImgName}" alt="Image">
 											<h3 id="v">${recentMatch.opteam}</h3>
 										</div>
 									</div>
@@ -178,14 +178,14 @@
 
 												<div class="team-1 w-50">
 													<div class="team-details w-100 text-center">
-														<img src="/images/basic.png" alt="Image" class="img-fluid">
+														<img src="images/profile/basic.png" alt="Image" class="img-fluid">
 														<h3>기록없음</h3>
 
 													</div>
 												</div>
 												<div class="team-2 w-50">
 													<div class="team-details w-100 text-center">
-														<img src="images/basic.png" alt="Image" class="img-fluid">
+														<img src="images/profile/basic.png" alt="Image" class="img-fluid">
 														<h3>기록없음</h3>
 													</div>
 												</div>
@@ -219,7 +219,7 @@
 														<span class="score">${item.value.win }-${item.value.count - item.value.win}</span>
 														<div class="team-1 w-50">
 															<div class="team-details w-100 text-center">
-																<img src="images/logo_1.png" alt="Image"
+																<img src="images/profile/logo_1.png" alt="Image"
 																	class="img-fluid">
 																<h3>
 																	<c:choose>
@@ -238,7 +238,7 @@
 														</div>
 														<div class="team-2 w-50">
 															<div class="team-details w-100 text-center">
-																<img src="/images/${item.value.matchImgName}" alt="Image"
+																<img src="images/profile/${item.value.matchImgName}" alt="Image"
 																	class="img-fluid">
 																<h3>
 																	<c:choose>
@@ -280,7 +280,7 @@
 														<span class="score">${item.value.win }-${item.value.count - item.value.win}</span>
 														<div class="team-1 w-50">
 															<div class="team-details w-100 text-center">
-																<img src="images/logo_1.png" alt="Image"
+																<img src="images/profile/logo_1.png" alt="Image"
 																	class="img-fluid">
 																<h3>
 																	<c:choose>
@@ -299,18 +299,18 @@
 														</div>
 														<div class="team-2 w-50">
 															<div class="team-details w-100 text-center">
-																<img src="image/${recentMatch.matchImgName}" alt="Image"
+																<img src="images/profile/${item.value.matchImgName}" alt="Image"
 																	class="img-fluid">
 																<h3>
 
 																	<c:choose>
 																		<c:when
-																			test="${item.value.win < (item.value.count - item.value.win)}">${recentMatch.opteam} <span>(win)</span>
+																			test="${item.value.win < (item.value.count - item.value.win)}">${item.value.opteam} <span>(win)</span>
 																		</c:when>
 																		<c:when
-																			test="${item.value.win > (item.value.count - item.value.win)}">${recentMatch.opteam} <span>(loss)</span>
+																			test="${item.value.win > (item.value.count - item.value.win)}">${item.value.opteam} <span>(loss)</span>
 																		</c:when>
-																		<c:otherwise>${recentMatch.opteam} <span>(draw)</span>
+																		<c:otherwise>${item.value.opteam} <span>(draw)</span>
 																		</c:otherwise>
 																	</c:choose>
 																</h3>

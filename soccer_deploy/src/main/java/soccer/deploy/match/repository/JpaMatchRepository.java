@@ -41,5 +41,8 @@ public interface JpaMatchRepository extends JpaRepository<Match, Long> {
 			+ "        order by match_date desc)"
 			+ "        where rownum <= 2 ",nativeQuery = true)
 	public List<Long> findRecentTwoResultMatchId();
+	
+	@Query(value="SELECT m FROM Match m WHERE m.matchDate Like CONCAT(:date,'%')")
+	public List<Match> findByDate(@Param("date")String date);
 }
 	

@@ -88,7 +88,7 @@ public class MatchChoungServiceImpl implements MatchChoungService{
 		HashMap<String, MatchDto> twoList  =new HashMap<>();
 
 		twoList.put("first", jpaMatchRepository.resultMatchById(id.get(0)).orElseGet(MatchDto :: new));
-//		twoList.put("second", jpaMatchRepository.resultMatchById(id.get(1)).orElseGet(MatchDto :: new));
+		twoList.put("second", jpaMatchRepository.resultMatchById(id.get(1)).orElseGet(MatchDto :: new));
 		return twoList;
 	}
 
@@ -97,7 +97,7 @@ public class MatchChoungServiceImpl implements MatchChoungService{
 		HashMap<String, List<rank>> twoList  =new HashMap<>();
 
 		twoList.put("first", jpaLineUpRepository.findRecentMatchOutCome(id.get(0)));
-//		twoList.put("second", jpaLineUpRepository.findRecentMatchOutCome(id.get(1)));
+		twoList.put("second", jpaLineUpRepository.findRecentMatchOutCome(id.get(1)));
 		return twoList;
 	}
 	@Override
@@ -113,5 +113,27 @@ public class MatchChoungServiceImpl implements MatchChoungService{
 	public List<LineUp> findLineupResult(Long matchId) {
 		// TODO Auto-generated method stub
 		return jpaLineUpRepository.findLineupResult(matchId);
+	}
+	@Override
+	public List<Match> findByDate(String year, String month) {
+		LocalDate now = LocalDate.now();
+		DateTimeFormatter formatter;
+		String formatedNow;
+		if(year.equals("first") && month.equals("first") ) {
+			formatedNow = dao.date();
+			return jpaMatchRepository.findByDate(formatedNow);
+		}else if(year.equals("first") && !month.equals("first")) {
+			formatter = DateTimeFormatter.ofPattern("yy/");
+			formatedNow = now.format(formatter);	
+			formatedNow.concat(month);
+
+			return jpaMatchRepository.findByDate(formatedNow.concat(month));
+		}else if(!year.equals("first") && month.equals("first")) {
+			formatter = DateTimeFormatter.ofPattern("/MM");
+			formatedNow = now.format(formatter);	
+			return jpaMatchRepository.findByDate(year.concat(formatedNow));
+		}else {
+			return jpaMatchRepository.findByDate(year.concat("/").concat(month));
+		}
 	}
 }	

@@ -110,7 +110,7 @@
 											<span class="vs"><span>VS</span></span>
 										</div>
 										<div class="team-2 text-center">
-											<img src="/image/${match.matchImgName}" alt="Image">
+											<img src="/images/${match.matchImgName}" alt="Image">
 											<h3 id="v">${match.opteam}</h3>
 										</div>
 									</div>
@@ -132,7 +132,7 @@
 							
 							<c:forEach var="quarter" items="${quarter}" varStatus="st" begin="0">
 								<tr>
-									<td class="tg-baqh" colspan="4">${quarter - lineUp[0].quarterId + 1}set</td>
+									<td class="tg-baqh" colspan="4">${quarter - lineUp[0].quarterId + 1}쿼터</td>
 								</tr>
 								<tr>
 									<td class="tg-baqh">등번호</td>

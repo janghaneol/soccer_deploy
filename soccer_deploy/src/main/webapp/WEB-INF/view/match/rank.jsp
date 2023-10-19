@@ -77,18 +77,18 @@
 					<h3>${empty param.Month ? month : param.Month }월</h3>
 					<c:choose>
 						<c:when test="${empty param.Month }">
-							<a type="button" id="prev" class="btn-outline-info "
+							<a type="button" id="prev" class="btn-outline-info btn"
 								href="./rank?Year=${param.Year}&Month=${month - 1 < 1 ? '01' : (month - 1 < 10 ? '0'+= month - 1 : month -1 )}"
 								onclick="${month eq 1 ? 'return false' : ''}">이전</a>
-							<a type="button" id="next" class="btn-outline-info "
+							<a type="button" id="next" class="btn-outline-info btn"
 								href="./rank?Year=${param.Year}&Month=${month + 1 > 12 ? '12' : (month + 1< 10 ? '0'+= month + 1 : month + 1)}"
 								onclick="${month eq 12 ? 'return false' : ''}">다음</a>
 						</c:when>
 						<c:otherwise>
-							<a type="button" id="prev" class="btn-outline-info "
+							<a type="button" id="prev" class="btn-outline-info btn"
 								href="./rank?Year=${param.Year}&Month=${param.Month - 1 < 1 ? '01' : (param.Month - 1 < 10 ? '0'+= param.Month - 1 : param.Month -1 )}"
 								onclick="${param.Month eq 1 ? 'return false' : ''}">이전</a>
-							<a type="button" id="next" class="btn-outline-info "
+							<a type="button" id="next" class="btn-outline-info btn"
 								href="./rank?Year=${param.Year}&Month=${param.Month + 1 > 12 ? '12' : (param.Month + 1< 10 ? '0'+= param.Month + 1 : param.Month + 1)}"
 								onclick="${param.Month eq 12 ? 'return false' : ''}">다음</a>
 						</c:otherwise>

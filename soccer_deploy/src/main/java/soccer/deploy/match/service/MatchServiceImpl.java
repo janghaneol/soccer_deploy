@@ -1,8 +1,9 @@
 package soccer.deploy.match.service;
 
-import java.text.SimpleDateFormat;
+import java.sql.Timestamp;
 import java.time.Instant;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -14,13 +15,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import lombok.extern.slf4j.Slf4j;
 import soccer.deploy.match.entity.Match;
 import soccer.deploy.match.myDao.matchDao;
-import soccer.deploy.match.myDto.matchMyDto;
 import soccer.deploy.match.repository.JpaMatchRepository;
 
 @Service
 @Transactional
+@Slf4j
 public class MatchServiceImpl implements MatchService {
 
 	@Autowired
@@ -93,6 +95,7 @@ public class MatchServiceImpl implements MatchService {
 		LocalDate now = LocalDate.now();
 		DateTimeFormatter formatter;
 		String formatedNow;
+		log.info("서비스 부분{},{}",year,month);
 		if(year.equals("first") && month.equals("first") ) {
 			formatedNow = matchDao.matchDate();
 			return jpaMatchRepository.findAllByMatchDate(formatedNow);
@@ -100,6 +103,7 @@ public class MatchServiceImpl implements MatchService {
 		}else if(year.equals("first") && !month.equals("first")) {
 			formatter = DateTimeFormatter.ofPattern("yy/");
 			formatedNow = matchDao.matchFirst();
+			log.info("달이 first아님{}",formatedNow);
 			return jpaMatchRepository.findAllByMatchDate(formatedNow.concat("/").concat(month));
 			
 		}else if(!year.equals("first") && month.equals("first")) {
@@ -115,12 +119,11 @@ public class MatchServiceImpl implements MatchService {
 	@Override
 	public List<Boolean> matchExpiration(List<Match> match){
 		List<Boolean> boolList = new ArrayList<>();
-		LocalDate localDate = LocalDate.now();
-		Instant instant = localDate.atStartOfDay(ZoneId.systemDefault()).toInstant();
-        Date date = Date.from(instant);
+		LocalDateTime localDateTime = LocalDateTime.now();
+		Timestamp timestamp = Timestamp.valueOf(localDateTime);
         
 		for (Match matchs : match) {
-			if(matchs.getMatchDate().after(date)) {
+			if(matchs.getMatchDate().after(timestamp)) {
 				boolList.add(true);
 			}
 			else {

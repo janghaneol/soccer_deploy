@@ -154,7 +154,7 @@ li {list-style: none;}
 .bottom > ul > li > div {background-color: white; font: bold 30px none; }
 .bottom > ul > li > ul > li {border: 1px solid #1b1b1b; height:100px; padding:40px;}
 .bottom > ul > li > ul > li > a {width: 10px; background-color: aqua; border-radius: 5px;}
-
+.bottom > ul > li > ul > li.place {padding-top : 20px;}
 .date {width:200px; }
 .place {width:250px; }
 .result {width:800px; }

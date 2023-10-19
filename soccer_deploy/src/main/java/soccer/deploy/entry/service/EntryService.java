@@ -15,7 +15,7 @@ public interface EntryService {
 	
 	public List<Entry> SearchRecentEntry(Long id, String name);
 	
-	public List<Boolean> findUserAndEntryByMatch(List<Match> match, User user);
+	public List<String> findUserAndEntryByMatch(List<Match> match, Long user);
 	
 	public Boolean indexMatch(Match match , User user);
 	

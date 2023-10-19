@@ -69,29 +69,25 @@
 	<div class="wrapper">
 		<div class="wrapper">
 			<h2>경기일정</h2>
-		</div>
-		
-		
-		<div class="contentWrap">
-			<hr>
+			<div class="contentWrap">
 			<div class="top">
 				<div class="center-date">
 					<h3>${empty param.matchMonth ? month : param.matchMonth }월</h3>
 					
 				<c:choose>
 						<c:when test="${empty param.matchMonth }">
-							<a type="button" id="prev" class="btn-outline-info "
+							<a type="button" id="prev" class="btn-outline-info btn"
 								href="?matchYear=${param.matchYear}&matchMonth=${month - 1 < 1 ? '01' : (month - 1 < 10 ? '0'+= month - 1 : month -1 )}"
 								onclick="${month eq 1 ? 'return false' : ''}">이전</a>
-							<a type="button" id="next" class="btn-outline-info "
+							<a type="button" id="next" class="btn-outline-info btn"
 								href="?matchYear=${param.matchYear}&matchMonth=${month + 1 > 12 ? '12' : (month + 1< 10 ? '0'+= month + 1 : month + 1)}"
 								onclick="${month eq 12 ? 'return false' : ''}">다음</a>
 						</c:when>
 						<c:otherwise>
-							<a type="button" id="prev" class="btn-outline-info "
+							<a type="button" id="prev" class="btn-outline-info btn"
 								href="?matchYear=${param.matchYear}&matchMonth=${param.matchMonth - 1 < 1 ? '01' : (param.matchMonth - 1 < 10 ? '0'+= param.matchMonth - 1 : param.matchMonth -1 )}"
 								onclick="${param.matchMonth eq 1 ? 'return false' : ''}">이전</a>
-							<a type="button" id="next" class="btn-outline-info "
+							<a type="button" id="next" class="btn-outline-info btn"
 								href="?matchYear=${param.matchYear}&matchMonth=${param.matchMonth + 1 > 12 ? '12' : (param.matchMonth + 1< 10 ? '0'+= param.matchMonth + 1 : param.matchMonth + 1)}"
 								onclick="${param.matchMonth eq 12 ? 'return false' : ''}">다음</a>
 						</c:otherwise>
@@ -188,7 +184,7 @@
 						<ul class="board">
 
 							<c:forEach var="item" items="${result}">
-								<li>${item.matchPlace}</li>
+								<li class="place">${item.matchPlace}</li>
 							</c:forEach>
 						</ul>
 					</li>
@@ -198,11 +194,11 @@
 						
 							<c:forEach var="item" items="${result}">
 								
-									<li class="imgclass cal"><img src="/images/logo_1.png" alt="Image"
+									<li class="imgclass cal"><img src="images/logo_1.png" alt="Image"
 																	class="img-fluid customCh">
 																	
 																	<span class="imgspan">MyTeam <span class="score">VS</span>  ${item.opteam} </span>
-																	<img src="/image/${item.matchImgName}" alt="Image"
+																	<img src="images/profile/${item.matchImgName}" alt="Image"
 																	class="img-fluid customCh">
 																	<a class="entryList" href="/match/${item.id}" style="width: auto;">참가명단</a>
 										</li>
@@ -224,11 +220,11 @@
 										<li><a type="" >기간만료</a></li>
 									</c:when>
 									
-									<c:when test="${entry[status.index] == true}">
+									<c:when test="${entry[status.index] eq 'cancle'}">
 										<li><a type="" href="/match/cancel?matchId=${result.id}">참가취소</a></li>
 									</c:when>
 									
-									<c:when test="${entry[status.index] == false}">
+									<c:when test="${entry[status.index] eq 'enroll'}">
 										<li><a type="" href="/match/enrollment?matchId=${result.id}">참가신청</a></li>
 									</c:when>
 									
@@ -309,6 +305,10 @@
 
 
 		</div>
+		</div>
+		
+		
+		
 	</div>
 	<!---기본 메뉴--->
 

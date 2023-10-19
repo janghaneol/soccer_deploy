@@ -16,6 +16,10 @@ import soccer.deploy.user.entity.User;
 public interface JpaEntryRepository extends JpaRepository<Entry, Long> {
 	List<Entry> findAllByMatchId(Long matchId);
 	
+	@Query(value = "SELECT e.user_id id FROM entry e WHERE e.match_id = :match_id",nativeQuery = true)
+	List<Long> findAllEntryUserByMatchId(@Param("match_id")Long matchId);
+	
+	
 	List<Entry> findAllByUserId(Long id);
 	
 	@Query(value="SELECT  u.user_id id"

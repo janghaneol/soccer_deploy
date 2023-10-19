@@ -21,7 +21,9 @@ public interface MatchChoungService {
 	public List<Long> findRecentTwoResultMatchId();
 	
 	public HashMap<String,MatchDto> recentTwoMatchResult(List<Long> id);
-
+	
+	public List<Match> findByDate(String year, String month);
+	
 	
 	public HashMap<String,List<rank>> recentTwoMatchPlayer(List<Long> id);
 	

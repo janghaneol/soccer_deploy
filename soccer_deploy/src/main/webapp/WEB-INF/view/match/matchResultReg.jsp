@@ -50,7 +50,7 @@
 		<div class="container">
 			<div class="row align-items-center line_up_row">
 				<div class="col-lg-12 detail">
-					<h1>글쓰기</h1>
+					<h1>경기결과 등록</h1>
 					<form method="post" action="./result">
 						<table class="table custom-table board">
 
@@ -69,7 +69,7 @@
 									<c:if test="${status.index % 11 eq 0 }">
 										<tr>
 										<fmt:parseNumber var="set" integerOnly="true" value="${status.index / 11 + 1 }"/>
-											<td colspan="5">${set} set</td>
+											<td colspan="5">${set} quarter</td>
 										</tr>
 									</c:if>
 									<tr class="input">
@@ -95,14 +95,14 @@
 						<table class="table custom-table board">
 							<thead>
 								<tr>
-									<th class="backNum" colspan="4">set</th>
+									<th class="backNum" colspan="4">quarter</th>
 									<th class="name">승/패</th>
 								</tr>
 							</thead>
 							<tbody>
 								<c:forEach var="quarter" items="${quarter}" varStatus="temp">
 								
-									<tr><td colspan="4">${temp.index+1}set</td><td><select name="QuarterList[${temp.index}].outcome" >
+									<tr><td colspan="4">${temp.index+1}quarter</td><td><select name="QuarterList[${temp.index}].outcome" >
                                     <option value="1">승</option>
                                     <option value="0">패</option>
                                     <input type="hidden" name="QuarterList[${temp.index}].id" value="${quarter.id}">

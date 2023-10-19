@@ -77,6 +77,7 @@ public class LineUpController {
 	@ResponseBody
 	public void saveEntry(@RequestBody List<LineUpDto> list, HttpSession session) throws IOException{
 		session.setAttribute("lineup", list);
+		log.info("lineup{}",session.getValue("lineup"));
 		
 	}
 

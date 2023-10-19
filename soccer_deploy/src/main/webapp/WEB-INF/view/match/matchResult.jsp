@@ -30,7 +30,7 @@
 <link rel="stylesheet" href="/css/style.css">
 
 <link rel="stylesheet" href="/css/match.css">
-<link rel="stylesheet" href="/css/result.css">
+
 
 </head>
 
@@ -69,18 +69,18 @@
 					<h3>${empty param.Month ? month : param.Month }월</h3>
 					<c:choose>
 						<c:when test="${empty param.Month }">
-							<a type="button" id="prev" class="btn-outline-info "
+							<a type="button" id="prev" class="btn-outline-info btn"
 								href="./result?Year=${param.Year}&Month=${month - 1 < 1 ? '01' : (month - 1 < 10 ? '0'+= month - 1 : month -1 )}"
 								onclick="${month eq 1 ? 'return false' : ''}">이전</a>
-							<a type="button" id="next" class="btn-outline-info "
+							<a type="button" id="next" class="btn-outline-info btn"
 								href="./result?Year=${param.Year}&Month=${month + 1 > 12 ? '12' : (month + 1< 10 ? '0'+= month + 1 : month + 1)}"
 								onclick="${month eq 12 ? 'return false' : ''}">다음</a>
 						</c:when>
 						<c:otherwise>
-							<a type="button" id="prev" class="btn-outline-info "
+							<a type="button" id="prev" class="btn-outline-info btn"
 								href="./result?Year=${param.Year}&Month=${param.Month - 1 < 1 ? '01' : (param.Month - 1 < 10 ? '0'+= param.Month - 1 : param.Month -1 )}"
 								onclick="${param.Month eq 1 ? 'return false' : ''}">이전</a>
-							<a type="button" id="next" class="btn-outline-info "
+							<a type="button" id="next" class="btn-outline-info btn"
 								href="./result?Year=${param.Year}&Month=${param.Month + 1 > 12 ? '12' : (param.Month + 1< 10 ? '0'+= param.Month + 1 : param.Month + 1)}"
 								onclick="${param.Month eq 12 ? 'return false' : ''}">다음</a>
 						</c:otherwise>
@@ -88,11 +88,7 @@
 
 				</div>
 				<div class="right">
-					<div class="reg-div">
-
-						<a href="/lineup/result" class="btn btn-primary" id="matchReg"
-							data-line="${!empty lineup ? true : false }">등록</a>
-					</div>
+					
 					<form id="matchForm" method="get" action="./result">
 						<select name="Year" id="Year">
 							<c:forEach var="year" items="${year}">
@@ -118,6 +114,8 @@
 
 							</c:forEach>
 						</select> <input id="search" type="submit" value="검색">
+						<a href="/lineup/result" class="btn btn-primary" id="matchReg"
+							data-line="${!empty lineup ? true : false }">등록</a>
 					</form>
 				</div>
 			</div>
@@ -180,7 +178,7 @@
 								<ul class="board">
 
 									<c:forEach var="item" items="${result}">
-										<li>${item.matchPlace}</li>
+										<li class="place">${item.matchPlace}</li>
 									</c:forEach>
 								</ul>
 							</li>
@@ -193,7 +191,7 @@
 											alt="Image" class="img-fluid customCh"> <span
 											class="imgspan">MyTeam <span class="score">${item.win}
 													: ${item.count - item.win}</span> ${item.opteam}
-										</span> <img src="/image/${item.matchImgName}" alt="Image"
+										</span> <img src="/images/${item.matchImgName}" alt="Image"
 											class="img-fluid customCh"></li>
 									</c:forEach>
 								</ul>
@@ -217,13 +215,8 @@
 
 			<!-- #wrapper  -->
 
-			<div id="layer-mask"></div>
-			<div id="popup-01" class="layer-popup" title="레이어 팝업창 1">
-				<header class="header">
-					<h3>결과보기창</h3>
-					<a href="#" class="close"><i class="fas fa-times"><span>
-								닫기</span></i></a>
-				</header>
+			
+			<div id="popup-01" class="layer-popup" >
 				<section class="body">
 					<div class="wrapper">
 						<table border="1">
@@ -269,12 +262,6 @@
 						</table>
 					</div>
 				</section>
-				<footer class="footer">
-					<p class="copyright"></p>
-					<p class="logo last">
-						<img alt="" src="" />
-					</p>
-				</footer>
 			</div>
 
 			<!---기본 메뉴--->

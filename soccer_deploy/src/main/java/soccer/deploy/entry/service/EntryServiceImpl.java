@@ -10,11 +10,13 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import lombok.extern.slf4j.Slf4j;
 import soccer.deploy.entry.entity.Entry;
 import soccer.deploy.entry.repository.JpaEntryRepository;
 import soccer.deploy.match.entity.Match;
 import soccer.deploy.user.entity.User;
 
+@Slf4j
 @Service
 @Transactional
 public class EntryServiceImpl implements EntryService {
@@ -32,25 +34,21 @@ public class EntryServiceImpl implements EntryService {
 	}
 
 	@Override
-	public List<Boolean> findUserAndEntryByMatch(List<Match> match, User user) {
-		List<Boolean> boolList = new ArrayList<Boolean>();
+	public List<String> findUserAndEntryByMatch(List<Match> match, Long user) {
+		List<String> StringList = new ArrayList<String>();
 		for (Match match2 : match) {
-			List<Entry> entry = jpaentryRepository.findAllByMatchId(match2.getId());
-			if (entry.isEmpty()) {
-				boolList.add(false);
-			} else {
-				for (Entry e : entry) {
-					if (e.getUser().equals(user)) {
-						boolList.add(true);
-						break;
-					} else {
-						boolList.add(false);
-						break;
-					}
-				}
+			List<Long> userId = jpaentryRepository.findAllEntryUserByMatchId(match2.getId());
+			if (user.equals(0L)) {
+				StringList.add("reg");
+			} else if(userId.isEmpty()){
+				StringList.add("enroll");
+			}else if(userId.contains(user)){
+				StringList.add("cancle");
+			}else {
+				StringList.add("enroll");
 			}
 		}
-		return boolList;
+		return StringList;
 	}
 
 	@Transactional

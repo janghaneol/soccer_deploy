@@ -17,8 +17,7 @@ public class ImageServiceImpl implements ImageService {
 	private JpaImageRepository jpaImageRepository;
 	
 public void RegImage(List<Image> image) {
-	jpaImageRepository.saveAll(image);
-		
+	jpaImageRepository.saveAll(image);	
 }
 
 @Override

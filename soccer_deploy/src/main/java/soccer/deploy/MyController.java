@@ -55,7 +55,8 @@ public class MyController {
 		Match match = matchService.findeRecentMatch(viewMatchId);
 		
 		model.addAttribute("entry", entryService.indexMatch(match, loginUser));
-		log.info("matchBool : : :{}", entryService.indexMatch(match, loginUser));
+		log.info("matchBool : : :{}",resultMatch.values());
+		
 		return "index";
 	}
 	

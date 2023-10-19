@@ -163,7 +163,7 @@ div.scroll::-webkit-scrollbar{
 
 table.list thead tr th{height: 51.19px;}
 table.list thead tr th.f_col{width: 51.5px !important;}
-table.list thead tr th.s_col{width:65px !important;}
+table.list thead tr th.s_col{width:100px !important;}
 table.list thead tr th.t_col{width:103.99px !important;}
 table.list thead tr th.ff-col{width: 197.36px !important;}
 div.pop{

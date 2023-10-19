@@ -63,6 +63,7 @@ public class articleController {
 				file.transferTo(new File(fileName)); // 이 한줄이면 업로드가능 위에는 디비 저장하기 위해
 			}
 		}
+		log.info("이미지 리스트 파일{}",list);
 		imageService.RegImage(list);
 
 		redirectAttributes.addAttribute("boardId", boardId);

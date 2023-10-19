@@ -51,12 +51,12 @@
 
 	<jsp:include page="/WEB-INF/view/include/header.jsp"></jsp:include>
 
-	<div class="herol overlay">
+	<div class="herol overlay" >
 		<div class="container">
 
 			<div class="row align-items-center line_up_row">
 
-				<div class="col-lg-12 board-list">
+				<div class="col-lg-12 board-list" style="height: calc(100vh - 250px);">
 				<div class="col-lg-12">
 						<div class="widget-next-match">
 							<div class="widget-title">
@@ -73,7 +73,7 @@
 											<span class="vs"><span>VS</span></span>
 										</div>
 										<div class="team-2 text-center">
-											<img src="/image/${match.matchImgName}" alt="Image">
+											<img src="/images/profile/${match.matchImgName}" alt="Image">
 											<h3 id="v">${match.opteam}</h3>
 										</div>
 									</div>
@@ -109,7 +109,7 @@
 						<tbody class="text-center">
 							<c:forEach items="${entry}" var="entry" varStatus="status">
 								<tr>
-									<td class="text-white"><img src="/image/${entry.user.imgFileName}" id="matchProfile">  ${entry.user.name}</td>
+									<td class="text-white"><img src="/images/profile/${entry.user.imgFileName}" id="matchProfile">  ${entry.user.name}</td>
 									<td class="text-white">${entry.user.age}</td>
 									<td class="text-white">${entry.user.position}</td>
 									<td class="text-white">${entry.user.backNum}</td>

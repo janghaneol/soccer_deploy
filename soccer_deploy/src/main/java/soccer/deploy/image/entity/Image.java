@@ -41,7 +41,7 @@ public class Image {
 	private Long imageId;
 	
 	@ManyToOne
-	@JoinColumn(name="articleId")
+	@JoinColumn(name="article_id")
 	private Article article;
 	
 	

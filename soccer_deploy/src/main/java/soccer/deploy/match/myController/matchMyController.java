@@ -69,19 +69,28 @@ public class matchMyController {
 	 * 경기일정을 보여줌
 	 */
 	@GetMapping
-	public String matchList(Model model,@RequestParam(required = false, defaultValue = "first") String matchYear, 
-			@RequestParam(required = false,defaultValue = "first") String matchMonth, HttpSession session) {
-		model.addAttribute("result", m.findMatch(matchYear, matchMonth));
+	public String matchList(Model model,@RequestParam(value="matchYear",required = false, defaultValue = "first") String matchYear, 
+			@RequestParam(value="matchMonth",required = false,defaultValue = "first") String matchMonth, HttpSession session) {
+		model.addAttribute("result", matchService.findByDate(matchYear, matchMonth));
 		model.addAttribute("year", m.matchYear());
 		model.addAttribute("month",m.month());
-		
-		List<Match> match = m.findMatch(matchYear, matchMonth);
+		List<String> entryList = new ArrayList<String>();
+		List<Match> match = matchService.findByDate(matchYear, matchMonth);
 		model.addAttribute("expiration", m.matchExpiration(match));
 		User user = (User)session.getAttribute("loginUser");
-		List<Boolean> entryList = e.findUserAndEntryByMatch(match, user);
+		log.info("로그인 유저{}",user);
+		if(user == null) {
+			log.info("널 실행");
+			entryList = e.findUserAndEntryByMatch(match, 0L);
+		}else {
+			entryList = e.findUserAndEntryByMatch(match, user.getId());
+			log.info("엔트리 리스트{}",user.getId());
+		}
+		
+		log.info("엔트리 리스트{}",entryList);
+		
 		model.addAttribute("entry", entryList);
 		
-		log.info("entry : : : {} " , entryList);
 		
 		return "view/match/match"; 
 	}
@@ -166,7 +175,9 @@ public class matchMyController {
 		return "redirect:/match";
 	}
 
-	
+	/*
+	 * 참가신청
+	 */
 	@GetMapping("/enrollment")
 	public String matchEnroll(@RequestParam("matchId")Long matchId, HttpSession session, RedirectAttributes attributes)
 	{   //濡쒓렇�씤 �꽭�뀡媛�
@@ -176,7 +187,7 @@ public class matchMyController {
 		entry.setUser((User) session.getAttribute("loginUser"));
 		entryService.save(entry);
 		attributes.addAttribute("matchId", matchId);
-		log.info("{}",entry.getUser());
+		log.info("유저 정보{}",entry.getUser());
 		return "redirect:/match/{matchId}";
 	}
 	
@@ -198,6 +209,7 @@ public class matchMyController {
 	
 	@GetMapping("/result")
 	public String matchResult(@RequestParam(value= "Year", required = false, defaultValue = "first") String rankYear, @RequestParam(value= "Month", required = false, defaultValue = "first") String rankMonth, Model model) {
+	
 		model.addAttribute("result", matchService.matchResult(rankYear, rankMonth));
 		model.addAttribute("year", matchService.year());
 		model.addAttribute("month",matchService.month());

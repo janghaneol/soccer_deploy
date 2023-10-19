@@ -113,10 +113,10 @@ input[name='publeYear'] {
 								id="sample6_address" placeholder="주소" readonly="readonly">
 						</div>
 						<div class="form-group">
-							<input type="text" name="add3" class="form-control"
+							<input type="text" name="add3" class="form-control" style="background-color: #222831 !important"
 								id="sample6_detailAddress" placeholder="상세주소" readonly>
 						</div>
-						<input type="text" class="form-control" style="display: none;"
+						<input type="text" class="form-control" style="display: none; ;"
 							id="sample6_extraAddress" placeholder="참고항목">
 
 						<div>
